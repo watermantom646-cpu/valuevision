@@ -13,7 +13,8 @@
     },
     "production": {
       "env": {
-        "APP_ENV": "production"
+        "APP_ENV": "production",
+        "EXPO_PUBLIC_API_BASE": "https://valuevision-4kj3.onrender.com"
       },
       "autoIncrement": true
     }
