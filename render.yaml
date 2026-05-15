@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: valuevision-backend
+    runtime: docker
+    plan: starter
+    rootDir: backend
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5050
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: SERPAPI_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: DVLA_VEHICLE_API_KEY
+        sync: false
+      - key: CHECKCAR_API_KEY
+        sync: false
+      - key: EBAY_CLIENT_ID
+        sync: false
+      - key: EBAY_CLIENT_SECRET
+        sync: false
+      - key: EBAY_APP_TOKEN
+        sync: false

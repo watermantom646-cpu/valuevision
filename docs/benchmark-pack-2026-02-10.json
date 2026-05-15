@@ -1,0 +1,250 @@
+[
+  {
+    "id": "car_01_range_rover_2006",
+    "category": "vehicle",
+    "query": "2006 Land Rover Range Rover Sport HSE used",
+    "expectedLow": 2500,
+    "expectedHigh": 5200,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.kbb.com/land-rover/range-rover-sport/2006/",
+      "https://www.edmunds.com/land-rover/range-rover-sport/2006/appraisal-value/"
+    ]
+  },
+  {
+    "id": "car_02_corolla_2012",
+    "category": "vehicle",
+    "query": "2012 Toyota Corolla L sedan used",
+    "expectedLow": 3000,
+    "expectedHigh": 6500,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.edmunds.com/toyota/corolla/2012/appraisal-value/"
+    ]
+  },
+  {
+    "id": "car_03_michelin_225_45r17",
+    "category": "vehicle",
+    "query": "Michelin Primacy MXM4 225/45R17 used tire",
+    "expectedLow": 80,
+    "expectedHigh": 110,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/177403330335"
+    ]
+  },
+  {
+    "id": "car_04_bmw_e90_headlight_pair",
+    "category": "vehicle",
+    "query": "BMW 3 Series E90 E91 Xenon headlight pair used genuine",
+    "expectedLow": 1400,
+    "expectedHigh": 1700,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/387636340812",
+      "https://www.ebay.com/itm/395431140377"
+    ]
+  },
+  {
+    "id": "car_05_f150_tailgate",
+    "category": "vehicle",
+    "query": "2015 2016 2017 Ford F-150 OEM tailgate used",
+    "expectedLow": 250,
+    "expectedHigh": 550,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/256502575104",
+      "https://www.ebay.com/itm/394667992621",
+      "https://www.ebay.com/b/Tailgates-for-2015-Ford-F-150/262178/bn_7118050119"
+    ]
+  },
+
+  {
+    "id": "elec_01_iphone13_128",
+    "category": "electronics",
+    "query": "Apple iPhone 13 128GB unlocked used",
+    "expectedLow": 190,
+    "expectedHigh": 250,
+    "region": "us",
+    "sourceUrls": [
+      "https://swappa.com/listings/apple-iphone-13",
+      "https://www.ebay.com/b/Apple-iPhone-13-Unlocked/9355/bn_7117871190"
+    ]
+  },
+  {
+    "id": "elec_02_ipad9_64",
+    "category": "electronics",
+    "query": "Apple iPad 9th generation 64GB Wi-Fi used",
+    "expectedLow": 170,
+    "expectedHigh": 260,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/226704181433",
+      "https://www.ebay.com/b/Apple-9-10-9-Tablets-eReaders/171485/bn_1642319"
+    ]
+  },
+  {
+    "id": "elec_03_ps5_used",
+    "category": "electronics",
+    "query": "Sony PlayStation 5 console used",
+    "expectedLow": 320,
+    "expectedHigh": 420,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/sony-playstation-5-console/229025.html",
+      "https://www.ebay.com/itm/388965145313"
+    ]
+  },
+  {
+    "id": "elec_04_wh1000xm4",
+    "category": "electronics",
+    "query": "Sony WH-1000XM4 headphones used",
+    "expectedLow": 130,
+    "expectedHigh": 240,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/157313403344",
+      "https://www.ebay.com/itm/317075662952",
+      "https://www.ebay.com/itm/155949835712"
+    ]
+  },
+  {
+    "id": "elec_05_switch_oled",
+    "category": "electronics",
+    "query": "Nintendo Switch OLED used",
+    "expectedLow": 170,
+    "expectedHigh": 230,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/127293374097",
+      "https://www.ebay.com/itm/297171939207",
+      "https://www.ebay.com/itm/127406978675"
+    ]
+  },
+
+  {
+    "id": "fashion_01_tiffany_return",
+    "category": "fashion",
+    "query": "Tiffany Return to Tiffany heart tag necklace sterling silver used",
+    "expectedLow": 175,
+    "expectedHigh": 350,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/p/25055790561",
+      "https://www.ebay.com/itm/127635327493",
+      "https://www.ebay.com/itm/166915904345"
+    ]
+  },
+  {
+    "id": "fashion_02_pandora_bracelet",
+    "category": "fashion",
+    "query": "Pandora sterling silver charm bracelet used",
+    "expectedLow": 30,
+    "expectedHigh": 180,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/226651439524",
+      "https://www.ebay.com/itm/357343566423"
+    ]
+  },
+  {
+    "id": "fashion_03_rayban_rb2140",
+    "category": "fashion",
+    "query": "Ray-Ban Wayfarer RB2140 used",
+    "expectedLow": 60,
+    "expectedHigh": 140,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/p/705090816",
+      "https://www.ebay.com/itm/127154349498",
+      "https://www.mercari.com/us/item/m44017459745/"
+    ]
+  },
+  {
+    "id": "fashion_04_air_force_1",
+    "category": "fashion",
+    "query": "Nike Air Force 1 Low '07 White used",
+    "expectedLow": 50,
+    "expectedHigh": 110,
+    "region": "us",
+    "sourceUrls": [
+      "https://stockx.com/nike-air-force-1-low-white-07",
+      "https://www.ebay.com/itm/156783525591"
+    ]
+  },
+  {
+    "id": "fashion_05_mk_jet_set_tote",
+    "category": "fashion",
+    "query": "Michael Kors Jet Set tote used",
+    "expectedLow": 18,
+    "expectedHigh": 55,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/b/Michael-Kors-Jet-Set-Zip-Tote-Bags-Handbags-for-Women/169291/bn_98978085"
+    ]
+  },
+
+  {
+    "id": "tools_01_dewalt_dcd796",
+    "category": "tools",
+    "query": "DeWalt DCD796 20V hammer drill used tool only",
+    "expectedLow": 50,
+    "expectedHigh": 110,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/276838225009",
+      "https://www.ebay.com/itm/397494248312",
+      "https://www.ebay.com/itm/257272174833"
+    ]
+  },
+  {
+    "id": "tools_02_makita_xdt11",
+    "category": "tools",
+    "query": "Makita XDT11 18V impact driver used",
+    "expectedLow": 30,
+    "expectedHigh": 90,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/127470630160",
+      "https://www.ebay.com/itm/267484657472",
+      "https://www.ebay.com/itm/397140549691"
+    ]
+  },
+  {
+    "id": "tools_03_dewalt_dcf845",
+    "category": "tools",
+    "query": "DeWalt DCF845 20V impact driver used tool only",
+    "expectedLow": 40,
+    "expectedHigh": 90,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/277235494616",
+      "https://www.ebay.com/itm/177180228711"
+    ]
+  },
+  {
+    "id": "tools_04_dyson_v8",
+    "category": "home",
+    "query": "Dyson V8 cordless vacuum used",
+    "expectedLow": 60,
+    "expectedHigh": 170,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/127210904413",
+      "https://www.ebay.com/itm/168073827328",
+      "https://www.ebay.com/itm/157332806261"
+    ]
+  },
+  {
+    "id": "tools_05_karcher_k4",
+    "category": "home",
+    "query": "Karcher K4 pressure washer used",
+    "expectedLow": 120,
+    "expectedHigh": 220,
+    "region": "us",
+    "sourceUrls": [
+      "https://www.ebay.com/itm/395620375998",
+      "https://www.ebay.com/itm/147086953602"
+    ]
+  }
+]

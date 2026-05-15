@@ -1,0 +1,1624 @@
+{
+  "updatedAt": "2026-05-15T09:09:16.625Z",
+  "entries": {
+    "BG11DVV": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11DVV",
+        "make": "KIA",
+        "model": "VENGA",
+        "colour": "SILVER",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-08-27",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-09-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:42:59.992Z"
+      },
+      "savedAtMs": 1778082180000,
+      "savedAt": "2026-05-06T15:43:00.000Z"
+    },
+    "BG11ZBE": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11ZBE",
+        "make": "RENAULT",
+        "model": "GRAND SCENIC",
+        "colour": "BRONZE",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Valid",
+        "motExpiryDate": "2027-02-10",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-03-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:00.668Z"
+      },
+      "savedAtMs": 1778082180668,
+      "savedAt": "2026-05-06T15:43:00.668Z"
+    },
+    "MV15YTG": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15YTG",
+        "make": "FORD",
+        "model": "S-MAX",
+        "colour": "BLACK",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-11-11",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-02-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:01.233Z"
+      },
+      "savedAtMs": 1778082181233,
+      "savedAt": "2026-05-06T15:43:01.233Z"
+    },
+    "BG11SGU": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11SGU",
+        "make": "AUDI",
+        "model": "A4 TECHNIK TDI",
+        "colour": "RED",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-05-19",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-11-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:02.324Z"
+      },
+      "savedAtMs": 1778082182324,
+      "savedAt": "2026-05-06T15:43:02.324Z"
+    },
+    "MV15SXG": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15SXG",
+        "make": "MITSUBISHI",
+        "model": "ASX",
+        "colour": "GREY",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2023-03-22",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2022-06-30",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:03.042Z"
+      },
+      "savedAtMs": 1778082183042,
+      "savedAt": "2026-05-06T15:43:03.042Z"
+    },
+    "MV15XLZ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15XLZ",
+        "make": "MINI",
+        "model": "COOPER",
+        "colour": "SILVER",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-09-22",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-09-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:03.963Z"
+      },
+      "savedAtMs": 1778082183963,
+      "savedAt": "2026-05-06T15:43:03.963Z"
+    },
+    "OE05VHZ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "OE05VHZ",
+        "make": "HONDA",
+        "model": "CR-V",
+        "colour": "BLUE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2005,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2025-01-22",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2025-03-03",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:04.987Z"
+      },
+      "savedAtMs": 1778082184987,
+      "savedAt": "2026-05-06T15:43:04.987Z"
+    },
+    "SW15NHX": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SW15NHX",
+        "make": "MERCEDES-BENZ",
+        "model": "VITO",
+        "colour": "WHITE",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-08-06",
+        "taxStatus": "SORN",
+        "taxDueDate": null,
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:05.614Z"
+      },
+      "savedAtMs": 1778082185614,
+      "savedAt": "2026-05-06T15:43:05.614Z"
+    },
+    "OE05UMA": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "OE05UMA",
+        "make": "BMW",
+        "model": "X5",
+        "colour": "SILVER",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2005,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2017-11-08",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2015-06-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:06.368Z"
+      },
+      "savedAtMs": 1778082186368,
+      "savedAt": "2026-05-06T15:43:06.368Z"
+    },
+    "SW15DWG": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SW15DWG",
+        "make": "VAUXHALL",
+        "model": "MOKKA",
+        "colour": "SILVER",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-11-10",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-05-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:07.043Z"
+      },
+      "savedAtMs": 1778082187043,
+      "savedAt": "2026-05-06T15:43:07.043Z"
+    },
+    "BG11UBB": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11UBB",
+        "make": "PEUGEOT",
+        "model": "3008",
+        "colour": "SILVER",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-09-23",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-09-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:07.749Z"
+      },
+      "savedAtMs": 1778082187749,
+      "savedAt": "2026-05-06T15:43:07.749Z"
+    },
+    "BG11ZSE": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11ZSE",
+        "make": "VOLKSWAGEN",
+        "model": "GOLF",
+        "colour": "BLACK",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-09-22",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-10-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:08.468Z"
+      },
+      "savedAtMs": 1778082188468,
+      "savedAt": "2026-05-06T15:43:08.468Z"
+    },
+    "SF53CUU": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SF53CUU",
+        "make": "HYUNDAI",
+        "model": "GETZ",
+        "colour": "BLUE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2003,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2022-12-22",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2022-11-15",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:09.493Z"
+      },
+      "savedAtMs": 1778082189493,
+      "savedAt": "2026-05-06T15:43:09.493Z"
+    },
+    "MV15DKK": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15DKK",
+        "make": "MERCEDES-BENZ",
+        "model": "A-CLASS",
+        "colour": "GREY",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2026-04-18",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-06-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:10.213Z"
+      },
+      "savedAtMs": 1778082190213,
+      "savedAt": "2026-05-06T15:43:10.213Z"
+    },
+    "CE06YUX": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "CE06YUX",
+        "make": "VOLKSWAGEN",
+        "model": "GOLF",
+        "colour": "BLACK",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2006,
+        "motStatus": "Valid",
+        "motExpiryDate": "2027-04-22",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-08-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:11.419Z"
+      },
+      "savedAtMs": 1778082191419,
+      "savedAt": "2026-05-06T15:43:11.419Z"
+    },
+    "SW15FDA": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SW15FDA",
+        "make": "PEUGEOT",
+        "model": "RCZ",
+        "colour": "BLACK",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-05-12",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2025-12-31",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:12.257Z"
+      },
+      "savedAtMs": 1778082192257,
+      "savedAt": "2026-05-06T15:43:12.257Z"
+    },
+    "MV15VNC": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15VNC",
+        "make": "HONDA",
+        "model": "CR-V",
+        "colour": "GREY",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-06-04",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-04-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:13.178Z"
+      },
+      "savedAtMs": 1778082193178,
+      "savedAt": "2026-05-06T15:43:13.178Z"
+    },
+    "CE06FZJ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "CE06FZJ",
+        "make": "VAUXHALL",
+        "model": "ASTRA",
+        "colour": "SILVER",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2006,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-10-18",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-03-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:13.900Z"
+      },
+      "savedAtMs": 1778082193900,
+      "savedAt": "2026-05-06T15:43:13.900Z"
+    },
+    "MV15BVF": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15BVF",
+        "make": "TOYOTA",
+        "model": "AVENSIS",
+        "colour": "BLUE",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-06-25",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-01-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:15.021Z"
+      },
+      "savedAtMs": 1778082195021,
+      "savedAt": "2026-05-06T15:43:15.021Z"
+    },
+    "SW15FFA": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SW15FFA",
+        "make": "BMW",
+        "model": "220",
+        "colour": "GREY",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-07-06",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-11-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:15.616Z"
+      },
+      "savedAtMs": 1778082195616,
+      "savedAt": "2026-05-06T15:43:15.616Z"
+    },
+    "MV15UFA": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15UFA",
+        "make": "FORD",
+        "model": "FOCUS",
+        "colour": "GREY",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-11-13",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-12-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:16.250Z"
+      },
+      "savedAtMs": 1778082196250,
+      "savedAt": "2026-05-06T15:43:16.250Z"
+    },
+    "BG11YVZ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11YVZ",
+        "make": "NISSAN",
+        "model": "QASHQAI",
+        "colour": "BEIGE",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2014-05-03",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2014-05-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:17.070Z"
+      },
+      "savedAtMs": 1778082197070,
+      "savedAt": "2026-05-06T15:43:17.070Z"
+    },
+    "BG11KKT": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11KKT",
+        "make": "VAUXHALL",
+        "model": "ASTRA",
+        "colour": "SILVER",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2018-09-11",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2017-11-30",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:18.195Z"
+      },
+      "savedAtMs": 1778082198196,
+      "savedAt": "2026-05-06T15:43:18.196Z"
+    },
+    "SW15NSZ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SW15NSZ",
+        "make": "MINI",
+        "model": "COOPER",
+        "colour": "WHITE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-11-07",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-11-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:18.914Z"
+      },
+      "savedAtMs": 1778082198914,
+      "savedAt": "2026-05-06T15:43:18.914Z"
+    },
+    "SW15GSV": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SW15GSV",
+        "make": "MINI",
+        "model": "COOPER S",
+        "colour": "BLUE",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-11-21",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-03-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-06T15:43:19.527Z"
+      },
+      "savedAtMs": 1778082199527,
+      "savedAt": "2026-05-06T15:43:19.527Z"
+    },
+    "SW15VMZ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SW15VMZ",
+        "make": "AUDI",
+        "model": "A1",
+        "colour": "BLUE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2027-02-19",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2026-01-31",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-15T09:09:12.128Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-15",
+          "totalToday": 1,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778836152128,
+      "savedAt": "2026-05-15T09:09:12.128Z"
+    },
+    "SF53GUD": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SF53GUD",
+        "make": "PROTON",
+        "model": "JUMBUCK",
+        "colour": "YELLOW",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2004,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-07-13",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-03-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-15T09:09:13.039Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-15",
+          "totalToday": 3,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778836153039,
+      "savedAt": "2026-05-15T09:09:13.039Z"
+    },
+    "OE05FSJ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "OE05FSJ",
+        "make": "MINI",
+        "model": "MINI",
+        "colour": "SILVER",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2005,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2025-11-07",
+        "taxStatus": "SORN",
+        "taxDueDate": null,
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-15T09:09:13.859Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-15",
+          "totalToday": 5,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778836153859,
+      "savedAt": "2026-05-15T09:09:13.859Z"
+    },
+    "CE06CHD": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "CE06CHD",
+        "make": "FORD",
+        "model": "FOCUS",
+        "colour": "ORANGE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2006,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2023-06-20",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2023-05-31",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-15T09:09:15.010Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-15",
+          "totalToday": 7,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778836155011,
+      "savedAt": "2026-05-15T09:09:15.011Z"
+    },
+    "MV15CYO": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15CYO",
+        "make": "MERCEDES-BENZ",
+        "model": "A-CLASS",
+        "colour": "GREY",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-06-02",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-02-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-15T09:09:15.806Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-15",
+          "totalToday": 9,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778836155806,
+      "savedAt": "2026-05-15T09:09:15.806Z"
+    },
+    "BG11GWX": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11GWX",
+        "make": "FORD",
+        "model": "FOCUS",
+        "colour": "GREY",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2026-05-07",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-02-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-15T09:09:16.625Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-15",
+          "totalToday": 11,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778836156625,
+      "savedAt": "2026-05-15T09:09:16.625Z"
+    },
+    "LC69WFN": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "LC69WFN",
+        "make": "KIA",
+        "model": "CEED",
+        "colour": "WHITE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2019,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2025-12-27",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2025-05-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-09T17:40:53.103Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-09",
+          "totalToday": 31,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778348453103,
+      "savedAt": "2026-05-09T17:40:53.103Z"
+    },
+    "LC69NFN": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "LC69NFN",
+        "make": "TESLA",
+        "model": "MODEL 3 STANDARD RANGE +",
+        "colour": "WHITE",
+        "fuelType": "ELECTRICITY",
+        "yearOfManufacture": 2019,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-11-24",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-03-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-09T20:02:29.346Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-09",
+          "totalToday": 33,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778356949347,
+      "savedAt": "2026-05-09T20:02:29.347Z"
+    },
+    "AB12CDE": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "AB12CDE",
+        "make": "VAUXHALL",
+        "model": "ASTRA",
+        "colour": "WHITE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2017,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-06-11",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-12-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-09T17:41:15.445Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-09",
+          "totalToday": 32,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778348475445,
+      "savedAt": "2026-05-09T17:41:15.445Z"
+    },
+    "SM15VMZ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SM15VMZ",
+        "make": "VAUXHALL",
+        "model": "ASTRA",
+        "colour": "RED",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2027-01-28",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-01-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-09T20:16:27.512Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-09",
+          "totalToday": 34,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778357787512,
+      "savedAt": "2026-05-09T20:16:27.512Z"
+    },
+    "SN15VMZ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SN15VMZ",
+        "make": "PEUGEOT",
+        "model": "2008",
+        "colour": "RED",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-11-06",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2026-11-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-09T20:16:28.235Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-09",
+          "totalToday": 35,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778357788235,
+      "savedAt": "2026-05-09T20:16:28.235Z"
+    },
+    "BJ57CXH": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BJ57CXH",
+        "make": "AUDI",
+        "model": "A5",
+        "colour": "BLACK",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2007,
+        "motStatus": "Valid",
+        "motExpiryDate": "2027-03-18",
+        "taxStatus": "SORN",
+        "taxDueDate": null,
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-09T20:20:37.515Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-09",
+          "totalToday": 36,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778358037516,
+      "savedAt": "2026-05-09T20:20:37.516Z"
+    },
+    "GJ09LMO": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "GJ09LMO",
+        "make": "VOLKSWAGEN",
+        "model": "GOLF",
+        "colour": "BLACK",
+        "fuelType": "DIESEL",
+        "yearOfManufacture": 2009,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-10-08",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-03-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-09T20:45:25.175Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-09",
+          "totalToday": 38,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778359525176,
+      "savedAt": "2026-05-09T20:45:25.176Z"
+    },
+    "GJ09LNO": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "GJ09LNO",
+        "make": "KIA",
+        "model": "SOUL",
+        "colour": "RED",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2009,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-10-08",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-05-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-05-09T20:45:25.938Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-05-09",
+          "totalToday": 39,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1778359525938,
+      "savedAt": "2026-05-09T20:45:25.938Z"
+    }
+  }
+}

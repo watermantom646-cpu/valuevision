@@ -1,0 +1,335 @@
+{
+  "updatedAt": "2026-05-15T09:09:16.744Z",
+  "entries": {
+    "volkswagen|touran|2006": {
+      "makeNorm": "volkswagen",
+      "modelNorm": "touran",
+      "year": 2006,
+      "median": 1066,
+      "low": 679,
+      "high": 1159,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:35:57.449Z"
+    },
+    "vauxhall|corsa|2015": {
+      "makeNorm": "vauxhall",
+      "modelNorm": "corsa",
+      "year": 2015,
+      "median": 6096,
+      "low": 5156,
+      "high": 7179,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:36:11.952Z"
+    },
+    "ford|focus|2011": {
+      "makeNorm": "ford",
+      "modelNorm": "focus",
+      "year": 2011,
+      "median": 1765.7024905425576,
+      "low": 1254.8887944208698,
+      "high": 2170.8307933242254,
+      "samples": 38,
+      "updatedAt": "2026-05-15T09:09:16.744Z"
+    },
+    "audi|a3|2015": {
+      "makeNorm": "audi",
+      "modelNorm": "a3",
+      "year": 2015,
+      "median": 7320,
+      "low": 6191,
+      "high": 8620,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:36:15.332Z"
+    },
+    "kia|venga|2011": {
+      "makeNorm": "kia",
+      "modelNorm": "venga",
+      "year": 2011,
+      "median": 1879,
+      "low": 1335,
+      "high": 2310,
+      "samples": 2,
+      "updatedAt": "2026-05-06T15:46:28.526Z"
+    },
+    "renault|grand scenic|2011": {
+      "makeNorm": "renault",
+      "modelNorm": "grand scenic",
+      "year": 2011,
+      "median": 1664,
+      "low": 1183,
+      "high": 2046,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:00.669Z"
+    },
+    "ford|s max|2015": {
+      "makeNorm": "ford",
+      "modelNorm": "s max",
+      "year": 2015,
+      "median": 3567,
+      "low": 3017,
+      "high": 4201,
+      "samples": 2,
+      "updatedAt": "2026-05-06T15:46:28.522Z"
+    },
+    "audi|a4 technik tdi|2011": {
+      "makeNorm": "audi",
+      "modelNorm": "a4 technik tdi",
+      "year": 2011,
+      "median": 1685,
+      "low": 1198,
+      "high": 2072,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:02.325Z"
+    },
+    "mitsubishi|asx|2015": {
+      "makeNorm": "mitsubishi",
+      "modelNorm": "asx",
+      "year": 2015,
+      "median": 4344,
+      "low": 3674,
+      "high": 5115,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:03.044Z"
+    },
+    "mini|cooper|2015": {
+      "makeNorm": "mini",
+      "modelNorm": "cooper",
+      "year": 2015,
+      "median": 5780.68,
+      "low": 4889,
+      "high": 6807.679999999999,
+      "samples": 2,
+      "updatedAt": "2026-05-06T15:43:18.915Z"
+    },
+    "honda|cr v|2005": {
+      "makeNorm": "honda",
+      "modelNorm": "cr v",
+      "year": 2005,
+      "median": 1344,
+      "low": 856,
+      "high": 1461,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:04.989Z"
+    },
+    "mercedes benz|vito|2015": {
+      "makeNorm": "mercedes benz",
+      "modelNorm": "vito",
+      "year": 2015,
+      "median": 12672,
+      "low": 10718,
+      "high": 14923,
+      "samples": 2,
+      "updatedAt": "2026-05-06T15:46:28.520Z"
+    },
+    "bmw|x5|2005": {
+      "makeNorm": "bmw",
+      "modelNorm": "x5",
+      "year": 2005,
+      "median": 1701,
+      "low": 1083,
+      "high": 1848,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:06.369Z"
+    },
+    "vauxhall|mokka|2015": {
+      "makeNorm": "vauxhall",
+      "modelNorm": "mokka",
+      "year": 2015,
+      "median": 6068,
+      "low": 5132,
+      "high": 7146,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:07.045Z"
+    },
+    "peugeot|3008|2011": {
+      "makeNorm": "peugeot",
+      "modelNorm": "3008",
+      "year": 2011,
+      "median": 1985,
+      "low": 1411,
+      "high": 2441,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:07.751Z"
+    },
+    "volkswagen|golf|2011": {
+      "makeNorm": "volkswagen",
+      "modelNorm": "golf",
+      "year": 2011,
+      "median": 1685,
+      "low": 1198,
+      "high": 2072,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:08.470Z"
+    },
+    "hyundai|getz|2003": {
+      "makeNorm": "hyundai",
+      "modelNorm": "getz",
+      "year": 2003,
+      "median": 754,
+      "low": 480,
+      "high": 819,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:09.494Z"
+    },
+    "mercedes benz|a class|2015": {
+      "makeNorm": "mercedes benz",
+      "modelNorm": "a class",
+      "year": 2015,
+      "median": 12796.325155896724,
+      "low": 10823.415404201787,
+      "high": 15069.74375648858,
+      "samples": 40,
+      "updatedAt": "2026-05-15T09:09:15.926Z"
+    },
+    "volkswagen|golf|2006": {
+      "makeNorm": "volkswagen",
+      "modelNorm": "golf",
+      "year": 2006,
+      "median": 4659,
+      "low": 2966,
+      "high": 5063,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:11.421Z"
+    },
+    "peugeot|rcz|2015": {
+      "makeNorm": "peugeot",
+      "modelNorm": "rcz",
+      "year": 2015,
+      "median": 4137,
+      "low": 3499,
+      "high": 4872,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:12.259Z"
+    },
+    "honda|cr v|2015": {
+      "makeNorm": "honda",
+      "modelNorm": "cr v",
+      "year": 2015,
+      "median": 5568,
+      "low": 4709,
+      "high": 6557,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:13.180Z"
+    },
+    "vauxhall|astra|2006": {
+      "makeNorm": "vauxhall",
+      "modelNorm": "astra",
+      "year": 2006,
+      "median": 632,
+      "low": 402,
+      "high": 687,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:13.902Z"
+    },
+    "toyota|avensis|2015": {
+      "makeNorm": "toyota",
+      "modelNorm": "avensis",
+      "year": 2015,
+      "median": 4571,
+      "low": 3946,
+      "high": 4873,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:15.022Z"
+    },
+    "bmw|220|2015": {
+      "makeNorm": "bmw",
+      "modelNorm": "220",
+      "year": 2015,
+      "median": 5123,
+      "low": 4333,
+      "high": 6033,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:15.617Z"
+    },
+    "ford|focus|2015": {
+      "makeNorm": "ford",
+      "modelNorm": "focus",
+      "year": 2015,
+      "median": 4157,
+      "low": 3516,
+      "high": 4895,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:16.252Z"
+    },
+    "nissan|qashqai|2011": {
+      "makeNorm": "nissan",
+      "modelNorm": "qashqai",
+      "year": 2011,
+      "median": 1387,
+      "low": 986,
+      "high": 1705,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:17.071Z"
+    },
+    "vauxhall|astra|2011": {
+      "makeNorm": "vauxhall",
+      "modelNorm": "astra",
+      "year": 2011,
+      "median": 881,
+      "low": 626,
+      "high": 1084,
+      "samples": 1,
+      "updatedAt": "2026-05-06T15:43:18.197Z"
+    },
+    "mini|cooper s|2015": {
+      "makeNorm": "mini",
+      "modelNorm": "cooper s",
+      "year": 2015,
+      "median": 4888,
+      "low": 4134,
+      "high": 5756,
+      "samples": 2,
+      "updatedAt": "2026-05-06T15:46:28.529Z"
+    },
+    "audi|a1|2015": {
+      "makeNorm": "audi",
+      "modelNorm": "a1",
+      "year": 2015,
+      "median": 7653.095234994815,
+      "low": 6473.561078984068,
+      "high": 9013.016818715018,
+      "samples": 49,
+      "updatedAt": "2026-05-15T09:09:12.296Z"
+    },
+    "ford|focus|2006": {
+      "makeNorm": "ford",
+      "modelNorm": "focus",
+      "year": 2006,
+      "median": 1776.2138090546416,
+      "low": 1166.8502636182695,
+      "high": 1999.558171705518,
+      "samples": 35,
+      "updatedAt": "2026-05-15T09:09:15.131Z"
+    },
+    "kia|ceed|2019": {
+      "makeNorm": "kia",
+      "modelNorm": "ceed",
+      "year": 2019,
+      "median": 8912.082415978904,
+      "low": 8221.06867998242,
+      "high": 9741.068679982418,
+      "samples": 23,
+      "updatedAt": "2026-05-09T20:45:09.602Z"
+    },
+    "audi|a5|2007": {
+      "makeNorm": "audi",
+      "modelNorm": "a5",
+      "year": 2007,
+      "median": 3464,
+      "low": 2206,
+      "high": 3764,
+      "samples": 3,
+      "updatedAt": "2026-05-09T20:30:50.565Z"
+    },
+    "volkswagen|golf|2009": {
+      "makeNorm": "volkswagen",
+      "modelNorm": "golf",
+      "year": 2009,
+      "median": 1971,
+      "low": 1302,
+      "high": 2511,
+      "samples": 2,
+      "updatedAt": "2026-05-09T20:47:24.196Z"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# Keep EAS upload lean for mobile builds
+node_modules/
+.git/
+.expo/
+backend/
+docs/
+runs/
+:/
+app-example/
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.DS_Store
+
+test.jpg
+visiontes-test.py

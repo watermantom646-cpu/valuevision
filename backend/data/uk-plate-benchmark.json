@@ -1,0 +1,8 @@
+[
+  { "registrationNumber": "SW15VMZ", "expectedMakeContains": "audi" },
+  { "registrationNumber": "SF53GUD", "expectedMakeContains": "proton" },
+  { "registrationNumber": "OE05FSJ", "expectedMakeContains": "mini" },
+  { "registrationNumber": "CE06CHD", "expectedMakeContains": "ford" },
+  { "registrationNumber": "MV15CYO", "expectedMakeContains": "mercedes" },
+  { "registrationNumber": "BG11GWX", "expectedMakeContains": "ford" }
+]

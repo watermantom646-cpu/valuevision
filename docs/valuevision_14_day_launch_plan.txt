@@ -1,0 +1,171 @@
+VALUEVISION 14-DAY MONEY PLAN
+Dates: February 9, 2026 to February 22, 2026
+Primary Goal: First paying subscribers at GBP 7/month
+
+------------------------------
+1) Revenue Model (Simple)
+------------------------------
+- Price: GBP 7/month (Pro)
+- Free tier: 5 scans/day
+- Trial: 7-day free trial
+- Paywall trigger: after free scan limit, or after first 3 profitable scans shown
+- Core paid promise:
+  1. Faster live scan
+  2. Profit calculator
+  3. Sell-time estimate
+  4. Where-to-sell recommendations
+  5. Listing assistant
+
+Target by Day 14:
+- 50 paying users
+- MRR target: GBP 350/month
+
+------------------------------
+2) KPI Dashboard (Track Daily)
+------------------------------
+- Activation: % users who complete first scan
+- Accuracy trust: % scans with confidence medium/high
+- Conversion: free -> trial, trial -> paid
+- D7 retention
+- Avg scans/user/day
+- Timeout rate (live mode)
+- "No pricing" rate
+
+Target thresholds:
+- Activation >= 65%
+- Timeout rate <= 10%
+- "No pricing" <= 15%
+- Trial -> paid >= 25%
+
+------------------------------
+3) 14-Day Execution Plan
+------------------------------
+DAY 1 (Mon, Feb 9, 2026): Product Stabilization
+- Freeze scope except revenue-critical improvements
+- Confirm fast live scan path works
+- Confirm confidence, where-to-sell, history, listing assistant visible
+- Set one source of truth for bugs in a single list
+
+DAY 2 (Tue, Feb 10): Monetization Gate
+- Implement free scan counter (local + backend-safe)
+- Build paywall screen with GBP 7/month plan
+- Add 7-day trial copy and CTA
+
+DAY 3 (Wed, Feb 11): Subscription Plumbing
+- Integrate subscription SDK (RevenueCat recommended)
+- Add purchase, restore, entitlement checks
+- Validate upgrade/downgrade states
+
+DAY 4 (Thu, Feb 12): Reliability + Speed
+- Add strict timeout handling + cache fallback messaging
+- Improve live scan response order: quick estimate first, detailed comps second
+- Add user-facing status text for every scan stage
+
+DAY 5 (Fri, Feb 13): Accuracy Sprint (Vehicles + Fashion)
+- Tune make/model gating for vehicles
+- Tune jewelry/fashion sparse-data fallback
+- Add manual correction UI when auto-detection is low-confidence
+
+DAY 6 (Sat, Feb 14): UX Polish
+- Tighten layout for small screens
+- Improve onboarding microcopy: "How this helps you make money"
+- Keep flows under 2 taps to scan
+
+DAY 7 (Sun, Feb 15): Internal QA + Test Data
+- Run 50-item test set (cars, phones, jewelry, furniture, tools)
+- Label outcomes: accurate / usable / wrong
+- Patch top 5 failure patterns
+
+DAY 8 (Mon, Feb 16): Go-to-Market Assets
+- App Store screenshots + concise value proposition
+- Landing/support page + privacy policy
+- Short demo video (30-45 sec)
+
+DAY 9 (Tue, Feb 17): Beta Launch (Private)
+- Invite first 25-50 beta users (resellers/flippers)
+- Capture structured feedback form:
+  1. Was value useful?
+  2. Would you list/buy based on this?
+  3. Did scan feel fast enough?
+
+DAY 10 (Wed, Feb 18): Conversion Optimization
+- Improve paywall copy based on feedback
+- Add "money made this week" style metric card
+- Add urgency: "You used X free scans today"
+
+DAY 11 (Thu, Feb 19): Retention Loop
+- Add history insights: best margin scans
+- Add push prompt concept: "Found a profitable flip?"
+- Improve listing assistant output quality
+
+DAY 12 (Fri, Feb 20): Submission Readiness
+- Final iOS build checks
+- Review legal copy and subscription terms
+- Final crash/timeout checks
+
+DAY 13 (Sat, Feb 21): TestFlight + Soft Launch
+- Publish TestFlight build
+- Start posting in 3-5 niche communities (car boot/reseller groups)
+- Offer early user incentive (first month 50% off)
+
+DAY 14 (Sun, Feb 22): Revenue Review + Next Sprint Plan
+- Review KPI dashboard
+- Decide category focus for week 3 (highest demand + best conversion)
+- Ship hotfixes to top blockers
+
+------------------------------
+4) Fast Money Channels (First)
+------------------------------
+Priority channels:
+1. Reseller communities (Facebook groups, Discord, Reddit flipper threads)
+2. Car boot sale + marketplace sellers
+3. Local buy/sell groups with demo video
+
+Simple outreach script:
+"I built a scanner that estimates resale value, expected profit, and where to list fast. Want beta access?"
+
+------------------------------
+5) Data + Ads Strategy
+------------------------------
+Short term:
+- Do NOT rely on ads first.
+- Focus on paid subscriptions.
+
+Data monetization:
+- Use scan data to improve pricing quality first.
+- If selling aggregate insights later, require clear consent and anonymization.
+
+------------------------------
+6) Infrastructure Cost Estimate (Early Stage)
+------------------------------
+Monthly rough range:
+- Hosting/API: GBP 10 to GBP 60 (early)
+- Search/API usage: GBP 50 to GBP 300+ (depends on scan volume)
+- Vision API: GBP 10 to GBP 80+
+- Tooling/subscription infra: GBP 0 to GBP 30
+
+Expected early total: GBP 120 to GBP 300/month
+
+Breakeven at GBP 7/month:
+- 20 users => GBP 140 MRR
+- 50 users => GBP 350 MRR
+- 100 users => GBP 700 MRR
+
+------------------------------
+7) Product Rules (Keep Focus)
+------------------------------
+- Never hide confidence score.
+- Never output confident pricing with low detection confidence.
+- Make live mode work in <= 6 seconds median response.
+- Keep primary action always visible: Scan -> Value -> Decide.
+
+------------------------------
+8) Immediate Next Actions (Today)
+------------------------------
+1. Finalize paywall and trial flow.
+2. Run 20 real scans and log misses.
+3. Fix top 3 accuracy failures before wider beta.
+4. Prepare TestFlight metadata and submit build.
+
+Owner: ValueVision Founder
+Version date: February 9, 2026

@@ -1,0 +1,39 @@
+const express = require("express");
+const multer = require("multer");
+const cors = require("cors");
+const vision = require("@google-cloud/vision");
+
+const app = express();
+app.use(cors());
+
+const upload = multer({ storage: multer.memoryStorage() });
+const client = new vision.ImageAnnotatorClient();
+
+app.get("/health", (req, res) => {
+  res.json({ ok: true });
+});
+
+app.post("/labels", upload.single("image"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded. Field name must be 'image'." });
+    }
+
+    const [result] = await client.labelDetection(req.file.buffer);
+    const labels = (result.labelAnnotations || []).slice(0, 10).map(l => ({
+      description: l.description,
+      score: l.score
+    }));
+
+    res.json({ labels });
+  } catch (err) {
+    res.status(500).json({ error: String(err?.message || err) });
+  }
+});
+
+const PORT = process.env.PORT || 5050;
+app.listen(PORT, () => console.log(`✅ Backend running on http://localhost:${PORT}`));
+EOF 
+
+✅ Backend running on http://localhost:5050
+

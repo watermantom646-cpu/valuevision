@@ -1,0 +1,4002 @@
+[
+  {
+    "registrationNumber": "LU48HJK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LU48HJK_0000.png"
+  },
+  {
+    "registrationNumber": "JF70KDB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JF70KDB_0001.png"
+  },
+  {
+    "registrationNumber": "YC07FSG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YC07FSG_0002.png"
+  },
+  {
+    "registrationNumber": "WZ60JPW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WZ60JPW_0003.png"
+  },
+  {
+    "registrationNumber": "GL21HXP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GL21HXP_0004.png"
+  },
+  {
+    "registrationNumber": "SN73ESM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SN73ESM_0005.png"
+  },
+  {
+    "registrationNumber": "XW62FJU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XW62FJU_0006.png"
+  },
+  {
+    "registrationNumber": "MD66YNG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MD66YNG_0007.png"
+  },
+  {
+    "registrationNumber": "XT43FOC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XT43FOC_0008.png"
+  },
+  {
+    "registrationNumber": "MC31TMH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MC31TMH_0009.png"
+  },
+  {
+    "registrationNumber": "JP61SMB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JP61SMB_0010.png"
+  },
+  {
+    "registrationNumber": "XL95FWX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XL95FWX_0011.png"
+  },
+  {
+    "registrationNumber": "TD56AOK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TD56AOK_0012.png"
+  },
+  {
+    "registrationNumber": "YW42RZU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YW42RZU_0013.png"
+  },
+  {
+    "registrationNumber": "CH64RRN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CH64RRN_0014.png"
+  },
+  {
+    "registrationNumber": "RF68PJX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RF68PJX_0015.png"
+  },
+  {
+    "registrationNumber": "SZ44TFF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SZ44TFF_0016.png"
+  },
+  {
+    "registrationNumber": "SY68NSS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SY68NSS_0017.png"
+  },
+  {
+    "registrationNumber": "EB68DHB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EB68DHB_0018.png"
+  },
+  {
+    "registrationNumber": "VS91AFF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VS91AFF_0019.png"
+  },
+  {
+    "registrationNumber": "CZ28OYN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CZ28OYN_0020.png"
+  },
+  {
+    "registrationNumber": "OR96LKP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OR96LKP_0021.png"
+  },
+  {
+    "registrationNumber": "AS41FBB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AS41FBB_0022.png"
+  },
+  {
+    "registrationNumber": "JG48XWJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JG48XWJ_0023.png"
+  },
+  {
+    "registrationNumber": "KE41FUK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KE41FUK_0024.png"
+  },
+  {
+    "registrationNumber": "DY91DVC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DY91DVC_0025.png"
+  },
+  {
+    "registrationNumber": "OA80OHP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OA80OHP_0026.png"
+  },
+  {
+    "registrationNumber": "DF05KNH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DF05KNH_0027.png"
+  },
+  {
+    "registrationNumber": "NM14YWX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NM14YWX_0028.png"
+  },
+  {
+    "registrationNumber": "RG67FON",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RG67FON_0029.png"
+  },
+  {
+    "registrationNumber": "XW86ZOA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XW86ZOA_0030.png"
+  },
+  {
+    "registrationNumber": "CX58SRR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CX58SRR_0031.png"
+  },
+  {
+    "registrationNumber": "FR22TEX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FR22TEX_0032.png"
+  },
+  {
+    "registrationNumber": "KC42TSB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KC42TSB_0033.png"
+  },
+  {
+    "registrationNumber": "ZD00HHL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZD00HHL_0034.png"
+  },
+  {
+    "registrationNumber": "MF74LTE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MF74LTE_0035.png"
+  },
+  {
+    "registrationNumber": "AH08EFM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AH08EFM_0036.png"
+  },
+  {
+    "registrationNumber": "NK15FZH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NK15FZH_0037.png"
+  },
+  {
+    "registrationNumber": "WK51AAK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WK51AAK_0038.png"
+  },
+  {
+    "registrationNumber": "DN01MCE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DN01MCE_0039.png"
+  },
+  {
+    "registrationNumber": "NG33RAS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NG33RAS_0040.png"
+  },
+  {
+    "registrationNumber": "WJ68DMV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WJ68DMV_0041.png"
+  },
+  {
+    "registrationNumber": "EW81OZG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EW81OZG_0042.png"
+  },
+  {
+    "registrationNumber": "KU91BRS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KU91BRS_0043.png"
+  },
+  {
+    "registrationNumber": "RK23JFO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RK23JFO_0044.png"
+  },
+  {
+    "registrationNumber": "VV12GUC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VV12GUC_0045.png"
+  },
+  {
+    "registrationNumber": "JN52SDC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JN52SDC_0046.png"
+  },
+  {
+    "registrationNumber": "LU79XMK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LU79XMK_0047.png"
+  },
+  {
+    "registrationNumber": "PA51VGH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PA51VGH_0048.png"
+  },
+  {
+    "registrationNumber": "OV02LME",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OV02LME_0049.png"
+  },
+  {
+    "registrationNumber": "NS39YCP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NS39YCP_0050.png"
+  },
+  {
+    "registrationNumber": "LW47SHY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LW47SHY_0051.png"
+  },
+  {
+    "registrationNumber": "KH93VCA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KH93VCA_0052.png"
+  },
+  {
+    "registrationNumber": "LY83ZBV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LY83ZBV_0053.png"
+  },
+  {
+    "registrationNumber": "TO98BZV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TO98BZV_0054.png"
+  },
+  {
+    "registrationNumber": "MY16PGH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MY16PGH_0055.png"
+  },
+  {
+    "registrationNumber": "SV27HNE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SV27HNE_0056.png"
+  },
+  {
+    "registrationNumber": "DA99GMB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DA99GMB_0057.png"
+  },
+  {
+    "registrationNumber": "UJ95NVX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UJ95NVX_0058.png"
+  },
+  {
+    "registrationNumber": "UB62UZF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UB62UZF_0059.png"
+  },
+  {
+    "registrationNumber": "WH43HJJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WH43HJJ_0060.png"
+  },
+  {
+    "registrationNumber": "RT54ATB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RT54ATB_0061.png"
+  },
+  {
+    "registrationNumber": "VK43AKA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VK43AKA_0062.png"
+  },
+  {
+    "registrationNumber": "TL75VVG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TL75VVG_0063.png"
+  },
+  {
+    "registrationNumber": "FT75HLG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FT75HLG_0064.png"
+  },
+  {
+    "registrationNumber": "TA47YRL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TA47YRL_0065.png"
+  },
+  {
+    "registrationNumber": "AA07NOL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AA07NOL_0066.png"
+  },
+  {
+    "registrationNumber": "SW65WEV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SW65WEV_0067.png"
+  },
+  {
+    "registrationNumber": "TN29KRW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TN29KRW_0068.png"
+  },
+  {
+    "registrationNumber": "ZO70PBP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZO70PBP_0069.png"
+  },
+  {
+    "registrationNumber": "VZ23WRK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VZ23WRK_0070.png"
+  },
+  {
+    "registrationNumber": "FG35EAT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FG35EAT_0071.png"
+  },
+  {
+    "registrationNumber": "DP10HZR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DP10HZR_0072.png"
+  },
+  {
+    "registrationNumber": "PR79XWT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PR79XWT_0073.png"
+  },
+  {
+    "registrationNumber": "OP15NYX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OP15NYX_0074.png"
+  },
+  {
+    "registrationNumber": "GH98APC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GH98APC_0075.png"
+  },
+  {
+    "registrationNumber": "HR27RZE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HR27RZE_0076.png"
+  },
+  {
+    "registrationNumber": "YB39HAL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YB39HAL_0077.png"
+  },
+  {
+    "registrationNumber": "ZX06WEA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZX06WEA_0078.png"
+  },
+  {
+    "registrationNumber": "YB60ANO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YB60ANO_0079.png"
+  },
+  {
+    "registrationNumber": "CZ03GYO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CZ03GYO_0080.png"
+  },
+  {
+    "registrationNumber": "HT63VYC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HT63VYC_0081.png"
+  },
+  {
+    "registrationNumber": "LA92UZR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LA92UZR_0082.png"
+  },
+  {
+    "registrationNumber": "NW74HAO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NW74HAO_0083.png"
+  },
+  {
+    "registrationNumber": "HT17LTJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HT17LTJ_0084.png"
+  },
+  {
+    "registrationNumber": "RL03LST",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RL03LST_0085.png"
+  },
+  {
+    "registrationNumber": "EF88ADH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EF88ADH_0086.png"
+  },
+  {
+    "registrationNumber": "ND18CCZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ND18CCZ_0087.png"
+  },
+  {
+    "registrationNumber": "CK11WTA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CK11WTA_0088.png"
+  },
+  {
+    "registrationNumber": "XC64HHN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XC64HHN_0089.png"
+  },
+  {
+    "registrationNumber": "EE63NLD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EE63NLD_0090.png"
+  },
+  {
+    "registrationNumber": "JA12TBH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JA12TBH_0091.png"
+  },
+  {
+    "registrationNumber": "MN14ORE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MN14ORE_0092.png"
+  },
+  {
+    "registrationNumber": "FD30WZV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FD30WZV_0093.png"
+  },
+  {
+    "registrationNumber": "XP46XTU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XP46XTU_0094.png"
+  },
+  {
+    "registrationNumber": "VB38PHA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VB38PHA_0095.png"
+  },
+  {
+    "registrationNumber": "LV45ZRG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LV45ZRG_0096.png"
+  },
+  {
+    "registrationNumber": "EF28YEG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EF28YEG_0097.png"
+  },
+  {
+    "registrationNumber": "KZ58LRR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KZ58LRR_0098.png"
+  },
+  {
+    "registrationNumber": "DP69FVV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DP69FVV_0099.png"
+  },
+  {
+    "registrationNumber": "ZV81VCO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZV81VCO_0100.png"
+  },
+  {
+    "registrationNumber": "SM71XCV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SM71XCV_0101.png"
+  },
+  {
+    "registrationNumber": "LB55OPR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LB55OPR_0102.png"
+  },
+  {
+    "registrationNumber": "WA80ZWS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WA80ZWS_0103.png"
+  },
+  {
+    "registrationNumber": "JN85CMC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JN85CMC_0104.png"
+  },
+  {
+    "registrationNumber": "HZ70KVG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HZ70KVG_0105.png"
+  },
+  {
+    "registrationNumber": "RP02GAO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RP02GAO_0106.png"
+  },
+  {
+    "registrationNumber": "NL62AWF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NL62AWF_0107.png"
+  },
+  {
+    "registrationNumber": "KA11COF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KA11COF_0108.png"
+  },
+  {
+    "registrationNumber": "RX79FWT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RX79FWT_0109.png"
+  },
+  {
+    "registrationNumber": "HG77SBE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HG77SBE_0110.png"
+  },
+  {
+    "registrationNumber": "EY91OZS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EY91OZS_0111.png"
+  },
+  {
+    "registrationNumber": "VC10JDO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VC10JDO_0112.png"
+  },
+  {
+    "registrationNumber": "BH56XOG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BH56XOG_0113.png"
+  },
+  {
+    "registrationNumber": "GT72VLJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GT72VLJ_0114.png"
+  },
+  {
+    "registrationNumber": "PH64FNM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PH64FNM_0115.png"
+  },
+  {
+    "registrationNumber": "OJ73WDM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OJ73WDM_0116.png"
+  },
+  {
+    "registrationNumber": "VP09BPM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VP09BPM_0117.png"
+  },
+  {
+    "registrationNumber": "AD09PTF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AD09PTF_0118.png"
+  },
+  {
+    "registrationNumber": "SG62MCV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SG62MCV_0119.png"
+  },
+  {
+    "registrationNumber": "PP69GBO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PP69GBO_0120.png"
+  },
+  {
+    "registrationNumber": "TV53LTE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TV53LTE_0121.png"
+  },
+  {
+    "registrationNumber": "DT29MJK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DT29MJK_0122.png"
+  },
+  {
+    "registrationNumber": "TF34TFD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TF34TFD_0123.png"
+  },
+  {
+    "registrationNumber": "PY30BRG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PY30BRG_0124.png"
+  },
+  {
+    "registrationNumber": "OT41NSF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OT41NSF_0125.png"
+  },
+  {
+    "registrationNumber": "ST07APX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ST07APX_0126.png"
+  },
+  {
+    "registrationNumber": "DF34WAT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DF34WAT_0127.png"
+  },
+  {
+    "registrationNumber": "AJ02BUX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AJ02BUX_0128.png"
+  },
+  {
+    "registrationNumber": "GB81LGN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GB81LGN_0129.png"
+  },
+  {
+    "registrationNumber": "YH37SWX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YH37SWX_0130.png"
+  },
+  {
+    "registrationNumber": "SJ70GWY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SJ70GWY_0131.png"
+  },
+  {
+    "registrationNumber": "WF78HZE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WF78HZE_0132.png"
+  },
+  {
+    "registrationNumber": "ZV24TNV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZV24TNV_0133.png"
+  },
+  {
+    "registrationNumber": "NK21ADH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NK21ADH_0134.png"
+  },
+  {
+    "registrationNumber": "CK27CUU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CK27CUU_0135.png"
+  },
+  {
+    "registrationNumber": "AP54ZVX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AP54ZVX_0136.png"
+  },
+  {
+    "registrationNumber": "MU86NVS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MU86NVS_0137.png"
+  },
+  {
+    "registrationNumber": "TS88UDZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TS88UDZ_0138.png"
+  },
+  {
+    "registrationNumber": "EA91BNJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EA91BNJ_0139.png"
+  },
+  {
+    "registrationNumber": "GJ48BNS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GJ48BNS_0140.png"
+  },
+  {
+    "registrationNumber": "SN65UFJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SN65UFJ_0141.png"
+  },
+  {
+    "registrationNumber": "BB80VBN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BB80VBN_0142.png"
+  },
+  {
+    "registrationNumber": "PJ31PRV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PJ31PRV_0143.png"
+  },
+  {
+    "registrationNumber": "UC50SYV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UC50SYV_0144.png"
+  },
+  {
+    "registrationNumber": "HR99TXY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HR99TXY_0145.png"
+  },
+  {
+    "registrationNumber": "CL46JPS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CL46JPS_0146.png"
+  },
+  {
+    "registrationNumber": "FV11BSM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FV11BSM_0147.png"
+  },
+  {
+    "registrationNumber": "KT73NTV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KT73NTV_0148.png"
+  },
+  {
+    "registrationNumber": "NN51AUU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NN51AUU_0149.png"
+  },
+  {
+    "registrationNumber": "HU87RFO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HU87RFO_0150.png"
+  },
+  {
+    "registrationNumber": "UC53CMH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UC53CMH_0151.png"
+  },
+  {
+    "registrationNumber": "MT22LBS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MT22LBS_0152.png"
+  },
+  {
+    "registrationNumber": "JB26SVD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JB26SVD_0153.png"
+  },
+  {
+    "registrationNumber": "ON74NZA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ON74NZA_0154.png"
+  },
+  {
+    "registrationNumber": "HU06THD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HU06THD_0155.png"
+  },
+  {
+    "registrationNumber": "LL98PMF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LL98PMF_0156.png"
+  },
+  {
+    "registrationNumber": "NR71OEO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NR71OEO_0157.png"
+  },
+  {
+    "registrationNumber": "LG95AEA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LG95AEA_0158.png"
+  },
+  {
+    "registrationNumber": "UO82VUO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UO82VUO_0159.png"
+  },
+  {
+    "registrationNumber": "MC10MOJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MC10MOJ_0160.png"
+  },
+  {
+    "registrationNumber": "OC11DVO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OC11DVO_0161.png"
+  },
+  {
+    "registrationNumber": "FP85VZR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FP85VZR_0162.png"
+  },
+  {
+    "registrationNumber": "CN67VAZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CN67VAZ_0163.png"
+  },
+  {
+    "registrationNumber": "CP47HVD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CP47HVD_0164.png"
+  },
+  {
+    "registrationNumber": "CK64UHT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CK64UHT_0165.png"
+  },
+  {
+    "registrationNumber": "DX20OSV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DX20OSV_0166.png"
+  },
+  {
+    "registrationNumber": "AM05ANV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AM05ANV_0167.png"
+  },
+  {
+    "registrationNumber": "NJ93ZRC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NJ93ZRC_0168.png"
+  },
+  {
+    "registrationNumber": "JR97LUD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JR97LUD_0169.png"
+  },
+  {
+    "registrationNumber": "AC42XKF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AC42XKF_0170.png"
+  },
+  {
+    "registrationNumber": "XJ26LMR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XJ26LMR_0171.png"
+  },
+  {
+    "registrationNumber": "FG78RAY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FG78RAY_0172.png"
+  },
+  {
+    "registrationNumber": "SK80AKB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SK80AKB_0173.png"
+  },
+  {
+    "registrationNumber": "TX70SDJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TX70SDJ_0174.png"
+  },
+  {
+    "registrationNumber": "SW15WKK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SW15WKK_0175.png"
+  },
+  {
+    "registrationNumber": "TY00TBA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TY00TBA_0176.png"
+  },
+  {
+    "registrationNumber": "BZ54ERB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BZ54ERB_0177.png"
+  },
+  {
+    "registrationNumber": "KH74ERK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KH74ERK_0178.png"
+  },
+  {
+    "registrationNumber": "XZ59AGW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XZ59AGW_0179.png"
+  },
+  {
+    "registrationNumber": "SB73TYA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SB73TYA_0180.png"
+  },
+  {
+    "registrationNumber": "JP92PPG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JP92PPG_0181.png"
+  },
+  {
+    "registrationNumber": "UB87HTM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UB87HTM_0182.png"
+  },
+  {
+    "registrationNumber": "XZ64LJW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XZ64LJW_0183.png"
+  },
+  {
+    "registrationNumber": "EA84VST",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EA84VST_0184.png"
+  },
+  {
+    "registrationNumber": "UE77ZBG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UE77ZBG_0185.png"
+  },
+  {
+    "registrationNumber": "NG41AMK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NG41AMK_0186.png"
+  },
+  {
+    "registrationNumber": "CC46HMD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CC46HMD_0187.png"
+  },
+  {
+    "registrationNumber": "UK84SZU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UK84SZU_0188.png"
+  },
+  {
+    "registrationNumber": "SR85VAZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SR85VAZ_0189.png"
+  },
+  {
+    "registrationNumber": "NE17LEY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NE17LEY_0190.png"
+  },
+  {
+    "registrationNumber": "UA01NYV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UA01NYV_0191.png"
+  },
+  {
+    "registrationNumber": "PM48WZM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PM48WZM_0192.png"
+  },
+  {
+    "registrationNumber": "OV42JML",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OV42JML_0193.png"
+  },
+  {
+    "registrationNumber": "JJ75DDB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JJ75DDB_0194.png"
+  },
+  {
+    "registrationNumber": "OE55PVF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OE55PVF_0195.png"
+  },
+  {
+    "registrationNumber": "TH68WWK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TH68WWK_0196.png"
+  },
+  {
+    "registrationNumber": "WA83HGA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WA83HGA_0197.png"
+  },
+  {
+    "registrationNumber": "TC04WXK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TC04WXK_0198.png"
+  },
+  {
+    "registrationNumber": "FH33GTK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FH33GTK_0199.png"
+  },
+  {
+    "registrationNumber": "ZC93JKY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZC93JKY_0200.png"
+  },
+  {
+    "registrationNumber": "RL58NSK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RL58NSK_0201.png"
+  },
+  {
+    "registrationNumber": "GJ41ZGC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GJ41ZGC_0202.png"
+  },
+  {
+    "registrationNumber": "FN75HPA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FN75HPA_0203.png"
+  },
+  {
+    "registrationNumber": "RZ01RZL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RZ01RZL_0204.png"
+  },
+  {
+    "registrationNumber": "PG97ZJM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PG97ZJM_0205.png"
+  },
+  {
+    "registrationNumber": "SK04TGM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SK04TGM_0206.png"
+  },
+  {
+    "registrationNumber": "PM21OCS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PM21OCS_0207.png"
+  },
+  {
+    "registrationNumber": "HV84VMN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HV84VMN_0208.png"
+  },
+  {
+    "registrationNumber": "SY76TKA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SY76TKA_0209.png"
+  },
+  {
+    "registrationNumber": "GV68TCF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GV68TCF_0210.png"
+  },
+  {
+    "registrationNumber": "GG94AXA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GG94AXA_0211.png"
+  },
+  {
+    "registrationNumber": "WS65OEM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WS65OEM_0212.png"
+  },
+  {
+    "registrationNumber": "MA38WGB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MA38WGB_0213.png"
+  },
+  {
+    "registrationNumber": "HM52YLR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HM52YLR_0214.png"
+  },
+  {
+    "registrationNumber": "DW49BYN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DW49BYN_0215.png"
+  },
+  {
+    "registrationNumber": "XB96ZPZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XB96ZPZ_0216.png"
+  },
+  {
+    "registrationNumber": "BR13BCZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BR13BCZ_0217.png"
+  },
+  {
+    "registrationNumber": "EN60AGR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EN60AGR_0218.png"
+  },
+  {
+    "registrationNumber": "EB45SLJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EB45SLJ_0219.png"
+  },
+  {
+    "registrationNumber": "PE66CXM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PE66CXM_0220.png"
+  },
+  {
+    "registrationNumber": "JB74GUK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JB74GUK_0221.png"
+  },
+  {
+    "registrationNumber": "YS83PWR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YS83PWR_0222.png"
+  },
+  {
+    "registrationNumber": "XP78AWH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XP78AWH_0223.png"
+  },
+  {
+    "registrationNumber": "JT18SHW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JT18SHW_0224.png"
+  },
+  {
+    "registrationNumber": "HL04TVF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HL04TVF_0225.png"
+  },
+  {
+    "registrationNumber": "MJ81PCW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MJ81PCW_0226.png"
+  },
+  {
+    "registrationNumber": "VN40SUG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VN40SUG_0227.png"
+  },
+  {
+    "registrationNumber": "SO39XWY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SO39XWY_0228.png"
+  },
+  {
+    "registrationNumber": "UO18DDW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UO18DDW_0229.png"
+  },
+  {
+    "registrationNumber": "SR59KFJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SR59KFJ_0230.png"
+  },
+  {
+    "registrationNumber": "BR17TCP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BR17TCP_0231.png"
+  },
+  {
+    "registrationNumber": "UJ93TKP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UJ93TKP_0232.png"
+  },
+  {
+    "registrationNumber": "XF40MMS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XF40MMS_0233.png"
+  },
+  {
+    "registrationNumber": "YX40TJX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YX40TJX_0234.png"
+  },
+  {
+    "registrationNumber": "GF27SPC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GF27SPC_0235.png"
+  },
+  {
+    "registrationNumber": "PS30BNE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PS30BNE_0236.png"
+  },
+  {
+    "registrationNumber": "HY16TMC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HY16TMC_0237.png"
+  },
+  {
+    "registrationNumber": "OJ88ATH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OJ88ATH_0238.png"
+  },
+  {
+    "registrationNumber": "YX30WVH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YX30WVH_0239.png"
+  },
+  {
+    "registrationNumber": "KN54XTW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KN54XTW_0240.png"
+  },
+  {
+    "registrationNumber": "HH43TVK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HH43TVK_0241.png"
+  },
+  {
+    "registrationNumber": "WK55YNN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WK55YNN_0242.png"
+  },
+  {
+    "registrationNumber": "HG86WRZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HG86WRZ_0243.png"
+  },
+  {
+    "registrationNumber": "BU80PGL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BU80PGL_0244.png"
+  },
+  {
+    "registrationNumber": "WH41RTE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WH41RTE_0245.png"
+  },
+  {
+    "registrationNumber": "GC54JSA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GC54JSA_0246.png"
+  },
+  {
+    "registrationNumber": "GE16TNG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GE16TNG_0247.png"
+  },
+  {
+    "registrationNumber": "FS50FYK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FS50FYK_0248.png"
+  },
+  {
+    "registrationNumber": "XS11DOY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XS11DOY_0249.png"
+  },
+  {
+    "registrationNumber": "UX95FAO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UX95FAO_0250.png"
+  },
+  {
+    "registrationNumber": "MZ13ZXC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MZ13ZXC_0251.png"
+  },
+  {
+    "registrationNumber": "UH31SKU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UH31SKU_0252.png"
+  },
+  {
+    "registrationNumber": "NC84REC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NC84REC_0253.png"
+  },
+  {
+    "registrationNumber": "DR66FBX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DR66FBX_0254.png"
+  },
+  {
+    "registrationNumber": "XV43VXM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XV43VXM_0255.png"
+  },
+  {
+    "registrationNumber": "FC64RDV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FC64RDV_0256.png"
+  },
+  {
+    "registrationNumber": "EA24MYY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EA24MYY_0257.png"
+  },
+  {
+    "registrationNumber": "OF78KNZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OF78KNZ_0258.png"
+  },
+  {
+    "registrationNumber": "EG43ELT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EG43ELT_0259.png"
+  },
+  {
+    "registrationNumber": "BF21FOY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BF21FOY_0260.png"
+  },
+  {
+    "registrationNumber": "PU11BHA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PU11BHA_0261.png"
+  },
+  {
+    "registrationNumber": "HF42YXX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HF42YXX_0262.png"
+  },
+  {
+    "registrationNumber": "HR64PRW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HR64PRW_0263.png"
+  },
+  {
+    "registrationNumber": "KV22RWJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KV22RWJ_0264.png"
+  },
+  {
+    "registrationNumber": "GW33NYZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GW33NYZ_0265.png"
+  },
+  {
+    "registrationNumber": "BA09SGC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BA09SGC_0266.png"
+  },
+  {
+    "registrationNumber": "FE89MXB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FE89MXB_0267.png"
+  },
+  {
+    "registrationNumber": "XW46KHK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XW46KHK_0268.png"
+  },
+  {
+    "registrationNumber": "SN45PZJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SN45PZJ_0269.png"
+  },
+  {
+    "registrationNumber": "RF01VCR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RF01VCR_0270.png"
+  },
+  {
+    "registrationNumber": "CA00XCC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CA00XCC_0271.png"
+  },
+  {
+    "registrationNumber": "NK91GYM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NK91GYM_0272.png"
+  },
+  {
+    "registrationNumber": "DN09CPT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DN09CPT_0273.png"
+  },
+  {
+    "registrationNumber": "GO90AYW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GO90AYW_0274.png"
+  },
+  {
+    "registrationNumber": "VT10KGW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VT10KGW_0275.png"
+  },
+  {
+    "registrationNumber": "MO83NSY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MO83NSY_0276.png"
+  },
+  {
+    "registrationNumber": "VC55HCU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VC55HCU_0277.png"
+  },
+  {
+    "registrationNumber": "BC39OZO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BC39OZO_0278.png"
+  },
+  {
+    "registrationNumber": "PT83ZXU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PT83ZXU_0279.png"
+  },
+  {
+    "registrationNumber": "NE47ZYC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NE47ZYC_0280.png"
+  },
+  {
+    "registrationNumber": "NT49LEC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NT49LEC_0281.png"
+  },
+  {
+    "registrationNumber": "GF33PTJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GF33PTJ_0282.png"
+  },
+  {
+    "registrationNumber": "CT47BOY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CT47BOY_0283.png"
+  },
+  {
+    "registrationNumber": "BD02MAR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BD02MAR_0284.png"
+  },
+  {
+    "registrationNumber": "YV14WCP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YV14WCP_0285.png"
+  },
+  {
+    "registrationNumber": "TC43NUP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TC43NUP_0286.png"
+  },
+  {
+    "registrationNumber": "SN12UXL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SN12UXL_0287.png"
+  },
+  {
+    "registrationNumber": "JU48KBB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JU48KBB_0288.png"
+  },
+  {
+    "registrationNumber": "PL96ORY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PL96ORY_0289.png"
+  },
+  {
+    "registrationNumber": "SV48GEL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SV48GEL_0290.png"
+  },
+  {
+    "registrationNumber": "KU69GBL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KU69GBL_0291.png"
+  },
+  {
+    "registrationNumber": "KF19JAN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KF19JAN_0292.png"
+  },
+  {
+    "registrationNumber": "OP03HEO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OP03HEO_0293.png"
+  },
+  {
+    "registrationNumber": "WW72BPY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WW72BPY_0294.png"
+  },
+  {
+    "registrationNumber": "RJ89UWG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RJ89UWG_0295.png"
+  },
+  {
+    "registrationNumber": "WF51GKB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WF51GKB_0296.png"
+  },
+  {
+    "registrationNumber": "RJ00UCJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RJ00UCJ_0297.png"
+  },
+  {
+    "registrationNumber": "CJ35CWL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CJ35CWL_0298.png"
+  },
+  {
+    "registrationNumber": "FZ17JHU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FZ17JHU_0299.png"
+  },
+  {
+    "registrationNumber": "BB29DYB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BB29DYB_0300.png"
+  },
+  {
+    "registrationNumber": "RF06RSV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RF06RSV_0301.png"
+  },
+  {
+    "registrationNumber": "RX32TPC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RX32TPC_0302.png"
+  },
+  {
+    "registrationNumber": "HD27ZKN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HD27ZKN_0303.png"
+  },
+  {
+    "registrationNumber": "GA39RSO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GA39RSO_0304.png"
+  },
+  {
+    "registrationNumber": "TK61HYR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TK61HYR_0305.png"
+  },
+  {
+    "registrationNumber": "YA99WEF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YA99WEF_0306.png"
+  },
+  {
+    "registrationNumber": "AH70DNZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AH70DNZ_0307.png"
+  },
+  {
+    "registrationNumber": "AU30DUR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AU30DUR_0308.png"
+  },
+  {
+    "registrationNumber": "DU97WNK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DU97WNK_0309.png"
+  },
+  {
+    "registrationNumber": "ZA52DNX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZA52DNX_0310.png"
+  },
+  {
+    "registrationNumber": "RT40WJW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RT40WJW_0311.png"
+  },
+  {
+    "registrationNumber": "BT13ZGP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BT13ZGP_0312.png"
+  },
+  {
+    "registrationNumber": "NL32ECO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NL32ECO_0313.png"
+  },
+  {
+    "registrationNumber": "TZ60LLC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TZ60LLC_0314.png"
+  },
+  {
+    "registrationNumber": "TU77WFP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TU77WFP_0315.png"
+  },
+  {
+    "registrationNumber": "HS03SLX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HS03SLX_0316.png"
+  },
+  {
+    "registrationNumber": "TJ08HTK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TJ08HTK_0317.png"
+  },
+  {
+    "registrationNumber": "CS47GTD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CS47GTD_0318.png"
+  },
+  {
+    "registrationNumber": "NX38AAE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NX38AAE_0319.png"
+  },
+  {
+    "registrationNumber": "CO58FLO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CO58FLO_0320.png"
+  },
+  {
+    "registrationNumber": "MF93ADW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MF93ADW_0321.png"
+  },
+  {
+    "registrationNumber": "WK10PFU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WK10PFU_0322.png"
+  },
+  {
+    "registrationNumber": "MU14KMA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MU14KMA_0323.png"
+  },
+  {
+    "registrationNumber": "EG63MJV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EG63MJV_0324.png"
+  },
+  {
+    "registrationNumber": "YM28GAH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YM28GAH_0325.png"
+  },
+  {
+    "registrationNumber": "BB40EVB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BB40EVB_0326.png"
+  },
+  {
+    "registrationNumber": "DX94GDT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DX94GDT_0327.png"
+  },
+  {
+    "registrationNumber": "NB37RZZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NB37RZZ_0328.png"
+  },
+  {
+    "registrationNumber": "OB77EMN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OB77EMN_0329.png"
+  },
+  {
+    "registrationNumber": "AR92VAU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AR92VAU_0330.png"
+  },
+  {
+    "registrationNumber": "YD50KNA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YD50KNA_0331.png"
+  },
+  {
+    "registrationNumber": "FF50HOT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FF50HOT_0332.png"
+  },
+  {
+    "registrationNumber": "HY58YWM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HY58YWM_0333.png"
+  },
+  {
+    "registrationNumber": "FY68NDB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FY68NDB_0334.png"
+  },
+  {
+    "registrationNumber": "DE40FCF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DE40FCF_0335.png"
+  },
+  {
+    "registrationNumber": "UF30GNK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UF30GNK_0336.png"
+  },
+  {
+    "registrationNumber": "JJ48RVR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JJ48RVR_0337.png"
+  },
+  {
+    "registrationNumber": "RJ38UUU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RJ38UUU_0338.png"
+  },
+  {
+    "registrationNumber": "YJ53LPE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YJ53LPE_0339.png"
+  },
+  {
+    "registrationNumber": "MS55MBK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MS55MBK_0340.png"
+  },
+  {
+    "registrationNumber": "UH22HNA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UH22HNA_0341.png"
+  },
+  {
+    "registrationNumber": "RO20ULJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RO20ULJ_0342.png"
+  },
+  {
+    "registrationNumber": "CK20FOZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CK20FOZ_0343.png"
+  },
+  {
+    "registrationNumber": "ZN00MMY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZN00MMY_0344.png"
+  },
+  {
+    "registrationNumber": "SF94YDE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SF94YDE_0345.png"
+  },
+  {
+    "registrationNumber": "PV74PAD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PV74PAD_0346.png"
+  },
+  {
+    "registrationNumber": "WH23ABA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WH23ABA_0347.png"
+  },
+  {
+    "registrationNumber": "LG38KFK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LG38KFK_0348.png"
+  },
+  {
+    "registrationNumber": "UV24JBV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UV24JBV_0349.png"
+  },
+  {
+    "registrationNumber": "SV81JFL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SV81JFL_0350.png"
+  },
+  {
+    "registrationNumber": "MU21YUN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MU21YUN_0351.png"
+  },
+  {
+    "registrationNumber": "YL31YGM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YL31YGM_0352.png"
+  },
+  {
+    "registrationNumber": "JH27PRZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JH27PRZ_0353.png"
+  },
+  {
+    "registrationNumber": "AU11YBB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AU11YBB_0354.png"
+  },
+  {
+    "registrationNumber": "DZ53DML",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DZ53DML_0355.png"
+  },
+  {
+    "registrationNumber": "GX11MTN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GX11MTN_0356.png"
+  },
+  {
+    "registrationNumber": "SA84TLT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SA84TLT_0357.png"
+  },
+  {
+    "registrationNumber": "CC00XZP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CC00XZP_0358.png"
+  },
+  {
+    "registrationNumber": "NB07ARE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NB07ARE_0359.png"
+  },
+  {
+    "registrationNumber": "LW28YUA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LW28YUA_0360.png"
+  },
+  {
+    "registrationNumber": "YW99DCY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YW99DCY_0361.png"
+  },
+  {
+    "registrationNumber": "JN64GKS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JN64GKS_0362.png"
+  },
+  {
+    "registrationNumber": "TY31FUU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TY31FUU_0363.png"
+  },
+  {
+    "registrationNumber": "JM86NDC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JM86NDC_0364.png"
+  },
+  {
+    "registrationNumber": "JV37XFC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JV37XFC_0365.png"
+  },
+  {
+    "registrationNumber": "RS40LGS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RS40LGS_0366.png"
+  },
+  {
+    "registrationNumber": "GC87BAB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GC87BAB_0367.png"
+  },
+  {
+    "registrationNumber": "CD42OPK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CD42OPK_0368.png"
+  },
+  {
+    "registrationNumber": "JK99EVP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JK99EVP_0369.png"
+  },
+  {
+    "registrationNumber": "KR51DVD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KR51DVD_0370.png"
+  },
+  {
+    "registrationNumber": "OO93OUR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OO93OUR_0371.png"
+  },
+  {
+    "registrationNumber": "GX92VLW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GX92VLW_0372.png"
+  },
+  {
+    "registrationNumber": "OJ64SAH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OJ64SAH_0373.png"
+  },
+  {
+    "registrationNumber": "UD92EOB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UD92EOB_0374.png"
+  },
+  {
+    "registrationNumber": "XJ38BPK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XJ38BPK_0375.png"
+  },
+  {
+    "registrationNumber": "PT80ANX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PT80ANX_0376.png"
+  },
+  {
+    "registrationNumber": "VT24ZCZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VT24ZCZ_0377.png"
+  },
+  {
+    "registrationNumber": "UB50UTD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UB50UTD_0378.png"
+  },
+  {
+    "registrationNumber": "AS18VXU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AS18VXU_0379.png"
+  },
+  {
+    "registrationNumber": "CJ26VZJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CJ26VZJ_0380.png"
+  },
+  {
+    "registrationNumber": "LV44LSM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LV44LSM_0381.png"
+  },
+  {
+    "registrationNumber": "KK12DCB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KK12DCB_0382.png"
+  },
+  {
+    "registrationNumber": "VC32FKL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VC32FKL_0383.png"
+  },
+  {
+    "registrationNumber": "PL07SVJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PL07SVJ_0384.png"
+  },
+  {
+    "registrationNumber": "RJ33VLG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RJ33VLG_0385.png"
+  },
+  {
+    "registrationNumber": "FP46ORD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FP46ORD_0386.png"
+  },
+  {
+    "registrationNumber": "MO12ZAO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MO12ZAO_0387.png"
+  },
+  {
+    "registrationNumber": "FS51ETP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FS51ETP_0388.png"
+  },
+  {
+    "registrationNumber": "HS25ZBZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HS25ZBZ_0389.png"
+  },
+  {
+    "registrationNumber": "ZR48ZCK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZR48ZCK_0390.png"
+  },
+  {
+    "registrationNumber": "SS76TTA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SS76TTA_0391.png"
+  },
+  {
+    "registrationNumber": "KA22FCK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KA22FCK_0392.png"
+  },
+  {
+    "registrationNumber": "EC71RFK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EC71RFK_0393.png"
+  },
+  {
+    "registrationNumber": "BF83UPD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BF83UPD_0394.png"
+  },
+  {
+    "registrationNumber": "JN64CHU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JN64CHU_0395.png"
+  },
+  {
+    "registrationNumber": "NH20UAB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NH20UAB_0396.png"
+  },
+  {
+    "registrationNumber": "TE16OZO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TE16OZO_0397.png"
+  },
+  {
+    "registrationNumber": "LK48OCS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LK48OCS_0398.png"
+  },
+  {
+    "registrationNumber": "TP04XXW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TP04XXW_0399.png"
+  },
+  {
+    "registrationNumber": "YG23UGW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YG23UGW_0400.png"
+  },
+  {
+    "registrationNumber": "UY11ALH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UY11ALH_0401.png"
+  },
+  {
+    "registrationNumber": "SE47SED",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SE47SED_0402.png"
+  },
+  {
+    "registrationNumber": "NM21OEK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NM21OEK_0403.png"
+  },
+  {
+    "registrationNumber": "LY15FZC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LY15FZC_0404.png"
+  },
+  {
+    "registrationNumber": "DV48CLR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DV48CLR_0405.png"
+  },
+  {
+    "registrationNumber": "GH92VKH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GH92VKH_0406.png"
+  },
+  {
+    "registrationNumber": "RR73DVR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RR73DVR_0407.png"
+  },
+  {
+    "registrationNumber": "UF99VRB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UF99VRB_0408.png"
+  },
+  {
+    "registrationNumber": "CU38KPR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CU38KPR_0409.png"
+  },
+  {
+    "registrationNumber": "VC81ALJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VC81ALJ_0410.png"
+  },
+  {
+    "registrationNumber": "TH07WWE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TH07WWE_0411.png"
+  },
+  {
+    "registrationNumber": "LG23RBD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LG23RBD_0412.png"
+  },
+  {
+    "registrationNumber": "WH67BHO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WH67BHO_0413.png"
+  },
+  {
+    "registrationNumber": "PM59WZE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PM59WZE_0414.png"
+  },
+  {
+    "registrationNumber": "EC28TYC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EC28TYC_0415.png"
+  },
+  {
+    "registrationNumber": "DO38SVB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DO38SVB_0416.png"
+  },
+  {
+    "registrationNumber": "VZ03VHG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VZ03VHG_0417.png"
+  },
+  {
+    "registrationNumber": "BF47FWV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BF47FWV_0418.png"
+  },
+  {
+    "registrationNumber": "PV59WRK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PV59WRK_0419.png"
+  },
+  {
+    "registrationNumber": "JC02ODX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JC02ODX_0420.png"
+  },
+  {
+    "registrationNumber": "LK13LEP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LK13LEP_0421.png"
+  },
+  {
+    "registrationNumber": "XY22NLM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XY22NLM_0422.png"
+  },
+  {
+    "registrationNumber": "GS12HKC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GS12HKC_0423.png"
+  },
+  {
+    "registrationNumber": "GP89KBD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GP89KBD_0424.png"
+  },
+  {
+    "registrationNumber": "VS07CXJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VS07CXJ_0425.png"
+  },
+  {
+    "registrationNumber": "RP40FAY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RP40FAY_0426.png"
+  },
+  {
+    "registrationNumber": "LA04GRY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LA04GRY_0427.png"
+  },
+  {
+    "registrationNumber": "JH97JCF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JH97JCF_0428.png"
+  },
+  {
+    "registrationNumber": "PN56TRR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PN56TRR_0429.png"
+  },
+  {
+    "registrationNumber": "GU87HUD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GU87HUD_0430.png"
+  },
+  {
+    "registrationNumber": "RF46DZB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RF46DZB_0431.png"
+  },
+  {
+    "registrationNumber": "LA07URX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LA07URX_0432.png"
+  },
+  {
+    "registrationNumber": "UV56GAN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UV56GAN_0433.png"
+  },
+  {
+    "registrationNumber": "YA78DKO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YA78DKO_0434.png"
+  },
+  {
+    "registrationNumber": "XW94NUF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XW94NUF_0435.png"
+  },
+  {
+    "registrationNumber": "XR73RHA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XR73RHA_0436.png"
+  },
+  {
+    "registrationNumber": "TE67UFE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TE67UFE_0437.png"
+  },
+  {
+    "registrationNumber": "GK71VZG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GK71VZG_0438.png"
+  },
+  {
+    "registrationNumber": "WX33JYK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WX33JYK_0439.png"
+  },
+  {
+    "registrationNumber": "DR37GSD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DR37GSD_0440.png"
+  },
+  {
+    "registrationNumber": "VM11KYZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VM11KYZ_0441.png"
+  },
+  {
+    "registrationNumber": "LD97EEK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LD97EEK_0442.png"
+  },
+  {
+    "registrationNumber": "RU41BSC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RU41BSC_0443.png"
+  },
+  {
+    "registrationNumber": "KL53LZO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KL53LZO_0444.png"
+  },
+  {
+    "registrationNumber": "EZ48MAF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EZ48MAF_0445.png"
+  },
+  {
+    "registrationNumber": "DK70AOF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DK70AOF_0446.png"
+  },
+  {
+    "registrationNumber": "WY94WMK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WY94WMK_0447.png"
+  },
+  {
+    "registrationNumber": "ZR69RXT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZR69RXT_0448.png"
+  },
+  {
+    "registrationNumber": "NX02SXU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NX02SXU_0449.png"
+  },
+  {
+    "registrationNumber": "ZP54WNE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZP54WNE_0450.png"
+  },
+  {
+    "registrationNumber": "NG75AFL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NG75AFL_0451.png"
+  },
+  {
+    "registrationNumber": "UK61JYK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UK61JYK_0452.png"
+  },
+  {
+    "registrationNumber": "EU04UVH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EU04UVH_0453.png"
+  },
+  {
+    "registrationNumber": "RM04LLB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RM04LLB_0454.png"
+  },
+  {
+    "registrationNumber": "BU08MYB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BU08MYB_0455.png"
+  },
+  {
+    "registrationNumber": "TU57ZGG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TU57ZGG_0456.png"
+  },
+  {
+    "registrationNumber": "CN81GLA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CN81GLA_0457.png"
+  },
+  {
+    "registrationNumber": "JZ00YVP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JZ00YVP_0458.png"
+  },
+  {
+    "registrationNumber": "KU64GYN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KU64GYN_0459.png"
+  },
+  {
+    "registrationNumber": "YE12LBM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YE12LBM_0460.png"
+  },
+  {
+    "registrationNumber": "DZ12ZPD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DZ12ZPD_0461.png"
+  },
+  {
+    "registrationNumber": "TX41VAT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TX41VAT_0462.png"
+  },
+  {
+    "registrationNumber": "OD39EKN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OD39EKN_0463.png"
+  },
+  {
+    "registrationNumber": "JS45BVS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JS45BVS_0464.png"
+  },
+  {
+    "registrationNumber": "AG06OWS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AG06OWS_0465.png"
+  },
+  {
+    "registrationNumber": "MR27ZPD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MR27ZPD_0466.png"
+  },
+  {
+    "registrationNumber": "FZ90YDR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FZ90YDR_0467.png"
+  },
+  {
+    "registrationNumber": "LN90YCL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LN90YCL_0468.png"
+  },
+  {
+    "registrationNumber": "LH42UYM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LH42UYM_0469.png"
+  },
+  {
+    "registrationNumber": "LY33WEW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LY33WEW_0470.png"
+  },
+  {
+    "registrationNumber": "TH75SZS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TH75SZS_0471.png"
+  },
+  {
+    "registrationNumber": "HP96HJP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HP96HJP_0472.png"
+  },
+  {
+    "registrationNumber": "HZ20AEL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HZ20AEL_0473.png"
+  },
+  {
+    "registrationNumber": "EL62WLZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EL62WLZ_0474.png"
+  },
+  {
+    "registrationNumber": "EV87KJE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EV87KJE_0475.png"
+  },
+  {
+    "registrationNumber": "XC93CYJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XC93CYJ_0476.png"
+  },
+  {
+    "registrationNumber": "TS70NOS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TS70NOS_0477.png"
+  },
+  {
+    "registrationNumber": "KV05SMW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KV05SMW_0478.png"
+  },
+  {
+    "registrationNumber": "XN14HNK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XN14HNK_0479.png"
+  },
+  {
+    "registrationNumber": "CY04LBW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CY04LBW_0480.png"
+  },
+  {
+    "registrationNumber": "HK08DLT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HK08DLT_0481.png"
+  },
+  {
+    "registrationNumber": "JL87VHV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JL87VHV_0482.png"
+  },
+  {
+    "registrationNumber": "XD83SDC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XD83SDC_0483.png"
+  },
+  {
+    "registrationNumber": "AN01DHY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AN01DHY_0484.png"
+  },
+  {
+    "registrationNumber": "XS69RCM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XS69RCM_0485.png"
+  },
+  {
+    "registrationNumber": "OK62GVC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OK62GVC_0486.png"
+  },
+  {
+    "registrationNumber": "FN93AWA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FN93AWA_0487.png"
+  },
+  {
+    "registrationNumber": "JF73TJL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JF73TJL_0488.png"
+  },
+  {
+    "registrationNumber": "RH47JWU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RH47JWU_0489.png"
+  },
+  {
+    "registrationNumber": "FZ87XFV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FZ87XFV_0490.png"
+  },
+  {
+    "registrationNumber": "AO07WEN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AO07WEN_0491.png"
+  },
+  {
+    "registrationNumber": "JB47LZL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JB47LZL_0492.png"
+  },
+  {
+    "registrationNumber": "XF16BFB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XF16BFB_0493.png"
+  },
+  {
+    "registrationNumber": "DO64BFT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DO64BFT_0494.png"
+  },
+  {
+    "registrationNumber": "XK55MSR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XK55MSR_0495.png"
+  },
+  {
+    "registrationNumber": "JS67ZWW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JS67ZWW_0496.png"
+  },
+  {
+    "registrationNumber": "TW82KUR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TW82KUR_0497.png"
+  },
+  {
+    "registrationNumber": "RA41MSD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RA41MSD_0498.png"
+  },
+  {
+    "registrationNumber": "RE41OCX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RE41OCX_0499.png"
+  },
+  {
+    "registrationNumber": "PY03BHK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PY03BHK_0500.png"
+  },
+  {
+    "registrationNumber": "EY62ESP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EY62ESP_0501.png"
+  },
+  {
+    "registrationNumber": "HP22WLS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HP22WLS_0502.png"
+  },
+  {
+    "registrationNumber": "BO18ZGV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BO18ZGV_0503.png"
+  },
+  {
+    "registrationNumber": "MX58BNW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MX58BNW_0504.png"
+  },
+  {
+    "registrationNumber": "CE96PAW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CE96PAW_0505.png"
+  },
+  {
+    "registrationNumber": "SA17HEV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SA17HEV_0506.png"
+  },
+  {
+    "registrationNumber": "AB78AHP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AB78AHP_0507.png"
+  },
+  {
+    "registrationNumber": "OD20RMX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OD20RMX_0508.png"
+  },
+  {
+    "registrationNumber": "CJ94YUB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CJ94YUB_0509.png"
+  },
+  {
+    "registrationNumber": "SB95YKK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SB95YKK_0510.png"
+  },
+  {
+    "registrationNumber": "DO04XKR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DO04XKR_0511.png"
+  },
+  {
+    "registrationNumber": "KL55BUT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KL55BUT_0512.png"
+  },
+  {
+    "registrationNumber": "WZ32SVX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WZ32SVX_0513.png"
+  },
+  {
+    "registrationNumber": "EX82VBA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EX82VBA_0514.png"
+  },
+  {
+    "registrationNumber": "ZG96BCT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZG96BCT_0515.png"
+  },
+  {
+    "registrationNumber": "ZP66FWW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZP66FWW_0516.png"
+  },
+  {
+    "registrationNumber": "DP20EDA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DP20EDA_0517.png"
+  },
+  {
+    "registrationNumber": "HV97KDB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HV97KDB_0518.png"
+  },
+  {
+    "registrationNumber": "GO52NUA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GO52NUA_0519.png"
+  },
+  {
+    "registrationNumber": "OE49AVB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OE49AVB_0520.png"
+  },
+  {
+    "registrationNumber": "CN56KDT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CN56KDT_0521.png"
+  },
+  {
+    "registrationNumber": "ST36ASX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ST36ASX_0522.png"
+  },
+  {
+    "registrationNumber": "YM01UGK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YM01UGK_0523.png"
+  },
+  {
+    "registrationNumber": "XO74AAR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XO74AAR_0524.png"
+  },
+  {
+    "registrationNumber": "ZZ17DYY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZZ17DYY_0525.png"
+  },
+  {
+    "registrationNumber": "ND20STT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ND20STT_0526.png"
+  },
+  {
+    "registrationNumber": "EZ28VTY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EZ28VTY_0527.png"
+  },
+  {
+    "registrationNumber": "XD10WJE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XD10WJE_0528.png"
+  },
+  {
+    "registrationNumber": "MP65LKP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MP65LKP_0529.png"
+  },
+  {
+    "registrationNumber": "TT73FVR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TT73FVR_0530.png"
+  },
+  {
+    "registrationNumber": "GW44FAT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GW44FAT_0531.png"
+  },
+  {
+    "registrationNumber": "JK49REB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JK49REB_0532.png"
+  },
+  {
+    "registrationNumber": "BA63MAF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BA63MAF_0533.png"
+  },
+  {
+    "registrationNumber": "MW81PZS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MW81PZS_0534.png"
+  },
+  {
+    "registrationNumber": "NG05FBN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NG05FBN_0535.png"
+  },
+  {
+    "registrationNumber": "WN62RFZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WN62RFZ_0536.png"
+  },
+  {
+    "registrationNumber": "NF76XCH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NF76XCH_0537.png"
+  },
+  {
+    "registrationNumber": "GC80OSX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GC80OSX_0538.png"
+  },
+  {
+    "registrationNumber": "CA09HBF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CA09HBF_0539.png"
+  },
+  {
+    "registrationNumber": "OJ84NTR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OJ84NTR_0540.png"
+  },
+  {
+    "registrationNumber": "XG58HNW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XG58HNW_0541.png"
+  },
+  {
+    "registrationNumber": "FM69MVY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FM69MVY_0542.png"
+  },
+  {
+    "registrationNumber": "KG20XEC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KG20XEC_0543.png"
+  },
+  {
+    "registrationNumber": "BC10PET",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BC10PET_0544.png"
+  },
+  {
+    "registrationNumber": "KZ30JSA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KZ30JSA_0545.png"
+  },
+  {
+    "registrationNumber": "YW02POA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YW02POA_0546.png"
+  },
+  {
+    "registrationNumber": "YS89ZKM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YS89ZKM_0547.png"
+  },
+  {
+    "registrationNumber": "NO59DCC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NO59DCC_0548.png"
+  },
+  {
+    "registrationNumber": "VF24ZVA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VF24ZVA_0549.png"
+  },
+  {
+    "registrationNumber": "DF65RKT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DF65RKT_0550.png"
+  },
+  {
+    "registrationNumber": "DL21HZV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DL21HZV_0551.png"
+  },
+  {
+    "registrationNumber": "FG06RWJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FG06RWJ_0552.png"
+  },
+  {
+    "registrationNumber": "JT44XJW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JT44XJW_0553.png"
+  },
+  {
+    "registrationNumber": "LE13CKK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LE13CKK_0554.png"
+  },
+  {
+    "registrationNumber": "FY02ZOO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FY02ZOO_0555.png"
+  },
+  {
+    "registrationNumber": "EU92MJL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EU92MJL_0556.png"
+  },
+  {
+    "registrationNumber": "LT17KGM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LT17KGM_0557.png"
+  },
+  {
+    "registrationNumber": "TU50XHR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TU50XHR_0558.png"
+  },
+  {
+    "registrationNumber": "OH69TYF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OH69TYF_0559.png"
+  },
+  {
+    "registrationNumber": "SR86NBC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SR86NBC_0560.png"
+  },
+  {
+    "registrationNumber": "GZ87WVB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GZ87WVB_0561.png"
+  },
+  {
+    "registrationNumber": "VW68WPP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VW68WPP_0562.png"
+  },
+  {
+    "registrationNumber": "FF39PDZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FF39PDZ_0563.png"
+  },
+  {
+    "registrationNumber": "CV67ZCX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CV67ZCX_0564.png"
+  },
+  {
+    "registrationNumber": "KT14KNV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KT14KNV_0565.png"
+  },
+  {
+    "registrationNumber": "ME62EBM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ME62EBM_0566.png"
+  },
+  {
+    "registrationNumber": "WZ84PZL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WZ84PZL_0567.png"
+  },
+  {
+    "registrationNumber": "JG48COK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JG48COK_0568.png"
+  },
+  {
+    "registrationNumber": "WM55YMR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WM55YMR_0569.png"
+  },
+  {
+    "registrationNumber": "UR49CXA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UR49CXA_0570.png"
+  },
+  {
+    "registrationNumber": "LH22YBJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LH22YBJ_0571.png"
+  },
+  {
+    "registrationNumber": "DO75OZP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DO75OZP_0572.png"
+  },
+  {
+    "registrationNumber": "LS49LDM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LS49LDM_0573.png"
+  },
+  {
+    "registrationNumber": "XZ50OUF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XZ50OUF_0574.png"
+  },
+  {
+    "registrationNumber": "DH92YOM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DH92YOM_0575.png"
+  },
+  {
+    "registrationNumber": "ZS89LSP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZS89LSP_0576.png"
+  },
+  {
+    "registrationNumber": "DR26EGP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DR26EGP_0577.png"
+  },
+  {
+    "registrationNumber": "KG74RGS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KG74RGS_0578.png"
+  },
+  {
+    "registrationNumber": "RV55GAB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RV55GAB_0579.png"
+  },
+  {
+    "registrationNumber": "WP79JUA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WP79JUA_0580.png"
+  },
+  {
+    "registrationNumber": "ZC67REY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZC67REY_0581.png"
+  },
+  {
+    "registrationNumber": "RW78RTO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RW78RTO_0582.png"
+  },
+  {
+    "registrationNumber": "KS44DUK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KS44DUK_0583.png"
+  },
+  {
+    "registrationNumber": "JR63KNV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JR63KNV_0584.png"
+  },
+  {
+    "registrationNumber": "TJ36NOO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TJ36NOO_0585.png"
+  },
+  {
+    "registrationNumber": "TL68DAN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TL68DAN_0586.png"
+  },
+  {
+    "registrationNumber": "VL88MHL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VL88MHL_0587.png"
+  },
+  {
+    "registrationNumber": "NX40HMZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NX40HMZ_0588.png"
+  },
+  {
+    "registrationNumber": "CB48TLZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CB48TLZ_0589.png"
+  },
+  {
+    "registrationNumber": "OF45GKS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OF45GKS_0590.png"
+  },
+  {
+    "registrationNumber": "JL08SBE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JL08SBE_0591.png"
+  },
+  {
+    "registrationNumber": "SE42XSW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SE42XSW_0592.png"
+  },
+  {
+    "registrationNumber": "AG92CWZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AG92CWZ_0593.png"
+  },
+  {
+    "registrationNumber": "XN30SJL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XN30SJL_0594.png"
+  },
+  {
+    "registrationNumber": "MR52LLF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MR52LLF_0595.png"
+  },
+  {
+    "registrationNumber": "HO94NCA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HO94NCA_0596.png"
+  },
+  {
+    "registrationNumber": "EX00FKJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EX00FKJ_0597.png"
+  },
+  {
+    "registrationNumber": "BX35ZVW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BX35ZVW_0598.png"
+  },
+  {
+    "registrationNumber": "EV75BOV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EV75BOV_0599.png"
+  },
+  {
+    "registrationNumber": "US08KBR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/US08KBR_0600.png"
+  },
+  {
+    "registrationNumber": "RO35VJR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RO35VJR_0601.png"
+  },
+  {
+    "registrationNumber": "KD77JUJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KD77JUJ_0602.png"
+  },
+  {
+    "registrationNumber": "VK74PAS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VK74PAS_0603.png"
+  },
+  {
+    "registrationNumber": "UK54AYM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UK54AYM_0604.png"
+  },
+  {
+    "registrationNumber": "UJ66FCR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UJ66FCR_0605.png"
+  },
+  {
+    "registrationNumber": "BM19KXA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BM19KXA_0606.png"
+  },
+  {
+    "registrationNumber": "ZY66SWS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZY66SWS_0607.png"
+  },
+  {
+    "registrationNumber": "MU23XVC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MU23XVC_0608.png"
+  },
+  {
+    "registrationNumber": "DE05FHE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DE05FHE_0609.png"
+  },
+  {
+    "registrationNumber": "PB61EBS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PB61EBS_0610.png"
+  },
+  {
+    "registrationNumber": "FZ12LWR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FZ12LWR_0611.png"
+  },
+  {
+    "registrationNumber": "UO66TLP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UO66TLP_0612.png"
+  },
+  {
+    "registrationNumber": "OP26PXF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OP26PXF_0613.png"
+  },
+  {
+    "registrationNumber": "VE66GZV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VE66GZV_0614.png"
+  },
+  {
+    "registrationNumber": "JZ76NDK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JZ76NDK_0615.png"
+  },
+  {
+    "registrationNumber": "UP16WUC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UP16WUC_0616.png"
+  },
+  {
+    "registrationNumber": "VU50RMB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VU50RMB_0617.png"
+  },
+  {
+    "registrationNumber": "AD41VKT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AD41VKT_0618.png"
+  },
+  {
+    "registrationNumber": "WD99ZUV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WD99ZUV_0619.png"
+  },
+  {
+    "registrationNumber": "JN12GVU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JN12GVU_0620.png"
+  },
+  {
+    "registrationNumber": "MJ30DPF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MJ30DPF_0621.png"
+  },
+  {
+    "registrationNumber": "WP90FKX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WP90FKX_0622.png"
+  },
+  {
+    "registrationNumber": "CE39REE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CE39REE_0623.png"
+  },
+  {
+    "registrationNumber": "CH47WOX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CH47WOX_0624.png"
+  },
+  {
+    "registrationNumber": "XN34CPV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XN34CPV_0625.png"
+  },
+  {
+    "registrationNumber": "VL82HWM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VL82HWM_0626.png"
+  },
+  {
+    "registrationNumber": "AJ36NCZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AJ36NCZ_0627.png"
+  },
+  {
+    "registrationNumber": "EF06XYL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EF06XYL_0628.png"
+  },
+  {
+    "registrationNumber": "VH09UNF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VH09UNF_0629.png"
+  },
+  {
+    "registrationNumber": "ZK20VKK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZK20VKK_0630.png"
+  },
+  {
+    "registrationNumber": "PS69XZA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PS69XZA_0631.png"
+  },
+  {
+    "registrationNumber": "UB96TWS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UB96TWS_0632.png"
+  },
+  {
+    "registrationNumber": "FV08HVB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FV08HVB_0633.png"
+  },
+  {
+    "registrationNumber": "LU12ZBS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LU12ZBS_0634.png"
+  },
+  {
+    "registrationNumber": "PV74ZXA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PV74ZXA_0635.png"
+  },
+  {
+    "registrationNumber": "PL98WES",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PL98WES_0636.png"
+  },
+  {
+    "registrationNumber": "DH69JCJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DH69JCJ_0637.png"
+  },
+  {
+    "registrationNumber": "AU52MJS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AU52MJS_0638.png"
+  },
+  {
+    "registrationNumber": "CE57BRX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CE57BRX_0639.png"
+  },
+  {
+    "registrationNumber": "PY29WMO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PY29WMO_0640.png"
+  },
+  {
+    "registrationNumber": "XN36SPZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XN36SPZ_0641.png"
+  },
+  {
+    "registrationNumber": "ZC32XLT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZC32XLT_0642.png"
+  },
+  {
+    "registrationNumber": "VK05XGL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VK05XGL_0643.png"
+  },
+  {
+    "registrationNumber": "ZO11GHG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZO11GHG_0644.png"
+  },
+  {
+    "registrationNumber": "MZ60VXX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MZ60VXX_0645.png"
+  },
+  {
+    "registrationNumber": "EZ35MWC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EZ35MWC_0646.png"
+  },
+  {
+    "registrationNumber": "XV82CVO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XV82CVO_0647.png"
+  },
+  {
+    "registrationNumber": "TL58ZUS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TL58ZUS_0648.png"
+  },
+  {
+    "registrationNumber": "MC48XCK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MC48XCK_0649.png"
+  },
+  {
+    "registrationNumber": "WW62HDG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WW62HDG_0650.png"
+  },
+  {
+    "registrationNumber": "MN65WLX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MN65WLX_0651.png"
+  },
+  {
+    "registrationNumber": "PV72FLS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PV72FLS_0652.png"
+  },
+  {
+    "registrationNumber": "VP60NJE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VP60NJE_0653.png"
+  },
+  {
+    "registrationNumber": "RC29NOC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RC29NOC_0654.png"
+  },
+  {
+    "registrationNumber": "RJ41KKO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RJ41KKO_0655.png"
+  },
+  {
+    "registrationNumber": "ZU89XEN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZU89XEN_0656.png"
+  },
+  {
+    "registrationNumber": "LT87WHL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LT87WHL_0657.png"
+  },
+  {
+    "registrationNumber": "AB56EDM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AB56EDM_0658.png"
+  },
+  {
+    "registrationNumber": "JT64RRP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JT64RRP_0659.png"
+  },
+  {
+    "registrationNumber": "MZ49RYD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MZ49RYD_0660.png"
+  },
+  {
+    "registrationNumber": "KN74JNV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KN74JNV_0661.png"
+  },
+  {
+    "registrationNumber": "BU63UCT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BU63UCT_0662.png"
+  },
+  {
+    "registrationNumber": "CE25YUU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CE25YUU_0663.png"
+  },
+  {
+    "registrationNumber": "NV95PPH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NV95PPH_0664.png"
+  },
+  {
+    "registrationNumber": "WV41MLO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WV41MLO_0665.png"
+  },
+  {
+    "registrationNumber": "ZG48EAK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZG48EAK_0666.png"
+  },
+  {
+    "registrationNumber": "UB78AFP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UB78AFP_0667.png"
+  },
+  {
+    "registrationNumber": "BR61YEW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BR61YEW_0668.png"
+  },
+  {
+    "registrationNumber": "HP55DTH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HP55DTH_0669.png"
+  },
+  {
+    "registrationNumber": "TD43ERM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TD43ERM_0670.png"
+  },
+  {
+    "registrationNumber": "WK41NOW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WK41NOW_0671.png"
+  },
+  {
+    "registrationNumber": "KJ75OLC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KJ75OLC_0672.png"
+  },
+  {
+    "registrationNumber": "KN11WUL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KN11WUL_0673.png"
+  },
+  {
+    "registrationNumber": "RR20BSC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RR20BSC_0674.png"
+  },
+  {
+    "registrationNumber": "KK89FYP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KK89FYP_0675.png"
+  },
+  {
+    "registrationNumber": "BP97TFP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BP97TFP_0676.png"
+  },
+  {
+    "registrationNumber": "KT24BMN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KT24BMN_0677.png"
+  },
+  {
+    "registrationNumber": "ZG28ZZK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZG28ZZK_0678.png"
+  },
+  {
+    "registrationNumber": "CH43FPZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CH43FPZ_0679.png"
+  },
+  {
+    "registrationNumber": "XB43CTJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XB43CTJ_0680.png"
+  },
+  {
+    "registrationNumber": "XG06NSM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XG06NSM_0681.png"
+  },
+  {
+    "registrationNumber": "EP28BOV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EP28BOV_0682.png"
+  },
+  {
+    "registrationNumber": "CJ86BET",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CJ86BET_0683.png"
+  },
+  {
+    "registrationNumber": "AT85PZJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AT85PZJ_0684.png"
+  },
+  {
+    "registrationNumber": "RX87RPZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RX87RPZ_0685.png"
+  },
+  {
+    "registrationNumber": "NN62LAK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NN62LAK_0686.png"
+  },
+  {
+    "registrationNumber": "MD08YDB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MD08YDB_0687.png"
+  },
+  {
+    "registrationNumber": "SX59PKU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SX59PKU_0688.png"
+  },
+  {
+    "registrationNumber": "AO29GBY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AO29GBY_0689.png"
+  },
+  {
+    "registrationNumber": "TJ44CDA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TJ44CDA_0690.png"
+  },
+  {
+    "registrationNumber": "JA02SST",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JA02SST_0691.png"
+  },
+  {
+    "registrationNumber": "TO92PMP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TO92PMP_0692.png"
+  },
+  {
+    "registrationNumber": "VP39CEF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VP39CEF_0693.png"
+  },
+  {
+    "registrationNumber": "GS30RLU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GS30RLU_0694.png"
+  },
+  {
+    "registrationNumber": "DJ36FCZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DJ36FCZ_0695.png"
+  },
+  {
+    "registrationNumber": "KE71XOH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KE71XOH_0696.png"
+  },
+  {
+    "registrationNumber": "ZH32CXV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZH32CXV_0697.png"
+  },
+  {
+    "registrationNumber": "BA34LJT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BA34LJT_0698.png"
+  },
+  {
+    "registrationNumber": "NF94GRJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NF94GRJ_0699.png"
+  },
+  {
+    "registrationNumber": "SN69DYY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SN69DYY_0700.png"
+  },
+  {
+    "registrationNumber": "KX17AED",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KX17AED_0701.png"
+  },
+  {
+    "registrationNumber": "KO16OJV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KO16OJV_0702.png"
+  },
+  {
+    "registrationNumber": "UO36VPW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UO36VPW_0703.png"
+  },
+  {
+    "registrationNumber": "XC02NMW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XC02NMW_0704.png"
+  },
+  {
+    "registrationNumber": "HL38HMO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HL38HMO_0705.png"
+  },
+  {
+    "registrationNumber": "CK01GUK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CK01GUK_0706.png"
+  },
+  {
+    "registrationNumber": "AU23GBZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AU23GBZ_0707.png"
+  },
+  {
+    "registrationNumber": "GZ48SLG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GZ48SLG_0708.png"
+  },
+  {
+    "registrationNumber": "ML54TXP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ML54TXP_0709.png"
+  },
+  {
+    "registrationNumber": "LT51UCH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LT51UCH_0710.png"
+  },
+  {
+    "registrationNumber": "ZS64RNR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZS64RNR_0711.png"
+  },
+  {
+    "registrationNumber": "DJ99JVY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DJ99JVY_0712.png"
+  },
+  {
+    "registrationNumber": "DT72WLX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DT72WLX_0713.png"
+  },
+  {
+    "registrationNumber": "HC96HTL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HC96HTL_0714.png"
+  },
+  {
+    "registrationNumber": "MK55ZEY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MK55ZEY_0715.png"
+  },
+  {
+    "registrationNumber": "AA26FOW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AA26FOW_0716.png"
+  },
+  {
+    "registrationNumber": "PG49BZG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PG49BZG_0717.png"
+  },
+  {
+    "registrationNumber": "EB19BJY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EB19BJY_0718.png"
+  },
+  {
+    "registrationNumber": "OA83YYA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OA83YYA_0719.png"
+  },
+  {
+    "registrationNumber": "GE09RBL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GE09RBL_0720.png"
+  },
+  {
+    "registrationNumber": "ZK97ZDN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZK97ZDN_0721.png"
+  },
+  {
+    "registrationNumber": "FM64DYC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FM64DYC_0722.png"
+  },
+  {
+    "registrationNumber": "HO25DWL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HO25DWL_0723.png"
+  },
+  {
+    "registrationNumber": "VB11KNY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VB11KNY_0724.png"
+  },
+  {
+    "registrationNumber": "PM57VYK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PM57VYK_0725.png"
+  },
+  {
+    "registrationNumber": "SP91VFM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SP91VFM_0726.png"
+  },
+  {
+    "registrationNumber": "JH67GDC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JH67GDC_0727.png"
+  },
+  {
+    "registrationNumber": "ES99RGR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ES99RGR_0728.png"
+  },
+  {
+    "registrationNumber": "DX28PFO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DX28PFO_0729.png"
+  },
+  {
+    "registrationNumber": "JH86VSB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JH86VSB_0730.png"
+  },
+  {
+    "registrationNumber": "WB73OPA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WB73OPA_0731.png"
+  },
+  {
+    "registrationNumber": "HS70UZG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HS70UZG_0732.png"
+  },
+  {
+    "registrationNumber": "RO29KOJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RO29KOJ_0733.png"
+  },
+  {
+    "registrationNumber": "FX61CKH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FX61CKH_0734.png"
+  },
+  {
+    "registrationNumber": "TJ22KHY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TJ22KHY_0735.png"
+  },
+  {
+    "registrationNumber": "DM09EKH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DM09EKH_0736.png"
+  },
+  {
+    "registrationNumber": "FS71BXR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FS71BXR_0737.png"
+  },
+  {
+    "registrationNumber": "PY27WML",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PY27WML_0738.png"
+  },
+  {
+    "registrationNumber": "ZP50CWA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZP50CWA_0739.png"
+  },
+  {
+    "registrationNumber": "NE39JAF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NE39JAF_0740.png"
+  },
+  {
+    "registrationNumber": "UJ31HDV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UJ31HDV_0741.png"
+  },
+  {
+    "registrationNumber": "WU07NCG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WU07NCG_0742.png"
+  },
+  {
+    "registrationNumber": "SM18ENP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SM18ENP_0743.png"
+  },
+  {
+    "registrationNumber": "ES18RHU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ES18RHU_0744.png"
+  },
+  {
+    "registrationNumber": "NW62WWY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NW62WWY_0745.png"
+  },
+  {
+    "registrationNumber": "MH89RPC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MH89RPC_0746.png"
+  },
+  {
+    "registrationNumber": "CM83JEX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CM83JEX_0747.png"
+  },
+  {
+    "registrationNumber": "JN55NDZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JN55NDZ_0748.png"
+  },
+  {
+    "registrationNumber": "AC45JLK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AC45JLK_0749.png"
+  },
+  {
+    "registrationNumber": "EB63CTU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EB63CTU_0750.png"
+  },
+  {
+    "registrationNumber": "CA60YEE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CA60YEE_0751.png"
+  },
+  {
+    "registrationNumber": "VO59ZBF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VO59ZBF_0752.png"
+  },
+  {
+    "registrationNumber": "SU64LEM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SU64LEM_0753.png"
+  },
+  {
+    "registrationNumber": "DA73VGM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DA73VGM_0754.png"
+  },
+  {
+    "registrationNumber": "FG52WKE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FG52WKE_0755.png"
+  },
+  {
+    "registrationNumber": "JS57HRK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JS57HRK_0756.png"
+  },
+  {
+    "registrationNumber": "AC02UTE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AC02UTE_0757.png"
+  },
+  {
+    "registrationNumber": "CV32DXZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CV32DXZ_0758.png"
+  },
+  {
+    "registrationNumber": "XS24DRO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XS24DRO_0759.png"
+  },
+  {
+    "registrationNumber": "PU11MAK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PU11MAK_0760.png"
+  },
+  {
+    "registrationNumber": "JM66GXE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JM66GXE_0761.png"
+  },
+  {
+    "registrationNumber": "FX25VUH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FX25VUH_0762.png"
+  },
+  {
+    "registrationNumber": "AD63BPK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AD63BPK_0763.png"
+  },
+  {
+    "registrationNumber": "RC96HGZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RC96HGZ_0764.png"
+  },
+  {
+    "registrationNumber": "AF07KFC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AF07KFC_0765.png"
+  },
+  {
+    "registrationNumber": "CC52GUL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CC52GUL_0766.png"
+  },
+  {
+    "registrationNumber": "BO17HTV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BO17HTV_0767.png"
+  },
+  {
+    "registrationNumber": "WN90BVM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WN90BVM_0768.png"
+  },
+  {
+    "registrationNumber": "NS74AMG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NS74AMG_0769.png"
+  },
+  {
+    "registrationNumber": "RG17LGY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RG17LGY_0770.png"
+  },
+  {
+    "registrationNumber": "GL22TDP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GL22TDP_0771.png"
+  },
+  {
+    "registrationNumber": "BW58ZPA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BW58ZPA_0772.png"
+  },
+  {
+    "registrationNumber": "UC55XFV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UC55XFV_0773.png"
+  },
+  {
+    "registrationNumber": "RG95OTM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RG95OTM_0774.png"
+  },
+  {
+    "registrationNumber": "BD57YET",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BD57YET_0775.png"
+  },
+  {
+    "registrationNumber": "FU83ZUX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FU83ZUX_0776.png"
+  },
+  {
+    "registrationNumber": "RU21UWK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RU21UWK_0777.png"
+  },
+  {
+    "registrationNumber": "VN47OKY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VN47OKY_0778.png"
+  },
+  {
+    "registrationNumber": "WR96WGP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WR96WGP_0779.png"
+  },
+  {
+    "registrationNumber": "ES58WPP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ES58WPP_0780.png"
+  },
+  {
+    "registrationNumber": "VE18CVM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VE18CVM_0781.png"
+  },
+  {
+    "registrationNumber": "KG09PEO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KG09PEO_0782.png"
+  },
+  {
+    "registrationNumber": "WT37OXW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WT37OXW_0783.png"
+  },
+  {
+    "registrationNumber": "WP47SCC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WP47SCC_0784.png"
+  },
+  {
+    "registrationNumber": "JO90WYK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JO90WYK_0785.png"
+  },
+  {
+    "registrationNumber": "ME92KOP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ME92KOP_0786.png"
+  },
+  {
+    "registrationNumber": "AO12ECR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AO12ECR_0787.png"
+  },
+  {
+    "registrationNumber": "VB88ZKW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VB88ZKW_0788.png"
+  },
+  {
+    "registrationNumber": "MK76RRE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MK76RRE_0789.png"
+  },
+  {
+    "registrationNumber": "HE92HTP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HE92HTP_0790.png"
+  },
+  {
+    "registrationNumber": "ZH39UAT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZH39UAT_0791.png"
+  },
+  {
+    "registrationNumber": "ZY29XLB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZY29XLB_0792.png"
+  },
+  {
+    "registrationNumber": "WL32LYG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WL32LYG_0793.png"
+  },
+  {
+    "registrationNumber": "GY88SGK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GY88SGK_0794.png"
+  },
+  {
+    "registrationNumber": "GF67BVL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GF67BVL_0795.png"
+  },
+  {
+    "registrationNumber": "OM69MJE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OM69MJE_0796.png"
+  },
+  {
+    "registrationNumber": "PK90WFC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PK90WFC_0797.png"
+  },
+  {
+    "registrationNumber": "MJ62VXC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MJ62VXC_0798.png"
+  },
+  {
+    "registrationNumber": "JM36OYZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JM36OYZ_0799.png"
+  },
+  {
+    "registrationNumber": "CY41TKL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CY41TKL_0800.png"
+  },
+  {
+    "registrationNumber": "KA34WKW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KA34WKW_0801.png"
+  },
+  {
+    "registrationNumber": "RR47JDA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RR47JDA_0802.png"
+  },
+  {
+    "registrationNumber": "YZ14ZKX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YZ14ZKX_0803.png"
+  },
+  {
+    "registrationNumber": "UU02DLL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UU02DLL_0804.png"
+  },
+  {
+    "registrationNumber": "BE40CJK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BE40CJK_0805.png"
+  },
+  {
+    "registrationNumber": "FL86FYE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FL86FYE_0806.png"
+  },
+  {
+    "registrationNumber": "ZD83MWP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZD83MWP_0807.png"
+  },
+  {
+    "registrationNumber": "GV68YZW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GV68YZW_0808.png"
+  },
+  {
+    "registrationNumber": "XT67UDS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XT67UDS_0809.png"
+  },
+  {
+    "registrationNumber": "TR29DZT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TR29DZT_0810.png"
+  },
+  {
+    "registrationNumber": "FN89YZZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FN89YZZ_0811.png"
+  },
+  {
+    "registrationNumber": "EY22TJX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EY22TJX_0812.png"
+  },
+  {
+    "registrationNumber": "KG46UPK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KG46UPK_0813.png"
+  },
+  {
+    "registrationNumber": "RY94XHS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RY94XHS_0814.png"
+  },
+  {
+    "registrationNumber": "KH18NTW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KH18NTW_0815.png"
+  },
+  {
+    "registrationNumber": "LU17YNA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LU17YNA_0816.png"
+  },
+  {
+    "registrationNumber": "LR27SEZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LR27SEZ_0817.png"
+  },
+  {
+    "registrationNumber": "JE45YUF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JE45YUF_0818.png"
+  },
+  {
+    "registrationNumber": "AH19AES",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AH19AES_0819.png"
+  },
+  {
+    "registrationNumber": "JX24XSY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JX24XSY_0820.png"
+  },
+  {
+    "registrationNumber": "NM16PJA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NM16PJA_0821.png"
+  },
+  {
+    "registrationNumber": "HB11EEC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HB11EEC_0822.png"
+  },
+  {
+    "registrationNumber": "JT98ZTF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JT98ZTF_0823.png"
+  },
+  {
+    "registrationNumber": "RD43OCB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RD43OCB_0824.png"
+  },
+  {
+    "registrationNumber": "CE92GVN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CE92GVN_0825.png"
+  },
+  {
+    "registrationNumber": "EM07MOG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EM07MOG_0826.png"
+  },
+  {
+    "registrationNumber": "ZM31BZP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZM31BZP_0827.png"
+  },
+  {
+    "registrationNumber": "SB00YAN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SB00YAN_0828.png"
+  },
+  {
+    "registrationNumber": "JH82YXU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JH82YXU_0829.png"
+  },
+  {
+    "registrationNumber": "OT38RWV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OT38RWV_0830.png"
+  },
+  {
+    "registrationNumber": "SP75JSM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SP75JSM_0831.png"
+  },
+  {
+    "registrationNumber": "BK02UFK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BK02UFK_0832.png"
+  },
+  {
+    "registrationNumber": "GA54TGN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GA54TGN_0833.png"
+  },
+  {
+    "registrationNumber": "RY67ZCG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RY67ZCG_0834.png"
+  },
+  {
+    "registrationNumber": "SD71MTZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SD71MTZ_0835.png"
+  },
+  {
+    "registrationNumber": "EC10UJT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EC10UJT_0836.png"
+  },
+  {
+    "registrationNumber": "MK34XJU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MK34XJU_0837.png"
+  },
+  {
+    "registrationNumber": "ZK78HNY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZK78HNY_0838.png"
+  },
+  {
+    "registrationNumber": "CJ66GRY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CJ66GRY_0839.png"
+  },
+  {
+    "registrationNumber": "HF05JJG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HF05JJG_0840.png"
+  },
+  {
+    "registrationNumber": "OM14RSF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OM14RSF_0841.png"
+  },
+  {
+    "registrationNumber": "YR35ZXL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YR35ZXL_0842.png"
+  },
+  {
+    "registrationNumber": "YT68OVR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YT68OVR_0843.png"
+  },
+  {
+    "registrationNumber": "SF56NKB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SF56NKB_0844.png"
+  },
+  {
+    "registrationNumber": "YK31MRJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YK31MRJ_0845.png"
+  },
+  {
+    "registrationNumber": "LY34FFA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LY34FFA_0846.png"
+  },
+  {
+    "registrationNumber": "UL65CDP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UL65CDP_0847.png"
+  },
+  {
+    "registrationNumber": "CE47APZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CE47APZ_0848.png"
+  },
+  {
+    "registrationNumber": "PF79BXV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PF79BXV_0849.png"
+  },
+  {
+    "registrationNumber": "DZ38JWC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DZ38JWC_0850.png"
+  },
+  {
+    "registrationNumber": "EL32JZE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EL32JZE_0851.png"
+  },
+  {
+    "registrationNumber": "EL40TZO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EL40TZO_0852.png"
+  },
+  {
+    "registrationNumber": "ER25NJP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ER25NJP_0853.png"
+  },
+  {
+    "registrationNumber": "SR40KMD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SR40KMD_0854.png"
+  },
+  {
+    "registrationNumber": "YZ03ANC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YZ03ANC_0855.png"
+  },
+  {
+    "registrationNumber": "PS74VVZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PS74VVZ_0856.png"
+  },
+  {
+    "registrationNumber": "WD38RSB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WD38RSB_0857.png"
+  },
+  {
+    "registrationNumber": "PA22WEM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PA22WEM_0858.png"
+  },
+  {
+    "registrationNumber": "NX71KNY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NX71KNY_0859.png"
+  },
+  {
+    "registrationNumber": "CF87XWC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CF87XWC_0860.png"
+  },
+  {
+    "registrationNumber": "MW54RHK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MW54RHK_0861.png"
+  },
+  {
+    "registrationNumber": "OL76HOV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OL76HOV_0862.png"
+  },
+  {
+    "registrationNumber": "RX01GOF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RX01GOF_0863.png"
+  },
+  {
+    "registrationNumber": "PX34ZPZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PX34ZPZ_0864.png"
+  },
+  {
+    "registrationNumber": "EY09BXG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EY09BXG_0865.png"
+  },
+  {
+    "registrationNumber": "WV69VRJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WV69VRJ_0866.png"
+  },
+  {
+    "registrationNumber": "TW74FRR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TW74FRR_0867.png"
+  },
+  {
+    "registrationNumber": "ZM73AHL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZM73AHL_0868.png"
+  },
+  {
+    "registrationNumber": "FM46JZA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FM46JZA_0869.png"
+  },
+  {
+    "registrationNumber": "RD29CUL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RD29CUL_0870.png"
+  },
+  {
+    "registrationNumber": "EP00WCF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EP00WCF_0871.png"
+  },
+  {
+    "registrationNumber": "VB96WLS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VB96WLS_0872.png"
+  },
+  {
+    "registrationNumber": "KR98VPW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KR98VPW_0873.png"
+  },
+  {
+    "registrationNumber": "DS66BVE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DS66BVE_0874.png"
+  },
+  {
+    "registrationNumber": "PW82ZYO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PW82ZYO_0875.png"
+  },
+  {
+    "registrationNumber": "MN70KMV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MN70KMV_0876.png"
+  },
+  {
+    "registrationNumber": "GR63PXX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GR63PXX_0877.png"
+  },
+  {
+    "registrationNumber": "XK63PFA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XK63PFA_0878.png"
+  },
+  {
+    "registrationNumber": "MY35JSG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MY35JSG_0879.png"
+  },
+  {
+    "registrationNumber": "VH20TRE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VH20TRE_0880.png"
+  },
+  {
+    "registrationNumber": "HW48SEP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HW48SEP_0881.png"
+  },
+  {
+    "registrationNumber": "OL75YEO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OL75YEO_0882.png"
+  },
+  {
+    "registrationNumber": "UG36FWE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UG36FWE_0883.png"
+  },
+  {
+    "registrationNumber": "WU57RSA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WU57RSA_0884.png"
+  },
+  {
+    "registrationNumber": "UZ50CUJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UZ50CUJ_0885.png"
+  },
+  {
+    "registrationNumber": "UZ65SVN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UZ65SVN_0886.png"
+  },
+  {
+    "registrationNumber": "ET05CEH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ET05CEH_0887.png"
+  },
+  {
+    "registrationNumber": "DB41MMU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DB41MMU_0888.png"
+  },
+  {
+    "registrationNumber": "WG49EDX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WG49EDX_0889.png"
+  },
+  {
+    "registrationNumber": "UW64UDV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UW64UDV_0890.png"
+  },
+  {
+    "registrationNumber": "HV61VBC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HV61VBC_0891.png"
+  },
+  {
+    "registrationNumber": "VV82ZXP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VV82ZXP_0892.png"
+  },
+  {
+    "registrationNumber": "VZ67EHY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VZ67EHY_0893.png"
+  },
+  {
+    "registrationNumber": "KR66SAV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KR66SAV_0894.png"
+  },
+  {
+    "registrationNumber": "OS68HYH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OS68HYH_0895.png"
+  },
+  {
+    "registrationNumber": "RK62LUD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RK62LUD_0896.png"
+  },
+  {
+    "registrationNumber": "DA82ATH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DA82ATH_0897.png"
+  },
+  {
+    "registrationNumber": "OZ68MVP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OZ68MVP_0898.png"
+  },
+  {
+    "registrationNumber": "OU03SAE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OU03SAE_0899.png"
+  },
+  {
+    "registrationNumber": "UV31RWG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UV31RWG_0900.png"
+  },
+  {
+    "registrationNumber": "CY61DRS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CY61DRS_0901.png"
+  },
+  {
+    "registrationNumber": "XE63YWY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XE63YWY_0902.png"
+  },
+  {
+    "registrationNumber": "UR60SKJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UR60SKJ_0903.png"
+  },
+  {
+    "registrationNumber": "RY24OTT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/RY24OTT_0904.png"
+  },
+  {
+    "registrationNumber": "VE71FBK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VE71FBK_0905.png"
+  },
+  {
+    "registrationNumber": "PR63YOF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PR63YOF_0906.png"
+  },
+  {
+    "registrationNumber": "YF47LDL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YF47LDL_0907.png"
+  },
+  {
+    "registrationNumber": "DX60OEM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DX60OEM_0908.png"
+  },
+  {
+    "registrationNumber": "PE46MOZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PE46MOZ_0909.png"
+  },
+  {
+    "registrationNumber": "LG44UCX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LG44UCX_0910.png"
+  },
+  {
+    "registrationNumber": "NN49UKV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NN49UKV_0911.png"
+  },
+  {
+    "registrationNumber": "LJ36AXV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LJ36AXV_0912.png"
+  },
+  {
+    "registrationNumber": "FB00GGB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FB00GGB_0913.png"
+  },
+  {
+    "registrationNumber": "AM73YOO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AM73YOO_0914.png"
+  },
+  {
+    "registrationNumber": "WL87OTF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WL87OTF_0915.png"
+  },
+  {
+    "registrationNumber": "BR03WCM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BR03WCM_0916.png"
+  },
+  {
+    "registrationNumber": "AK57KPA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AK57KPA_0917.png"
+  },
+  {
+    "registrationNumber": "TR81FKB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TR81FKB_0918.png"
+  },
+  {
+    "registrationNumber": "KH40EYD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KH40EYD_0919.png"
+  },
+  {
+    "registrationNumber": "DK09HVR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DK09HVR_0920.png"
+  },
+  {
+    "registrationNumber": "EZ41XOB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EZ41XOB_0921.png"
+  },
+  {
+    "registrationNumber": "BW15CNY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BW15CNY_0922.png"
+  },
+  {
+    "registrationNumber": "KE07KWD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KE07KWD_0923.png"
+  },
+  {
+    "registrationNumber": "XE10DJX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XE10DJX_0924.png"
+  },
+  {
+    "registrationNumber": "OS14TYA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OS14TYA_0925.png"
+  },
+  {
+    "registrationNumber": "MK14XTS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MK14XTS_0926.png"
+  },
+  {
+    "registrationNumber": "XG68MCZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XG68MCZ_0927.png"
+  },
+  {
+    "registrationNumber": "YC44NLH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YC44NLH_0928.png"
+  },
+  {
+    "registrationNumber": "PP76BBR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PP76BBR_0929.png"
+  },
+  {
+    "registrationNumber": "KY95MKL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KY95MKL_0930.png"
+  },
+  {
+    "registrationNumber": "TJ92CYP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TJ92CYP_0931.png"
+  },
+  {
+    "registrationNumber": "KS29GZX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KS29GZX_0932.png"
+  },
+  {
+    "registrationNumber": "BX85NLZ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BX85NLZ_0933.png"
+  },
+  {
+    "registrationNumber": "CX11JBG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CX11JBG_0934.png"
+  },
+  {
+    "registrationNumber": "EE99SYG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EE99SYG_0935.png"
+  },
+  {
+    "registrationNumber": "MX02CGU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MX02CGU_0936.png"
+  },
+  {
+    "registrationNumber": "KE66DFD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/KE66DFD_0937.png"
+  },
+  {
+    "registrationNumber": "SH39BMJ",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SH39BMJ_0938.png"
+  },
+  {
+    "registrationNumber": "HC60RLX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HC60RLX_0939.png"
+  },
+  {
+    "registrationNumber": "UT26JPR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UT26JPR_0940.png"
+  },
+  {
+    "registrationNumber": "PK89EVT",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PK89EVT_0941.png"
+  },
+  {
+    "registrationNumber": "YF19PZC",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YF19PZC_0942.png"
+  },
+  {
+    "registrationNumber": "ND39PWX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ND39PWX_0943.png"
+  },
+  {
+    "registrationNumber": "ZT14FEB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZT14FEB_0944.png"
+  },
+  {
+    "registrationNumber": "AJ26PML",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AJ26PML_0945.png"
+  },
+  {
+    "registrationNumber": "NN53DLE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NN53DLE_0946.png"
+  },
+  {
+    "registrationNumber": "CD78TBU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CD78TBU_0947.png"
+  },
+  {
+    "registrationNumber": "ZO56COM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZO56COM_0948.png"
+  },
+  {
+    "registrationNumber": "PX91EHO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/PX91EHO_0949.png"
+  },
+  {
+    "registrationNumber": "HM94VWL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HM94VWL_0950.png"
+  },
+  {
+    "registrationNumber": "GE28UZE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GE28UZE_0951.png"
+  },
+  {
+    "registrationNumber": "JR24ACB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/JR24ACB_0952.png"
+  },
+  {
+    "registrationNumber": "WT79BJS",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WT79BJS_0953.png"
+  },
+  {
+    "registrationNumber": "NB35FWF",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NB35FWF_0954.png"
+  },
+  {
+    "registrationNumber": "FS84TYU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FS84TYU_0955.png"
+  },
+  {
+    "registrationNumber": "GX79KNM",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GX79KNM_0956.png"
+  },
+  {
+    "registrationNumber": "NF79NNX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NF79NNX_0957.png"
+  },
+  {
+    "registrationNumber": "VA51ACR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VA51ACR_0958.png"
+  },
+  {
+    "registrationNumber": "BK29GCY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BK29GCY_0959.png"
+  },
+  {
+    "registrationNumber": "ZY52TRW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/ZY52TRW_0960.png"
+  },
+  {
+    "registrationNumber": "YS97YXU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YS97YXU_0961.png"
+  },
+  {
+    "registrationNumber": "XS42TBB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/XS42TBB_0962.png"
+  },
+  {
+    "registrationNumber": "HR52SBN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HR52SBN_0963.png"
+  },
+  {
+    "registrationNumber": "SS65NBL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SS65NBL_0964.png"
+  },
+  {
+    "registrationNumber": "BZ03AJH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BZ03AJH_0965.png"
+  },
+  {
+    "registrationNumber": "YP15UXV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YP15UXV_0966.png"
+  },
+  {
+    "registrationNumber": "NL68EEH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NL68EEH_0967.png"
+  },
+  {
+    "registrationNumber": "SO63JGU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SO63JGU_0968.png"
+  },
+  {
+    "registrationNumber": "GV35ADP",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GV35ADP_0969.png"
+  },
+  {
+    "registrationNumber": "BB05YPN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BB05YPN_0970.png"
+  },
+  {
+    "registrationNumber": "FS15DLO",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FS15DLO_0971.png"
+  },
+  {
+    "registrationNumber": "NE04YPK",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/NE04YPK_0972.png"
+  },
+  {
+    "registrationNumber": "DO00PDL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DO00PDL_0973.png"
+  },
+  {
+    "registrationNumber": "GC00MFN",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/GC00MFN_0974.png"
+  },
+  {
+    "registrationNumber": "AE33YCE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/AE33YCE_0975.png"
+  },
+  {
+    "registrationNumber": "LK65YAG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LK65YAG_0976.png"
+  },
+  {
+    "registrationNumber": "WC66RCD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/WC66RCD_0977.png"
+  },
+  {
+    "registrationNumber": "DB40ZBE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/DB40ZBE_0978.png"
+  },
+  {
+    "registrationNumber": "VH23SJA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VH23SJA_0979.png"
+  },
+  {
+    "registrationNumber": "FM49CXA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FM49CXA_0980.png"
+  },
+  {
+    "registrationNumber": "CZ24JRU",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CZ24JRU_0981.png"
+  },
+  {
+    "registrationNumber": "CS03RFL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/CS03RFL_0982.png"
+  },
+  {
+    "registrationNumber": "BL91EBW",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/BL91EBW_0983.png"
+  },
+  {
+    "registrationNumber": "OU82ZYR",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/OU82ZYR_0984.png"
+  },
+  {
+    "registrationNumber": "SU66SNL",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SU66SNL_0985.png"
+  },
+  {
+    "registrationNumber": "EJ82EBG",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/EJ82EBG_0986.png"
+  },
+  {
+    "registrationNumber": "VJ30RAD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/VJ30RAD_0987.png"
+  },
+  {
+    "registrationNumber": "HS34YYH",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HS34YYH_0988.png"
+  },
+  {
+    "registrationNumber": "LD00RWA",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/LD00RWA_0989.png"
+  },
+  {
+    "registrationNumber": "HA85OVD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HA85OVD_0990.png"
+  },
+  {
+    "registrationNumber": "HA23JVX",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/HA23JVX_0991.png"
+  },
+  {
+    "registrationNumber": "TM21XTD",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TM21XTD_0992.png"
+  },
+  {
+    "registrationNumber": "YW45KJV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YW45KJV_0993.png"
+  },
+  {
+    "registrationNumber": "MP97HMY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/MP97HMY_0994.png"
+  },
+  {
+    "registrationNumber": "YH91EUV",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/YH91EUV_0995.png"
+  },
+  {
+    "registrationNumber": "FU82YFE",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/FU82YFE_0996.png"
+  },
+  {
+    "registrationNumber": "UF55LME",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/UF55LME_0997.png"
+  },
+  {
+    "registrationNumber": "TD29SNY",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/TD29SNY_0998.png"
+  },
+  {
+    "registrationNumber": "SJ63JBB",
+    "imagePath": "/Users/abbiemaytum/ValueVision/backend/data/synthetic-uk-plates/SJ63JBB_0999.png"
+  }
+]

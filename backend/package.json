@@ -1,0 +1,33 @@
+{
+  "name": "valuevision-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "daemon:start": "bash ./daemon-start.sh",
+    "daemon:stop": "bash ./daemon-stop.sh",
+    "daemon:status": "bash ./daemon-status.sh",
+    "cost:lean": "bash ./scripts/set-cost-mode.sh lean",
+    "cost:full": "bash ./scripts/set-cost-mode.sh full",
+    "smoke:uk": "node ./scripts/smoke-uk-status.js",
+    "benchmark:uk-plates": "node ./scripts/benchmark-uk-plates.js",
+    "benchmark:items-uk": "node ./scripts/benchmark-items-uk.js",
+    "launch:gate": "bash ./scripts/launch-gate.sh",
+    "launch:gate:quick": "bash ./scripts/launch-gate.sh quick",
+    "generate:synthetic-uk-plates": "python3 ./scripts/generate-synthetic-uk-plates.py --count 1000",
+    "benchmark:uk-plate-scan": "node ./scripts/benchmark-uk-plate-scan.js",
+    "import:sold-cars": "node ./scripts/import-sold-car-data.js",
+    "benchmark:cars": "node ./scripts/benchmark-cars.js",
+    "env:check": "node ./scripts/check-production-env.js",
+    "launch:status": "node ./scripts/launch-status.js",
+    "env:set-prod": "bash ./scripts/set-production-env.sh"
+  },
+  "dependencies": {
+    "@google-cloud/vision": "^4.0.2",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}
