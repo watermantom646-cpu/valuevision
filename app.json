@@ -3,11 +3,13 @@
     "name": "ValueVision",
     "slug": "ValueVision",
     "version": "1.0.0",
+    "icon": "./assets/images/icon.png",
     "scheme": "valuevision",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "icon": "./assets/images/icon.png",
       "bundleIdentifier": "com.abbiemaytum.valuevision",
       "buildNumber": "1",
       "supportsTablet": true,

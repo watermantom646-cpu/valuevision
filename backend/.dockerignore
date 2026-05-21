@@ -3,5 +3,12 @@ npm-debug.log
 .env
 .env.*
 *.bak
-data
 *.log
+
+# Keep the production image lean, but include the curated pricing datasets.
+data/*
+!data/car-sold-comps.jsonl
+!data/manual-sold-comps.jsonl
+!data/uk-model-baseline.json
+!data/uk-plate-benchmark.json
+!data/uk-plate-scan-benchmark.json

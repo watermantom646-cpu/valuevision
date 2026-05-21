@@ -3430,8 +3430,7 @@ function lookupManualSoldComps({ category, query, region = "uk", limit = 60 }) {
         if (strictMatchCategory) {
           return (
             x.overlap >= 2 ||
-            (x.modelBoost > 0 && x.overlap >= 1) ||
-            (x.brandBoost > 0 && x.overlap >= 1)
+            (x.modelBoost > 0 && x.overlap >= 1)
           );
         }
         return x.score >= minScore;
@@ -3822,8 +3821,10 @@ function applyCollectibleFloorGuard({ query, category, region, low, median, high
   const anchor = queryFallbackAnchor({ query, category, region });
   if (!anchor || !Number.isFinite(Number(anchor.median)) || Number(anchor.median) <= 0) return null;
 
+  const coinLike =
+    /\b(coin|50p|fifty p|2 pound|two pound|pound coin|banknote|note)\b/.test(q);
   const rareCoin =
-    /\b(coin|50p|fifty p|2 pound|two pound|pound coin|banknote|note)\b/.test(q) &&
+    coinLike &&
     /\b(rare|kew gardens|olympic|beatrix potter|error coin|minting error|proof|uncirculated|silver)\b/.test(q);
   const rareBook =
     /\b(book|novel|paperback|hardcover|isbn)\b/.test(q) &&
@@ -3831,6 +3832,15 @@ function applyCollectibleFloorGuard({ query, category, region, low, median, high
   const specimen =
     /\b(rock|mineral|crystal|gemstone|fossil|geode|quartz)\b/.test(q) &&
     /\b(rare|museum|large|polished|collector|natural)\b/.test(q);
+
+  if (coinLike && !rareCoin && Number(median) > Number(anchor.median) * 4) {
+    return {
+      low: Number(anchor.low),
+      median: Number(anchor.median),
+      high: Number(anchor.high),
+      reason: "ordinary coin outlier cap guard",
+    };
+  }
 
   let floor = null;
   let reason = "";
