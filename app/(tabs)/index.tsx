@@ -67,7 +67,20 @@ export default function HomeScreen() {
 
           <View style={styles.priceStrip}>
             <Text style={styles.priceStripText}>
-              {`Item scan from ${formatGbp(LaunchPricing.aiScanFromGbp)} • Car valuation from ${formatGbp(LaunchPricing.carValuationFromGbp)} • Full car check ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)}`}
+              {`Free download • Monthly access ${formatGbp(LaunchPricing.monthlySubscriptionGbp)}/month • Full car check ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)}`}
+            </Text>
+          </View>
+          <View style={styles.subscriptionCard}>
+            <Text style={styles.subscriptionTitle}>{LaunchPricing.monthlySubscriptionName}</Text>
+            <Text style={styles.subscriptionPrice}>{`${formatGbp(LaunchPricing.monthlySubscriptionGbp)} / month`}</Text>
+            <Text style={styles.subscriptionText}>
+              Paid scans and valuation tools are protected so live vehicle-data costs only run after paid access is unlocked.
+            </Text>
+          </View>
+          <View style={styles.oneOffCard}>
+            <Text style={styles.oneOffTitle}>One-off car checks</Text>
+            <Text style={styles.oneOffLine}>
+              {`Car valuation ${formatGbp(LaunchPricing.carValuationFromGbp)} • Full check ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)} • ${LaunchPricing.fullCarCheckBundleChecks}-pack ${formatGbp(LaunchPricing.fullCarCheckBundleGbp)}`}
             </Text>
           </View>
           <Text style={styles.marketContextText}>Values are shown as current resale estimates, with new-retail context where available.</Text>
@@ -235,6 +248,55 @@ const styles = StyleSheet.create({
     color: "#aac3e7",
     fontSize: 12,
     lineHeight: 17,
+  },
+  subscriptionCard: {
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "#5eead4",
+    backgroundColor: "rgba(20, 184, 166, 0.14)",
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    gap: 3,
+  },
+  subscriptionTitle: {
+    color: "#ccfbf1",
+    fontSize: 12,
+    fontWeight: "900",
+    letterSpacing: 0.4,
+    textTransform: "uppercase",
+  },
+  subscriptionPrice: {
+    color: "#f8fbff",
+    fontSize: 20,
+    fontWeight: "900",
+  },
+  subscriptionText: {
+    color: "#b9f5ea",
+    fontSize: 12,
+    lineHeight: 17,
+    fontWeight: "600",
+  },
+  oneOffCard: {
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#335780",
+    backgroundColor: "#0d2541",
+    paddingHorizontal: 10,
+    paddingVertical: 9,
+    gap: 3,
+  },
+  oneOffTitle: {
+    color: "#f5fbff",
+    fontSize: 12,
+    fontWeight: "900",
+    textTransform: "uppercase",
+    letterSpacing: 0.4,
+  },
+  oneOffLine: {
+    color: "#d7e8ff",
+    fontSize: 12,
+    lineHeight: 17,
+    fontWeight: "700",
   },
   howCard: {
     borderRadius: 12,

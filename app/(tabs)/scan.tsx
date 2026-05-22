@@ -2197,10 +2197,16 @@ export function ScanScreen({
         )}
         {tinyMvp && vehicleOnly ? (
           <View style={styles.fullCarPriceCard}>
-            <Text style={styles.fullCarPriceTitle}>Full Car Check Pricing</Text>
+            <Text style={styles.fullCarPriceTitle}>Paid Access Pricing</Text>
+            <Text style={styles.fullCarPriceText}>
+              {`Monthly access: ${formatGbp(LaunchPricing.monthlySubscriptionGbp)}/month`}
+            </Text>
             <Text style={styles.fullCarPriceText}>{`Single check: ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)}`}</Text>
             <Text style={styles.fullCarPriceText}>
               {`Bundle (${LaunchPricing.fullCarCheckBundleChecks} checks): ${formatGbp(LaunchPricing.fullCarCheckBundleGbp)}`}
+            </Text>
+            <Text style={styles.fullCarPriceMeta}>
+              {`Car valuation only: ${formatGbp(LaunchPricing.carValuationFromGbp)}`}
             </Text>
             <Text style={styles.fullCarPriceMeta}>
               {`Paid mode: ${paidAccessMode} • Guard: ${paidGuardEnforced ? "on" : "off"}`}
@@ -2321,9 +2327,19 @@ export function ScanScreen({
 
       {tinyMvp ? null : (
       <View style={[styles.proCard, isCompact && styles.proCardCompact]}>
-        <Text style={styles.proTitle}>ValueVision Pro</Text>
-        <Text style={[styles.proPrice, isCompact && styles.proPriceCompact]}>£7 / month</Text>
-        <Text style={styles.proText}>Unlimited live scans, profit insights, and smart sell recommendations.</Text>
+        <Text style={styles.proTitle}>{LaunchPricing.monthlySubscriptionName}</Text>
+        <Text style={[styles.proPrice, isCompact && styles.proPriceCompact]}>
+          {`${formatGbp(LaunchPricing.monthlySubscriptionGbp)} / month`}
+        </Text>
+        <Text style={styles.proText}>
+          Monthly access to paid scans, valuation tools, profit insights, and smart sell recommendations.
+        </Text>
+        <Text style={styles.proFinePrint}>
+          Live vehicle checks stay protected and fair-use controlled so launch costs cannot run away.
+        </Text>
+        <Text style={styles.proFinePrint}>
+          One-off car checks: valuation {formatGbp(LaunchPricing.carValuationFromGbp)}, full check {formatGbp(LaunchPricing.fullCarCheckSingleGbp)}, {LaunchPricing.fullCarCheckBundleChecks}-pack {formatGbp(LaunchPricing.fullCarCheckBundleGbp)}.
+        </Text>
       </View>
       )}
 
@@ -3645,9 +3661,11 @@ export default function DefaultScanScreen() {
   let presetSubtitle: string | undefined;
   if (fullCarOnly) {
     presetTitle = "Full Car Check";
-    presetSubtitle = `Complete vehicle checks and valuation. Price: ${formatGbp(
+    presetSubtitle = `Complete vehicle checks and valuation. Monthly access ${formatGbp(
+      LaunchPricing.monthlySubscriptionGbp
+    )}/month. Single check ${formatGbp(
       LaunchPricing.fullCarCheckSingleGbp
-    )} single check or ${LaunchPricing.fullCarCheckBundleChecks} checks for ${formatGbp(LaunchPricing.fullCarCheckBundleGbp)}.`;
+    )} or ${LaunchPricing.fullCarCheckBundleChecks} checks for ${formatGbp(LaunchPricing.fullCarCheckBundleGbp)}.`;
   } else if (vehicleOnly) {
     presetTitle = "Car Mode";
     presetSubtitle = "Scan number plates, pull MOT/tax checks, and value vehicles in one flow.";
@@ -3995,6 +4013,11 @@ const styles = StyleSheet.create({
   proText: {
     color: AppTheme.textSecondary,
     fontSize: 13,
+  },
+  proFinePrint: {
+    color: AppTheme.textSecondary,
+    fontSize: 11,
+    lineHeight: 15,
   },
   card: {
     gap: 8,
