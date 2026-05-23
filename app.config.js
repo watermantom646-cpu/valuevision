@@ -10,8 +10,19 @@ if (publicApiBase) {
   expo.extra.apiBase = publicApiBase.replace(/\/+$/, "");
 }
 
+expo.plugins = expo.plugins || [];
+const hasExpoIapPlugin = expo.plugins.some((plugin) => {
+  if (Array.isArray(plugin)) return plugin[0] === "expo-iap";
+  return plugin === "expo-iap";
+});
+if (!hasExpoIapPlugin) {
+  expo.plugins.push("expo-iap");
+}
+
+expo.ios = expo.ios || {};
+expo.ios.deploymentTarget = expo.ios.deploymentTarget || "15.0";
+
 if (isProductionBuild) {
-  expo.ios = expo.ios || {};
   expo.ios.infoPlist = expo.ios.infoPlist || {};
   expo.ios.infoPlist.NSAppTransportSecurity = {
     ...(expo.ios.infoPlist.NSAppTransportSecurity || {}),

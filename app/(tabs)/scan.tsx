@@ -2199,6 +2199,9 @@ export function ScanScreen({
           <View style={styles.fullCarPriceCard}>
             <Text style={styles.fullCarPriceTitle}>Paid Access Pricing</Text>
             <Text style={styles.fullCarPriceText}>
+              {`${LaunchPricing.freeStarterScans} free starter item scans included before monthly access.`}
+            </Text>
+            <Text style={styles.fullCarPriceText}>
               {`Monthly access: ${formatGbp(LaunchPricing.monthlySubscriptionGbp)}/month`}
             </Text>
             <Text style={styles.fullCarPriceText}>{`Single check: ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)}`}</Text>
@@ -2216,7 +2219,7 @@ export function ScanScreen({
             </Text>
             {paidGuardLockedForVehicle ? (
               <Text style={styles.fullCarPriceMetaWarn}>
-                Unlock required for live paid vehicle checks in this app session.
+                Full paid vehicle checks stay protected until Apple purchase access is unlocked.
               </Text>
             ) : null}
             {blockedPaidAttemptsToday > 0 ? (

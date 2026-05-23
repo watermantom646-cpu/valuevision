@@ -67,7 +67,13 @@ export default function HomeScreen() {
 
           <View style={styles.priceStrip}>
             <Text style={styles.priceStripText}>
-              {`Free download • Monthly access ${formatGbp(LaunchPricing.monthlySubscriptionGbp)}/month • Full car check ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)}`}
+              {`Free download • ${LaunchPricing.freeStarterScans} starter scans • Monthly access ${formatGbp(LaunchPricing.monthlySubscriptionGbp)}/month`}
+            </Text>
+          </View>
+          <View style={styles.oneOffCard}>
+            <Text style={styles.oneOffTitle}>Try before you pay</Text>
+            <Text style={styles.oneOffLine}>
+              {`${LaunchPricing.freeStarterScans} basic Anything Mode scans are included so users can test item valuations before buying paid checks.`}
             </Text>
           </View>
           <View style={styles.subscriptionCard}>

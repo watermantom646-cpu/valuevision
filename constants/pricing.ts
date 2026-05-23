@@ -12,6 +12,7 @@ export const LaunchPricing = {
   fullCarCheckSingleGbp: 5.99,
   fullCarCheckBundleChecks: 3,
   fullCarCheckBundleGbp: 15.99,
+  freeStarterScans: 3,
   freeTrialDays: 0,
 } as const;
 
