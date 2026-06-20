@@ -442,6 +442,7 @@ type UkVehicleStatus = {
 
 type ScanScreenProps = {
   vehicleOnly?: boolean;
+  itemsOnly?: boolean;
   fullCarOnly?: boolean;
   presetCategory?: ScanCategory;
   presetTitle?: string;
@@ -451,6 +452,7 @@ type ScanScreenProps = {
 
 export function ScanScreen({
   vehicleOnly = false,
+  itemsOnly = false,
   fullCarOnly = false,
   presetCategory,
   presetTitle,
@@ -922,6 +924,7 @@ export function ScanScreen({
         form.append("vehicleMods", vehicleMods.trim());
         form.append("vehicleKnownFaults", vehicleKnownFaults.trim());
         form.append("fullCarCheck", fullCarOnly ? "1" : "0");
+        form.append("itemOnly", itemsOnly ? "1" : "0");
         form.append("stage", stage);
 
         const { base, resp: r } = await tryFetchWithApiFallback(
@@ -966,7 +969,7 @@ export function ScanScreen({
         clearTimeout(timeoutId);
       }
     },
-    [itemQuery, condition, conditionTier, composedConditionNotes, quickMode, liveMode, buyPrice, category, region, vehicleYear, vehicleMileage, vehicleReg, vehicleMake, vehicleModel, vehicleFuelType, vehicleTransmission, vehicleTrim, vehicleServiceHistory, vehicleOwners, vehicleAccidentFlags, vehicleMods, vehicleKnownFaults, fullCarOnly, tryFetchWithApiFallback]
+    [itemQuery, condition, conditionTier, composedConditionNotes, quickMode, liveMode, buyPrice, category, region, vehicleYear, vehicleMileage, vehicleReg, vehicleMake, vehicleModel, vehicleFuelType, vehicleTransmission, vehicleTrim, vehicleServiceHistory, vehicleOwners, vehicleAccidentFlags, vehicleMods, vehicleKnownFaults, fullCarOnly, itemsOnly, tryFetchWithApiFallback]
   );
 
   const analyze = useCallback(
@@ -1911,6 +1914,10 @@ export function ScanScreen({
 
   const improveResult = useCallback(() => {
     const detected = data?.pricing?.autoDetectedQuery?.trim();
+    if (itemsOnly && data?.pricing?.category === "vehicle") {
+      router.push("/car-mode" as any);
+      return;
+    }
     if (detected && !itemQuery.trim()) {
       setItemQuery(detected);
     }
@@ -1923,7 +1930,8 @@ export function ScanScreen({
     }
     setQuickMode(false);
     setShowAdvanced(true);
-  }, [data, itemQuery]);
+    setShowQuickDetailsModal(true);
+  }, [data, itemQuery, itemsOnly, router]);
 
   const categoryInsight = useMemo(() => {
     if (!data?.pricing?.ok) return null;
@@ -3110,10 +3118,10 @@ export function ScanScreen({
           <Pressable style={styles.detailsToggleBtn} onPress={() => setShowResultDetails((v) => !v)}>
             <Text style={styles.detailsToggleText}>{showResultDetails ? "Hide details" : "Show more details"}</Text>
           </Pressable>
-          {isHoldResult ? (
+          {isHoldResult || lowTrustEstimate ? (
             <View style={styles.warnCardHold}>
               <Text style={styles.warnTitle}>Price not trustworthy yet</Text>
-              <Text style={styles.warnText}>Add more information, then scan again to unlock a reliable price.</Text>
+              <Text style={styles.warnText}>Answer one or two quick questions and ValueVision will revalue it.</Text>
               {(data?.pricing?.accuracyNextSteps?.length ? data.pricing.accuracyNextSteps : holdPrompts).map((p) => (
                 <Text key={p} style={styles.warnListItem}>• {p}</Text>
               ))}
@@ -3122,7 +3130,9 @@ export function ScanScreen({
               ))}
               <View style={[styles.warnActionRow, isCompact && styles.rowStack]}>
                 <Pressable style={styles.warnAction} onPress={improveResult}>
-                  <Text style={styles.warnActionText}>Add More Information</Text>
+                  <Text style={styles.warnActionText}>
+                    {itemsOnly && effectiveCategory === "vehicle" ? "Open Car Mode" : "Improve This Valuation"}
+                  </Text>
                 </Pressable>
                 <Pressable
                   style={styles.warnActionSecondary}
@@ -3136,22 +3146,6 @@ export function ScanScreen({
             <View style={styles.warnCardCaution}>
               <Text style={styles.warnTitle}>Use caution</Text>
               <Text style={styles.warnText}>Good starting estimate, but details can improve accuracy.</Text>
-            </View>
-          ) : null}
-          {lowTrustEstimate ? (
-            <View style={styles.warnCardLowTrust}>
-              <Text style={styles.warnTitle}>Low-trust estimate</Text>
-              <Text style={styles.warnText}>This range is fallback guidance only. Add details and scan again before relying on it.</Text>
-              <View style={[styles.warnActionRow, isCompact && styles.rowStack]}>
-                <Pressable style={styles.warnAction} onPress={improveResult}>
-                  <Text style={styles.warnActionText}>Add More Information</Text>
-                </Pressable>
-                <Pressable
-                  style={styles.warnActionSecondary}
-                  onPress={() => (imageUri ? analyze(imageUri) : takePhoto())}>
-                  <Text style={styles.warnActionSecondaryText}>Scan Again</Text>
-                </Pressable>
-              </View>
             </View>
           ) : null}
           {showResultDetails ? (
@@ -3604,8 +3598,14 @@ export function ScanScreen({
         onRequestClose={() => setShowQuickDetailsModal(false)}>
         <View style={styles.modalBackdrop}>
           <View style={styles.quickDetailsModalCard}>
-            <Text style={styles.modalTitle}>Optional Details</Text>
-            <Text style={styles.modalSubtitle}>Only add these if you want to tighten the price.</Text>
+            <Text style={styles.modalTitle}>
+              {isHoldResult || lowTrustEstimate ? "Improve This Valuation" : "Optional Details"}
+            </Text>
+            <Text style={styles.modalSubtitle}>
+              {isHoldResult || lowTrustEstimate
+                ? "Add the details you can see. Leave anything unknown blank."
+                : "Only add these if you want to tighten the price."}
+            </Text>
             <ScrollView contentContainerStyle={styles.quickDetailsModalContent}>
               <View style={styles.fieldCard}>
                 <Text style={styles.fieldTitle}>What item is this? (optional)</Text>
@@ -3629,6 +3629,38 @@ export function ScanScreen({
                   style={styles.inputCompact}
                 />
               </View>
+              {effectiveCategory === "collectible" ? (
+                <View style={styles.fieldCard}>
+                  <Text style={styles.fieldTitle}>Set, year or maker (optional)</Text>
+                  <TextInput
+                    value={collectibleSet}
+                    onChangeText={setCollectibleSet}
+                    placeholder="e.g. Base Set 1999, Royal Mint, maker's mark"
+                    placeholderTextColor={AppTheme.textSecondary}
+                    style={styles.inputCompact}
+                  />
+                  <Text style={styles.fieldTitle}>Grade or condition label (optional)</Text>
+                  <TextInput
+                    value={collectibleGrade}
+                    onChangeText={setCollectibleGrade}
+                    placeholder="e.g. PSA 9, ungraded, circulated"
+                    placeholderTextColor={AppTheme.textSecondary}
+                    style={styles.inputCompact}
+                  />
+                </View>
+              ) : null}
+              {effectiveCategory === "electronics" ? (
+                <View style={styles.fieldCard}>
+                  <Text style={styles.fieldTitle}>Model and specification (optional)</Text>
+                  <TextInput
+                    value={techSpecs}
+                    onChangeText={setTechSpecs}
+                    placeholder="e.g. 256GB, model number, battery health"
+                    placeholderTextColor={AppTheme.textSecondary}
+                    style={styles.inputCompact}
+                  />
+                </View>
+              ) : null}
               {shouldShowVehicleDetails ? (
                 <View style={styles.fieldCard}>
                   <Text style={styles.fieldTitle}>Registration (optional)</Text>
@@ -3660,8 +3692,17 @@ export function ScanScreen({
                 </View>
               ) : null}
             </ScrollView>
-            <Pressable style={styles.modalCloseBtn} onPress={() => setShowQuickDetailsModal(false)}>
-              <Text style={styles.modalCloseText}>Done</Text>
+            <Pressable
+              style={styles.modalCloseBtn}
+              onPress={() => {
+                setShowQuickDetailsModal(false);
+                if ((isHoldResult || lowTrustEstimate) && imageUri) {
+                  void analyze(imageUri);
+                }
+              }}>
+              <Text style={styles.modalCloseText}>
+                {isHoldResult || lowTrustEstimate ? "Revalue Item" : "Save Details"}
+              </Text>
             </Pressable>
           </View>
         </View>
@@ -3763,6 +3804,7 @@ export default function DefaultScanScreen() {
     <ScanScreen
       key={modeSessionKey}
       vehicleOnly={vehicleOnly}
+      itemsOnly={itemsOnly}
       fullCarOnly={fullCarOnly}
       presetCategory={vehicleOnly ? "vehicle" : itemsOnly ? "auto" : aiOnly ? "auto" : presetCategory}
       presetTitle={presetTitle}

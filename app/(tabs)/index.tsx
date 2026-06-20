@@ -80,11 +80,10 @@ export default function HomeScreen() {
           <View style={styles.modeRow}>
             <Pressable
               style={[styles.modeBtn, !FeatureFlags.carChecksAvailable && styles.modeBtnMuted]}
-              disabled={!FeatureFlags.carChecksAvailable}
-              onPress={() => router.push("/(tabs)/scan?mode=cars" as any)}>
+              onPress={() => router.push("/car-mode" as any)}>
               <Text style={styles.modeBtnTitle}>Car Mode</Text>
               <Text style={styles.modeBtnText}>
-                {FeatureFlags.carChecksAvailable ? "Plate, MOT and value checks" : "Temporarily unavailable"}
+                {FeatureFlags.carChecksAvailable ? "Plate, MOT and value checks" : "Open car hub • checks paused"}
               </Text>
             </Pressable>
             <Pressable style={styles.modeBtn} onPress={() => router.push("/(tabs)/history" as any)}>

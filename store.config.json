@@ -1,15 +1,48 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "1.0",
+    "version": "1.0.1",
+    "copyright": "2026 Thomas Waterman. All rights reserved.",
     "release": {
       "automaticRelease": true
     },
     "info": {
       "en-US": {
-        "title": "ValueVision"
+        "description": "ValueVision helps you identify and value almost anything from a photo.\n\nUse Anything Mode to scan:\n\n• Pokémon cards and other collectibles\n• Coins, banknotes, medals and vintage keepsakes\n• Antiques, books and homeware\n• Phones, consoles and other technology\n• Tools, fashion and everyday resale finds\n\nValueVision returns an estimated resale range and a clear confidence level. When the evidence is not strong enough for a reliable price, Improve This Valuation asks for useful details such as the maker, model, year, set, grade or condition before revaluing the item.\n\nEvery completed scan is saved to My Collection so you can review valuations later.\n\nHow it works:\n\n1. Take or upload one clear photo.\n2. ValueVision identifies the item and searches current market evidence.\n3. Get a resale estimate, confidence level and next best step.\n4. Add details when needed, then save or scan the next item.\n\nThe free download includes three starter item scans. A monthly subscription unlocks unlimited Anything Mode scans and Live Mode. Car Mode is included as a separate area, but paid car checks are temporarily paused and cannot be purchased in this version.\n\nValues are estimates based on available market data, not guaranteed sale prices, insurance valuations or formal appraisals.",
+        "keywords": [
+          "valuation",
+          "resale",
+          "price checker",
+          "scanner",
+          "pokemon cards",
+          "coins",
+          "collectibles",
+          "reseller",
+          "flipping"
+        ],
+        "releaseNotes": "A smoother ValueVision experience with a simplified three-tab layout, dedicated Anything Mode, clearer confidence guidance, improved item-pricing safeguards, a guided Improve This Valuation flow, and a cleaner My Collection.",
+        "marketingUrl": "https://valuevisionapp.com",
+        "supportUrl": "https://valuevisionapp.com",
+        "title": "ValueVision",
+        "subtitle": "Scan Anything. Know Its Value",
+        "privacyPolicyUrl": "https://valuevision-4kj3.onrender.com/privacy-policy",
+        "screenshots": {
+          "APP_IPHONE_65": [
+            "store/apple/current/en-US/APP_IPHONE_65/01_home.png",
+            "store/apple/current/en-US/APP_IPHONE_65/02_scan.png",
+            "store/apple/current/en-US/APP_IPHONE_65/03_car_mode.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/01_home.png",
+            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/02_scan.png",
+            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/03_car_mode.png"
+          ]
+        }
       }
     },
+    "categories": [
+      "UTILITIES"
+    ],
     "advisory": {
       "ageRatingOverride": "NONE",
       "alcoholTobaccoOrDrugUseOrReferences": "NONE",
@@ -28,7 +61,24 @@
       "unrestrictedWebAccess": false,
       "violenceCartoonOrFantasy": "NONE",
       "violenceRealistic": "NONE",
-      "violenceRealisticProlongedGraphicOrSadistic": "NONE"
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "advertising": false,
+      "ageAssurance": false,
+      "ageRatingOverrideV2": "NONE",
+      "developerAgeRatingInfoUrl": null,
+      "gunsOrOtherWeapons": "NONE",
+      "healthOrWellnessTopics": false,
+      "messagingAndChat": false,
+      "parentalControls": false,
+      "userGeneratedContent": false
+    },
+    "review": {
+      "firstName": "Thomas",
+      "lastName": "waterman",
+      "email": "watermantom646@gmail.com",
+      "phone": "+447539533639",
+      "demoRequired": false,
+      "notes": "No sign-in is required.\n\nReview steps:\n1. Open ValueVision and tap Anything Mode or the Scan tab.\n2. Take or upload a clear photo of a non-car item.\n3. Review the resale range and confidence guidance.\n4. If the result needs more evidence, tap Improve This Valuation, add any known details, and tap Revalue Item.\n5. Open My Collection to review saved scans.\n6. Open ValueVision Monthly to view the subscription product and Restore Purchases control.\n\nThe free download includes three starter item scans. Product ID ValueVision10 unlocks unlimited Anything Mode scans and Live Mode for £9.99 per month.\n\nCar Mode is visible as a separate hub, but car checks are temporarily paused. All car-check purchase controls are disabled and no car-check payment can be taken in this version.\n\nSupport URL: https://valuevision-4kj3.onrender.com\n"
     }
   }
 }

@@ -6385,6 +6385,7 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
     const requestedCategory = String(req.body?.category || "auto").trim().toLowerCase();
     const requestedRegion = String(req.body?.region || "uk").trim().toLowerCase();
     const wantsFullCarCheck = String(req.body?.fullCarCheck || "0") === "1";
+    const itemOnly = String(req.body?.itemOnly || "0") === "1";
     const buyPrice = Number(req.body?.buyPrice || 0) || null;
     const market = MARKET_CONFIG[requestedRegion] || MARKET_CONFIG.us;
     const autoCategory = detectCategory(manualItemQuery, labels);
@@ -6440,6 +6441,35 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
     }
     if (requestedCategory === "auto") {
       category = detectCategory(baseQuery, labels);
+    }
+    if (itemOnly && (category === "vehicle" || vehicleReg)) {
+      const provisional = buildProvisionalPricing({
+        query: baseQuery || manualItemQuery || "Vehicle detected",
+        category: "vehicle",
+        region: requestedRegion,
+        market,
+        conditionTier,
+        condition,
+        vehicleYear,
+        confidenceScore: 20,
+        reason: "This looks like a vehicle. Open Car Mode for vehicle-specific checks.",
+      });
+      provisional.low = null;
+      provisional.median = null;
+      provisional.high = null;
+      provisional.finalStatus = "needs_details";
+      provisional.confidence = { score: 20, label: "low" };
+      provisional.confidenceReasons = ["vehicle detected in Anything Mode"];
+      provisional.accuracyNextSteps = ["Open Car Mode for vehicle-specific checks"];
+      provisional.qualityGate = {
+        status: "hold",
+        score: 20,
+        metrics: { compCount: 0, sourceCount: 0, avgMatchScore: 0, spreadPct: 1 },
+        reasons: ["vehicle detected in Anything Mode"],
+      };
+      provisional.stage = stage;
+      provisional.refineRecommended = false;
+      return res.json({ labels, pricing: provisional });
     }
     const shouldGateVehicleProviderData =
       ENFORCE_PAID_ACCESS_FOR_VEHICLE_DATA &&
