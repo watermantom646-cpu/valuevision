@@ -6446,7 +6446,19 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
     if (requestedCategory === "auto") {
       category = detectCategory(baseQuery, labels);
     }
-    if (itemOnly && (category === "vehicle" || vehicleReg)) {
+    if (itemOnly && category !== "vehicle") {
+      // Product text such as "64GB" can resemble a registration after OCR cleanup.
+      // Anything Mode trusts the identified item category, not plate text alone.
+      vehicleReg = "";
+      vehicleRegDetected = null;
+      vehicleRegDetection = {
+        source: "none",
+        confidence: 0,
+        highConfidence: false,
+        ambiguous: false,
+      };
+    }
+    if (itemOnly && category === "vehicle") {
       const provisional = buildProvisionalPricing({
         query: baseQuery || manualItemQuery || "Vehicle detected",
         category: "vehicle",
@@ -6458,22 +6470,25 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
         confidenceScore: 20,
         reason: "This looks like a vehicle. Open Car Mode for vehicle-specific checks.",
       });
-      provisional.low = null;
-      provisional.median = null;
-      provisional.high = null;
-      provisional.finalStatus = "needs_details";
-      provisional.confidence = { score: 20, label: "low" };
-      provisional.confidenceReasons = ["vehicle detected in Anything Mode"];
-      provisional.accuracyNextSteps = ["Open Car Mode for vehicle-specific checks"];
-      provisional.qualityGate = {
+      const handoff = applyAccuracyHold(
+        provisional,
+        "This looks like a vehicle. Open Car Mode for vehicle-specific checks.",
+        "vehicle"
+      );
+      handoff.confidence = { score: 20, label: "low" };
+      handoff.confidenceReasons = ["vehicle detected in Anything Mode"];
+      handoff.accuracyNextSteps = ["Open Car Mode for vehicle-specific checks"];
+      handoff.qualityGate = {
         status: "hold",
         score: 20,
         metrics: { compCount: 0, sourceCount: 0, avgMatchScore: 0, spreadPct: 1 },
         reasons: ["vehicle detected in Anything Mode"],
       };
-      provisional.stage = stage;
-      provisional.refineRecommended = false;
-      return res.json({ labels, pricing: provisional });
+      handoff.recommendations = [];
+      handoff.comps = [];
+      handoff.stage = stage;
+      handoff.refineRecommended = false;
+      return res.json({ labels, pricing: handoff });
     }
     const shouldGateVehicleProviderData =
       ENFORCE_PAID_ACCESS_FOR_VEHICLE_DATA &&

@@ -1193,6 +1193,11 @@ export function ScanScreen({
         setStatus("Done");
         setBackendReachable(true);
         setBackendPulseAt(Date.now());
+        const isItemModeVehicleHandoff =
+          itemsOnly &&
+          String(finalData.pricing?.category || "").toLowerCase() === "vehicle" &&
+          String(finalData.pricing?.finalStatus || "").toLowerCase() === "needs_details";
+        if (isItemModeVehicleHandoff) return;
         const newId = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
         await addHistoryEntry({
           id: newId,
@@ -1290,6 +1295,7 @@ export function ScanScreen({
       category,
       vehicleReg,
       vehicleOnly,
+      itemsOnly,
       fullCarOnly,
       monetizationPolicy,
       effectiveApiBase,

@@ -12,6 +12,15 @@ const PAID_ACCESS_HEADER = String(process.env.PAID_ACCESS_HEADER || "x-valuevisi
 
 const CASES = [
   { q: "Apple iPad 9th gen 64GB WiFi", c: "electronics", min: 120, max: 260 },
+  {
+    q: "Apple iPad 9th Generation 64GB Wi-Fi Space Grey",
+    c: "auto",
+    itemOnly: true,
+    vehicleReg: "64GB",
+    expectedCategory: "electronics",
+    min: 120,
+    max: 260,
+  },
   { q: "Apple MacBook Air M1 256GB", c: "electronics", min: 350, max: 650 },
   { q: "Dell XPS 13 laptop i7 16GB 512GB", c: "electronics", min: 280, max: 700 },
   { q: "DeWalt DCD796 18V drill kit", c: "tools", min: 80, max: 190 },
@@ -36,6 +45,8 @@ async function runCase(row) {
     region: "uk",
     condition: "used",
     conditionTier: "good",
+    itemOnly: row.itemOnly ? "1" : "0",
+    vehicleReg: row.vehicleReg || "",
   };
   const headers = { "content-type": "application/json" };
   if (PAID_ACCESS_TOKEN && PAID_ACCESS_HEADER) {
@@ -59,7 +70,12 @@ async function runCase(row) {
         String(comp?.title || "").toLowerCase().includes(String(row.forbiddenComp).toLowerCase())
       )
     : false;
-  const safe = row.expectedStatus ? statusMatches && !hasForbiddenComp : usable && inRange;
+  const categoryMatches = row.expectedCategory
+    ? String(pricing.category || "") === row.expectedCategory
+    : true;
+  const safe = row.expectedStatus
+    ? statusMatches && !hasForbiddenComp && categoryMatches
+    : usable && inRange && categoryMatches;
 
   return {
     query: row.q,
@@ -71,6 +87,7 @@ async function runCase(row) {
     usable,
     inRange,
     statusMatches,
+    categoryMatches,
     hasForbiddenComp,
     safe,
   };
