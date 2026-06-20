@@ -1,6 +1,6 @@
 # eBay Developer Application Copy (ValueVision)
 
-Use the text below in your eBay developer forms/emails. Replace placeholders first.
+Use the text below in your eBay developer forms/emails. Replace any remaining public-contact details before submission if needed.
 
 ## 1) App Name
 
@@ -8,15 +8,15 @@ ValueVision
 
 ## 2) Company / Individual
 
-[Your Name or Company Name]
+ValueVision
 
 ## 3) Public URL
 
-[https://your-site-url.com]
+https://valuevisionapp.com
 
 ## 4) Support Contact
 
-[support@valuevisionapp.com]
+support@valuevisionapp.com
 
 ## 5) Product Description (Short)
 
@@ -92,4 +92,3 @@ Thank you,
 [Role]
 [Company]
 [Email]
-

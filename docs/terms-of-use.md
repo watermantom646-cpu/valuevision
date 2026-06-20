@@ -31,7 +31,7 @@ If accounts are enabled, you are responsible for maintaining account confidentia
 
 ## 6. Subscriptions and Billing
 
-If paid plans are offered (for example, £7/month):
+If paid plans are offered:
 
 - Fees, billing cycle, and renewal terms will be shown before purchase.
 - Subscriptions may auto-renew unless canceled before renewal.
@@ -61,7 +61,7 @@ We may suspend or terminate access for misuse, legal risk, or service protection
 
 ## 12. Governing Law
 
-These Terms are governed by the laws of **[Your Country/State]**, without regard to conflict-of-law principles.
+These Terms are governed by the laws applicable in the jurisdiction where the ValueVision operator is established, without regard to conflict-of-law principles.
 
 ## 13. Changes to Terms
 
@@ -69,7 +69,6 @@ We may update these Terms. We will update the "Last updated" date. Continued use
 
 ## 14. Contact
 
-- Name: **[Your Name or Company Name]**
-- Email: **[support@valuevisionapp.com]**
-- Address: **[Business Address]**
-
+- Name: **ValueVision**
+- Email: **support@valuevisionapp.com**
+- Address: **Business contact address available on request via support@valuevisionapp.com**

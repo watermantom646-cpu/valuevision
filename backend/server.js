@@ -9,7 +9,7 @@ const os = require("os");
 const path = require("path");
 const vision = require("@google-cloud/vision");
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 function envValue(name, fallback = "") {
   const raw = process.env[name];
@@ -2858,25 +2858,51 @@ function extractCollectibleAttributes(text) {
   const raw = String(text || "");
   const t = normalizeText(text);
   const year = extractYear(t);
-  const isCoin = /\b(coin|pound|pence|penny|cent|dollar|quarter)\b/.test(t);
+  const subtype = collectibleSubtype(t);
+  const isBanknote = subtype === "banknote";
+  const isCoin = subtype === "coin";
   let denomination = null;
-  if (/\b(one pound|1 pound|£1)\b/i.test(raw)) denomination = "one_pound";
-  else if (/\b(two pound|2 pound|£2)\b/i.test(raw)) denomination = "two_pound";
+  if (!isBanknote && /\b(one pound|1 pound|£1)\b/i.test(raw)) denomination = "one_pound";
+  else if (!isBanknote && /\b(two pound|2 pound|£2)\b/i.test(raw)) denomination = "two_pound";
   else if (/\b(50p|fifty pence)\b/i.test(raw)) denomination = "fifty_pence";
   else if (/\b(20p|twenty pence)\b/i.test(raw)) denomination = "twenty_pence";
   return {
     year,
     isCoin,
+    isBanknote,
+    subtype,
     denomination,
   };
 }
 
+function collectibleSubtype(text) {
+  const t = normalizeText(text);
+  if (/\b(pokemon|tcg|trading card|graded card|psa|bgs|cgc)\b/.test(t)) return "card";
+  if (
+    /\b(banknote|bank note|paper money|currency note|white note)\b/.test(t) ||
+    (/\b(note|notes)\b/.test(t) && /\b(bank|england|pound|sterling|currency)\b/.test(t))
+  ) {
+    return "banknote";
+  }
+  if (/\b(medal|medallion|militaria)\b/.test(t)) return "medal";
+  if (/\b(rifle|pistol|firearm|flintlock|musket|shotgun|revolver)\b/.test(t)) return "firearm";
+  if (/\b(book|isbn|first edition)\b/.test(t)) return "book";
+  if (/\b(coin|pence|penny|sovereign|cent|quarter)\b/.test(t)) return "coin";
+  return null;
+}
+
 function compMatchesCollectibleQuery(title, query) {
   const q = extractCollectibleAttributes(query);
-  if (!q.isCoin && !q.year && !q.denomination) return true;
+  if (!q.isCoin && !q.isBanknote && !q.year && !q.denomination && !q.subtype) return true;
   const rawTitle = String(title || "");
   const t = normalizeText(title);
+  const titleSubtype = collectibleSubtype(t);
+  if (q.subtype && titleSubtype && q.subtype !== titleSubtype) return false;
+  if (q.subtype && !titleSubtype && ["banknote", "coin", "card", "medal", "firearm"].includes(q.subtype)) {
+    return false;
+  }
   if (q.isCoin && !/\b(coin|pound|pence|penny|cent|dollar|quarter)\b/.test(t)) return false;
+  if (q.isBanknote && !/\b(banknote|bank note|paper money|currency note|note|notes)\b/.test(t)) return false;
   if (q.year && !new RegExp(`\\b${q.year}\\b`).test(t)) return false;
   if (q.denomination === "one_pound" && !/\b(one pound|1 pound|£1)\b/i.test(rawTitle)) return false;
   if (q.denomination === "two_pound" && !/\b(two pound|2 pound|£2)\b/i.test(rawTitle)) return false;
@@ -3413,6 +3439,16 @@ function lookupManualSoldComps({ category, query, region = "uk", limit = 60 }) {
   };
   const targetCurrency = currencyByRegion[targetRegion] || "GBP";
   const queryTokens = tokenize(query).slice(0, 8);
+  const queryNorm = normalizeText(query || "");
+  const collectibleCardLike =
+    categoryNorm === "collectible" &&
+    /\b(pokemon|psa|bgs|cgc|tcg|trading card|graded card)\b/.test(queryNorm);
+  const collectibleQuerySubtype =
+    categoryNorm === "collectible" ? collectibleSubtype(queryNorm) : null;
+  const collectibleGradeMatch = queryNorm.match(/\b(psa|bgs|cgc)\s?(\d(?:\.\d)?)\b/);
+  const collectibleGradeToken = collectibleGradeMatch
+    ? `${collectibleGradeMatch[1]} ${collectibleGradeMatch[2]}`
+    : "";
   const all = parseManualSoldCompsFile();
   let rows = all.filter((x) => x.category === categoryNorm || (categoryNorm === "general" && x.category));
   if (queryTokens.length) {
@@ -3427,6 +3463,21 @@ function lookupManualSoldComps({ category, query, region = "uk", limit = 60 }) {
         return { row: x, score: overlap + modelBoost + brandBoost, overlap, modelBoost, brandBoost };
       })
       .filter((x) => {
+        if (collectibleQuerySubtype) {
+          const rowSubtype = collectibleSubtype(
+            `${x.row.titleNorm} ${x.row.brandNorm} ${x.row.modelNorm}`
+          );
+          if (rowSubtype !== collectibleQuerySubtype) return false;
+        }
+        if (collectibleCardLike) {
+          const rowNorm = normalizeText(`${x.row.titleNorm} ${x.row.brandNorm} ${x.row.modelNorm}`);
+          const modelRequired = /\b(charizard|pikachu|blastoise|venusaur|lugia|mewtwo|gyarados|umbreon|rayquaza)\b/.test(queryNorm);
+          const exactModelMatch = x.modelBoost > 0;
+          const gradeMatches = collectibleGradeToken ? rowNorm.includes(collectibleGradeToken) : true;
+          if (modelRequired && !exactModelMatch) return false;
+          if (!gradeMatches) return false;
+          return x.overlap >= 3 || (exactModelMatch && x.overlap >= 2);
+        }
         if (strictMatchCategory) {
           return (
             x.overlap >= 2 ||
@@ -3511,6 +3562,9 @@ function blendEstimateWithSoldBenchmark({ low, median, high, soldSummary, catego
   }
   const count = Number(soldSummary.count || 0);
   const source = String(soldSummary.source || "").toLowerCase();
+  if (category === "collectible" && source === "manual" && count < 3) {
+    return { low, median, high, applied: false, factor: 1, reason: null };
+  }
   let soldWeight = Math.max(0.15, Math.min(0.55, count / 220));
   if (category === "vehicle" && source === "soldcartracker") {
     if (count >= 20) soldWeight = 0.82;
@@ -3519,7 +3573,10 @@ function blendEstimateWithSoldBenchmark({ low, median, high, soldSummary, catego
   }
   if (source === "manual") {
     if (category === "collectible") {
-      soldWeight = 1;
+      if (count >= 6) soldWeight = 0.72;
+      else if (count >= 4) soldWeight = 0.58;
+      else if (count >= 3) soldWeight = 0.44;
+      else soldWeight = 0.28;
     } else if (count >= 5) soldWeight = 0.97;
     else if (count >= 3) soldWeight = 0.9;
     else if (count >= 2) soldWeight = 0.82;
@@ -3756,6 +3813,56 @@ function queryFallbackAnchor({ query, category, region }) {
     });
   }
 
+  if (/\b(pokemon|psa|bgs|cgc|tcg|trading card|graded card)\b/.test(q)) {
+    const isCharizard = /\bcharizard\b/.test(q);
+    const isBaseSet = /\bbase set\b/.test(q);
+    const isFirstEdition = /\b1st edition|first edition\b/.test(q);
+    const gradeMatch = q.match(/\b(psa|bgs|cgc)\s?(\d(?:\.\d)?)\b/);
+    const gradeValue = gradeMatch?.[2] ? Number(gradeMatch[2]) : null;
+    if (isCharizard && isBaseSet && gradeValue === 9) {
+      return pack(isFirstEdition ? 4200 : 680, {
+        lowFactor: isFirstEdition ? 0.72 : 0.68,
+        highFactor: isFirstEdition ? 1.42 : 1.48,
+        confidenceScore: isFirstEdition ? 68 : 64,
+        reason: isFirstEdition ? "1st edition Charizard graded anchor" : "Base Set Charizard PSA 9 anchor",
+      });
+    }
+    if (isCharizard && gradeValue && gradeValue >= 8) {
+      return pack(320, {
+        lowFactor: 0.66,
+        highFactor: 1.55,
+        confidenceScore: 60,
+        reason: "graded Charizard card anchor",
+      });
+    }
+    if (gradeValue && gradeValue >= 8) {
+      return pack(85, {
+        lowFactor: 0.62,
+        highFactor: 1.7,
+        confidenceScore: 56,
+        reason: "graded trading card anchor",
+      });
+    }
+    return pack(24, {
+      lowFactor: 0.6,
+      highFactor: 1.8,
+      confidenceScore: 50,
+      reason: "collectible card anchor",
+    });
+  }
+
+  if (/\b(pocket watch|wristwatch|antique watch|vintage watch)\b/.test(q)) {
+    const luxuryWatch =
+      /\b(rolex|omega|cartier|patek|audemars|breitling|tag heuer)\b/.test(q);
+    const antiqueWatch = /\b(antique|victorian|edwardian|vintage|hallmarked|silver|gold)\b/.test(q);
+    return pack(luxuryWatch ? 1800 : antiqueWatch ? 145 : 90, {
+      lowFactor: luxuryWatch ? 0.7 : 0.58,
+      highFactor: luxuryWatch ? 1.5 : 1.82,
+      confidenceScore: luxuryWatch ? 62 : antiqueWatch ? 56 : 52,
+      reason: luxuryWatch ? "luxury watch resale anchor" : antiqueWatch ? "antique watch resale anchor" : "watch resale anchor",
+    });
+  }
+
   if (/\b(rock|mineral|crystal|gemstone|fossil|geode|quartz)\b/.test(q)) {
     const premiumSpecimen = /\b(rare|museum|large|polished|collector|natural)\b/.test(q);
     return pack(premiumSpecimen ? 45 : 18, {
@@ -3832,6 +3939,10 @@ function applyCollectibleFloorGuard({ query, category, region, low, median, high
   const specimen =
     /\b(rock|mineral|crystal|gemstone|fossil|geode|quartz)\b/.test(q) &&
     /\b(rare|museum|large|polished|collector|natural)\b/.test(q);
+  const gradedCard =
+    /\b(pokemon|psa|bgs|cgc|tcg|trading card|graded card)\b/.test(q);
+  const watchLike =
+    /\b(pocket watch|wristwatch|antique watch|vintage watch)\b/.test(q);
 
   if (coinLike && !rareCoin && Number(median) > Number(anchor.median) * 4) {
     return {
@@ -3853,6 +3964,12 @@ function applyCollectibleFloorGuard({ query, category, region, low, median, high
   } else if (specimen) {
     floor = Number(anchor.median) * 0.5;
     reason = "collector specimen floor guard";
+  } else if (gradedCard) {
+    floor = Number(anchor.median) * 0.52;
+    reason = "graded card floor guard";
+  } else if (watchLike) {
+    floor = Number(anchor.median) * 0.5;
+    reason = "watch floor guard";
   }
   if (!Number.isFinite(Number(floor)) || Number(floor) <= 0) return null;
   if (Number(median) >= Number(floor)) return null;
@@ -3933,6 +4050,13 @@ function applyQueryFallbackPricing({
     vehicleYear: null,
     currencySymbol: market.symbol,
   });
+  if (category === "collectible") {
+    return applyAccuracyHold(
+      next,
+      "collectible pricing requires matched market evidence",
+      category
+    );
+  }
   return next;
 }
 
@@ -4800,6 +4924,9 @@ function applyAccuracyHold(pricing, reason, category) {
   next.low = null;
   next.median = null;
   next.high = null;
+  next.recommendedRetail = null;
+  next.profit = null;
+  next.listingAssistant = null;
   next.provisional = true;
   next.provisionalReason = reason || "accuracy hold";
   const reasons = Array.isArray(next.confidenceReasons) ? next.confidenceReasons.slice(0, 6) : [];
@@ -5679,6 +5806,25 @@ app.get("/monetization-policy", (req, res) => {
     ok: true,
     policy: paidAccessPolicySummary(),
     usage: getPaidAccessUsageSnapshot(),
+  });
+});
+
+app.all("/billing/entitlement-status", express.json({ limit: "256kb" }), (req, res) => {
+  const featureLabel = String(
+    req.body?.featureLabel || req.query?.featureLabel || "Vehicle pricing"
+  ).trim() || "Vehicle pricing";
+  const decision = evaluatePaidAccess(req, { featureLabel });
+  return res.json({
+    ok: true,
+    entitlement: {
+      allow: decision.allow,
+      code: decision.code || null,
+      mode: decision.mode,
+      tokenValid: Boolean(decision.tokenValid),
+      requestPaidFlag: Boolean(decision.requestPaidFlag),
+      message: decision.message || null,
+    },
+    policy: paidAccessPolicySummary(),
   });
 });
 
@@ -7787,7 +7933,9 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
         Number.isFinite(soldMedian) && soldMedian > 0 && Number.isFinite(soldLow) && Number.isFinite(soldHigh)
           ? Math.max(0, (soldHigh - soldLow) / soldMedian)
           : 999;
-      const manualSupport = soldSource === "manual" && soldCount >= 1;
+      const manualSupport =
+        soldSource === "manual" &&
+        (category === "collectible" ? soldCount >= 3 : soldCount >= 1);
       const marketSupport = soldCount >= 4 || (soldCount >= 3 && soldSpreadPct <= 0.65);
       if (manualSupport || marketSupport) {
         const targetGateStatus = soldCount >= 4 ? "pass" : "caution";
@@ -8704,9 +8852,38 @@ app.get(`${MARKETPLACE_API_PREFIX}/sellers/me/dashboard`, requireAuth, (req, res
   });
 });
 
-const server = app.listen(PORT, "0.0.0.0", () => {
-  console.log(`✅ Backend running on http://localhost:${PORT}`);
-});
+const SERVER_HOST = envValue("HOST", "0.0.0.0");
+
+function startServerWithFallback(hostCandidates) {
+  const [host, ...rest] = hostCandidates.filter(Boolean);
+  if (!host) {
+    throw new Error(`No valid host available for backend on port ${PORT}`);
+  }
+
+  const nextServer = app.listen(PORT, host, () => {
+    const label = isLocalHostName(host) ? "localhost" : host;
+    console.log(`✅ Backend running on http://${label}:${PORT}`);
+  });
+
+  nextServer.once("error", (err) => {
+    const fallbackHosts = rest.filter((candidate) => candidate !== host);
+    const shouldRetry =
+      (err?.code === "EPERM" || err?.code === "EADDRNOTAVAIL") && fallbackHosts.length > 0;
+    if (!shouldRetry) {
+      throw err;
+    }
+    console.warn(
+      `[startup] Failed to bind ${host}:${PORT} (${err.code}). Retrying with ${fallbackHosts[0]}...`
+    );
+    startServerWithFallback(fallbackHosts);
+  });
+
+  return nextServer;
+}
+
+const server = startServerWithFallback(
+  unique([SERVER_HOST, "127.0.0.1", "localhost"])
+);
 
 function shutdown(signal) {
   console.log(`[${new Date().toISOString()}] ${signal} received; shutting down backend...`);

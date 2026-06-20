@@ -21,6 +21,12 @@ const CASES = [
   { q: "Nike Air Max 90 trainers size 9", c: "fashion", min: 25, max: 90 },
   { q: "North Face puffer jacket mens medium", c: "fashion", min: 20, max: 110 },
   { q: "Old UK one pound coin 1983", c: "collectible", min: 1, max: 40 },
+  {
+    q: "Bank of England white five pound note 1950s",
+    c: "collectible",
+    expectedStatus: "needs_details",
+    forbiddenComp: "UK One Pound Coin 1983",
+  },
 ];
 
 async function runCase(row) {
@@ -45,6 +51,15 @@ async function runCase(row) {
   const median = Number(pricing.median || 0);
   const usable = String(pricing.finalStatus || "") === "usable";
   const inRange = Number.isFinite(median) && median >= row.min && median <= row.max;
+  const statusMatches = row.expectedStatus
+    ? String(pricing.finalStatus || "") === row.expectedStatus
+    : usable;
+  const hasForbiddenComp = row.forbiddenComp
+    ? (pricing.comps || []).some((comp) =>
+        String(comp?.title || "").toLowerCase().includes(String(row.forbiddenComp).toLowerCase())
+      )
+    : false;
+  const safe = row.expectedStatus ? statusMatches && !hasForbiddenComp : usable && inRange;
 
   return {
     query: row.q,
@@ -55,6 +70,9 @@ async function runCase(row) {
     accuracyReady: Boolean(pricing?.accuracy?.ready),
     usable,
     inRange,
+    statusMatches,
+    hasForbiddenComp,
+    safe,
   };
 }
 
@@ -69,7 +87,11 @@ async function main() {
   const usableCount = rows.filter((r) => r.usable).length;
   const inRangeCount = rows.filter((r) => r.inRange).length;
   const usableInRangeCount = rows.filter((r) => r.usable && r.inRange).length;
-  const usableInRangeRate = total ? usableInRangeCount / total : 0;
+  const safeCount = rows.filter((r) => r.safe).length;
+  const safeRate = total ? safeCount / total : 0;
+  const requiredCasesMet = rows
+    .filter((row) => row.query && CASES.find((item) => item.q === row.query)?.expectedStatus)
+    .every((row) => row.safe);
   const summary = {
     total,
     usableCount,
@@ -77,9 +99,11 @@ async function main() {
     inRangeCount,
     inRangeRatePct: Number(((inRangeCount / total) * 100).toFixed(1)),
     usableInRangeCount,
-    usableInRangeRatePct: Number((usableInRangeRate * 100).toFixed(1)),
+    safeCount,
+    safeRatePct: Number((safeRate * 100).toFixed(1)),
+    requiredCasesMet,
     targetRatePct: Number((TARGET_RATE * 100).toFixed(1)),
-    gateMet: usableInRangeRate >= TARGET_RATE,
+    gateMet: safeRate >= TARGET_RATE && requiredCasesMet,
   };
 
   console.log(JSON.stringify({ summary, rows }, null, 2));

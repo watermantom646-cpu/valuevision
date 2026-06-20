@@ -8,9 +8,11 @@ import * as Speech from "expo-speech";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Animated, Button, Image, Modal, Platform, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View, useWindowDimensions } from "react-native";
 import { AppTheme } from "@/constants/app-theme";
+import { FeatureFlags } from "@/constants/feature-flags";
 import { formatGbp, LaunchPricing } from "@/constants/pricing";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { isPlaceholderApiBase, looksLikeLocalApiBase, resolveApiBase } from "@/lib/api-base";
+import { loadScanAccess, recordCompletedStarterScan, type ScanAccess } from "@/lib/scan-access";
 import { addHistoryEntry, loadHistory, type ScanHistoryEntry } from "@/lib/scan-history";
 import { loadWatchlist, upsertWatchlistEntry, type WatchlistEntry } from "@/lib/watchlist";
 
@@ -522,6 +524,7 @@ export function ScanScreen({
   const [lastImageQuality, setLastImageQuality] = useState<ImageQualityAssessment | null>(null);
   const [showDeveloperTools, setShowDeveloperTools] = useState(API_BASE_NEEDS_REMOTE_CONFIG);
   const [scanError, setScanError] = useState("");
+  const [scanAccess, setScanAccess] = useState<ScanAccess | null>(null);
   const [recentQueryChips, setRecentQueryChips] = useState<string[]>([]);
   const [latestSavedScan, setLatestSavedScan] = useState<ScanHistoryEntry | null>(null);
   const [watchlist, setWatchlist] = useState<WatchlistEntry[]>([]);
@@ -553,6 +556,17 @@ export function ScanScreen({
   const analyzeInFlightRef = useRef(false);
   const lastAnalyzeRef = useRef<{ signature: string; at: number }>({ signature: "", at: 0 });
   const [cameraPermission, requestCameraPermission] = useCameraPermissions();
+
+  useEffect(() => {
+    let mounted = true;
+    void loadScanAccess().then((access) => {
+      if (mounted) setScanAccess(access);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   const clearCurrentScanView = useCallback(() => {
     userCancelledScanRef.current = true;
     analyzeRunIdRef.current += 1;
@@ -989,6 +1003,27 @@ export function ScanScreen({
           fullCarOnly ||
           Boolean(vehicleReg.trim())
         );
+      if (!likelyVehicleProviderFlow) {
+        const access = await loadScanAccess();
+        if (!isCurrentRun()) return;
+        setScanAccess(access);
+        if (!access.canScan) {
+          analyzeInFlightRef.current = false;
+          if (opts?.silent) {
+            setLiveMode(false);
+          } else {
+            Alert.alert(
+              "Starter scans used",
+              `You have used your ${LaunchPricing.freeStarterScans} free scans. Monthly access unlocks unlimited Anything Mode scans.`,
+              [
+                { text: "Not now", style: "cancel" },
+                { text: "View monthly access", onPress: () => router.push("/paywall" as any) },
+              ]
+            );
+          }
+          return;
+        }
+      }
       const scanPaidAccessMode = String(monetizationPolicy?.policy?.mode || "unknown").toLowerCase();
       const scanPaidGuardEnforced = Boolean(monetizationPolicy?.policy?.enforceVehicleData);
       const scanPaidGuardLockedForVehicle =
@@ -1178,6 +1213,10 @@ export function ScanScreen({
           confidenceReasons: finalData.pricing?.confidenceReasons || [],
           qualityGate: finalData.pricing?.qualityGate,
         });
+        if (!likelyVehicleProviderFlow && !opts?.silent) {
+          const nextAccess = await recordCompletedStarterScan();
+          if (isCurrentRun()) setScanAccess(nextAccess);
+        }
         setLatestSavedScan({
           id: newId,
           createdAt: new Date().toISOString(),
@@ -1252,6 +1291,7 @@ export function ScanScreen({
       monetizationPolicy,
       effectiveApiBase,
       tryFetchWithApiFallback,
+      router,
     ]
   );
 
@@ -1309,6 +1349,21 @@ export function ScanScreen({
   };
 
   const enterLiveMode = async () => {
+    if (!vehicleOnly) {
+      const access = await loadScanAccess();
+      setScanAccess(access);
+      if (!access.unlimited) {
+        Alert.alert(
+          "Live Mode is a monthly feature",
+          "Your free scans work with Scan Now. Monthly access unlocks continuous Live Mode scanning.",
+          [
+            { text: "Use Scan Now", style: "cancel" },
+            { text: "View monthly access", onPress: () => router.push("/paywall" as any) },
+          ]
+        );
+        return;
+      }
+    }
     if (!cameraPermission?.granted) {
       const p = await requestCameraPermission();
       if (!p.granted) {
@@ -1626,7 +1681,6 @@ export function ScanScreen({
   const confidenceLabel = data?.pricing?.confidence?.label || "pending";
   const confidenceScore = data?.pricing?.confidence?.score;
   const qualityStatus = data?.pricing?.qualityGate?.status || "pass";
-  const accuracyReady = Boolean(data?.pricing?.accuracy?.ready);
   const accuracyScore = Number(data?.pricing?.accuracy?.score || 0);
   const accuracyBlockers = data?.pricing?.accuracy?.blockers || [];
   const isHoldResult = qualityStatus === "hold";
@@ -1729,6 +1783,18 @@ export function ScanScreen({
       text: "Scan again with clearer framing if you want a tighter valuation.",
     };
   }, [isHoldResult, isCautionResult, holdPrompts, data?.pricing?.finalStatus]);
+  const resultReadinessLabel = useMemo(() => {
+    if (isHoldResult) return "Needs more detail before you rely on it";
+    if (isCautionResult) return "Useful estimate, but refine if price matters";
+    if (data?.pricing?.finalStatus === "usable") return "Ready to use";
+    return "Scan again for a stronger result";
+  }, [isHoldResult, isCautionResult, data?.pricing?.finalStatus]);
+  const trustSummaryLines = useMemo(() => {
+    if (data?.pricing?.qualityGate?.reasons?.length) return data.pricing.qualityGate.reasons.slice(0, 3);
+    if (data?.pricing?.confidenceReasons?.length) return data.pricing.confidenceReasons.slice(0, 3);
+    if (holdPrompts.length) return holdPrompts.slice(0, 3);
+    return ["No major risk flags from the current scan."];
+  }, [data?.pricing?.qualityGate?.reasons, data?.pricing?.confidenceReasons, holdPrompts]);
   const comparisonDelta = useMemo(() => {
     const current = Number(data?.pricing?.median || 0);
     const previous = Number(latestSavedScan?.median || 0);
@@ -1786,7 +1852,6 @@ export function ScanScreen({
         : `${query} added to watchlist.`
     );
   }, [data, itemQuery, category, watchlistMatch, activeCurrencySymbol]);
-  const activeLaneLabel = shouldShowVehicleDetails ? "Cars" : "Items";
   const activeModeLabel = vehicleOnly ? "Car Mode" : "Anything Mode";
   const paidAccessMode = String(monetizationPolicy?.policy?.mode || "unknown").toLowerCase();
   const paidGuardEnforced = Boolean(monetizationPolicy?.policy?.enforceVehicleData);
@@ -2176,6 +2241,18 @@ export function ScanScreen({
                 {loading ? "Scanning..." : backendReachable === false ? "Connection issue" : "Ready"}
               </Text>
             </View>
+            {!vehicleOnly ? (
+              <View style={styles.heroMetaChip}>
+                <Text style={styles.heroMetaLabel}>Access</Text>
+                <Text style={styles.heroMetaValue}>
+                  {scanAccess?.unlimited
+                    ? "Unlimited"
+                    : scanAccess
+                      ? `${scanAccess.remaining} free left`
+                      : "Checking..."}
+                </Text>
+              </View>
+            ) : null}
           </View>
         ) : (
           <View style={[styles.heroMetaRow, isCompact && styles.heroMetaRowCompact]}>
@@ -2227,9 +2304,12 @@ export function ScanScreen({
                 {`Blocked paid attempts today: ${blockedPaidAttemptsToday}`}
               </Text>
             ) : null}
+            <Pressable style={styles.fullCarPriceCta} onPress={() => router.push("/paywall" as any)}>
+              <Text style={styles.fullCarPriceCtaText}>Open Billing Status</Text>
+            </Pressable>
           </View>
         ) : null}
-        {vehicleOnly || tinyMvp ? null : (
+        {vehicleOnly || tinyMvp || !FeatureFlags.carChecksAvailable ? null : (
           <Pressable
             style={styles.carsModeCta}
             onPress={() => {
@@ -2242,27 +2322,21 @@ export function ScanScreen({
         {tinyMvp ? (
           <View style={[styles.row, styles.laneRow]}>
             <Pressable
-              style={[styles.miniLaneBtn, styles.miniLaneBtnComing]}
-              disabled>
-              <Text style={styles.miniLaneBtnText}>AI Gen 2</Text>
-              <Text style={styles.miniLaneBtnSubText}>Coming next update</Text>
+              style={styles.miniLaneBtn}
+              onPress={() => router.push("/(tabs)/history" as any)}>
+              <Text style={styles.miniLaneBtnText}>My Collection</Text>
+              <Text style={styles.miniLaneBtnSubText}>Saved scans</Text>
             </Pressable>
             <Pressable
-              style={[styles.miniLaneBtn, vehicleOnly && styles.miniLaneBtnActive]}
-              onPress={() => {
-                clearCurrentScanView();
-                router.replace("/(tabs)/scan?mode=cars" as any);
-              }}>
-              <Text style={[styles.miniLaneBtnText, vehicleOnly && styles.miniLaneBtnTextActive]}>Car Mode</Text>
-            </Pressable>
-            <Pressable
-              style={[styles.miniLaneBtn, !vehicleOnly && styles.miniLaneBtnActive]}
-              onPress={() => {
-                clearCurrentScanView();
-                router.replace("/(tabs)/scan?mode=items" as any);
-              }}>
-              <Text style={[styles.miniLaneBtnText, !vehicleOnly && styles.miniLaneBtnTextActive]}>
-                Anything Mode
+              style={[styles.miniLaneBtn, scanAccess?.unlimited && styles.miniLaneBtnActive]}
+              onPress={() => router.push("/paywall" as any)}>
+              <Text style={[styles.miniLaneBtnText, scanAccess?.unlimited && styles.miniLaneBtnTextActive]}>
+                Monthly Access
+              </Text>
+              <Text style={[styles.miniLaneBtnSubText, scanAccess?.unlimited && styles.miniLaneBtnTextActive]}>
+                {scanAccess?.unlimited
+                  ? "Unlimited active"
+                  : `${scanAccess?.remaining ?? LaunchPricing.freeStarterScans} free scans left`}
               </Text>
             </Pressable>
           </View>
@@ -2274,12 +2348,12 @@ export function ScanScreen({
           <Pressable
             style={[styles.modeChip, quickMode && styles.modeChipActive]}
             onPress={() => setQuickMode(true)}>
-            <Text style={[styles.modeChipText, quickMode && styles.modeChipTextActive]}>Quick Scan</Text>
+            <Text style={[styles.modeChipText, quickMode && styles.modeChipTextActive]}>Fast scan</Text>
           </Pressable>
           <Pressable
             style={[styles.modeChip, !quickMode && styles.modeChipActive]}
             onPress={() => setQuickMode(false)}>
-            <Text style={[styles.modeChipText, !quickMode && styles.modeChipTextActive]}>Manual Mode</Text>
+            <Text style={[styles.modeChipText, !quickMode && styles.modeChipTextActive]}>Detailed scan</Text>
           </Pressable>
         </View>
       )}
@@ -2306,23 +2380,23 @@ export function ScanScreen({
 
       {tinyMvp || isCategoryLocked ? null : (
         <View style={styles.presetCard}>
-          <Text style={styles.presetTitle}>Quick Presets</Text>
+          <Text style={styles.presetTitle}>Scan shortcuts</Text>
           <View style={[styles.wrapRow, isCompact && styles.rowStack]}>
             <Pressable style={styles.presetChip} onPress={() => applyScanPreset("cars")}>
               <Text style={styles.presetChipTitle}>Cars</Text>
-              <Text style={styles.presetChipText}>Plate + MOT flow</Text>
+              <Text style={styles.presetChipText}>Plate and vehicle details</Text>
             </Pressable>
             <Pressable style={styles.presetChip} onPress={() => applyScanPreset("antiques")}>
               <Text style={styles.presetChipTitle}>Collectibles</Text>
-              <Text style={styles.presetChipText}>Collectibles focus</Text>
+              <Text style={styles.presetChipText}>Cards, coins, antiques</Text>
             </Pressable>
             <Pressable style={styles.presetChip} onPress={() => applyScanPreset("technology")}>
               <Text style={styles.presetChipTitle}>Technology</Text>
-              <Text style={styles.presetChipText}>Phones + gadgets</Text>
+              <Text style={styles.presetChipText}>Phones and gadgets</Text>
             </Pressable>
             <Pressable style={styles.presetChip} onPress={() => applyScanPreset("general")}>
               <Text style={styles.presetChipTitle}>General</Text>
-              <Text style={styles.presetChipText}>Auto detect category</Text>
+              <Text style={styles.presetChipText}>Let ValueVision decide</Text>
             </Pressable>
           </View>
         </View>
@@ -2335,14 +2409,19 @@ export function ScanScreen({
           {`${formatGbp(LaunchPricing.monthlySubscriptionGbp)} / month`}
         </Text>
         <Text style={styles.proText}>
-          Monthly access to paid scans, valuation tools, profit insights, and smart sell recommendations.
+          Unlock paid scans, vehicle tools, and deeper resale guidance.
         </Text>
         <Text style={styles.proFinePrint}>
-          Live vehicle checks stay protected and fair-use controlled so launch costs cannot run away.
+          Vehicle data stays protected until paid access is unlocked.
         </Text>
         <Text style={styles.proFinePrint}>
-          One-off car checks: valuation {formatGbp(LaunchPricing.carValuationFromGbp)}, full check {formatGbp(LaunchPricing.fullCarCheckSingleGbp)}, {LaunchPricing.fullCarCheckBundleChecks}-pack {formatGbp(LaunchPricing.fullCarCheckBundleGbp)}.
+          {FeatureFlags.carChecksAvailable
+            ? `One-off car checks: valuation ${formatGbp(LaunchPricing.carValuationFromGbp)}, full check ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)}, ${LaunchPricing.fullCarCheckBundleChecks}-pack ${formatGbp(LaunchPricing.fullCarCheckBundleGbp)}.`
+            : FeatureFlags.carChecksStatusLabel}
         </Text>
+        <Pressable style={styles.proCardCta} onPress={() => router.push("/paywall" as any)}>
+          <Text style={styles.proCardCtaText}>View billing and unlock status</Text>
+        </Pressable>
       </View>
       )}
 
@@ -2350,7 +2429,7 @@ export function ScanScreen({
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Simple Scan Mode</Text>
           <Text style={styles.fieldHelp}>
-            Take or upload one clear photo. Add optional details only when trust is low and you want a tighter valuation.
+            Take or upload one clear photo. Add details only when you want a tighter valuation.
           </Text>
           <Pressable style={styles.advancedToggle} onPress={() => setShowQuickDetailsModal(true)}>
             <Text style={styles.advancedToggleText}>Add optional details</Text>
@@ -2363,14 +2442,14 @@ export function ScanScreen({
         </View>
       ) : (
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Item Details</Text>
+        <Text style={styles.cardTitle}>Item details</Text>
         <Text style={styles.fieldHelp}>
           {quickMode
-            ? "Optional in Quick Scan. Add details to tighten price accuracy."
-            : "Required in Manual Mode for best valuation."}
+            ? "Start with a photo. Add details only if you want a tighter price."
+            : "Add a little more detail for the strongest valuation."}
         </Text>
         <View style={styles.fieldCard}>
-          <Text style={styles.fieldTitle}>What item is this?</Text>
+          <Text style={styles.fieldTitle}>What are you scanning?</Text>
           <Text style={styles.fieldHelp}>{itemQueryHelp}</Text>
           <TextInput
             value={itemQuery}
@@ -2380,6 +2459,9 @@ export function ScanScreen({
             placeholderTextColor={AppTheme.textSecondary}
             style={styles.inputCompact}
           />
+          <Text style={styles.fieldHelp}>
+            Leave this blank if you want ValueVision to identify the item from the photo.
+          </Text>
           {tinyMvp && recentQueryChips.length ? (
             <View style={styles.recentChipWrap}>
               {recentQueryChips.map((chip) => (
@@ -2398,172 +2480,193 @@ export function ScanScreen({
         </View>
         {tinyMvp ? null : (
           <Pressable style={styles.advancedToggle} onPress={() => setShowAdvanced((v) => !v)}>
-            <Text style={styles.advancedToggleText}>{showAdvanced ? "Hide advanced details" : "Show advanced details"}</Text>
+            <Text style={styles.advancedToggleText}>{showAdvanced ? "Hide extra details" : "Add extra details"}</Text>
           </Pressable>
         )}
 
         {showAdvanced && !tinyMvp ? (
           <View style={{ gap: 8 }}>
             <View style={styles.fieldCard}>
-              <Text style={styles.fieldTitle}>Condition notes</Text>
-              <Text style={styles.fieldHelp}>Damage, defects, missing parts, or repairs needed</Text>
+              <Text style={styles.fieldTitle}>Condition and price</Text>
+              <Text style={styles.fieldHelp}>Only add this if damage, wear, or buy price materially changes the value.</Text>
               <TextInput
                 value={conditionNotes}
                 onChangeText={setConditionNotes}
                 placeholder="Cracked screen, battery weak"
                 autoCapitalize="none"
                 placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
+                style={styles.inputCompact}
+              />
+              <View style={styles.row}>
+                <Button title={condition === "used" ? "Condition: Used ✓" : "Condition: Used"} onPress={() => setCondition("used")} />
+                <Button title={condition === "new" ? "Condition: New ✓" : "Condition: New"} onPress={() => setCondition("new")} />
+              </View>
+              <Text style={styles.sectionLabel}>Condition quality</Text>
+              <View style={styles.wrapRow}>
+                <Button title={conditionTier === "mint" ? "Mint ✓" : "Mint"} onPress={() => setConditionTier("mint")} />
+                <Button title={conditionTier === "good" ? "Good ✓" : "Good"} onPress={() => setConditionTier("good")} />
+                <Button title={conditionTier === "fair" ? "Fair ✓" : "Fair"} onPress={() => setConditionTier("fair")} />
+                <Button title={conditionTier === "broken" ? "Broken ✓" : "Broken"} onPress={() => setConditionTier("broken")} />
+              </View>
+              <TextInput
+                value={buyPrice}
+                onChangeText={setBuyPrice}
+                placeholder="Buy price for profit tracking (optional)"
+                keyboardType="decimal-pad"
+                placeholderTextColor={AppTheme.textSecondary}
+                style={styles.inputCompact}
               />
             </View>
 
-            {shouldShowTechFields ? (
+            {shouldShowTechFields || shouldShowAntiqueFields || shouldShowToolFields || shouldShowFashionFields || shouldShowHomeFields ? (
               <View style={styles.fieldCard}>
-                <Text style={styles.fieldTitle}>Technology details</Text>
-                <TextInput
-                  value={techSpecs}
-                  onChangeText={setTechSpecs}
-                  placeholder="Specs (e.g. 256GB, 16GB RAM, i7)"
-                  autoCapitalize="none"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={techBatteryHealth}
-                  onChangeText={setTechBatteryHealth}
-                  placeholder="Battery health (e.g. 89%)"
-                  autoCapitalize="none"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-              </View>
-            ) : null}
+                <Text style={styles.fieldTitle}>Category details</Text>
+                <Text style={styles.fieldHelp}>Only add the fields that matter for this item.</Text>
 
-            {shouldShowAntiqueFields ? (
-              <View style={styles.fieldCard}>
-                <Text style={styles.fieldTitle}>Collectibles details</Text>
-                <TextInput
-                  value={antiquesEra}
-                  onChangeText={setAntiquesEra}
-                  placeholder="Era / period (e.g. Victorian)"
-                  autoCapitalize="words"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={antiquesMaker}
-                  onChangeText={setAntiquesMaker}
-                  placeholder="Maker / provenance"
-                  autoCapitalize="words"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={collectibleSet}
-                  onChangeText={setCollectibleSet}
-                  placeholder="Set / series (optional, e.g. Base Set)"
-                  autoCapitalize="words"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={collectibleGrade}
-                  onChangeText={setCollectibleGrade}
-                  placeholder="Grade (optional, e.g. PSA 9, BGS 8.5)"
-                  autoCapitalize="characters"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-              </View>
-            ) : null}
+                {shouldShowTechFields ? (
+                  <>
+                    <TextInput
+                      value={techSpecs}
+                      onChangeText={setTechSpecs}
+                      placeholder="Specs (e.g. 256GB, 16GB RAM, i7)"
+                      autoCapitalize="none"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={techBatteryHealth}
+                      onChangeText={setTechBatteryHealth}
+                      placeholder="Battery health (e.g. 89%)"
+                      autoCapitalize="none"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                  </>
+                ) : null}
 
-            {shouldShowToolFields ? (
-              <View style={styles.fieldCard}>
-                <Text style={styles.fieldTitle}>Tool details</Text>
-                <TextInput
-                  value={toolBrand}
-                  onChangeText={setToolBrand}
-                  placeholder="Brand (e.g. DeWalt)"
-                  autoCapitalize="words"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={toolModel}
-                  onChangeText={setToolModel}
-                  placeholder="Model (e.g. DCD996)"
-                  autoCapitalize="characters"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={toolVoltage}
-                  onChangeText={setToolVoltage}
-                  placeholder="Voltage / power (e.g. 18V)"
-                  autoCapitalize="characters"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-              </View>
-            ) : null}
+                {shouldShowAntiqueFields ? (
+                  <>
+                    <TextInput
+                      value={antiquesEra}
+                      onChangeText={setAntiquesEra}
+                      placeholder="Era / period (e.g. Victorian)"
+                      autoCapitalize="words"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={antiquesMaker}
+                      onChangeText={setAntiquesMaker}
+                      placeholder="Maker / provenance"
+                      autoCapitalize="words"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={collectibleSet}
+                      onChangeText={setCollectibleSet}
+                      placeholder="Set / series (optional, e.g. Base Set)"
+                      autoCapitalize="words"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={collectibleGrade}
+                      onChangeText={setCollectibleGrade}
+                      placeholder="Grade (optional, e.g. PSA 9, BGS 8.5)"
+                      autoCapitalize="characters"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                  </>
+                ) : null}
 
-            {shouldShowFashionFields ? (
-              <View style={styles.fieldCard}>
-                <Text style={styles.fieldTitle}>Fashion details</Text>
-                <TextInput
-                  value={fashionBrand}
-                  onChangeText={setFashionBrand}
-                  placeholder="Brand (e.g. Nike)"
-                  autoCapitalize="words"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={fashionSize}
-                  onChangeText={setFashionSize}
-                  placeholder="Size (e.g. UK 9 / M)"
-                  autoCapitalize="characters"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={fashionMaterial}
-                  onChangeText={setFashionMaterial}
-                  placeholder="Material (e.g. leather, cotton)"
-                  autoCapitalize="words"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-              </View>
-            ) : null}
+                {shouldShowToolFields ? (
+                  <>
+                    <TextInput
+                      value={toolBrand}
+                      onChangeText={setToolBrand}
+                      placeholder="Brand (e.g. DeWalt)"
+                      autoCapitalize="words"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={toolModel}
+                      onChangeText={setToolModel}
+                      placeholder="Model (e.g. DCD996)"
+                      autoCapitalize="characters"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={toolVoltage}
+                      onChangeText={setToolVoltage}
+                      placeholder="Voltage / power (e.g. 18V)"
+                      autoCapitalize="characters"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                  </>
+                ) : null}
 
-            {shouldShowHomeFields ? (
-              <View style={styles.fieldCard}>
-                <Text style={styles.fieldTitle}>Home details</Text>
-                <TextInput
-                  value={homeBrand}
-                  onChangeText={setHomeBrand}
-                  placeholder="Brand / maker"
-                  autoCapitalize="words"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={homeDimensions}
-                  onChangeText={setHomeDimensions}
-                  placeholder="Dimensions (e.g. 160 x 90 cm)"
-                  autoCapitalize="characters"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
-                <TextInput
-                  value={homeAgeStyle}
-                  onChangeText={setHomeAgeStyle}
-                  placeholder="Age / style (e.g. Mid-century)"
-                  autoCapitalize="words"
-                  placeholderTextColor={AppTheme.textSecondary}
-            style={styles.inputCompact}
-                />
+                {shouldShowFashionFields ? (
+                  <>
+                    <TextInput
+                      value={fashionBrand}
+                      onChangeText={setFashionBrand}
+                      placeholder="Brand (e.g. Nike)"
+                      autoCapitalize="words"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={fashionSize}
+                      onChangeText={setFashionSize}
+                      placeholder="Size (e.g. UK 9 / M)"
+                      autoCapitalize="characters"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={fashionMaterial}
+                      onChangeText={setFashionMaterial}
+                      placeholder="Material (e.g. leather, cotton)"
+                      autoCapitalize="words"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                  </>
+                ) : null}
+
+                {shouldShowHomeFields ? (
+                  <>
+                    <TextInput
+                      value={homeBrand}
+                      onChangeText={setHomeBrand}
+                      placeholder="Brand / maker"
+                      autoCapitalize="words"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={homeDimensions}
+                      onChangeText={setHomeDimensions}
+                      placeholder="Dimensions (e.g. 160 x 90 cm)"
+                      autoCapitalize="characters"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                    <TextInput
+                      value={homeAgeStyle}
+                      onChangeText={setHomeAgeStyle}
+                      placeholder="Age / style (e.g. Mid-century)"
+                      autoCapitalize="words"
+                      placeholderTextColor={AppTheme.textSecondary}
+                      style={styles.inputCompact}
+                    />
+                  </>
+                ) : null}
               </View>
             ) : null}
 
@@ -2659,28 +2762,6 @@ export function ScanScreen({
               </View>
             ) : null}
 
-            <View style={styles.row}>
-              <Button title={condition === "used" ? "Condition: Used ✓" : "Condition: Used"} onPress={() => setCondition("used")} />
-              <Button title={condition === "new" ? "Condition: New ✓" : "Condition: New"} onPress={() => setCondition("new")} />
-            </View>
-            <Text style={styles.sectionLabel}>Condition quality</Text>
-            <View style={styles.wrapRow}>
-              <Button title={conditionTier === "mint" ? "Mint ✓" : "Mint"} onPress={() => setConditionTier("mint")} />
-              <Button title={conditionTier === "good" ? "Good ✓" : "Good"} onPress={() => setConditionTier("good")} />
-              <Button title={conditionTier === "fair" ? "Fair ✓" : "Fair"} onPress={() => setConditionTier("fair")} />
-              <Button title={conditionTier === "broken" ? "Broken ✓" : "Broken"} onPress={() => setConditionTier("broken")} />
-            </View>
-
-            <Text style={styles.sectionLabel}>Buy price (for profit)</Text>
-            <TextInput
-              value={buyPrice}
-              onChangeText={setBuyPrice}
-              placeholder="What are you paying? (e.g. 120)"
-              keyboardType="decimal-pad"
-              placeholderTextColor={AppTheme.textSecondary}
-              style={styles.input}
-            />
-
             <Text style={styles.sectionLabel}>Category</Text>
             {isCategoryLocked ? (
               <View style={styles.fieldCard}>
@@ -2750,9 +2831,9 @@ export function ScanScreen({
       {tinyMvp && !imageUri && !data ? (
         <View style={styles.captureGuideCard}>
           <Text style={styles.bold}>How it works</Text>
-          <Text style={styles.compRow}>1. Choose Car Mode or Anything Mode. AI Photo ID is coming in Gen 2.</Text>
-          <Text style={styles.compRow}>2. Take or upload one clear photo.</Text>
-          <Text style={styles.compRow}>3. Review price range and confidence, then save in Collection.</Text>
+          <Text style={styles.compRow}>1. Take or upload one clear photo.</Text>
+          <Text style={styles.compRow}>2. We identify the item and check current market evidence.</Text>
+          <Text style={styles.compRow}>3. Review the valuation and keep it in My Collection.</Text>
         </View>
       ) : null}
 
@@ -2793,7 +2874,7 @@ export function ScanScreen({
           </Pressable>
         </View>
         )}
-        {tinyMvp ? null : (
+        {tinyMvp || liveMode ? null : (
         <View style={[styles.row, isCompact && styles.rowStack]}>
           <Pressable
             style={[styles.quickBtn, handsFreeVoice && styles.voiceBtnActive]}
@@ -2825,7 +2906,7 @@ export function ScanScreen({
           </Pressable>
         </View>
         )}
-        {tinyMvp ? null : (
+        {tinyMvp || liveMode ? null : (
         <Pressable
           style={[styles.quickBtn, recording && styles.voiceBtnActive, voiceLoading && styles.quickBtnDisabled]}
           onPressIn={handsFreeVoice ? undefined : startVoiceCapture}
@@ -2967,7 +3048,7 @@ export function ScanScreen({
             styles.pricingCard,
             { opacity: resultAnim, transform: [{ translateY: resultAnim.interpolate({ inputRange: [0, 1], outputRange: [10, 0] }) }] },
           ]}>
-          <Text style={styles.bold}>Pricing Snapshot</Text>
+          <Text style={styles.bold}>Your Result</Text>
           <View style={styles.resultHeadRow}>
             <Text numberOfLines={1} style={styles.resultHeadTitle}>
               {data?.pricing?.query || data?.pricing?.autoDetectedQuery || "Detected item"}
@@ -2984,15 +3065,9 @@ export function ScanScreen({
           </View>
           <View style={styles.resultStatusPill}>
             <Text style={styles.resultStatusPillText}>
-              {`Lane ${activeLaneLabel} • ${accuracyReady ? "Ready to use" : "Needs more detail"} • Accuracy ${accuracyScore}/100`}
+              {`${resultReadinessLabel} • Confidence ${confidenceScore || accuracyScore || 0}/100`}
             </Text>
           </View>
-          <Text style={styles.metaText}>
-            {`Lane: ${activeLaneLabel} | Status: ${data?.pricing?.finalStatus === "usable" ? "usable estimate" : "needs more detail"}`}
-          </Text>
-          {data?.pricing?.stage ? (
-            <Text style={styles.metaText}>{`Stage: ${data.pricing.stage === "fast" ? "Quick estimate" : "Refined estimate"}`}</Text>
-          ) : null}
           <View style={[styles.resultValueRow, isCompact && styles.snapshotRowCompact]}>
             <View style={styles.resultValueTile}>
               <Text style={styles.resultValueLabel}>Low</Text>
@@ -3022,12 +3097,18 @@ export function ScanScreen({
             </View>
           ) : null}
           <Text style={styles.resultSummaryText}>{priceLine}</Text>
+          <View style={styles.trustCardInline}>
+            <Text style={styles.trustCardInlineTitle}>{`Trust level: ${trustLevel}`}</Text>
+            {trustSummaryLines.map((line) => (
+              <Text key={line} style={styles.trustCardInlineText}>• {line}</Text>
+            ))}
+          </View>
           <View style={styles.nextStepCard}>
             <Text style={styles.nextStepTitle}>{nextStep.title}</Text>
             <Text style={styles.nextStepText}>{nextStep.text}</Text>
           </View>
           <Pressable style={styles.detailsToggleBtn} onPress={() => setShowResultDetails((v) => !v)}>
-            <Text style={styles.detailsToggleText}>{showResultDetails ? "Hide details" : "More details"}</Text>
+            <Text style={styles.detailsToggleText}>{showResultDetails ? "Hide details" : "Show more details"}</Text>
           </Pressable>
           {isHoldResult ? (
             <View style={styles.warnCardHold}>
@@ -3169,26 +3250,6 @@ export function ScanScreen({
         </View>
       ) : null}
 
-      {showResultDetails && data?.pricing ? (
-        <View
-          style={[
-            styles.trustCard,
-            trustLevel === "Safe" ? styles.trustSafe : trustLevel === "Caution" ? styles.trustCaution : styles.trustNeedsData,
-          ]}>
-          <Text style={styles.bold}>{`Can I trust this price? ${trustLevel}`}</Text>
-          {data.pricing.qualityGate?.reasons?.length ? (
-            data.pricing.qualityGate.reasons.slice(0, 4).map((reason) => (
-              <Text key={reason} style={styles.compRow}>• {reason}</Text>
-            ))
-          ) : data.pricing.confidenceReasons?.length ? (
-            data.pricing.confidenceReasons.slice(0, 4).map((reason) => (
-              <Text key={reason} style={styles.compRow}>• {reason}</Text>
-            ))
-          ) : (
-            <Text style={styles.compRow}>• No risk flags raised by current scan.</Text>
-          )}
-        </View>
-      ) : null}
       {showResultDetails && data?.pricing ? (
         <View style={styles.categoryInsightCard}>
           <Text style={styles.bold}>Confidence Coach</Text>
@@ -3671,7 +3732,9 @@ export default function DefaultScanScreen() {
     )} or ${LaunchPricing.fullCarCheckBundleChecks} checks for ${formatGbp(LaunchPricing.fullCarCheckBundleGbp)}.`;
   } else if (vehicleOnly) {
     presetTitle = "Car Mode";
-    presetSubtitle = "Scan number plates, pull MOT/tax checks, and value vehicles in one flow.";
+    presetSubtitle = FeatureFlags.carChecksAvailable
+      ? "Scan number plates, pull MOT/tax checks, and value vehicles in one flow."
+      : FeatureFlags.carChecksStatusLabel;
   } else if (itemsOnly) {
     presetTitle = "Anything Mode";
     presetSubtitle = "Scan non-car items and get a fast valuation range.";
@@ -3835,6 +3898,19 @@ const styles = StyleSheet.create({
     fontSize: 11,
     marginTop: 2,
     fontWeight: "800",
+  },
+  fullCarPriceCta: {
+    marginTop: 8,
+    alignSelf: "flex-start",
+    borderRadius: 999,
+    backgroundColor: "#fde68a",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  fullCarPriceCtaText: {
+    color: "#7c2d12",
+    fontSize: 12,
+    fontWeight: "900",
   },
   miniLaneBtn: {
     flexGrow: 1,
@@ -4021,6 +4097,21 @@ const styles = StyleSheet.create({
     color: AppTheme.textSecondary,
     fontSize: 11,
     lineHeight: 15,
+  },
+  proCardCta: {
+    marginTop: 6,
+    alignSelf: "flex-start",
+    borderRadius: 999,
+    backgroundColor: AppTheme.accent,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    minHeight: 38,
+    justifyContent: "center",
+  },
+  proCardCtaText: {
+    color: "#04130f",
+    fontSize: 12,
+    fontWeight: "800",
   },
   card: {
     gap: 8,
@@ -4456,6 +4547,24 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     gap: 4,
+  },
+  trustCardInline: {
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: AppTheme.cardBorder,
+    backgroundColor: AppTheme.surfaceSoft,
+    gap: 4,
+  },
+  trustCardInlineTitle: {
+    color: AppTheme.textPrimary,
+    fontSize: 13,
+    fontWeight: "800",
+  },
+  trustCardInlineText: {
+    color: AppTheme.textSecondary,
+    fontSize: 12,
+    lineHeight: 17,
   },
   trustSafe: {
     backgroundColor: "#ecfbf3",

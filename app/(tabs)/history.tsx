@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Alert, Animated, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 
 import { AppTheme } from "@/constants/app-theme";
+import { FeatureFlags } from "@/constants/feature-flags";
 import { clearHistory, loadHistory, removeHistoryEntry, type ScanHistoryEntry } from "@/lib/scan-history";
 
 export default function HistoryScreen() {
@@ -66,8 +67,13 @@ export default function HistoryScreen() {
           <Pressable style={styles.heroActionBtnPrimary} onPress={() => router.push("/(tabs)/scan?mode=items")}>
             <Text style={styles.heroActionTextPrimary}>Scan Now</Text>
           </Pressable>
-          <Pressable style={styles.heroActionBtn} onPress={() => router.push("/(tabs)/scan?mode=cars")}>
-            <Text style={styles.heroActionText}>Car Scan</Text>
+          <Pressable
+            style={[styles.heroActionBtn, !FeatureFlags.carChecksAvailable && styles.heroActionBtnDisabled]}
+            disabled={!FeatureFlags.carChecksAvailable}
+            onPress={() => router.push("/(tabs)/scan?mode=cars")}>
+            <Text style={styles.heroActionText}>
+              {FeatureFlags.carChecksAvailable ? "Car Scan" : "Car checks paused"}
+            </Text>
           </Pressable>
         </View>
         <View style={styles.heroActions}>
@@ -140,8 +146,13 @@ export default function HistoryScreen() {
             <Pressable style={styles.heroActionBtnPrimary} onPress={() => router.push("/(tabs)/scan?mode=items")}>
               <Text style={styles.heroActionTextPrimary}>Scan Now</Text>
             </Pressable>
-            <Pressable style={styles.heroActionBtn} onPress={() => router.push("/(tabs)/scan?mode=cars")}>
-              <Text style={styles.heroActionText}>Car Scan</Text>
+            <Pressable
+              style={[styles.heroActionBtn, !FeatureFlags.carChecksAvailable && styles.heroActionBtnDisabled]}
+              disabled={!FeatureFlags.carChecksAvailable}
+              onPress={() => router.push("/(tabs)/scan?mode=cars")}>
+              <Text style={styles.heroActionText}>
+                {FeatureFlags.carChecksAvailable ? "Car Scan" : "Car checks paused"}
+              </Text>
             </Pressable>
           </View>
         </View>
@@ -246,6 +257,9 @@ const styles = StyleSheet.create({
     minHeight: 44,
     alignItems: "center",
     justifyContent: "center",
+  },
+  heroActionBtnDisabled: {
+    opacity: 0.55,
   },
   heroActionBtnPrimary: {
     flex: 1,

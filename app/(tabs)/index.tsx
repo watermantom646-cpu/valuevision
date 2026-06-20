@@ -1,10 +1,14 @@
-import { useRouter } from "expo-router";
-import React, { useEffect, useState } from "react";
+import { useFocusEffect, useRouter } from "expo-router";
+import React, { useCallback, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 
 import { AppTheme } from "@/constants/app-theme";
+import { FeatureFlags } from "@/constants/feature-flags";
 import { formatGbp, LaunchPricing } from "@/constants/pricing";
 import { resolveApiBase } from "@/lib/api-base";
+import { loadBillingState } from "@/lib/billing-state";
+import { loadCarCheckCredits } from "@/lib/car-check-credits";
+import { loadScanAccess, type ScanAccess } from "@/lib/scan-access";
 import { loadHistory } from "@/lib/scan-history";
 
 export default function HomeScreen() {
@@ -14,27 +18,41 @@ export default function HomeScreen() {
 
   const [backendOk, setBackendOk] = useState<boolean | null>(null);
   const [lastQuery, setLastQuery] = useState("");
+  const [monthlyAccessLabel, setMonthlyAccessLabel] = useState("Checking monthly access...");
+  const [storedCredits, setStoredCredits] = useState(0);
+  const [scanAccess, setScanAccess] = useState<ScanAccess | null>(null);
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     let mounted = true;
     (async () => {
       try {
-        const [history, health] = await Promise.all([
+        const [history, health, billingState, credits, access] = await Promise.all([
           loadHistory(),
           fetch(`${resolveApiBase()}/health`).then((r) => r.json()).catch(() => null),
+          loadBillingState(),
+          loadCarCheckCredits(),
+          loadScanAccess(),
         ]);
         if (!mounted) return;
         setLastQuery(String(history[0]?.query || ""));
         setBackendOk(Boolean(health?.ok));
+        setMonthlyAccessLabel(
+          billingState.monthlyUnlocked
+            ? "Unlimited Anything Mode scans active"
+            : "Starter access active"
+        );
+        setStoredCredits(credits.credits);
+        setScanAccess(access);
       } catch {
         if (!mounted) return;
         setBackendOk(false);
+        setMonthlyAccessLabel("Monthly access status unavailable");
       }
     })();
     return () => {
       mounted = false;
     };
-  }, []);
+  }, []));
 
   const backendLabel = backendOk == null ? "Preparing scanner..." : backendOk ? "Ready to scan" : "Connection issue";
 
@@ -47,21 +65,31 @@ export default function HomeScreen() {
 
           <Text style={styles.kicker}>VALUEVISION</Text>
           <Text style={styles.title}>Know What It Is. Know What It&apos;s Worth.</Text>
-          <Text style={styles.subtitle}>One scan reveals item identity, resale value range, and next best selling route.</Text>
+          <Text style={styles.subtitle}>
+            One scan reveals item identity, resale value range, and next best selling route across collectibles, cards,
+            coins, tech, tools, fashion, and home goods.
+          </Text>
 
           <Pressable style={styles.primaryMode} onPress={() => router.push("/(tabs)/scan?mode=items" as any)}>
             <Text style={styles.primaryModeTitle}>Anything Mode</Text>
-            <Text style={styles.primaryModeText}>Scan items, tools, tech, clothes, books, coins and more</Text>
+            <Text style={styles.primaryModeText}>
+              Scan Pokemon cards, coins, antiques, vintage items, tools, tech, fashion and more
+            </Text>
           </Pressable>
 
           <View style={styles.modeRow}>
-            <Pressable style={styles.modeBtn} onPress={() => router.push("/(tabs)/scan?mode=cars" as any)}>
+            <Pressable
+              style={[styles.modeBtn, !FeatureFlags.carChecksAvailable && styles.modeBtnMuted]}
+              disabled={!FeatureFlags.carChecksAvailable}
+              onPress={() => router.push("/(tabs)/scan?mode=cars" as any)}>
               <Text style={styles.modeBtnTitle}>Car Mode</Text>
-              <Text style={styles.modeBtnText}>Plate, MOT and value checks</Text>
+              <Text style={styles.modeBtnText}>
+                {FeatureFlags.carChecksAvailable ? "Plate, MOT and value checks" : "Temporarily unavailable"}
+              </Text>
             </Pressable>
-            <Pressable style={[styles.modeBtn, styles.modeBtnMuted]} disabled>
-              <Text style={styles.modeBtnTitle}>AI Photo ID</Text>
-              <Text style={styles.modeBtnText}>Coming Gen 2</Text>
+            <Pressable style={styles.modeBtn} onPress={() => router.push("/(tabs)/history" as any)}>
+              <Text style={styles.modeBtnTitle}>My Collection</Text>
+              <Text style={styles.modeBtnText}>Saved scans and valuations</Text>
             </Pressable>
           </View>
 
@@ -73,20 +101,32 @@ export default function HomeScreen() {
           <View style={styles.oneOffCard}>
             <Text style={styles.oneOffTitle}>Try before you pay</Text>
             <Text style={styles.oneOffLine}>
-              {`${LaunchPricing.freeStarterScans} basic Anything Mode scans are included so users can test item valuations before buying paid checks.`}
+              {scanAccess?.unlimited
+                ? "Unlimited Anything Mode scans are active on this device."
+                : `${scanAccess?.remaining ?? LaunchPricing.freeStarterScans} of ${LaunchPricing.freeStarterScans} free Anything Mode scans remaining.`}
             </Text>
+          </View>
+          <View style={styles.howCard}>
+            <Text style={styles.howTitle}>What people can scan</Text>
+            <Text style={styles.howLine}>Pokemon cards, graded cards, and collectibles</Text>
+            <Text style={styles.howLine}>Coins, notes, medals, and vintage keepsakes</Text>
+            <Text style={styles.howLine}>Tools, tech, fashion, books, furniture, and mixed resale finds</Text>
           </View>
           <View style={styles.subscriptionCard}>
             <Text style={styles.subscriptionTitle}>{LaunchPricing.monthlySubscriptionName}</Text>
             <Text style={styles.subscriptionPrice}>{`${formatGbp(LaunchPricing.monthlySubscriptionGbp)} / month`}</Text>
-            <Text style={styles.subscriptionText}>
-              Paid scans and valuation tools are protected so live vehicle-data costs only run after paid access is unlocked.
-            </Text>
+            <Text style={styles.subscriptionText}>Unlimited Anything Mode scans, Live Mode, and continued access to valuation tools.</Text>
+            <Text style={styles.subscriptionMeta}>{monthlyAccessLabel}</Text>
+            <Pressable style={styles.subscriptionCta} onPress={() => router.push("/paywall" as any)}>
+              <Text style={styles.subscriptionCtaText}>View Billing Status</Text>
+            </Pressable>
           </View>
           <View style={styles.oneOffCard}>
-            <Text style={styles.oneOffTitle}>One-off car checks</Text>
+            <Text style={styles.oneOffTitle}>Car checks status</Text>
             <Text style={styles.oneOffLine}>
-              {`Car valuation ${formatGbp(LaunchPricing.carValuationFromGbp)} • Full check ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)} • ${LaunchPricing.fullCarCheckBundleChecks}-pack ${formatGbp(LaunchPricing.fullCarCheckBundleGbp)}`}
+              {FeatureFlags.carChecksAvailable
+                ? `Car valuation ${formatGbp(LaunchPricing.carValuationFromGbp)} • Full check ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)} • ${storedCredits} checks available`
+                : FeatureFlags.carChecksStatusLabel}
             </Text>
           </View>
           <Text style={styles.marketContextText}>Values are shown as current resale estimates, with new-retail context where available.</Text>
@@ -174,6 +214,26 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "800",
     letterSpacing: 1,
+  },
+  liveBuildBanner: {
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#fbbf24",
+    backgroundColor: "rgba(251, 191, 36, 0.14)",
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    gap: 4,
+  },
+  liveBuildBannerTitle: {
+    color: "#fde68a",
+    fontSize: 14,
+    fontWeight: "900",
+  },
+  liveBuildBannerText: {
+    color: "#fde68a",
+    fontSize: 11,
+    lineHeight: 16,
+    fontWeight: "700",
   },
   title: {
     color: "#f8fbff",
@@ -281,6 +341,25 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 17,
     fontWeight: "600",
+  },
+  subscriptionMeta: {
+    color: "#ccfbf1",
+    fontSize: 11,
+    lineHeight: 16,
+    fontWeight: "700",
+  },
+  subscriptionCta: {
+    marginTop: 6,
+    alignSelf: "flex-start",
+    borderRadius: 999,
+    backgroundColor: "#ccfbf1",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  subscriptionCtaText: {
+    color: "#134e4a",
+    fontSize: 12,
+    fontWeight: "900",
   },
   oneOffCard: {
     borderRadius: 12,

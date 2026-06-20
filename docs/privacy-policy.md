@@ -67,7 +67,7 @@ Depending on your location, you may have rights to:
 - Data portability.
 - Withdraw consent where processing is based on consent.
 
-To make a request, contact: **[support@valuevisionapp.com]**
+To make a request, contact: **support@valuevisionapp.com**
 
 ## 7. Children
 
@@ -89,7 +89,6 @@ We may update this Privacy Policy from time to time. We will update the "Last up
 
 Data Controller / Operator:
 
-- Name: **[Your Name or Company Name]**
-- Email: **[support@valuevisionapp.com]**
-- Address: **[Business Address]**
-
+- Name: **ValueVision**
+- Email: **support@valuevisionapp.com**
+- Address: **Business contact address available on request via support@valuevisionapp.com**

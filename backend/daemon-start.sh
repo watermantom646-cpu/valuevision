@@ -66,7 +66,24 @@ pkill -f "node server.js" 2>/dev/null || true
 : > "$SUP_LOG"
 : > "$APP_LOG"
 
-nohup "$SUPERVISOR_SCRIPT" >/dev/null 2>&1 < /dev/null &
+# Start the supervisor in a separate session so npm's shell teardown does not
+# terminate the detached backend immediately on macOS.
+python3 - <<'PY' "$SUPERVISOR_SCRIPT"
+import os
+import subprocess
+import sys
+
+script = sys.argv[1]
+with open(os.devnull, "rb") as stdin, open(os.devnull, "ab") as stdout, open(os.devnull, "ab") as stderr:
+    subprocess.Popen(
+        [script],
+        stdin=stdin,
+        stdout=stdout,
+        stderr=stderr,
+        start_new_session=True,
+        close_fds=True,
+    )
+PY
 
 for _ in $(seq 1 25); do
   NEW_PID="$(cat "$PID_FILE" 2>/dev/null || true)"

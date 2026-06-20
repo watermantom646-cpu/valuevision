@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 
 import { AppTheme } from "@/constants/app-theme";
+import { FeatureFlags } from "@/constants/feature-flags";
 import { formatGbp, LaunchPricing } from "@/constants/pricing";
 import { getAnalyticsSnapshot } from "@/lib/analytics";
 import { resolveApiBase } from "@/lib/api-base";
@@ -150,14 +151,28 @@ export default function LaunchChecklistScreen() {
         <Pressable style={[styles.btn, isWide && styles.btnWide]} onPress={load}>
           <Text style={styles.btnText}>{loading ? "Refreshing..." : "Refresh checks"}</Text>
         </Pressable>
-        <Pressable style={[styles.btn, isWide && styles.btnWide]} onPress={() => router.push("/(tabs)/scan?mode=cars")}>
-          <Text style={styles.btnText}>Run Cars Scan</Text>
-        </Pressable>
-        <Pressable style={[styles.btn, styles.btnAccent, isWide && styles.btnWide]} onPress={() => router.push("/(tabs)/scan?mode=fullcar")}>
-          <Text style={styles.btnText}>{`Run Full Car Check (${formatGbp(LaunchPricing.fullCarCheckSingleGbp)})`}</Text>
-        </Pressable>
         <Pressable style={[styles.btn, isWide && styles.btnWide]} onPress={() => router.push("/(tabs)/scan?mode=items")}>
           <Text style={styles.btnText}>Run Items Scan</Text>
+        </Pressable>
+        <Pressable
+          style={[styles.btn, isWide && styles.btnWide]}
+          onPress={() => router.push("/(tabs)/scan?category=collectible")}>
+          <Text style={styles.btnText}>Run Collectibles Scan</Text>
+        </Pressable>
+        <Pressable
+          style={[styles.btn, isWide && styles.btnWide]}
+          onPress={() => router.push("/(tabs)/scan?category=electronics")}>
+          <Text style={styles.btnText}>Run Technology Scan</Text>
+        </Pressable>
+        <Pressable
+          style={[styles.btn, styles.btnAccent, styles.btnDisabled, isWide && styles.btnWide]}
+          disabled
+          onPress={() => router.push("/(tabs)/scan?mode=fullcar")}>
+          <Text style={styles.btnText}>
+            {FeatureFlags.carChecksAvailable
+              ? `Run Full Car Check (${formatGbp(LaunchPricing.fullCarCheckSingleGbp)})`
+              : "Car checks paused"}
+          </Text>
         </Pressable>
       </View>
     </ScrollView>
@@ -286,6 +301,9 @@ const styles = StyleSheet.create({
   },
   btnAccent: {
     backgroundColor: "#c87f1d",
+  },
+  btnDisabled: {
+    opacity: 0.55,
   },
   btnText: {
     color: "#04130f",

@@ -1,50 +1,50 @@
-# Welcome to your Expo app 👋
+# ValueVision
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+ValueVision is an Expo app for fast resale valuation. It is optimized around item scanning first: collectibles, cards, coins, antiques, tools, tech, fashion, books, and home goods.
 
-## Get started
+## Product Focus
 
-1. Install dependencies
+- Anything Mode is the primary launch flow.
+- Best meeting/demo categories: Pokemon cards, graded cards, coins, notes, antiques, vintage items, tools, electronics, fashion, and mixed resale finds.
+- Car checks exist in the codebase but are currently paused when provider spend is not available.
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Local App Commands
 
 ```bash
-npm run reset-project
+npm install
+npm run typecheck
+npm run lint
+npm run start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Useful launch helpers:
 
-## Learn more
+```bash
+npm run launch:quick
+npm run launch:status
+npm run backend:start
+npm run backend:stop
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Backend
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+The backend lives in `/Users/abbiemaytum/ValueVision/backend`.
 
-## Join the community
+Important endpoints used by the app:
 
-Join our community of developers creating universal apps.
+- `/health`
+- `/analyze`
+- `/launch-readiness`
+- `/provider-usage`
+- `/valuation/accuracy-dashboard`
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Release Config
+
+- Bundle ID: `com.abbiemaytum.valuevision`
+- EAS project ID: `fa373526-256a-4166-a5b3-2f11e0dc9207`
+- Production API base in `eas.json`: `https://valuevision-4kj3.onrender.com`
+- App Store Connect app ID in `eas.json`: `6759789496`
+
+## Current Launch Goal
+
+Ship a clean item-first App Store build with working scan flows, working navigation, honest messaging about paused car checks, and a strong demo story around broad resale categories.
