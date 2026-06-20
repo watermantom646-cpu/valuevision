@@ -1058,7 +1058,10 @@ export function ScanScreen({
           return;
         }
         // Start from clean UI state for each scan attempt.
-        const needsUkVehicleCheck = region === "uk" && (category === "vehicle" || category === "auto");
+        const needsUkVehicleCheck =
+          !itemsOnly &&
+          region === "uk" &&
+          (vehicleOnly || category === "vehicle");
         if (needsUkVehicleCheck && !vehicleReg.trim() && !opts?.silent) {
           setVehicleStatusError("Auto-detecting UK plate from photo. If missed, enter reg manually in advanced details.");
         }
@@ -1090,7 +1093,9 @@ export function ScanScreen({
 
         const fastConf = Number(fast?.pricing?.confidence?.score || 0);
         const fastGate = String(fast?.pricing?.qualityGate?.status || "");
-        const vehicleFlow = category === "vehicle" || fast?.pricing?.category === "vehicle";
+        const vehicleFlow =
+          !itemsOnly &&
+          (vehicleOnly || category === "vehicle" || fast?.pricing?.category === "vehicle");
         const fastUsable = String(fast?.pricing?.finalStatus || "") === "usable";
         const vehicleNeedsRefine = !fastUsable || fastConf < 72 || fastGate !== "pass";
         const shouldRefine =
@@ -1132,7 +1137,9 @@ export function ScanScreen({
           .filter((x) => looksLikeUkReg(x));
         const fallbackPlate = Array.from(new Set(fallbackPlateCandidates))[0];
         const shouldFetchUkStatusFallback =
+          !itemsOnly &&
           region === "uk" &&
+          (vehicleOnly || category === "vehicle" || finalData?.pricing?.category === "vehicle") &&
           !finalStatus?.ok &&
           Boolean(fallbackPlate);
         if (shouldFetchUkStatusFallback && fallbackPlate && isCurrentRun()) {
