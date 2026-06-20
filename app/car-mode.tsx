@@ -4,6 +4,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } fr
 
 import { AppTheme } from "@/constants/app-theme";
 import { FeatureFlags } from "@/constants/feature-flags";
+import { pushPublicRoute, replacePublicRoute } from "@/lib/public-navigation";
 
 const CAPABILITIES = [
   ["Plate recognition", "Scan or enter a UK registration."],
@@ -38,7 +39,7 @@ export default function CarModeScreen() {
         <Pressable
           style={[styles.primaryButton, !FeatureFlags.carChecksAvailable && styles.primaryButtonDisabled]}
           disabled={!FeatureFlags.carChecksAvailable}
-          onPress={() => router.push("/(tabs)/scan?mode=cars")}>
+          onPress={() => pushPublicRoute(router, "/scan?mode=cars")}>
           <Text style={styles.primaryButtonText}>
             {FeatureFlags.carChecksAvailable ? "Start Car Check" : "Checks Temporarily Paused"}
           </Text>
@@ -58,10 +59,10 @@ export default function CarModeScreen() {
       </View>
 
       <View style={styles.actions}>
-        <Pressable style={styles.secondaryButton} onPress={() => router.push("/(tabs)/history")}>
+        <Pressable style={styles.secondaryButton} onPress={() => pushPublicRoute(router, "/history")}>
           <Text style={styles.secondaryButtonText}>View Car Collection</Text>
         </Pressable>
-        <Pressable style={styles.secondaryButton} onPress={() => router.replace("/(tabs)/scan?mode=items")}>
+        <Pressable style={styles.secondaryButton} onPress={() => replacePublicRoute(router, "/scan?mode=items")}>
           <Text style={styles.secondaryButtonText}>Open Anything Mode</Text>
         </Pressable>
       </View>

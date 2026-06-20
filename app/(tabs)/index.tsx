@@ -8,6 +8,7 @@ import { formatGbp, LaunchPricing } from "@/constants/pricing";
 import { resolveApiBase } from "@/lib/api-base";
 import { loadBillingState } from "@/lib/billing-state";
 import { loadCarCheckCredits } from "@/lib/car-check-credits";
+import { pushPublicRoute } from "@/lib/public-navigation";
 import { loadScanAccess, type ScanAccess } from "@/lib/scan-access";
 import { loadHistory } from "@/lib/scan-history";
 
@@ -70,7 +71,7 @@ export default function HomeScreen() {
             coins, tech, tools, fashion, and home goods.
           </Text>
 
-          <Pressable style={styles.primaryMode} onPress={() => router.push("/(tabs)/scan?mode=items" as any)}>
+          <Pressable style={styles.primaryMode} onPress={() => pushPublicRoute(router, "/scan?mode=items")}>
             <Text style={styles.primaryModeTitle}>Anything Mode</Text>
             <Text style={styles.primaryModeText}>
               Scan Pokemon cards, coins, antiques, vintage items, tools, tech, fashion and more
@@ -80,13 +81,13 @@ export default function HomeScreen() {
           <View style={styles.modeRow}>
             <Pressable
               style={[styles.modeBtn, !FeatureFlags.carChecksAvailable && styles.modeBtnMuted]}
-              onPress={() => router.push("/car-mode" as any)}>
+              onPress={() => pushPublicRoute(router, "/car-mode")}>
               <Text style={styles.modeBtnTitle}>Car Mode</Text>
               <Text style={styles.modeBtnText}>
                 {FeatureFlags.carChecksAvailable ? "Plate, MOT and value checks" : "Open car hub • checks paused"}
               </Text>
             </Pressable>
-            <Pressable style={styles.modeBtn} onPress={() => router.push("/(tabs)/history" as any)}>
+            <Pressable style={styles.modeBtn} onPress={() => pushPublicRoute(router, "/history")}>
               <Text style={styles.modeBtnTitle}>My Collection</Text>
               <Text style={styles.modeBtnText}>Saved scans and valuations</Text>
             </Pressable>
@@ -116,7 +117,7 @@ export default function HomeScreen() {
             <Text style={styles.subscriptionPrice}>{`${formatGbp(LaunchPricing.monthlySubscriptionGbp)} / month`}</Text>
             <Text style={styles.subscriptionText}>Unlimited Anything Mode scans, Live Mode, and continued access to valuation tools.</Text>
             <Text style={styles.subscriptionMeta}>{monthlyAccessLabel}</Text>
-            <Pressable style={styles.subscriptionCta} onPress={() => router.push("/paywall" as any)}>
+            <Pressable style={styles.subscriptionCta} onPress={() => pushPublicRoute(router, "/paywall")}>
               <Text style={styles.subscriptionCtaText}>View Billing Status</Text>
             </Pressable>
           </View>
@@ -148,10 +149,10 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.footerActions}>
-          <Pressable style={styles.footerBtnPrimary} onPress={() => router.push("/(tabs)/scan?mode=items" as any)}>
+          <Pressable style={styles.footerBtnPrimary} onPress={() => pushPublicRoute(router, "/scan?mode=items")}>
             <Text style={styles.footerBtnPrimaryText}>Start Scanning</Text>
           </Pressable>
-          <Pressable style={styles.footerBtn} onPress={() => router.push("/(tabs)/history" as any)}>
+          <Pressable style={styles.footerBtn} onPress={() => pushPublicRoute(router, "/history")}>
             <Text style={styles.footerBtnText}>Collection</Text>
           </Pressable>
         </View>

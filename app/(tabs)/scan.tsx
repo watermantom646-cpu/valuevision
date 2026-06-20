@@ -12,6 +12,7 @@ import { FeatureFlags } from "@/constants/feature-flags";
 import { formatGbp, LaunchPricing } from "@/constants/pricing";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { isPlaceholderApiBase, looksLikeLocalApiBase, resolveApiBase } from "@/lib/api-base";
+import { pushPublicRoute } from "@/lib/public-navigation";
 import { loadScanAccess, recordCompletedStarterScan, type ScanAccess } from "@/lib/scan-access";
 import { addHistoryEntry, loadHistory, type ScanHistoryEntry } from "@/lib/scan-history";
 import { loadWatchlist, upsertWatchlistEntry, type WatchlistEntry } from "@/lib/watchlist";
@@ -1020,7 +1021,7 @@ export function ScanScreen({
               `You have used your ${LaunchPricing.freeStarterScans} free scans. Monthly access unlocks unlimited Anything Mode scans.`,
               [
                 { text: "Not now", style: "cancel" },
-                { text: "View monthly access", onPress: () => router.push("/paywall" as any) },
+                { text: "View monthly access", onPress: () => pushPublicRoute(router, "/paywall") },
               ]
             );
           }
@@ -1374,7 +1375,7 @@ export function ScanScreen({
           "Your free scans work with Scan Now. Monthly access unlocks continuous Live Mode scanning.",
           [
             { text: "Use Scan Now", style: "cancel" },
-            { text: "View monthly access", onPress: () => router.push("/paywall" as any) },
+            { text: "View monthly access", onPress: () => pushPublicRoute(router, "/paywall") },
           ]
         );
         return;
@@ -1928,7 +1929,7 @@ export function ScanScreen({
   const improveResult = useCallback(() => {
     const detected = data?.pricing?.autoDetectedQuery?.trim();
     if (itemsOnly && data?.pricing?.category === "vehicle") {
-      router.push("/car-mode" as any);
+      pushPublicRoute(router, "/car-mode");
       return;
     }
     if (detected && !itemQuery.trim()) {
@@ -2325,7 +2326,7 @@ export function ScanScreen({
                 {`Blocked paid attempts today: ${blockedPaidAttemptsToday}`}
               </Text>
             ) : null}
-            <Pressable style={styles.fullCarPriceCta} onPress={() => router.push("/paywall" as any)}>
+            <Pressable style={styles.fullCarPriceCta} onPress={() => pushPublicRoute(router, "/paywall")}>
               <Text style={styles.fullCarPriceCtaText}>Open Billing Status</Text>
             </Pressable>
           </View>
@@ -2335,7 +2336,7 @@ export function ScanScreen({
             style={styles.carsModeCta}
             onPress={() => {
               clearCurrentScanView();
-              router.push("/(tabs)/scan?mode=cars");
+              pushPublicRoute(router, "/scan?mode=cars");
             }}>
             <Text style={styles.carsModeCtaText}>Need full vehicle checks? Open Car Mode</Text>
           </Pressable>
@@ -2344,13 +2345,13 @@ export function ScanScreen({
           <View style={[styles.row, styles.laneRow]}>
             <Pressable
               style={styles.miniLaneBtn}
-              onPress={() => router.push("/(tabs)/history" as any)}>
+              onPress={() => pushPublicRoute(router, "/history")}>
               <Text style={styles.miniLaneBtnText}>My Collection</Text>
               <Text style={styles.miniLaneBtnSubText}>Saved scans</Text>
             </Pressable>
             <Pressable
               style={[styles.miniLaneBtn, scanAccess?.unlimited && styles.miniLaneBtnActive]}
-              onPress={() => router.push("/paywall" as any)}>
+              onPress={() => pushPublicRoute(router, "/paywall")}>
               <Text style={[styles.miniLaneBtnText, scanAccess?.unlimited && styles.miniLaneBtnTextActive]}>
                 Monthly Access
               </Text>
@@ -2440,7 +2441,7 @@ export function ScanScreen({
             ? `One-off car checks: valuation ${formatGbp(LaunchPricing.carValuationFromGbp)}, full check ${formatGbp(LaunchPricing.fullCarCheckSingleGbp)}, ${LaunchPricing.fullCarCheckBundleChecks}-pack ${formatGbp(LaunchPricing.fullCarCheckBundleGbp)}.`
             : FeatureFlags.carChecksStatusLabel}
         </Text>
-        <Pressable style={styles.proCardCta} onPress={() => router.push("/paywall" as any)}>
+        <Pressable style={styles.proCardCta} onPress={() => pushPublicRoute(router, "/paywall")}>
           <Text style={styles.proCardCtaText}>View billing and unlock status</Text>
         </Pressable>
       </View>
@@ -2889,7 +2890,7 @@ export function ScanScreen({
           </Pressable>
           <Pressable
             style={styles.quickBtn}
-            onPress={() => router.push("/(tabs)/history")}>
+            onPress={() => pushPublicRoute(router, "/history")}>
             <Text style={styles.quickBtnTitle}>My Collection</Text>
             <Text style={styles.quickBtnSub}>Saved scans</Text>
           </Pressable>
@@ -3239,7 +3240,7 @@ export function ScanScreen({
             <Pressable style={styles.reportActionPrimary} onPress={takePhoto}>
               <Text style={styles.reportActionPrimaryText}>Scan Another</Text>
             </Pressable>
-            <Pressable style={styles.reportActionBtn} onPress={() => router.push("/(tabs)/history")}>
+            <Pressable style={styles.reportActionBtn} onPress={() => pushPublicRoute(router, "/history")}>
               <Text style={styles.reportActionText}>Open Collection</Text>
             </Pressable>
           </View>
@@ -3507,7 +3508,7 @@ export function ScanScreen({
           </View>
 
           <View style={[styles.row, isCompact && styles.rowStack]}>
-            <Pressable style={styles.reportActionPrimary} onPress={() => router.push("/(tabs)/history")}>
+            <Pressable style={styles.reportActionPrimary} onPress={() => pushPublicRoute(router, "/history")}>
               <Text style={styles.reportActionPrimaryText}>Save and Open Collection</Text>
             </Pressable>
             <Pressable style={styles.reportActionBtn} onPress={shareReport}>
@@ -3599,7 +3600,7 @@ export function ScanScreen({
           <Text style={styles.bold}>Saved automatically</Text>
           <Text style={styles.compRow}>• This scan was added to your Collection.</Text>
           <View style={styles.row}>
-            <Button title="Open Collection" onPress={() => router.push("/(tabs)/history")} />
+            <Button title="Open Collection" onPress={() => pushPublicRoute(router, "/history")} />
           </View>
         </View>
       ) : null}

@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Alert, Animated, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "react-native";
 
 import { AppTheme } from "@/constants/app-theme";
+import { pushPublicRoute } from "@/lib/public-navigation";
 import { clearHistory, loadHistory, removeHistoryEntry, type ScanHistoryEntry } from "@/lib/scan-history";
 
 export default function HistoryScreen() {
@@ -63,12 +64,12 @@ export default function HistoryScreen() {
         <Text style={styles.title}>My Collection</Text>
         <Text style={styles.subtitle}>Every scan is saved. Tap any item for full valuation details.</Text>
         <View style={styles.heroActions}>
-          <Pressable style={styles.heroActionBtnPrimary} onPress={() => router.push("/(tabs)/scan?mode=items")}>
+          <Pressable style={styles.heroActionBtnPrimary} onPress={() => pushPublicRoute(router, "/scan?mode=items")}>
             <Text style={styles.heroActionTextPrimary}>Scan Now</Text>
           </Pressable>
           <Pressable
             style={styles.heroActionBtn}
-            onPress={() => router.push("/car-mode")}>
+            onPress={() => pushPublicRoute(router, "/car-mode")}>
             <Text style={styles.heroActionText}>Car Mode</Text>
           </Pressable>
         </View>
@@ -139,12 +140,12 @@ export default function HistoryScreen() {
         <View style={styles.emptyCard}>
           <Text style={styles.emptyText}>No scans in this view yet. Run a scan to add one.</Text>
           <View style={styles.heroActions}>
-            <Pressable style={styles.heroActionBtnPrimary} onPress={() => router.push("/(tabs)/scan?mode=items")}>
+            <Pressable style={styles.heroActionBtnPrimary} onPress={() => pushPublicRoute(router, "/scan?mode=items")}>
               <Text style={styles.heroActionTextPrimary}>Scan Now</Text>
             </Pressable>
             <Pressable
               style={styles.heroActionBtn}
-              onPress={() => router.push("/car-mode")}>
+              onPress={() => pushPublicRoute(router, "/car-mode")}>
               <Text style={styles.heroActionText}>Car Mode</Text>
             </Pressable>
           </View>

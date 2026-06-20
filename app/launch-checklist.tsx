@@ -7,6 +7,7 @@ import { FeatureFlags } from "@/constants/feature-flags";
 import { formatGbp, LaunchPricing } from "@/constants/pricing";
 import { getAnalyticsSnapshot } from "@/lib/analytics";
 import { resolveApiBase } from "@/lib/api-base";
+import { pushPublicRoute } from "@/lib/public-navigation";
 import { loadHistory } from "@/lib/scan-history";
 
 export default function LaunchChecklistScreen() {
@@ -151,23 +152,23 @@ export default function LaunchChecklistScreen() {
         <Pressable style={[styles.btn, isWide && styles.btnWide]} onPress={load}>
           <Text style={styles.btnText}>{loading ? "Refreshing..." : "Refresh checks"}</Text>
         </Pressable>
-        <Pressable style={[styles.btn, isWide && styles.btnWide]} onPress={() => router.push("/(tabs)/scan?mode=items")}>
+        <Pressable style={[styles.btn, isWide && styles.btnWide]} onPress={() => pushPublicRoute(router, "/scan?mode=items")}>
           <Text style={styles.btnText}>Run Items Scan</Text>
         </Pressable>
         <Pressable
           style={[styles.btn, isWide && styles.btnWide]}
-          onPress={() => router.push("/(tabs)/scan?category=collectible")}>
+          onPress={() => pushPublicRoute(router, "/scan?category=collectible")}>
           <Text style={styles.btnText}>Run Collectibles Scan</Text>
         </Pressable>
         <Pressable
           style={[styles.btn, isWide && styles.btnWide]}
-          onPress={() => router.push("/(tabs)/scan?category=electronics")}>
+          onPress={() => pushPublicRoute(router, "/scan?category=electronics")}>
           <Text style={styles.btnText}>Run Technology Scan</Text>
         </Pressable>
         <Pressable
           style={[styles.btn, styles.btnAccent, styles.btnDisabled, isWide && styles.btnWide]}
           disabled
-          onPress={() => router.push("/(tabs)/scan?mode=fullcar")}>
+          onPress={() => pushPublicRoute(router, "/scan?mode=fullcar")}>
           <Text style={styles.btnText}>
             {FeatureFlags.carChecksAvailable
               ? `Run Full Car Check (${formatGbp(LaunchPricing.fullCarCheckSingleGbp)})`

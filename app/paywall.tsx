@@ -5,6 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { AppTheme } from "@/constants/app-theme";
 import { FeatureFlags } from "@/constants/feature-flags";
 import { formatGbp, LaunchPricing } from "@/constants/pricing";
+import { replacePublicRoute } from "@/lib/public-navigation";
 import { loadScanAccess, type ScanAccess } from "@/lib/scan-access";
 import { useValueVisionBilling } from "@/lib/use-valuevision-billing";
 
@@ -135,7 +136,7 @@ export default function PaywallScreen() {
           ) : null}
           <Pressable
             style={styles.textBtn}
-            onPress={() => router.replace("/(tabs)/scan?mode=items" as any)}>
+            onPress={() => replacePublicRoute(router, "/scan?mode=items")}>
             <Text style={styles.textBtnText}>Continue with current access</Text>
           </Pressable>
           {__DEV__ ? (

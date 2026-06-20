@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { AppTheme } from "@/constants/app-theme";
+import { pushPublicRoute } from "@/lib/public-navigation";
 import { loadHistory, type ScanHistoryEntry } from "@/lib/scan-history";
 
 function symbolFor(item?: ScanHistoryEntry | null) {
@@ -45,7 +46,7 @@ export default function DealsScreen() {
       {!ranked.length ? (
         <View style={styles.card}>
           <Text style={styles.meta}>No ranked deals yet. Scan items and enter buy price to build this board.</Text>
-          <Pressable style={styles.button} onPress={() => router.push("/(tabs)/scan")}>
+          <Pressable style={styles.button} onPress={() => pushPublicRoute(router, "/scan")}>
             <Text style={styles.buttonText}>Go Scan Items</Text>
           </Pressable>
         </View>

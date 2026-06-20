@@ -3,6 +3,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { AppTheme } from "@/constants/app-theme";
+import { pushPublicRoute } from "@/lib/public-navigation";
 import { loadHistory, type ScanHistoryEntry } from "@/lib/scan-history";
 
 function symbolFor(item?: ScanHistoryEntry | null) {
@@ -61,7 +62,7 @@ export default function SellScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>No scans yet</Text>
           <Text style={styles.meta}>Scan an item first, then use Sell Tools to choose price and marketplace.</Text>
-          <Pressable style={styles.buttonPrimary} onPress={() => router.push("/(tabs)/scan")}>
+          <Pressable style={styles.buttonPrimary} onPress={() => pushPublicRoute(router, "/scan")}>
             <Text style={styles.buttonPrimaryText}>Go to Scan</Text>
           </Pressable>
         </View>
