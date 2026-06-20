@@ -4219,9 +4219,13 @@ function buildProvisionalPricing({
 function withholdProvisionalNumbers(pricing, reason = "low confidence provisional estimate") {
   const next = { ...(pricing || {}) };
   const category = String(next.category || "").toLowerCase();
+  const firearmHold = category === "collectible" && isFirearmCollectibleQuery(next.query);
+  const holdReason = firearmHold
+    ? "firearm-like collectibles need maker, deactivation/legal status, proof marks, age, and specialist review"
+    : reason;
   const shouldHideNumbers =
     (category === "vehicle" && ACCURACY_STRICT_MODE) ||
-    (category === "collectible" && isFirearmCollectibleQuery(next.query));
+    firearmHold;
   if (shouldHideNumbers) {
     next.low = null;
     next.median = null;
@@ -4233,12 +4237,12 @@ function withholdProvisionalNumbers(pricing, reason = "low confidence provisiona
   next.finalStatus = "needs_details";
   next.confidence = { score: Math.min(Number(next?.confidence?.score || 25), 35), label: "low" };
   const reasons = Array.isArray(next.confidenceReasons) ? next.confidenceReasons.slice(0, 5) : [];
-  reasons.push(`low-trust estimate shown: ${reason}`);
+  reasons.push(`low-trust estimate shown: ${holdReason}`);
   next.confidenceReasons = unique(reasons);
   next.accuracy = {
     ready: false,
     score: Math.min(Number(next?.accuracy?.score || 40), 49),
-    blockers: unique([...(next?.accuracy?.blockers || []), reason]),
+    blockers: unique([...(next?.accuracy?.blockers || []), holdReason]),
   };
   return next;
 }
