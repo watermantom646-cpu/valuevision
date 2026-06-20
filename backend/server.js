@@ -50,6 +50,9 @@ const ALLOWED_ORIGINS = String(process.env.ALLOWED_ORIGINS || "")
   .filter(Boolean);
 const IS_PRODUCTION = String(process.env.NODE_ENV || "").toLowerCase() === "production";
 const ALLOW_LOCAL_ORIGINS = String(process.env.ALLOW_LOCAL_ORIGINS || "1") !== "0";
+const TRUSTED_PREVIEW_ORIGINS = new Set([
+  "https://jxe269o-watermantom-8083.exp.direct",
+]);
 
 function isLikelyLocalOrigin(origin) {
   const value = String(origin || "").trim();
@@ -76,6 +79,7 @@ app.use(
     origin(origin, callback) {
       if (!origin) return callback(null, true);
       if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+      if (TRUSTED_PREVIEW_ORIGINS.has(origin)) return callback(null, true);
       if (ALLOW_LOCAL_ORIGINS && isLikelyLocalOrigin(origin)) return callback(null, true);
       if (!IS_PRODUCTION && !ALLOWED_ORIGINS.length) return callback(null, true);
       return callback(new Error("Blocked by CORS"));
