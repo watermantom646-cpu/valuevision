@@ -51,6 +51,7 @@ const ALLOWED_ORIGINS = String(process.env.ALLOWED_ORIGINS || "")
 const IS_PRODUCTION = String(process.env.NODE_ENV || "").toLowerCase() === "production";
 const ALLOW_LOCAL_ORIGINS = String(process.env.ALLOW_LOCAL_ORIGINS || "1") !== "0";
 const TRUSTED_PREVIEW_ORIGINS = new Set([
+  "https://valuevision.expo.app",
   "https://jxe269o-watermantom-8083.exp.direct",
 ]);
 
