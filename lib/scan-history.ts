@@ -1,5 +1,7 @@
 import * as FileSystem from "expo-file-system/legacy";
 
+import { readPersistentString, writePersistentString } from "@/lib/persistent-storage";
+
 export type ScanHistoryEntry = {
   id: string;
   createdAt: string;
@@ -53,6 +55,7 @@ export type ScanHistoryEntry = {
 };
 
 const HISTORY_FILE = `${FileSystem.documentDirectory || ""}valuevision-scan-history.json`;
+const HISTORY_KEY = "valuevision-scan-history";
 let writeQueue: Promise<void> = Promise.resolve();
 
 function normalizeEntry(entry: ScanHistoryEntry): ScanHistoryEntry {
@@ -65,11 +68,7 @@ function normalizeEntry(entry: ScanHistoryEntry): ScanHistoryEntry {
 }
 
 async function readFileRaw(): Promise<string> {
-  try {
-    return await FileSystem.readAsStringAsync(HISTORY_FILE);
-  } catch {
-    return "[]";
-  }
+  return readPersistentString(HISTORY_KEY, HISTORY_FILE, "[]");
 }
 
 export async function loadHistory(): Promise<ScanHistoryEntry[]> {
@@ -81,14 +80,14 @@ export async function loadHistory(): Promise<ScanHistoryEntry[]> {
   } catch {
     // Reset corrupt history file so future writes succeed.
     try {
-      await FileSystem.writeAsStringAsync(HISTORY_FILE, "[]");
+      await writePersistentString(HISTORY_KEY, HISTORY_FILE, "[]");
     } catch {}
     return [];
   }
 }
 
 export async function saveHistory(items: ScanHistoryEntry[]): Promise<void> {
-  await FileSystem.writeAsStringAsync(HISTORY_FILE, JSON.stringify(items));
+  await writePersistentString(HISTORY_KEY, HISTORY_FILE, JSON.stringify(items));
 }
 
 export async function addHistoryEntry(entry: ScanHistoryEntry): Promise<void> {

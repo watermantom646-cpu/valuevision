@@ -1,5 +1,7 @@
 import * as FileSystem from "expo-file-system/legacy";
 
+import { readPersistentString, writePersistentString } from "@/lib/persistent-storage";
+
 export type DefaultScanLane = "general" | "cars";
 
 type UserPreferences = {
@@ -9,6 +11,7 @@ type UserPreferences = {
 };
 
 const PREFS_FILE = `${FileSystem.documentDirectory || ""}valuevision-user-preferences.json`;
+const PREFS_KEY = "valuevision-user-preferences";
 const DEFAULT_PREFS: UserPreferences = {
   defaultLane: "general",
   hasSeenHomeGuide: false,
@@ -27,11 +30,7 @@ function normalizePrefs(raw: unknown): UserPreferences {
 }
 
 async function readPrefsRaw(): Promise<string> {
-  try {
-    return await FileSystem.readAsStringAsync(PREFS_FILE);
-  } catch {
-    return JSON.stringify(DEFAULT_PREFS);
-  }
+  return readPersistentString(PREFS_KEY, PREFS_FILE, JSON.stringify(DEFAULT_PREFS));
 }
 
 export async function loadUserPreferences(): Promise<UserPreferences> {
@@ -51,7 +50,7 @@ export async function saveUserPreferences(next: Partial<UserPreferences>): Promi
     ...next,
     updatedAt: new Date().toISOString(),
   });
-  await FileSystem.writeAsStringAsync(PREFS_FILE, JSON.stringify(merged));
+  await writePersistentString(PREFS_KEY, PREFS_FILE, JSON.stringify(merged));
   return merged;
 }
 

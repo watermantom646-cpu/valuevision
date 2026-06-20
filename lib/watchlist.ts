@@ -1,5 +1,7 @@
 import * as FileSystem from "expo-file-system/legacy";
 
+import { readPersistentString, writePersistentString } from "@/lib/persistent-storage";
+
 export type WatchlistEntry = {
   id: string;
   createdAt: string;
@@ -14,6 +16,7 @@ export type WatchlistEntry = {
 };
 
 const WATCHLIST_FILE = `${FileSystem.documentDirectory || ""}valuevision-watchlist.json`;
+const WATCHLIST_KEY = "valuevision-watchlist";
 let writeQueue: Promise<void> = Promise.resolve();
 
 function normalizeEntry(entry: WatchlistEntry): WatchlistEntry {
@@ -30,11 +33,7 @@ function normalizeEntry(entry: WatchlistEntry): WatchlistEntry {
 }
 
 async function readFileRaw(): Promise<string> {
-  try {
-    return await FileSystem.readAsStringAsync(WATCHLIST_FILE);
-  } catch {
-    return "[]";
-  }
+  return readPersistentString(WATCHLIST_KEY, WATCHLIST_FILE, "[]");
 }
 
 export async function loadWatchlist(): Promise<WatchlistEntry[]> {
@@ -45,14 +44,14 @@ export async function loadWatchlist(): Promise<WatchlistEntry[]> {
     return parsed.map((x) => normalizeEntry(x as WatchlistEntry));
   } catch {
     try {
-      await FileSystem.writeAsStringAsync(WATCHLIST_FILE, "[]");
+      await writePersistentString(WATCHLIST_KEY, WATCHLIST_FILE, "[]");
     } catch {}
     return [];
   }
 }
 
 async function saveWatchlist(items: WatchlistEntry[]): Promise<void> {
-  await FileSystem.writeAsStringAsync(WATCHLIST_FILE, JSON.stringify(items));
+  await writePersistentString(WATCHLIST_KEY, WATCHLIST_FILE, JSON.stringify(items));
 }
 
 export async function upsertWatchlistEntry(entry: WatchlistEntry): Promise<void> {

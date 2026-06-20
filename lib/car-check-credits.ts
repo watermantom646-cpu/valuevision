@@ -1,5 +1,7 @@
 import * as FileSystem from "expo-file-system/legacy";
 
+import { readPersistentString, writePersistentString } from "@/lib/persistent-storage";
+
 export type CarCheckCreditStore = {
   credits: number;
   transactions: string[];
@@ -7,6 +9,7 @@ export type CarCheckCreditStore = {
 };
 
 const CREDIT_FILE = `${FileSystem.documentDirectory || ""}valuevision-car-check-credits.json`;
+const CREDIT_KEY = "valuevision-car-check-credits";
 
 function normalizeStore(input: Partial<CarCheckCreditStore> | null | undefined): CarCheckCreditStore {
   const credits = Math.max(0, Math.floor(Number(input?.credits || 0)));
@@ -21,15 +24,12 @@ function normalizeStore(input: Partial<CarCheckCreditStore> | null | undefined):
 }
 
 async function saveStore(store: CarCheckCreditStore) {
-  await FileSystem.writeAsStringAsync(CREDIT_FILE, JSON.stringify(store));
+  await writePersistentString(CREDIT_KEY, CREDIT_FILE, JSON.stringify(store));
 }
 
 export async function loadCarCheckCredits(): Promise<CarCheckCreditStore> {
   try {
-    if (!FileSystem.documentDirectory) return normalizeStore(null);
-    const info = await FileSystem.getInfoAsync(CREDIT_FILE);
-    if (!info.exists) return normalizeStore(null);
-    const raw = await FileSystem.readAsStringAsync(CREDIT_FILE);
+    const raw = await readPersistentString(CREDIT_KEY, CREDIT_FILE, "{}");
     return normalizeStore(JSON.parse(raw));
   } catch {
     return normalizeStore(null);

@@ -1,5 +1,7 @@
 import * as FileSystem from "expo-file-system/legacy";
 
+import { readPersistentString, writePersistentString } from "@/lib/persistent-storage";
+
 export type AnalyticsEventName =
   | "scan_success"
   | "scan_failure"
@@ -21,6 +23,7 @@ type AnalyticsStore = {
 };
 
 const ANALYTICS_FILE = `${FileSystem.documentDirectory || ""}valuevision-analytics.json`;
+const ANALYTICS_KEY = "valuevision-analytics";
 const MAX_EVENTS = 300;
 
 const EMPTY_STORE: AnalyticsStore = {
@@ -39,7 +42,7 @@ let writeQueue: Promise<void> = Promise.resolve();
 
 async function loadStore(): Promise<AnalyticsStore> {
   try {
-    const raw = await FileSystem.readAsStringAsync(ANALYTICS_FILE);
+    const raw = await readPersistentString(ANALYTICS_KEY, ANALYTICS_FILE, "{}");
     const parsed = JSON.parse(raw);
     return {
       totals: { ...EMPTY_STORE.totals, ...(parsed?.totals || {}) },
@@ -52,7 +55,7 @@ async function loadStore(): Promise<AnalyticsStore> {
 }
 
 async function saveStore(store: AnalyticsStore): Promise<void> {
-  await FileSystem.writeAsStringAsync(ANALYTICS_FILE, JSON.stringify(store));
+  await writePersistentString(ANALYTICS_KEY, ANALYTICS_FILE, JSON.stringify(store));
 }
 
 export async function trackAnalyticsEvent(name: AnalyticsEventName, payload?: Record<string, unknown>): Promise<void> {
@@ -77,4 +80,3 @@ export async function trackAnalyticsEvent(name: AnalyticsEventName, payload?: Re
 export async function getAnalyticsSnapshot(): Promise<AnalyticsStore> {
   return loadStore();
 }
-

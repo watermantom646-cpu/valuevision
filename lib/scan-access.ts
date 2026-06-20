@@ -2,6 +2,7 @@ import * as FileSystem from "expo-file-system/legacy";
 
 import { LaunchPricing } from "@/constants/pricing";
 import { loadBillingState } from "@/lib/billing-state";
+import { readPersistentString, writePersistentString } from "@/lib/persistent-storage";
 
 type StarterScanStore = {
   completedScans: number;
@@ -16,6 +17,7 @@ export type ScanAccess = {
 };
 
 const STARTER_SCAN_FILE = `${FileSystem.documentDirectory || ""}valuevision-starter-scans.json`;
+const STARTER_SCAN_KEY = "valuevision-starter-scans";
 let writeQueue: Promise<ScanAccess> = Promise.resolve({
   unlimited: false,
   used: 0,
@@ -32,10 +34,7 @@ function normalizeStore(input: Partial<StarterScanStore> | null | undefined): St
 
 async function loadStore(): Promise<StarterScanStore> {
   try {
-    if (!FileSystem.documentDirectory) return normalizeStore(null);
-    const info = await FileSystem.getInfoAsync(STARTER_SCAN_FILE);
-    if (!info.exists) return normalizeStore(null);
-    const raw = await FileSystem.readAsStringAsync(STARTER_SCAN_FILE);
+    const raw = await readPersistentString(STARTER_SCAN_KEY, STARTER_SCAN_FILE, "{}");
     return normalizeStore(JSON.parse(raw));
   } catch {
     return normalizeStore(null);
@@ -67,9 +66,7 @@ export async function recordCompletedStarterScan(): Promise<ScanAccess> {
       completedScans: Math.min(store.completedScans + 1, LaunchPricing.freeStarterScans),
       updatedAt: new Date().toISOString(),
     });
-    if (FileSystem.documentDirectory) {
-      await FileSystem.writeAsStringAsync(STARTER_SCAN_FILE, JSON.stringify(next));
-    }
+    await writePersistentString(STARTER_SCAN_KEY, STARTER_SCAN_FILE, JSON.stringify(next));
     return resolveAccess(next, false);
   });
   return writeQueue;

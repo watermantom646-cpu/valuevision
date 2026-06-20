@@ -1,6 +1,7 @@
 import * as FileSystem from "expo-file-system/legacy";
 
 import { LaunchPricing } from "@/constants/pricing";
+import { readPersistentString, writePersistentString } from "@/lib/persistent-storage";
 
 export type BillingState = {
   monthlyProductId: string;
@@ -14,6 +15,7 @@ export type BillingState = {
 };
 
 const BILLING_STATE_FILE = `${FileSystem.documentDirectory || ""}valuevision-billing-state.json`;
+const BILLING_STATE_KEY = "valuevision-billing-state";
 
 function defaultBillingState(): BillingState {
   return {
@@ -43,8 +45,7 @@ function normalizeBillingState(input: Partial<BillingState> | null | undefined):
 }
 
 async function saveBillingState(state: BillingState) {
-  if (!FileSystem.documentDirectory) return;
-  await FileSystem.writeAsStringAsync(BILLING_STATE_FILE, JSON.stringify(state));
+  await writePersistentString(BILLING_STATE_KEY, BILLING_STATE_FILE, JSON.stringify(state));
 }
 
 export async function persistBillingState(input: Partial<BillingState>): Promise<BillingState> {
@@ -59,10 +60,7 @@ export async function persistBillingState(input: Partial<BillingState>): Promise
 
 export async function loadBillingState(): Promise<BillingState> {
   try {
-    if (!FileSystem.documentDirectory) return defaultBillingState();
-    const info = await FileSystem.getInfoAsync(BILLING_STATE_FILE);
-    if (!info.exists) return defaultBillingState();
-    const raw = await FileSystem.readAsStringAsync(BILLING_STATE_FILE);
+    const raw = await readPersistentString(BILLING_STATE_KEY, BILLING_STATE_FILE, "{}");
     return normalizeBillingState(JSON.parse(raw));
   } catch {
     return defaultBillingState();
