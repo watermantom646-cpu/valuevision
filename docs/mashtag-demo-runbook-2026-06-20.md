@@ -67,3 +67,4 @@ Updated: 2026-06-20
 - Failed HTTP requests: none after backend CORS fix.
 - Latest iOS candidate: ValueVision 1.0.2 build 25, EAS build bb265577-312a-4ede-87ec-b7c0de3036b1.
 - High-risk category smoke tests: gold sovereign no longer falls to the ordinary GBP 6 coin anchor; firearm-like antiques withhold numeric pricing and ask for specialist details/legal status.
+- Web paywall copy verified: public demo says no payment is taken on web and Apple billing must be verified in the iOS build.

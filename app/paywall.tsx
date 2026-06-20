@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { AppTheme } from "@/constants/app-theme";
 import { FeatureFlags } from "@/constants/feature-flags";
@@ -44,6 +44,7 @@ export default function PaywallScreen() {
     FeatureFlags.carChecksAvailable && nativeBilling.connected && Boolean(nativeBilling.catalog.single);
   const bundleAvailable =
     FeatureFlags.carChecksAvailable && nativeBilling.connected && Boolean(nativeBilling.catalog.bundle);
+  const isWebPreview = Platform.OS === "web";
   const monthlyPrice =
     String((nativeBilling.catalog.monthly as { displayPrice?: string } | null)?.displayPrice || "").trim() ||
     `${formatGbp(LaunchPricing.monthlySubscriptionGbp)}/month`;
@@ -65,7 +66,11 @@ export default function PaywallScreen() {
             <Text style={styles.planPrice}>{monthlyPrice.replace(/\s*\/\s*month/i, "")}</Text>
             <Text style={styles.planPeriod}> / month</Text>
           </View>
-          <Text style={styles.planNote}>Cancel any time in your Apple subscriptions.</Text>
+          <Text style={styles.planNote}>
+            {isWebPreview
+              ? "Web preview shows the plan. Apple billing is tested in the iOS app."
+              : "Cancel any time in your Apple subscriptions."}
+          </Text>
         </View>
 
         <View style={styles.benefitCard}>
@@ -103,7 +108,9 @@ export default function PaywallScreen() {
           </Pressable>
           {!monthlyAvailable && !scanAccess?.unlimited ? (
             <Text style={styles.storeHint}>
-              {nativeBilling.loading
+              {isWebPreview
+                ? "This web demo keeps billing disabled. Use the iOS TestFlight/App Store build to verify the Apple subscription."
+                : nativeBilling.loading
                 ? "Connecting securely to the App Store..."
                 : "Monthly access will appear when the App Store product is available."}
             </Text>
@@ -146,7 +153,9 @@ export default function PaywallScreen() {
           ) : null}
         </View>
         <Text style={styles.terms}>
-          Payment is charged to your Apple ID after confirmation. The subscription renews automatically unless cancelled at least 24 hours before the end of the current period.
+          {isWebPreview
+            ? "No payment is taken on this web preview. Subscription billing is only available through Apple in the iOS build."
+            : "Payment is charged to your Apple ID after confirmation. The subscription renews automatically unless cancelled at least 24 hours before the end of the current period."}
         </Text>
       </View>
     </ScrollView>
