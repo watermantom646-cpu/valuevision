@@ -2905,6 +2905,10 @@ function isFirearmCollectibleQuery(text) {
   return collectibleSubtype(text) === "firearm";
 }
 
+function isTradingCardCollectibleQuery(text) {
+  return collectibleSubtype(text) === "card";
+}
+
 function compMatchesCollectibleQuery(title, query) {
   const q = extractCollectibleAttributes(query);
   if (!q.isCoin && !q.isBanknote && !q.year && !q.denomination && !q.subtype) return true;
@@ -8213,6 +8217,21 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
       pricingPayload = applyAccuracyHold(
         pricingPayload,
         withhold.reason || "confidence below accuracy threshold",
+        category
+      );
+    }
+
+    if (category === "collectible" && isTradingCardCollectibleQuery(baseQuery) && finalStatus !== "usable") {
+      pricingPayload = applyAccuracyHold(
+        {
+          ...pricingPayload,
+          confidence: {
+            score: Math.min(Number(pricingPayload?.confidence?.score || 42), 45),
+            label: "low",
+          },
+          recommendations: [],
+        },
+        "trading card pricing needs exact card name, set, card number, grade, and condition",
         category
       );
     }

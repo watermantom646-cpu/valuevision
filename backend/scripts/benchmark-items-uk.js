@@ -32,6 +32,18 @@ const CASES = [
   { q: "Old UK one pound coin 1983", c: "collectible", min: 1, max: 40 },
   { q: "Queen Victoria gold sovereign 1899 coin", c: "collectible", min: 500, max: 1300 },
   {
+    q: "Pokemon Charizard Base Set 4/102 holographic card ungraded",
+    c: "collectible",
+    expectedStatus: "needs_details",
+    expectedNoMedian: true,
+  },
+  {
+    q: "Pikachu Pokemon card 58/102 common unlimited",
+    c: "collectible",
+    expectedStatus: "needs_details",
+    expectedNoMedian: true,
+  },
+  {
     q: "Bank of England white five pound note 1950s",
     c: "collectible",
     expectedStatus: "needs_details",
