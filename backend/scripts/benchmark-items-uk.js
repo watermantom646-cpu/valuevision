@@ -30,11 +30,18 @@ const CASES = [
   { q: "Nike Air Max 90 trainers size 9", c: "fashion", min: 25, max: 90 },
   { q: "North Face puffer jacket mens medium", c: "fashion", min: 20, max: 110 },
   { q: "Old UK one pound coin 1983", c: "collectible", min: 1, max: 40 },
+  { q: "Queen Victoria gold sovereign 1899 coin", c: "collectible", min: 500, max: 1300 },
   {
     q: "Bank of England white five pound note 1950s",
     c: "collectible",
     expectedStatus: "needs_details",
     forbiddenComp: "UK One Pound Coin 1983",
+  },
+  {
+    q: "antique flintlock pistol 1800s wall hanger",
+    c: "collectible",
+    expectedStatus: "needs_details",
+    expectedNoMedian: true,
   },
 ];
 
@@ -70,11 +77,14 @@ async function runCase(row) {
         String(comp?.title || "").toLowerCase().includes(String(row.forbiddenComp).toLowerCase())
       )
     : false;
+  const noMedianMatches = row.expectedNoMedian
+    ? !Number.isFinite(Number(pricing.median)) || Number(pricing.median) <= 0
+    : true;
   const categoryMatches = row.expectedCategory
     ? String(pricing.category || "") === row.expectedCategory
     : true;
   const safe = row.expectedStatus
-    ? statusMatches && !hasForbiddenComp && categoryMatches
+    ? statusMatches && !hasForbiddenComp && noMedianMatches && categoryMatches
     : usable && inRange && categoryMatches;
 
   return {
@@ -88,6 +98,7 @@ async function runCase(row) {
     inRange,
     statusMatches,
     categoryMatches,
+    noMedianMatches,
     hasForbiddenComp,
     safe,
   };

@@ -2896,6 +2896,15 @@ function collectibleSubtype(text) {
   return null;
 }
 
+function isPreciousCoinQuery(text) {
+  const t = normalizeText(text);
+  return /\b(gold|sovereign|half sovereign|full sovereign|bullion|guinea|victoria|victorian|proof|uncirculated|silver)\b/.test(t);
+}
+
+function isFirearmCollectibleQuery(text) {
+  return collectibleSubtype(text) === "firearm";
+}
+
 function compMatchesCollectibleQuery(title, query) {
   const q = extractCollectibleAttributes(query);
   if (!q.isCoin && !q.isBanknote && !q.year && !q.denomination && !q.subtype) return true;
@@ -3798,8 +3807,16 @@ function queryFallbackAnchor({ query, category, region }) {
   }
 
   if (
-    /\b(coin|50p|fifty p|2 pound|two pound|pound coin|banknote|note)\b/.test(q)
+    /\b(coin|50p|fifty p|2 pound|two pound|pound coin|banknote|note|sovereign)\b/.test(q)
   ) {
+    if (/\b(gold\s+)?(full\s+|half\s+)?sovereign\b/.test(q)) {
+      return pack(850, {
+        lowFactor: 0.82,
+        highFactor: 1.22,
+        confidenceScore: 62,
+        reason: "gold sovereign bullion/collector anchor",
+      });
+    }
     if (/\bkew gardens\b/.test(q) && /\b50p\b/.test(q)) {
       return pack(140, {
         lowFactor: 0.62,
@@ -3809,7 +3826,7 @@ function queryFallbackAnchor({ query, category, region }) {
       });
     }
     const rareCoin =
-      /\b(rare|kew gardens|olympic|beatrix potter|error coin|minting error|proof|uncirculated|silver)\b/.test(q);
+      /\b(rare|kew gardens|olympic|beatrix potter|error coin|minting error|proof|uncirculated|silver|gold|sovereign|bullion|guinea|victoria|victorian)\b/.test(q);
     return pack(rareCoin ? 65 : 6, {
       lowFactor: rareCoin ? 0.62 : 0.58,
       highFactor: rareCoin ? 1.95 : 1.9,
@@ -3934,10 +3951,11 @@ function applyCollectibleFloorGuard({ query, category, region, low, median, high
   if (!anchor || !Number.isFinite(Number(anchor.median)) || Number(anchor.median) <= 0) return null;
 
   const coinLike =
-    /\b(coin|50p|fifty p|2 pound|two pound|pound coin|banknote|note)\b/.test(q);
+    /\b(coin|50p|fifty p|2 pound|two pound|pound coin|banknote|note|sovereign)\b/.test(q);
   const rareCoin =
     coinLike &&
-    /\b(rare|kew gardens|olympic|beatrix potter|error coin|minting error|proof|uncirculated|silver)\b/.test(q);
+    (isPreciousCoinQuery(q) || /\b(rare|kew gardens|olympic|beatrix potter|error coin|minting error)\b/.test(q));
+  const preciousCoin = coinLike && isPreciousCoinQuery(q);
   const rareBook =
     /\b(book|novel|paperback|hardcover|isbn)\b/.test(q) &&
     /\b(first edition|signed|limited edition|rare|out of print|collectors? edition)\b/.test(q);
@@ -3960,7 +3978,10 @@ function applyCollectibleFloorGuard({ query, category, region, low, median, high
 
   let floor = null;
   let reason = "";
-  if (rareCoin) {
+  if (preciousCoin) {
+    floor = Number(anchor.median) * 0.72;
+    reason = "precious coin floor guard";
+  } else if (rareCoin) {
     floor = Number(anchor.median) * 0.55;
     reason = "rare coin floor guard";
   } else if (rareBook) {
@@ -4197,11 +4218,17 @@ function buildProvisionalPricing({
 
 function withholdProvisionalNumbers(pricing, reason = "low confidence provisional estimate") {
   const next = { ...(pricing || {}) };
-  // Optionally hide numeric range for low-confidence vehicles (strict mode only).
-  if (String(next.category || "").toLowerCase() === "vehicle" && ACCURACY_STRICT_MODE) {
+  const category = String(next.category || "").toLowerCase();
+  const shouldHideNumbers =
+    (category === "vehicle" && ACCURACY_STRICT_MODE) ||
+    (category === "collectible" && isFirearmCollectibleQuery(next.query));
+  if (shouldHideNumbers) {
     next.low = null;
     next.median = null;
     next.high = null;
+    next.recommendedRetail = null;
+    next.profit = null;
+    next.listingAssistant = null;
   }
   next.finalStatus = "needs_details";
   next.confidence = { score: Math.min(Number(next?.confidence?.score || 25), 35), label: "low" };
@@ -8182,6 +8209,21 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
       pricingPayload = applyAccuracyHold(
         pricingPayload,
         withhold.reason || "confidence below accuracy threshold",
+        category
+      );
+    }
+
+    if (category === "collectible" && isFirearmCollectibleQuery(baseQuery)) {
+      pricingPayload = applyAccuracyHold(
+        {
+          ...pricingPayload,
+          confidence: {
+            score: Math.min(Number(pricingPayload?.confidence?.score || 35), 42),
+            label: "low",
+          },
+          recommendations: [],
+        },
+        "firearm-like collectibles need maker, deactivation/legal status, proof marks, age, and specialist review",
         category
       );
     }
