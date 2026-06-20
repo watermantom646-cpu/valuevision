@@ -1,7 +1,7 @@
 const expo = {
   name: "ValueVision",
   slug: "ValueVision",
-  version: "1.0.1",
+  version: "1.0.2",
   icon: "./assets/images/icon.png",
   scheme: "valuevision",
   orientation: "portrait",
