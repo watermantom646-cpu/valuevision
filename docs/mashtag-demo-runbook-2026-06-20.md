@@ -63,6 +63,7 @@ Updated: 2026-06-20
 - Result returned: Apple iPad 9th Generation 64GB Wi-Fi Space Grey.
 - Category returned: electronics.
 - Median returned: about GBP 152 on the latest live scan.
+- Post-scan actions verified: Open Collection shows the saved item, and Scan Another returns to a clean ready-to-scan state.
 - Browser errors: none after backend CORS fix.
 - Failed HTTP requests: none after backend CORS fix.
 - Latest iOS candidate: ValueVision 1.0.2 build 25, EAS build bb265577-312a-4ede-87ec-b7c0de3036b1.

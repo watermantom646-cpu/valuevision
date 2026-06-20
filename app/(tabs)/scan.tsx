@@ -3237,7 +3237,7 @@ export function ScanScreen({
             <Text style={styles.metaText}>{`Vehicle adjustments: ${data.pricing.vehicleAdjustments.reasons.join(", ")}`}</Text>
           ) : null}
           <View style={[styles.row, isCompact && styles.rowStack]}>
-            <Pressable style={styles.reportActionPrimary} onPress={takePhoto}>
+            <Pressable style={styles.reportActionPrimary} onPress={clearCurrentScanView}>
               <Text style={styles.reportActionPrimaryText}>Scan Another</Text>
             </Pressable>
             <Pressable style={styles.reportActionBtn} onPress={() => pushPublicRoute(router, "/history")}>
