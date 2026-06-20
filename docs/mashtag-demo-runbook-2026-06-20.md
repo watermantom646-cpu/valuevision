@@ -14,7 +14,7 @@ Updated: 2026-06-20
 - The public web demo is live and tested.
 - Anything Mode can scan non-car items and return an instant valuation when market evidence is strong enough.
 - Car Mode exists as its own area, but paid car checks are paused while provider billing is being sorted.
-- iOS build 24 has been uploaded to Apple through EAS Submit, but App Store/TestFlight processing and the subscription sandbox purchase still need App Store Connect verification.
+- iOS build 25 has been uploaded to Apple through EAS Submit, but App Store/TestFlight processing and the subscription sandbox purchase still need App Store Connect verification.
 - Do not promise guaranteed prices, formal appraisals, or that every obscure item will get an exact price first time.
 
 ## 90 Second Demo Script
@@ -58,10 +58,11 @@ Updated: 2026-06-20
 ## Proof Captured Today
 
 - Public URL loaded latest home UI with Anything Mode and Car Mode hub.
+- Public buttons tested: Anything Mode, Car Mode, My Collection, Start Scanning, and Billing all navigate to the correct visible pages.
 - Public scanner uploaded an iPad image successfully.
 - Result returned: Apple iPad 9th Generation 64GB Wi-Fi Space Grey.
 - Category returned: electronics.
-- Median returned: GBP 142.05.
+- Median returned: about GBP 152 on the latest live scan.
 - Browser errors: none after backend CORS fix.
 - Failed HTTP requests: none after backend CORS fix.
-
+- Latest iOS candidate: ValueVision 1.0.2 build 25, EAS build bb265577-312a-4ede-87ec-b7c0de3036b1.
