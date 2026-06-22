@@ -19,7 +19,7 @@ Updated: 2026-06-22
 - The public web demo is live and tested.
 - Anything Mode can scan non-car items and return an instant valuation when market evidence is strong enough.
 - Car Mode exists as its own area, but paid car checks are paused while provider billing is being sorted.
-- iOS build 26 has been uploaded to Apple through EAS Submit. iOS build 27 finished from the latest Mashtag readiness commit and EAS submission was scheduled/submitting; it should replace build 26 once Apple processing completes. App Store/TestFlight processing and the subscription sandbox purchase still need App Store Connect verification.
+- iOS build 26 has been uploaded to Apple through EAS Submit. iOS build 27 finished from the latest Mashtag readiness commit and was submitted via EAS; it should replace build 26 once Apple processing completes. App Store/TestFlight processing and the subscription sandbox purchase still need App Store Connect verification.
 - Do not promise guaranteed prices, formal appraisals, or that every obscure item will get an exact price first time.
 
 ## 90 Second Demo Script
@@ -73,7 +73,7 @@ Updated: 2026-06-22
 - Browser errors: none after backend CORS fix.
 - Failed HTTP requests: none after backend CORS fix.
 - Previous submitted iOS fallback: ValueVision 1.0.2 build 26, EAS build 5268ffcd-15b5-49b8-84b3-96ae94bda278.
-- Latest iOS candidate scheduled/submitted through EAS: ValueVision 1.0.2 build 27, EAS build 3558785a-9dc5-4de2-98c3-b699f79c9527, commit f5bdaf28.
+- Latest iOS candidate submitted via EAS: ValueVision 1.0.2 build 27, EAS build 3558785a-9dc5-4de2-98c3-b699f79c9527, commit f5bdaf28.
 - Latest EAS submission for build 27: https://expo.dev/accounts/watermantom/projects/ValueVision/submissions/bc14962f-755a-4136-af0b-7dbf98aa6095
 - High-risk category smoke tests: gold sovereign no longer falls to the ordinary GBP 6 coin anchor; firearm-like antiques withhold numeric pricing and ask for specialist details/legal status.
 - Trading-card safety: raw/ungraded Pokemon card queries withhold numeric pricing and ask for exact card, set, number, professional grade, and condition.

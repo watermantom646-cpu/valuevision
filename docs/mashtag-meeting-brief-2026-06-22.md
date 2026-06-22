@@ -30,7 +30,7 @@ Best one-liner:
 - Gold sovereign live check returns a high-value collectible valuation around GBP 999 with real sovereign comps.
 - Raw Pokemon card checks withhold pricing and ask for grade, exact card, set, number, and condition.
 - Anything Mode redirects vehicle-like scans to Car Mode instead of pricing cars as random objects.
-- iOS build 27 is the latest candidate and has been scheduled/submitted through EAS Submit.
+- iOS build 27 is the latest candidate and has been submitted via EAS; verify Apple processing in App Store Connect/TestFlight.
 
 ## What Not To Promise
 
