@@ -14,7 +14,7 @@ Updated: 2026-06-22
 - The public web demo is live and tested.
 - Anything Mode can scan non-car items and return an instant valuation when market evidence is strong enough.
 - Car Mode exists as its own area, but paid car checks are paused while provider billing is being sorted.
-- iOS build 26 has been uploaded to Apple through EAS Submit, but App Store/TestFlight processing and the subscription sandbox purchase still need App Store Connect verification.
+- iOS build 26 has been uploaded to Apple through EAS Submit. iOS build 28 is queued from the latest Mashtag readiness commit and should replace build 26 once finished/submitted. App Store/TestFlight processing and the subscription sandbox purchase still need App Store Connect verification.
 - Do not promise guaranteed prices, formal appraisals, or that every obscure item will get an exact price first time.
 
 ## 90 Second Demo Script
@@ -67,7 +67,8 @@ Updated: 2026-06-22
 - Post-scan actions verified: Open Collection shows the saved item, and Scan Another returns to a clean ready-to-scan state.
 - Browser errors: none after backend CORS fix.
 - Failed HTTP requests: none after backend CORS fix.
-- Latest iOS candidate: ValueVision 1.0.2 build 26, EAS build 5268ffcd-15b5-49b8-84b3-96ae94bda278.
+- Latest submitted iOS candidate: ValueVision 1.0.2 build 26, EAS build 5268ffcd-15b5-49b8-84b3-96ae94bda278.
+- Latest queued iOS candidate: ValueVision 1.0.2 build 28, EAS build d2c9a6bc-1728-42b4-abea-a8cce93df86a, commit f5bdaf28.
 - High-risk category smoke tests: gold sovereign no longer falls to the ordinary GBP 6 coin anchor; firearm-like antiques withhold numeric pricing and ask for specialist details/legal status.
 - Trading-card safety: raw/ungraded Pokemon card queries withhold numeric pricing and ask for exact card, set, number, professional grade, and condition.
 - Web paywall copy verified: public demo says no payment is taken on web and Apple billing must be verified in the iOS build.
