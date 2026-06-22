@@ -26,6 +26,7 @@ Best one-liner:
 - Public web demo is live.
 - Production backend readiness is 14/14.
 - One-command demo health check is available: `npm run launch:mashtag`.
+- Apple/TestFlight/payment checklist is available: `docs/apple-testflight-payment-checklist-2026-06-22.md`.
 - iPad live check returns a usable electronics valuation around GBP 142 with high confidence.
 - Gold sovereign live check returns a high-value collectible valuation around GBP 999 with real sovereign comps.
 - Raw Pokemon card checks withhold pricing and ask for grade, exact card, set, number, and condition.

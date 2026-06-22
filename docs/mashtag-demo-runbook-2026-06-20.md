@@ -13,6 +13,7 @@ Updated: 2026-06-22
 
 - Run: `npm run launch:mashtag`
 - Pass condition: public web demo loads, production readiness is 14/14, iPad prices, sovereign prices, raw Pokemon cards withhold numeric pricing, and vehicle-like Anything Mode scans route to Car Mode.
+- Apple/TestFlight/payment manual checklist: `docs/apple-testflight-payment-checklist-2026-06-22.md`
 
 ## Current Truth
 
