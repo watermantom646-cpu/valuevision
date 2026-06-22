@@ -30,7 +30,7 @@ Updated: 2026-06-22
 
 ## Best Demo Items
 
-- Use a clean tech item first. Current tested example: Apple iPad 9th Generation 64GB Wi-Fi Space Grey, median around GBP 142 in the live web test.
+- Use a clean tech item first. Current tested example: Apple iPad 9th Generation 64GB Wi-Fi Space Grey, median around GBP 142 in the latest live production check.
 - Use a coin, note, tech item, or clear everyday resale item as the second live demo.
 - Use Pokemon/trading cards only when the grade and exact card details are visible. Raw cards intentionally ask for more detail instead of showing a shaky number.
 - For specialist items like old guns, rare coins, notes, or graded cards, position ValueVision honestly as "fast market guidance" and use Improve This Valuation for exact model, grade, year, mint mark, serial, or condition.
@@ -63,12 +63,12 @@ Updated: 2026-06-22
 - Public scanner uploaded an iPad image successfully.
 - Result returned: Apple iPad 9th Generation 64GB Wi-Fi Space Grey.
 - Category returned: electronics.
-- Median returned: about GBP 152 on the latest live scan.
+- Median returned: about GBP 142 on the latest live production check.
 - Post-scan actions verified: Open Collection shows the saved item, and Scan Another returns to a clean ready-to-scan state.
 - Browser errors: none after backend CORS fix.
 - Failed HTTP requests: none after backend CORS fix.
-- Latest submitted iOS candidate: ValueVision 1.0.2 build 26, EAS build 5268ffcd-15b5-49b8-84b3-96ae94bda278.
-- Latest iOS candidate: ValueVision 1.0.2 build 27, EAS build 3558785a-9dc5-4de2-98c3-b699f79c9527, commit f5bdaf28.
+- Previous submitted iOS fallback: ValueVision 1.0.2 build 26, EAS build 5268ffcd-15b5-49b8-84b3-96ae94bda278.
+- Latest iOS candidate scheduled/submitted through EAS: ValueVision 1.0.2 build 27, EAS build 3558785a-9dc5-4de2-98c3-b699f79c9527, commit f5bdaf28.
 - Latest EAS submission for build 27: https://expo.dev/accounts/watermantom/projects/ValueVision/submissions/bc14962f-755a-4136-af0b-7dbf98aa6095
 - High-risk category smoke tests: gold sovereign no longer falls to the ordinary GBP 6 coin anchor; firearm-like antiques withhold numeric pricing and ask for specialist details/legal status.
 - Trading-card safety: raw/ungraded Pokemon card queries withhold numeric pricing and ask for exact card, set, number, professional grade, and condition.
