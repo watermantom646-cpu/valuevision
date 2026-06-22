@@ -382,6 +382,12 @@ type LiveAssistantResponse = {
   error?: string;
 };
 
+type AssistantMessage = {
+  id: string;
+  role: "user" | "assistant";
+  text: string;
+};
+
 type MonetizationPolicyResponse = {
   ok?: boolean;
   policy?: {
@@ -536,6 +542,8 @@ export function ScanScreen({
   const [voiceLoading, setVoiceLoading] = useState(false);
   const [voiceStatus, setVoiceStatus] = useState("");
   const [handsFreeVoice, setHandsFreeVoice] = useState(false);
+  const [assistantInput, setAssistantInput] = useState("");
+  const [assistantMessages, setAssistantMessages] = useState<AssistantMessage[]>([]);
   const resultAnim = useRef(new Animated.Value(0)).current;
 
   const [liveMode, setLiveMode] = useState(false);
@@ -548,6 +556,7 @@ export function ScanScreen({
   const recordingRef = useRef<Audio.Recording | null>(null);
   const handsFreeVoiceRef = useRef(false);
   const voiceTurnTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const voiceStatusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const startVoiceCaptureRef = useRef<(() => Promise<void>) | null>(null);
   const lastLiveNarrationRef = useRef<{ query: string; median: number; at: number }>({
     query: "",
@@ -783,12 +792,27 @@ export function ScanScreen({
         clearTimeout(voiceTurnTimerRef.current);
         voiceTurnTimerRef.current = null;
       }
+      if (voiceStatusTimerRef.current) {
+        clearTimeout(voiceStatusTimerRef.current);
+        voiceStatusTimerRef.current = null;
+      }
       if (recording) {
         recording.stopAndUnloadAsync().catch(() => {});
       }
       Speech.stop();
     };
   }, [recording]);
+
+  const scheduleClearVoiceStatus = useCallback(() => {
+    if (voiceStatusTimerRef.current) {
+      clearTimeout(voiceStatusTimerRef.current);
+      voiceStatusTimerRef.current = null;
+    }
+    voiceStatusTimerRef.current = setTimeout(() => {
+      setVoiceStatus("");
+      voiceStatusTimerRef.current = null;
+    }, 1500);
+  }, []);
 
   useEffect(() => {
     const activeControllers = analyzeControllersRef.current;
@@ -1467,6 +1491,70 @@ export function ScanScreen({
     [liveMode, category, region, data?.pricing, tryFetchWithApiFallback]
   );
 
+  const pushAssistantMessage = useCallback((role: AssistantMessage["role"], text: string) => {
+    const trimmed = String(text || "").trim();
+    if (!trimmed) return;
+    setAssistantMessages((current) => [
+      ...current.slice(-5),
+      { id: `${Date.now()}-${role}-${current.length}`, role, text: trimmed },
+    ]);
+  }, []);
+
+  const handleAssistantTurn = useCallback(
+    async (transcript: string, opts?: { speakReply?: boolean }) => {
+      const trimmed = String(transcript || "").trim();
+      if (!trimmed) return null;
+      pushAssistantMessage("user", trimmed);
+      const assistant = await runLiveAssistant(trimmed);
+      const hinted = assistant?.categoryHint;
+      if (hinted && hinted !== category && !isCategoryLocked) {
+        setCategory(hinted);
+      }
+      if (liveMode && assistant?.shouldScan && cameraRef.current && !liveScanBusyRef.current) {
+        try {
+          liveScanBusyRef.current = true;
+          const shot = await cameraRef.current.takePictureAsync({
+            quality: category === "vehicle" ? 0.6 : 0.35,
+            skipProcessing: true,
+          });
+          if (shot?.uri) {
+            setImageUri(shot.uri);
+            await analyze(shot.uri, { silent: true });
+          }
+        } finally {
+          liveScanBusyRef.current = false;
+        }
+      }
+      const reply = String(assistant?.reply || `Got it. ${trimmed}`).trim();
+      pushAssistantMessage("assistant", reply);
+      if (opts?.speakReply !== false) {
+        await speakVoice(reply);
+      }
+      return assistant;
+    },
+    [analyze, category, isCategoryLocked, liveMode, pushAssistantMessage, runLiveAssistant, speakVoice]
+  );
+
+  const sendAssistantText = useCallback(async () => {
+    const trimmed = assistantInput.trim();
+    if (!trimmed || voiceLoading) return;
+    setAssistantInput("");
+    setVoiceLoading(true);
+    setVoiceStatus("Thinking...");
+    try {
+      setItemQuery(trimmed);
+      setShowAdvanced(true);
+      await handleAssistantTurn(trimmed, { speakReply: false });
+      setVoiceStatus("Ready.");
+    } catch (e: any) {
+      Alert.alert("Assistant failed", e?.message || String(e));
+      setVoiceStatus("Assistant failed.");
+    } finally {
+      setVoiceLoading(false);
+      scheduleClearVoiceStatus();
+    }
+  }, [assistantInput, voiceLoading, handleAssistantTurn, scheduleClearVoiceStatus]);
+
   const queueNextHandsFreeTurn = useCallback(() => {
     if (!handsFreeVoiceRef.current) return;
     if (voiceTurnTimerRef.current) clearTimeout(voiceTurnTimerRef.current);
@@ -1521,28 +1609,7 @@ export function ScanScreen({
         setItemQuery(text);
         setShowAdvanced(true);
         setVoiceStatus("Thinking...");
-        const assistant = await runLiveAssistant(text);
-        const hinted = assistant?.categoryHint;
-        if (hinted && hinted !== category && !isCategoryLocked) {
-          setCategory(hinted);
-        }
-        if (liveMode && assistant?.shouldScan && cameraRef.current && !liveScanBusyRef.current) {
-          try {
-            liveScanBusyRef.current = true;
-            const shot = await cameraRef.current.takePictureAsync({
-              quality: category === "vehicle" ? 0.6 : 0.35,
-              skipProcessing: true,
-            });
-            if (shot?.uri) {
-              setImageUri(shot.uri);
-              await analyze(shot.uri, { silent: true });
-            }
-          } finally {
-            liveScanBusyRef.current = false;
-          }
-        }
-        const reply = String(assistant?.reply || `Got it. ${text}`).trim();
-        await speakVoice(reply);
+        await handleAssistantTurn(text);
         setVoiceStatus("Ready.");
       } catch (e: any) {
         if (!handsFreeVoiceRef.current) {
@@ -1554,11 +1621,11 @@ export function ScanScreen({
         if (handsFreeVoiceRef.current) {
           queueNextHandsFreeTurn();
         } else {
-          setTimeout(() => setVoiceStatus(""), 1500);
+          scheduleClearVoiceStatus();
         }
       }
     },
-    [tryFetchWithApiFallback, runLiveAssistant, category, isCategoryLocked, liveMode, analyze, speakVoice, queueNextHandsFreeTurn]
+    [scheduleClearVoiceStatus, tryFetchWithApiFallback, handleAssistantTurn, queueNextHandsFreeTurn]
   );
 
   const startVoiceCapture = useCallback(async () => {
@@ -2948,6 +3015,52 @@ export function ScanScreen({
         </Pressable>
         )}
         {voiceStatus ? <Text style={styles.metaText}>{voiceStatus}</Text> : null}
+        {tinyMvp || liveMode ? null : (
+        <View style={styles.assistantCard}>
+          <Text style={styles.bold}>Assistant chat</Text>
+          <Text style={styles.assistantHint}>Type a question if voice is flaky in the demo.</Text>
+          {assistantMessages.length ? (
+            <View style={styles.assistantThread}>
+              {assistantMessages.map((message) => (
+                <View
+                  key={message.id}
+                  style={[
+                    styles.assistantBubble,
+                    message.role === "user" ? styles.assistantBubbleUser : styles.assistantBubbleAssistant,
+                  ]}>
+                  <Text style={styles.assistantBubbleLabel}>
+                    {message.role === "user" ? "You" : "ValueVision"}
+                  </Text>
+                  <Text style={styles.assistantBubbleText}>{message.text}</Text>
+                </View>
+              ))}
+            </View>
+          ) : (
+            <Text style={styles.assistantEmpty}>Ask about value, condition, category, or whether to scan.</Text>
+          )}
+          <TextInput
+            value={assistantInput}
+            onChangeText={setAssistantInput}
+            placeholder="Type a question for the assistant"
+            placeholderTextColor={AppTheme.textSecondary}
+            autoCapitalize="sentences"
+            style={styles.inputCompact}
+            onSubmitEditing={() => {
+              void sendAssistantText();
+            }}
+            returnKeyType="send"
+          />
+          <Pressable
+            style={[styles.quickBtn, voiceLoading && styles.quickBtnDisabled]}
+            onPress={() => {
+              void sendAssistantText();
+            }}
+            disabled={voiceLoading}>
+            <Text style={styles.quickBtnTitle}>{voiceLoading ? "Working..." : "Send to Assistant"}</Text>
+            <Text style={styles.quickBtnSub}>Uses the same AI backend without microphone capture</Text>
+          </Pressable>
+        </View>
+        )}
       </View>
 
       {liveMode ? (
@@ -5240,6 +5353,51 @@ const styles = StyleSheet.create({
   metaText: {
     marginTop: 6,
     color: AppTheme.textSecondary,
+  },
+  assistantCard: {
+    marginTop: 10,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: AppTheme.cardBorder,
+    backgroundColor: AppTheme.bgAlt,
+    padding: 12,
+    gap: 10,
+  },
+  assistantHint: {
+    color: AppTheme.textSecondary,
+    fontSize: 12,
+  },
+  assistantThread: {
+    gap: 8,
+  },
+  assistantBubble: {
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 9,
+    borderWidth: 1,
+  },
+  assistantBubbleUser: {
+    backgroundColor: AppTheme.surface,
+    borderColor: AppTheme.cardBorder,
+  },
+  assistantBubbleAssistant: {
+    backgroundColor: AppTheme.surfaceSoft,
+    borderColor: AppTheme.accent,
+  },
+  assistantBubbleLabel: {
+    color: AppTheme.textSecondary,
+    fontSize: 11,
+    fontWeight: "700",
+    marginBottom: 2,
+  },
+  assistantBubbleText: {
+    color: AppTheme.textPrimary,
+    fontSize: 13,
+    lineHeight: 18,
+  },
+  assistantEmpty: {
+    color: AppTheme.textSecondary,
+    fontSize: 12,
   },
   compRow: {
     marginBottom: 6,

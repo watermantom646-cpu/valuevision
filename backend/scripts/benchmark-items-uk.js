@@ -30,18 +30,26 @@ const CASES = [
   { q: "Nike Air Max 90 trainers size 9", c: "fashion", min: 25, max: 90 },
   { q: "North Face puffer jacket mens medium", c: "fashion", min: 20, max: 110 },
   { q: "Old UK one pound coin 1983", c: "collectible", min: 1, max: 40 },
-  { q: "Queen Victoria gold sovereign 1899 coin", c: "collectible", min: 500, max: 1300 },
+  {
+    q: "Queen Victoria gold sovereign 1899 coin",
+    c: "collectible",
+    min: 500,
+    max: 1300,
+    forbiddenComp: "UK One Pound Coin 1983",
+  },
   {
     q: "Pokemon Charizard Base Set 4/102 holographic card ungraded",
     c: "collectible",
     expectedStatus: "needs_details",
     expectedNoMedian: true,
+    expectedNoListingAssistant: true,
   },
   {
     q: "Pikachu Pokemon card 58/102 common unlimited",
     c: "collectible",
     expectedStatus: "needs_details",
     expectedNoMedian: true,
+    expectedNoListingAssistant: true,
   },
   {
     q: "Bank of England white five pound note 1950s",
@@ -54,6 +62,7 @@ const CASES = [
     c: "collectible",
     expectedStatus: "needs_details",
     expectedNoMedian: true,
+    expectedNoListingAssistant: true,
   },
 ];
 
@@ -92,11 +101,14 @@ async function runCase(row) {
   const noMedianMatches = row.expectedNoMedian
     ? !Number.isFinite(Number(pricing.median)) || Number(pricing.median) <= 0
     : true;
+  const noListingAssistantMatches = row.expectedNoListingAssistant
+    ? !pricing.listingAssistant
+    : true;
   const categoryMatches = row.expectedCategory
     ? String(pricing.category || "") === row.expectedCategory
     : true;
   const safe = row.expectedStatus
-    ? statusMatches && !hasForbiddenComp && noMedianMatches && categoryMatches
+    ? statusMatches && !hasForbiddenComp && noMedianMatches && noListingAssistantMatches && categoryMatches
     : usable && inRange && categoryMatches;
 
   return {
@@ -111,6 +123,7 @@ async function runCase(row) {
     statusMatches,
     categoryMatches,
     noMedianMatches,
+    noListingAssistantMatches,
     hasForbiddenComp,
     safe,
   };

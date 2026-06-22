@@ -1,6 +1,6 @@
 # ValueVision Mashtag Demo Runbook
 
-Updated: 2026-06-20
+Updated: 2026-06-22
 
 ## Demo Links
 
@@ -31,7 +31,8 @@ Updated: 2026-06-20
 ## Best Demo Items
 
 - Use a clean tech item first. Current tested example: Apple iPad 9th Generation 64GB Wi-Fi Space Grey, median around GBP 142 in the live web test.
-- Use a Pokemon card, coin, note, or antique as the second demo if the photo is clear and details are visible.
+- Use a coin, note, tech item, or clear everyday resale item as the second live demo.
+- Use Pokemon/trading cards only when the grade and exact card details are visible. Raw cards intentionally ask for more detail instead of showing a shaky number.
 - For specialist items like old guns, rare coins, notes, or graded cards, position ValueVision honestly as "fast market guidance" and use Improve This Valuation for exact model, grade, year, mint mark, serial, or condition.
 
 ## Phrases To Use
@@ -68,4 +69,5 @@ Updated: 2026-06-20
 - Failed HTTP requests: none after backend CORS fix.
 - Latest iOS candidate: ValueVision 1.0.2 build 26, EAS build 5268ffcd-15b5-49b8-84b3-96ae94bda278.
 - High-risk category smoke tests: gold sovereign no longer falls to the ordinary GBP 6 coin anchor; firearm-like antiques withhold numeric pricing and ask for specialist details/legal status.
+- Trading-card safety: raw/ungraded Pokemon card queries withhold numeric pricing and ask for exact card, set, number, professional grade, and condition.
 - Web paywall copy verified: public demo says no payment is taken on web and Apple billing must be verified in the iOS build.

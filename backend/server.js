@@ -2882,7 +2882,7 @@ function extractCollectibleAttributes(text) {
 
 function collectibleSubtype(text) {
   const t = normalizeText(text);
-  if (/\b(pokemon|tcg|trading card|graded card|psa|bgs|cgc)\b/.test(t)) return "card";
+  if (/\b(pokemon|tcg|trading card|graded card|psa|bgs|cgc|sgc)\b/.test(t)) return "card";
   if (
     /\b(banknote|bank note|paper money|currency note|white note)\b/.test(t) ||
     (/\b(note|notes)\b/.test(t) && /\b(bank|england|pound|sterling|currency)\b/.test(t))
@@ -2909,6 +2909,17 @@ function isTradingCardCollectibleQuery(text) {
   return collectibleSubtype(text) === "card";
 }
 
+function hasProfessionalTradingCardGrade(text) {
+  const t = normalizeText(text);
+  return /\b(psa|bgs|cgc|sgc)\s?([1-9](?:\.\d)?|10)\b/.test(t);
+}
+
+function tradingCardNeedsAccuracyHold(text) {
+  if (!isTradingCardCollectibleQuery(text)) return false;
+  // Raw cards are extremely condition-sensitive; hide prices unless a slab grade anchors the query.
+  return !hasProfessionalTradingCardGrade(text);
+}
+
 function compMatchesCollectibleQuery(title, query) {
   const q = extractCollectibleAttributes(query);
   if (!q.isCoin && !q.isBanknote && !q.year && !q.denomination && !q.subtype) return true;
@@ -2919,7 +2930,8 @@ function compMatchesCollectibleQuery(title, query) {
   if (q.subtype && !titleSubtype && ["banknote", "coin", "card", "medal", "firearm"].includes(q.subtype)) {
     return false;
   }
-  if (q.isCoin && !/\b(coin|pound|pence|penny|cent|dollar|quarter)\b/.test(t)) return false;
+  if (/\bsovereign\b/.test(normalizeText(query)) && !/\bsovereign\b/.test(t)) return false;
+  if (q.isCoin && !/\b(coin|pound|pence|penny|cent|dollar|quarter|sovereign)\b/.test(t)) return false;
   if (q.isBanknote && !/\b(banknote|bank note|paper money|currency note|note|notes)\b/.test(t)) return false;
   if (q.year && !new RegExp(`\\b${q.year}\\b`).test(t)) return false;
   if (q.denomination === "one_pound" && !/\b(one pound|1 pound|£1)\b/i.test(rawTitle)) return false;
@@ -3390,7 +3402,7 @@ function routeCategoryFromItemProfile(profile) {
   const text = normalizeText(`${profile?.query || ""} ${(profile?.labels || []).join(" ")}`);
   if (profile?.category && profile.category !== "auto") return profile.category;
   if (profile?.vehicle?.registration || /(vin|mot|tax|mileage|service history)/.test(text)) return "vehicle";
-  if (profile?.card?.set || /\b(pokemon|psa|graded card|tcg|card)\b/.test(text)) return "collectible";
+  if (profile?.card?.set || /\b(pokemon|psa|bgs|cgc|sgc|graded card|tcg|card)\b/.test(text)) return "collectible";
   if (/\b(coin|50p|banknote|note|book|isbn|rock|mineral|crystal|fossil|gemstone)\b/.test(text)) return "collectible";
   if (profile?.tech?.storage || profile?.tech?.ramGb || /(iphone|ipad|macbook|laptop|gpu|console)/.test(text)) return "electronics";
   if (profile?.tool?.voltage || profile?.tool?.brand || /\b(drill|impact|saw|tool|dewalt|milwaukee|makita)\b/.test(text)) return "tools";
@@ -3460,7 +3472,7 @@ function lookupManualSoldComps({ category, query, region = "uk", limit = 60 }) {
   const queryNorm = normalizeText(query || "");
   const collectibleCardLike =
     categoryNorm === "collectible" &&
-    /\b(pokemon|psa|bgs|cgc|tcg|trading card|graded card)\b/.test(queryNorm);
+    /\b(pokemon|psa|bgs|cgc|sgc|tcg|trading card|graded card)\b/.test(queryNorm);
   const collectibleQuerySubtype =
     categoryNorm === "collectible" ? collectibleSubtype(queryNorm) : null;
   const collectibleGradeMatch = queryNorm.match(/\b(psa|bgs|cgc)\s?(\d(?:\.\d)?)\b/);
@@ -3481,6 +3493,15 @@ function lookupManualSoldComps({ category, query, region = "uk", limit = 60 }) {
         return { row: x, score: overlap + modelBoost + brandBoost, overlap, modelBoost, brandBoost };
       })
       .filter((x) => {
+        if (
+          categoryNorm === "collectible" &&
+          !compMatchesCollectibleQuery(
+            `${x.row.title || x.row.titleNorm || ""} ${x.row.brand || x.row.brandNorm || ""} ${x.row.model || x.row.modelNorm || ""}`,
+            query
+          )
+        ) {
+          return false;
+        }
         if (collectibleQuerySubtype) {
           const rowSubtype = collectibleSubtype(
             `${x.row.titleNorm} ${x.row.brandNorm} ${x.row.modelNorm}`
@@ -3839,7 +3860,7 @@ function queryFallbackAnchor({ query, category, region }) {
     });
   }
 
-  if (/\b(pokemon|psa|bgs|cgc|tcg|trading card|graded card)\b/.test(q)) {
+  if (/\b(pokemon|psa|bgs|cgc|sgc|tcg|trading card|graded card)\b/.test(q)) {
     const isCharizard = /\bcharizard\b/.test(q);
     const isBaseSet = /\bbase set\b/.test(q);
     const isFirstEdition = /\b1st edition|first edition\b/.test(q);
@@ -3967,7 +3988,7 @@ function applyCollectibleFloorGuard({ query, category, region, low, median, high
     /\b(rock|mineral|crystal|gemstone|fossil|geode|quartz)\b/.test(q) &&
     /\b(rare|museum|large|polished|collector|natural)\b/.test(q);
   const gradedCard =
-    /\b(pokemon|psa|bgs|cgc|tcg|trading card|graded card)\b/.test(q);
+    /\b(pokemon|psa|bgs|cgc|sgc|tcg|trading card|graded card)\b/.test(q);
   const watchLike =
     /\b(pocket watch|wristwatch|antique watch|vintage watch)\b/.test(q);
 
@@ -8221,7 +8242,14 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
       );
     }
 
-    if (category === "collectible" && isTradingCardCollectibleQuery(baseQuery) && finalStatus !== "usable") {
+    const tradingCardHold =
+      category === "collectible" &&
+      isTradingCardCollectibleQuery(baseQuery) &&
+      (finalStatus !== "usable" || tradingCardNeedsAccuracyHold(baseQuery));
+    if (tradingCardHold) {
+      const tradingCardHoldReason = tradingCardNeedsAccuracyHold(baseQuery)
+        ? "trading card pricing needs exact card name, set, card number, professional grade, and condition"
+        : "trading card pricing needs stronger sold evidence for the exact card and grade";
       pricingPayload = applyAccuracyHold(
         {
           ...pricingPayload,
@@ -8231,7 +8259,7 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
           },
           recommendations: [],
         },
-        "trading card pricing needs exact card name, set, card number, grade, and condition",
+        tradingCardHoldReason,
         category
       );
     }
@@ -8268,7 +8296,6 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
         median: Number(pricingPayload.median),
       });
     }
-
     return res.json({
       labels,
       pricing: pricingPayload,
