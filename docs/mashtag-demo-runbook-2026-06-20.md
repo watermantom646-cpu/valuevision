@@ -9,6 +9,11 @@ Updated: 2026-06-22
 - App Store Connect TestFlight: https://appstoreconnect.apple.com/apps/6759789496/testflight/ios
 - App Store app id: 6759789496
 
+## Pre-Meeting Health Check
+
+- Run: `npm run launch:mashtag`
+- Pass condition: public web demo loads, production readiness is 14/14, iPad prices, sovereign prices, raw Pokemon cards withhold numeric pricing, and vehicle-like Anything Mode scans route to Car Mode.
+
 ## Current Truth
 
 - The public web demo is live and tested.

@@ -15,6 +15,7 @@
     "benchmark:items-uk": "node ./scripts/benchmark-items-uk.js",
     "launch:gate": "bash ./scripts/launch-gate.sh",
     "launch:gate:quick": "bash ./scripts/launch-gate.sh quick",
+    "launch:mashtag": "node ./scripts/mashtag-demo-health.js",
     "generate:synthetic-uk-plates": "python3 ./scripts/generate-synthetic-uk-plates.py --count 1000",
     "benchmark:uk-plate-scan": "node ./scripts/benchmark-uk-plate-scan.js",
     "import:sold-cars": "node ./scripts/import-sold-car-data.js",

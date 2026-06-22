@@ -11,6 +11,7 @@
     "phone:lan:paid": "bash ./scripts/phone-lan-paid.sh",
     "launch:preflight": "npm run typecheck && npm run lint && cd backend && npm run launch:gate",
     "launch:quick": "cd backend && npm run launch:gate:quick",
+    "launch:mashtag": "cd backend && npm run launch:mashtag",
     "launch:env-check": "cd backend && npm run env:check",
     "launch:status": "cd backend && npm run launch:status",
     "launch:go-no-go": "npm run launch:env-check && npm run launch:quick && npm run launch:status",
