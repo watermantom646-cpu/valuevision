@@ -12,6 +12,7 @@
     "launch:preflight": "npm run typecheck && npm run lint && cd backend && npm run launch:gate",
     "launch:quick": "cd backend && npm run launch:gate:quick",
     "launch:mashtag": "cd backend && npm run launch:mashtag",
+    "launch:meeting": "node ./scripts/mashtag-meeting-check.js",
     "launch:payments": "node ./scripts/payment-readiness.js",
     "launch:env-check": "cd backend && npm run env:check",
     "launch:status": "cd backend && npm run launch:status",
