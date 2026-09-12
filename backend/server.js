@@ -6991,12 +6991,7 @@ app.post("/analyze", itemAnalyzeBudgetGuard, upload.single("image"), async (req,
     const shouldGateVehicleProviderData =
       ENFORCE_PAID_ACCESS_FOR_VEHICLE_DATA &&
       requestedRegion === "uk" &&
-      (
-        requestedCategory === "vehicle" ||
-        category === "vehicle" ||
-        wantsFullCarCheck ||
-        Boolean(vehicleReg)
-      );
+      wantsFullCarCheck;
     if (shouldGateVehicleProviderData) {
       const paidAccess = evaluatePaidAccess(req, {
         featureLabel: wantsFullCarCheck ? "Full car check" : "Vehicle pricing",
