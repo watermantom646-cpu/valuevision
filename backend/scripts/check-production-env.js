@@ -36,6 +36,13 @@ const allowedOrigins = read("ALLOWED_ORIGINS");
 const paidAccessMode = read("PAID_ACCESS_MODE").toLowerCase() || "open";
 const enforcePaidVehicleData = read("ENFORCE_PAID_ACCESS_FOR_VEHICLE_DATA");
 const paidAccessToken = read("PAID_ACCESS_TOKEN");
+const carChecksEnabled = boolFromAny(read("CAR_CHECKS_ENABLED"));
+const bregoIsCarProvider = read("CAR_DATA_PROVIDER").toLowerCase() === "brego";
+const itemAnalyzeDailyHardLimit = Number(read("ITEM_ANALYZE_DAILY_HARD_LIMIT") || 120);
+const itemAnalyzePerIpDailyHardLimit = Number(read("ITEM_ANALYZE_PER_IP_DAILY_HARD_LIMIT") || 15);
+const growthDashboardToken = read("GROWTH_DASHBOARD_TOKEN");
+const webPaymentsRequired = read("WEB_PAYMENTS_ENABLED") === "1";
+const applePaymentsRequired = read("APPLE_PAYMENTS_ENABLED") !== "0";
 
 const checks = [
   {
@@ -51,52 +58,97 @@ const checks = [
     required: true,
   },
   {
-    label: "SERPAPI_KEY present",
-    ok: hasValue("SERPAPI_KEY") && !looksPlaceholder(read("SERPAPI_KEY")),
-    detail: hasValue("SERPAPI_KEY") ? "set" : "missing",
+    label: "Search provider key present",
+    ok:
+      (hasValue("BRAVE_SEARCH_API_KEY") && !looksPlaceholder(read("BRAVE_SEARCH_API_KEY"))) ||
+      (hasValue("SERPAPI_KEY") && !looksPlaceholder(read("SERPAPI_KEY"))),
+    detail: hasValue("BRAVE_SEARCH_API_KEY") ? "brave" : hasValue("SERPAPI_KEY") ? "serpapi" : "missing",
     required: true,
   },
   {
-    label: "OPENAI_API_KEY present",
-    ok: hasValue("OPENAI_API_KEY") && !looksPlaceholder(read("OPENAI_API_KEY")),
-    detail: hasValue("OPENAI_API_KEY") ? "set" : "missing",
+    label: "AI provider key present",
+    ok:
+      (hasValue("GEMINI_API_KEY") && !looksPlaceholder(read("GEMINI_API_KEY"))) ||
+      (hasValue("OPENAI_API_KEY") && !looksPlaceholder(read("OPENAI_API_KEY"))),
+    detail: hasValue("GEMINI_API_KEY") ? "gemini" : hasValue("OPENAI_API_KEY") ? "openai" : "missing",
     required: true,
   },
   {
     label: "DVLA_VEHICLE_API_KEY present",
-    ok: hasValue("DVLA_VEHICLE_API_KEY") && !looksPlaceholder(read("DVLA_VEHICLE_API_KEY")),
-    detail: hasValue("DVLA_VEHICLE_API_KEY") ? "set" : "missing",
-    required: true,
+    ok: !carChecksEnabled || (hasValue("DVLA_VEHICLE_API_KEY") && !looksPlaceholder(read("DVLA_VEHICLE_API_KEY"))),
+    detail: carChecksEnabled ? (hasValue("DVLA_VEHICLE_API_KEY") ? "set" : "missing") : "not_required(item-first)",
+    required: carChecksEnabled,
   },
   {
     label: "CHECKCAR API key present",
     ok:
+      !carChecksEnabled ||
       (hasValue("CHECKCAR_API_KEY") && !looksPlaceholder(read("CHECKCAR_API_KEY"))) ||
       (hasValue("DVLA_VEHICLE_API_KEY") && !looksPlaceholder(read("DVLA_VEHICLE_API_KEY"))),
-    detail: hasValue("CHECKCAR_API_KEY") || hasValue("DVLA_VEHICLE_API_KEY") ? "set" : "missing",
-    required: true,
+    detail: carChecksEnabled ? (hasValue("CHECKCAR_API_KEY") || hasValue("DVLA_VEHICLE_API_KEY") ? "set" : "missing") : "not_required(item-first)",
+    required: carChecksEnabled,
   },
   {
     label: "CHECKCAR valuation template present",
-    ok: hasValue("CHECKCAR_VALUATION_URL_TEMPLATE") && !looksPlaceholder(read("CHECKCAR_VALUATION_URL_TEMPLATE")),
-    detail: hasValue("CHECKCAR_VALUATION_URL_TEMPLATE") ? "set" : "missing",
-    required: true,
+    ok: !carChecksEnabled || (hasValue("CHECKCAR_VALUATION_URL_TEMPLATE") && !looksPlaceholder(read("CHECKCAR_VALUATION_URL_TEMPLATE"))),
+    detail: carChecksEnabled ? (hasValue("CHECKCAR_VALUATION_URL_TEMPLATE") ? "set" : "missing") : "not_required(item-first)",
+    required: carChecksEnabled,
   },
   {
     label: "CHECKCAR status template present",
     ok:
+      !carChecksEnabled ||
       hasValue("CHECKCAR_UKVEHICLEDATA_URL_TEMPLATE") &&
       !looksPlaceholder(read("CHECKCAR_UKVEHICLEDATA_URL_TEMPLATE")),
-    detail: hasValue("CHECKCAR_UKVEHICLEDATA_URL_TEMPLATE") ? "set" : "missing",
-    required: true,
+    detail: carChecksEnabled ? (hasValue("CHECKCAR_UKVEHICLEDATA_URL_TEMPLATE") ? "set" : "missing") : "not_required(item-first)",
+    required: carChecksEnabled,
   },
   {
     label: "CHECKCAR history template present",
     ok:
+      !carChecksEnabled ||
       hasValue("CHECKCAR_CARHISTORY_URL_TEMPLATE") &&
       !looksPlaceholder(read("CHECKCAR_CARHISTORY_URL_TEMPLATE")),
-    detail: hasValue("CHECKCAR_CARHISTORY_URL_TEMPLATE") ? "set" : "missing",
+    detail: carChecksEnabled ? (hasValue("CHECKCAR_CARHISTORY_URL_TEMPLATE") ? "set" : "missing") : "not_required(item-first)",
+    required: carChecksEnabled,
+  },
+  {
+    label: "Item analysis daily hard limit enabled",
+    ok: Number.isFinite(itemAnalyzeDailyHardLimit) && itemAnalyzeDailyHardLimit > 0,
+    detail: String(itemAnalyzeDailyHardLimit),
     required: true,
+  },
+  {
+    label: "Item analysis per-client hard limit enabled",
+    ok: Number.isFinite(itemAnalyzePerIpDailyHardLimit) && itemAnalyzePerIpDailyHardLimit > 0,
+    detail: String(itemAnalyzePerIpDailyHardLimit),
+    required: true,
+  },
+  {
+    label: "Growth dashboard token configured",
+    ok: growthDashboardToken.length >= 32 && !looksPlaceholder(growthDashboardToken),
+    detail: growthDashboardToken ? "set" : "missing",
+    required: true,
+  },
+  {
+    label: "Stripe web payments configured",
+    ok: !webPaymentsRequired || ["STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET", "STRIPE_MONTHLY_PRICE_ID", "PUBLIC_APP_URL"].every((name) => hasValue(name) && !looksPlaceholder(read(name))),
+    detail: webPaymentsRequired ? (hasValue("STRIPE_SECRET_KEY") ? "partially_or_fully_set" : "missing") : "disabled",
+    required: webPaymentsRequired,
+  },
+  {
+    label: "Apple server purchase verification configured",
+    ok: !applePaymentsRequired || ["APPLE_ISSUER_ID", "APPLE_KEY_ID", "APPLE_PRIVATE_KEY", "APPLE_BUNDLE_ID"].every((name) => hasValue(name) && !looksPlaceholder(read(name))),
+    detail: applePaymentsRequired ? (hasValue("APPLE_ISSUER_ID") ? "partially_or_fully_set" : "missing") : "disabled",
+    required: applePaymentsRequired,
+  },
+  {
+    label: "Payment sandbox checks recorded",
+    ok:
+      (!webPaymentsRequired || read("PAYMENT_SANDBOX_VERIFIED") === "1") &&
+      (!applePaymentsRequired || read("APPLE_SANDBOX_VERIFIED") === "1"),
+    detail: `stripe=${read("PAYMENT_SANDBOX_VERIFIED") || "0"},apple=${read("APPLE_SANDBOX_VERIFIED") || "0"}`,
+    required: webPaymentsRequired || applePaymentsRequired,
   },
   {
     label: "BETA_STRICT_MODE enabled",
@@ -135,6 +187,38 @@ const checks = [
     required: true,
   },
 ];
+
+if (carChecksEnabled && bregoIsCarProvider) {
+  for (const check of checks) {
+    if (check.label.startsWith("CHECKCAR") || check.label.startsWith("DVLA_VEHICLE_API_KEY")) {
+      check.ok = true;
+      check.required = false;
+      check.detail = "replaced_by_brego";
+    }
+  }
+  checks.push(
+    {
+      label: "Brego API key present",
+      ok: hasValue("BREGO_API_KEY") && !looksPlaceholder(read("BREGO_API_KEY")),
+      detail: hasValue("BREGO_API_KEY") ? "set" : "missing",
+      required: true,
+    },
+    {
+      label: "Brego valuation endpoint present",
+      ok:
+        (hasValue("BREGO_VALUATION_URL_TEMPLATE") && !looksPlaceholder(read("BREGO_VALUATION_URL_TEMPLATE"))) ||
+        (hasValue("BREGO_API_BASE_URL") && !looksPlaceholder(read("BREGO_API_BASE_URL"))),
+      detail: hasValue("BREGO_VALUATION_URL_TEMPLATE") || hasValue("BREGO_API_BASE_URL") ? "set" : "missing",
+      required: true,
+    },
+    {
+      label: "Brego full-check endpoint present",
+      ok: hasValue("BREGO_FULL_CHECK_URL_TEMPLATE") && !looksPlaceholder(read("BREGO_FULL_CHECK_URL_TEMPLATE")),
+      detail: hasValue("BREGO_FULL_CHECK_URL_TEMPLATE") ? "set" : "missing",
+      required: true,
+    }
+  );
+}
 
 const requiredFailures = checks.filter((c) => c.required && !c.ok);
 const optionalFailures = checks.filter((c) => !c.required && !c.ok);

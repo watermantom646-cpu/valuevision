@@ -48,6 +48,7 @@ app-example
 runs/
 backend/outcomes.json
 backend/data/checkcar-usage.json
+backend/data/brego-usage.json
 backend/data/paid-access-usage.json
 backend/data/synthetic-uk-plates/
 

@@ -30,10 +30,12 @@ function pct(part, whole) {
 
 (async () => {
   try {
-    const [health, readiness, providerUsage] = await Promise.all([
+    const [health, readiness, providerUsage, paymentReadiness, bregoReadiness] = await Promise.all([
       fetchJson("/health"),
       fetchJson("/launch-readiness"),
       fetchJson("/provider-usage"),
+      fetchJson("/api/v1/payments/readiness"),
+      fetchJson("/api/v1/brego/readiness"),
     ]);
 
     const usage = providerUsage?.usage || {};
@@ -51,7 +53,7 @@ function pct(part, whole) {
       : Object.entries(checks)
           .filter(([, ok]) => !ok)
           .map(([key]) => key);
-    const criticalBlockers = blockers.filter((key) =>
+    let criticalBlockers = blockers.filter((key) =>
       [
         "backendReachable",
         "nodeEnvProduction",
@@ -64,12 +66,33 @@ function pct(part, whole) {
         "monetizationProtectionConfigured",
       ].includes(key)
     );
+    if (bregoReadiness?.enabled) {
+      criticalBlockers = criticalBlockers.filter(
+        (key) => !["dvlaConfigured", "checkcarPrimaryConfigured", "checkcarValuationConfigured"].includes(key)
+      );
+      if (!bregoReadiness?.keyConfigured) criticalBlockers.push("bregoKeyConfigured");
+      if (!bregoReadiness?.valuationEndpointConfigured) criticalBlockers.push("bregoValuationEndpointConfigured");
+      if (!bregoReadiness?.fullCheckEndpointConfigured) criticalBlockers.push("bregoFullCheckEndpointConfigured");
+    }
+    if (!paymentReadiness?.ready) criticalBlockers.push("paymentCredentialsConfigured");
+    if (!paymentReadiness?.sandboxVerified) criticalBlockers.push("stripeSandboxVerified");
+    if (!paymentReadiness?.appleSandboxVerified) criticalBlockers.push("appleSandboxVerified");
 
     console.log("[launch-status] ValueVision");
     console.log(`[launch-status] base=${BASE_URL}`);
     console.log(`[launch-status] backend_ok=${Boolean(health?.ok)} port=${health?.port || "?"}`);
     console.log(
       `[launch-status] readiness=${Number(readiness?.readyScore || 0)}/${Number(readiness?.maxScore || 0)}`
+    );
+    console.log(
+      `[launch-status] payments configured=${Boolean(paymentReadiness?.ready)} stripe_sandbox=${Boolean(paymentReadiness?.sandboxVerified)} apple_sandbox=${Boolean(paymentReadiness?.appleSandboxVerified)}`
+    );
+    console.log(
+      `[launch-status] cars provider=${bregoReadiness?.provider || "unknown"} mode=${bregoReadiness?.mode || "unknown"} key=${Boolean(
+        bregoReadiness?.keyConfigured
+      )} valuation=${Boolean(bregoReadiness?.valuationEndpointConfigured)} full_check=${Boolean(
+        bregoReadiness?.fullCheckEndpointConfigured
+      )}`
     );
     if (monetization && typeof monetization === "object") {
       const mode = monetization?.mode || "unknown";

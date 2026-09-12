@@ -22,6 +22,8 @@
     "benchmark:cars": "node ./scripts/benchmark-cars.js",
     "env:check": "node ./scripts/check-production-env.js",
     "launch:status": "node ./scripts/launch-status.js",
+    "founding:codes": "node ./scripts/generate-founding-codes.js",
+    "growth:status": "node ./scripts/growth-status.js",
     "env:set-prod": "bash ./scripts/set-production-env.sh"
   },
   "dependencies": {

@@ -1,5 +1,8 @@
 // backend/server.js
 const express = require("express");
+const { registerPaymentInfrastructure } = require("./payments");
+const { registerBregoInfrastructure } = require("./brego-provider");
+const { registerPublicPages } = require("./public-pages");
 const cors = require("cors");
 const multer = require("multer");
 const dotenv = require("dotenv");
@@ -41,6 +44,9 @@ function getLanHosts() {
 }
 
 const app = express();
+registerPaymentInfrastructure(app, express);
+registerBregoInfrastructure(app, express);
+registerPublicPages(app);
 app.disable("x-powered-by");
 app.set("trust proxy", 1);
 
@@ -161,6 +167,14 @@ const CHECKCAR_COST_PER_VALUATION_GBP = Math.max(
   0,
   Number(process.env.CHECKCAR_COST_PER_VALUATION_GBP || 0.12)
 );
+const CHECKCAR_DAILY_SOFT_COST_LIMIT_GBP = Math.max(
+  0,
+  Number(process.env.CHECKCAR_DAILY_SOFT_COST_LIMIT_GBP || 0)
+);
+const CHECKCAR_DAILY_HARD_COST_LIMIT_GBP = Math.max(
+  0,
+  Number(process.env.CHECKCAR_DAILY_HARD_COST_LIMIT_GBP || 0)
+);
 const EBAY_ENV = String(process.env.EBAY_ENV || "production").trim().toLowerCase();
 const EBAY_CLIENT_ID = String(process.env.EBAY_CLIENT_ID || "").trim();
 const EBAY_CLIENT_SECRET = String(process.env.EBAY_CLIENT_SECRET || "").trim();
@@ -172,6 +186,32 @@ const SERPAPI_TIMEOUT_MS = 4500;
 const ANALYZE_BUDGET_MS = 9000;
 const LIVE_SERP_TIMEOUT_MS = 2600;
 const LIVE_ANALYZE_BUDGET_MS = 6500;
+const ITEM_ANALYZE_DAILY_HARD_LIMIT = Math.max(
+  1,
+  Number(process.env.ITEM_ANALYZE_DAILY_HARD_LIMIT || 120)
+);
+const ITEM_ANALYZE_PER_IP_DAILY_HARD_LIMIT = Math.max(
+  1,
+  Number(process.env.ITEM_ANALYZE_PER_IP_DAILY_HARD_LIMIT || 15)
+);
+const ITEM_ANALYZE_USAGE_FILE = envValue(
+  "ITEM_ANALYZE_USAGE_FILE",
+  "./data/item-analysis-usage.json"
+);
+const FOUNDING_SELLER_CODES = new Set(
+  envValue("FOUNDING_SELLER_CODES", "")
+    .split(",")
+    .map((value) => value.trim().toUpperCase())
+    .filter(Boolean)
+);
+const FOUNDING_ACCESS_DAYS = Math.max(1, Number(process.env.FOUNDING_ACCESS_DAYS || 30));
+const FOUNDING_ACCESS_MAX_DEVICES = Math.max(1, Number(process.env.FOUNDING_ACCESS_MAX_DEVICES || 2));
+const FOUNDING_ACCESS_FILE = envValue(
+  "FOUNDING_ACCESS_FILE",
+  "./data/founding-access.json"
+);
+const GROWTH_DASHBOARD_TOKEN = envValue("GROWTH_DASHBOARD_TOKEN", "");
+const RESULT_FEEDBACK_FILE = envValue("RESULT_FEEDBACK_FILE", "./data/result-feedback.json");
 const MAX_QUERY_CANDIDATES = 3;
 const MAX_QUERY_CANDIDATES_LIVE = 2;
 const PRICE_CACHE_TTL_MS = 10 * 60 * 1000;
@@ -187,6 +227,349 @@ const UK_VALUATION_CACHE_STALE_TTL_MS = Math.max(
   UK_VALUATION_CACHE_TTL_MS,
   Number(process.env.UK_VALUATION_CACHE_STALE_TTL_MS || 7 * 24 * 60 * 60 * 1000)
 );
+
+function itemAnalyzeDayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function normalizeItemAnalyzeUsage(input) {
+  const today = itemAnalyzeDayKey();
+  if (!input) return { day: today, total: 0, clients: {}, history: {} };
+  const cutoff = Date.now() - 45 * 24 * 60 * 60 * 1000;
+  const history = Object.fromEntries(
+    Object.entries(input.history && typeof input.history === "object" ? input.history : {})
+      .filter(([day]) => Date.parse(`${day}T00:00:00.000Z`) >= cutoff)
+  );
+  if (input.day !== today) {
+    if (input.day) {
+      history[input.day] = {
+        total: Math.max(0, Number(input.total || 0)),
+        clients: input.clients && typeof input.clients === "object" ? input.clients : {},
+      };
+    }
+    return { day: today, total: 0, clients: {}, history };
+  }
+  return {
+    day: today,
+    total: Math.max(0, Number(input.total || 0)),
+    clients: input.clients && typeof input.clients === "object" ? input.clients : {},
+    history,
+  };
+}
+
+function loadItemAnalyzeUsage() {
+  try {
+    if (!fs.existsSync(ITEM_ANALYZE_USAGE_FILE)) return normalizeItemAnalyzeUsage(null);
+    return normalizeItemAnalyzeUsage(JSON.parse(fs.readFileSync(ITEM_ANALYZE_USAGE_FILE, "utf8")));
+  } catch {
+    return normalizeItemAnalyzeUsage(null);
+  }
+}
+
+let itemAnalyzeUsage = loadItemAnalyzeUsage();
+
+function saveItemAnalyzeUsage() {
+  try {
+    fs.mkdirSync(path.dirname(ITEM_ANALYZE_USAGE_FILE), { recursive: true });
+    fs.writeFileSync(ITEM_ANALYZE_USAGE_FILE, JSON.stringify(itemAnalyzeUsage, null, 2), "utf8");
+  } catch (error) {
+    console.error(`[item-budget] Failed to persist usage: ${String(error?.message || error)}`);
+  }
+}
+
+function itemAnalyzeBudgetGuard(req, res, next) {
+  itemAnalyzeUsage = normalizeItemAnalyzeUsage(itemAnalyzeUsage);
+  const forwardedIp = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  const deviceId = String(req.headers["x-valuevision-device-id"] || "").trim();
+  const networkId = forwardedIp || String(req.ip || req.socket?.remoteAddress || "unknown");
+  const rawClientKey = deviceId.length >= 8 && deviceId.length <= 160
+    ? `device:${deviceId}`
+    : `network:${networkId}`;
+  const clientKey = crypto.createHash("sha256").update(rawClientKey).digest("hex").slice(0, 16);
+  const clientUsed = Math.max(0, Number(itemAnalyzeUsage.clients[clientKey] || 0));
+  const globalRemaining = Math.max(0, ITEM_ANALYZE_DAILY_HARD_LIMIT - itemAnalyzeUsage.total);
+  const clientRemaining = Math.max(0, ITEM_ANALYZE_PER_IP_DAILY_HARD_LIMIT - clientUsed);
+
+  res.setHeader("X-ValueVision-Daily-Limit", String(ITEM_ANALYZE_DAILY_HARD_LIMIT));
+  res.setHeader("X-ValueVision-Daily-Remaining", String(globalRemaining));
+  res.setHeader("X-ValueVision-Client-Remaining", String(clientRemaining));
+
+  if (globalRemaining <= 0 || clientRemaining <= 0) {
+    return res.status(429).json({
+      ok: false,
+      code: globalRemaining <= 0 ? "daily_capacity_reached" : "client_daily_limit_reached",
+      error: "Today's protected scan capacity has been reached. Please try again tomorrow.",
+    });
+  }
+
+  itemAnalyzeUsage.total += 1;
+  itemAnalyzeUsage.clients[clientKey] = clientUsed + 1;
+  saveItemAnalyzeUsage();
+  return next();
+}
+
+function hashFoundingValue(value) {
+  return crypto.createHash("sha256").update(String(value || "")).digest("hex");
+}
+
+function loadFoundingAccessState() {
+  try {
+    if (!fs.existsSync(FOUNDING_ACCESS_FILE)) return { codes: {} };
+    const parsed = JSON.parse(fs.readFileSync(FOUNDING_ACCESS_FILE, "utf8"));
+    return { codes: parsed?.codes && typeof parsed.codes === "object" ? parsed.codes : {} };
+  } catch {
+    return { codes: {} };
+  }
+}
+
+let foundingAccessState = loadFoundingAccessState();
+
+function saveFoundingAccessState() {
+  try {
+    fs.mkdirSync(path.dirname(FOUNDING_ACCESS_FILE), { recursive: true });
+    fs.writeFileSync(FOUNDING_ACCESS_FILE, JSON.stringify(foundingAccessState, null, 2), "utf8");
+  } catch (error) {
+    console.error(`[founding-access] Failed to persist activation: ${String(error?.message || error)}`);
+  }
+}
+
+function sanitizeAcquisitionAttribution(input) {
+  const clean = (value, fallback) => String(value || fallback || "").trim().slice(0, 80);
+  return {
+    source: clean(input?.source, "direct") || "direct",
+    medium: clean(input?.medium, "none") || "none",
+    campaign: clean(input?.campaign, "none") || "none",
+    content: clean(input?.content, "none") || "none",
+    referralCode: clean(input?.referralCode, ""),
+    capturedAt: Number.isFinite(Date.parse(String(input?.capturedAt || "")))
+      ? new Date(input.capturedAt).toISOString()
+      : new Date().toISOString(),
+  };
+}
+
+function loadResultFeedbackState() {
+  try {
+    if (!fs.existsSync(RESULT_FEEDBACK_FILE)) return { entries: [] };
+    const parsed = JSON.parse(fs.readFileSync(RESULT_FEEDBACK_FILE, "utf8"));
+    return { entries: Array.isArray(parsed?.entries) ? parsed.entries.slice(0, 1000) : [] };
+  } catch {
+    return { entries: [] };
+  }
+}
+
+let resultFeedbackState = loadResultFeedbackState();
+
+function saveResultFeedbackState() {
+  try {
+    fs.mkdirSync(path.dirname(RESULT_FEEDBACK_FILE), { recursive: true });
+    fs.writeFileSync(RESULT_FEEDBACK_FILE, JSON.stringify(resultFeedbackState, null, 2), "utf8");
+  } catch (error) {
+    console.error(`[result-feedback] Failed to persist feedback: ${String(error?.message || error)}`);
+  }
+}
+
+app.post("/founding-access/activate", (req, res) => {
+  const code = String(req.body?.code || "").trim().toUpperCase();
+  const deviceId = String(req.body?.deviceId || "").trim();
+  if (!FOUNDING_SELLER_CODES.size) {
+    return res.status(503).json({ ok: false, error: "Founding seller access is not configured yet." });
+  }
+  if (code.length < 8 || code.length > 80 || !FOUNDING_SELLER_CODES.has(code)) {
+    return res.status(403).json({ ok: false, error: "That founding access code is not valid." });
+  }
+  if (deviceId.length < 8 || deviceId.length > 160) {
+    return res.status(400).json({ ok: false, error: "This browser could not be identified safely." });
+  }
+
+  const now = Date.now();
+  const codeHash = hashFoundingValue(code);
+  const deviceHash = hashFoundingValue(`device:${deviceId}`).slice(0, 16);
+  const storedCode = foundingAccessState.codes[codeHash] || { devices: {} };
+  const publicReferralCode = storedCode.referralCode || `VVREF-${codeHash.slice(0, 10).toUpperCase()}`;
+  const activeDevices = Object.fromEntries(
+    Object.entries(storedCode.devices || {}).filter(([, record]) =>
+      Date.parse(String(record?.expiresAt || "")) > now
+    )
+  );
+  const existing = activeDevices[deviceHash];
+  if (!existing && Object.keys(activeDevices).length >= FOUNDING_ACCESS_MAX_DEVICES) {
+    return res.status(409).json({
+      ok: false,
+      error: "This access code has reached its device limit. Contact ValueVision support for help.",
+    });
+  }
+
+  const expiresAt = existing?.expiresAt || new Date(now + FOUNDING_ACCESS_DAYS * 24 * 60 * 60 * 1000).toISOString();
+  const attribution = existing?.attribution || sanitizeAcquisitionAttribution(req.body?.attribution);
+  const requestedReferralCode = String(attribution.referralCode || "").trim().toUpperCase();
+  const validReferralCode = requestedReferralCode && requestedReferralCode !== publicReferralCode
+    ? Object.entries(foundingAccessState.codes || {}).some(([otherCodeHash, record]) =>
+        otherCodeHash !== codeHash && String(record?.referralCode || "").toUpperCase() === requestedReferralCode
+      )
+    : false;
+  attribution.referralCode = validReferralCode ? requestedReferralCode : "";
+  if (!validReferralCode && attribution.source === "customer_referral") {
+    attribution.source = "unverified_referral";
+  }
+
+  activeDevices[deviceHash] = {
+    activatedAt: existing?.activatedAt || new Date(now).toISOString(),
+    expiresAt,
+    attribution,
+  };
+  foundingAccessState.codes[codeHash] = { devices: activeDevices, referralCode: publicReferralCode };
+  saveFoundingAccessState();
+  return res.json({ ok: true, expiresAt, referralCode: publicReferralCode });
+});
+
+app.post("/result-feedback", (req, res) => {
+  const deviceId = String(req.headers["x-valuevision-device-id"] || "").trim();
+  const scanId = String(req.body?.scanId || "").trim();
+  const rating = String(req.body?.rating || "").trim().toLowerCase();
+  if (deviceId.length < 8 || deviceId.length > 160 || scanId.length < 4 || scanId.length > 160) {
+    return res.status(400).json({ ok: false, error: "Feedback could not be linked to this saved scan." });
+  }
+  if (!new Set(["helpful", "needs_review"]).has(rating)) {
+    return res.status(400).json({ ok: false, error: "Choose Helpful or Needs review." });
+  }
+
+  const deviceHash = hashFoundingValue(`device:${deviceId}`).slice(0, 16);
+  const scanHash = hashFoundingValue(`${deviceHash}:${scanId}`).slice(0, 24);
+  const today = itemAnalyzeDayKey();
+  const existingIndex = resultFeedbackState.entries.findIndex((entry) => entry.scanHash === scanHash);
+  const todaysNewFeedback = resultFeedbackState.entries.filter(
+    (entry) => entry.deviceHash === deviceHash && String(entry.at || "").startsWith(today)
+  ).length;
+  if (existingIndex < 0 && todaysNewFeedback >= 20) {
+    return res.status(429).json({ ok: false, error: "Today's feedback limit has been reached." });
+  }
+
+  const entry = {
+    scanHash,
+    deviceHash,
+    at: new Date().toISOString(),
+    rating,
+    category: String(req.body?.category || "general").trim().slice(0, 80),
+    confidence: String(req.body?.confidence || "unknown").trim().slice(0, 40),
+    qualityGateStatus: String(req.body?.qualityGateStatus || "unknown").trim().slice(0, 40),
+    note: String(req.body?.note || "").trim().slice(0, 500),
+  };
+  if (existingIndex >= 0) resultFeedbackState.entries.splice(existingIndex, 1);
+  resultFeedbackState.entries = [entry, ...resultFeedbackState.entries].slice(0, 1000);
+  saveResultFeedbackState();
+  return res.json({ ok: true, rating });
+});
+
+function growthTokenMatches(provided) {
+  const expected = Buffer.from(String(GROWTH_DASHBOARD_TOKEN || ""));
+  const actual = Buffer.from(String(provided || ""));
+  return expected.length > 0 && expected.length === actual.length && crypto.timingSafeEqual(expected, actual);
+}
+
+function usageBuckets() {
+  itemAnalyzeUsage = normalizeItemAnalyzeUsage(itemAnalyzeUsage);
+  return {
+    ...(itemAnalyzeUsage.history || {}),
+    [itemAnalyzeUsage.day]: {
+      total: itemAnalyzeUsage.total,
+      clients: itemAnalyzeUsage.clients,
+    },
+  };
+}
+
+function requestsForDeviceSince(buckets, deviceHash, activatedAt, days) {
+  const since = Date.now() - days * 24 * 60 * 60 * 1000;
+  const activatedAtMs = Date.parse(String(activatedAt || ""));
+  return Object.entries(buckets).reduce((sum, [day, bucket]) => {
+    const dayMs = Date.parse(`${day}T23:59:59.999Z`);
+    if (!Number.isFinite(dayMs) || dayMs < since || dayMs < activatedAtMs) return sum;
+    return sum + Math.max(0, Number(bucket?.clients?.[deviceHash] || 0));
+  }, 0);
+}
+
+app.get("/growth-metrics", (req, res) => {
+  if (!GROWTH_DASHBOARD_TOKEN) {
+    return res.status(503).json({ ok: false, error: "Growth dashboard access is not configured." });
+  }
+  if (!growthTokenMatches(req.headers["x-growth-dashboard-token"])) {
+    return res.status(401).json({ ok: false, error: "Growth dashboard token is invalid." });
+  }
+
+  const now = Date.now();
+  const buckets = usageBuckets();
+  let activatedFoundingCustomers = 0;
+  let customersWithRecordedScan = 0;
+  let customersActiveLast7Days = 0;
+  let activeDevices = 0;
+  let referralCustomers = 0;
+  const acquisitionSources = {};
+  const acquisitionCampaigns = {};
+
+  for (const storedCode of Object.values(foundingAccessState.codes || {})) {
+    const devices = Object.entries(storedCode?.devices || {})
+      .filter(([, record]) => Date.parse(String(record?.expiresAt || "")) > now);
+    if (!devices.length) continue;
+    activatedFoundingCustomers += 1;
+    activeDevices += devices.length;
+    const firstAttribution = devices
+      .map(([, record]) => record?.attribution)
+      .find(Boolean) || { source: "direct", campaign: "none" };
+    const source = String(firstAttribution.source || "direct");
+    const campaign = String(firstAttribution.campaign || "none");
+    if (firstAttribution.referralCode) referralCustomers += 1;
+    acquisitionSources[source] = Number(acquisitionSources[source] || 0) + 1;
+    acquisitionCampaigns[campaign] = Number(acquisitionCampaigns[campaign] || 0) + 1;
+    let customerRequests30 = 0;
+    let customerRequests7 = 0;
+    for (const [deviceHash, record] of devices) {
+      customerRequests30 += requestsForDeviceSince(buckets, deviceHash, record?.activatedAt, 30);
+      customerRequests7 += requestsForDeviceSince(buckets, deviceHash, record?.activatedAt, 7);
+    }
+    if (customerRequests30 > 0) customersWithRecordedScan += 1;
+    if (customerRequests7 > 0) customersActiveLast7Days += 1;
+  }
+
+  const target = 1000;
+  const feedbackHelpful = resultFeedbackState.entries.filter((entry) => entry.rating === "helpful").length;
+  const feedbackNeedsReview = resultFeedbackState.entries.filter((entry) => entry.rating === "needs_review").length;
+  const feedbackTotal = feedbackHelpful + feedbackNeedsReview;
+  return res.json({
+    ok: true,
+    generatedAt: new Date().toISOString(),
+    target: {
+      activePayingCustomers: target,
+      deadline: "2026-12-25",
+    },
+    foundingBeta: {
+      configuredCodes: FOUNDING_SELLER_CODES.size,
+      activatedCustomers: activatedFoundingCustomers,
+      availableCodes: Math.max(0, FOUNDING_SELLER_CODES.size - activatedFoundingCustomers),
+      activeDevices,
+      customersWithRecordedScan,
+      customersActiveLast7Days,
+      activationProgressPercent: Number(((activatedFoundingCustomers / target) * 100).toFixed(2)),
+      paymentEvidence: "Activation is a payment proxy only; reconcile against the payment-provider dashboard.",
+      acquisitionSources,
+      acquisitionCampaigns,
+      referralCustomers,
+    },
+    protectedCapacity: {
+      day: itemAnalyzeUsage.day,
+      requestsUsed: itemAnalyzeUsage.total,
+      requestsRemaining: Math.max(0, ITEM_ANALYZE_DAILY_HARD_LIMIT - itemAnalyzeUsage.total),
+      dailyHardLimit: ITEM_ANALYZE_DAILY_HARD_LIMIT,
+      perDeviceDailyHardLimit: ITEM_ANALYZE_PER_IP_DAILY_HARD_LIMIT,
+    },
+    resultQuality: {
+      feedbackTotal,
+      helpful: feedbackHelpful,
+      needsReview: feedbackNeedsReview,
+      helpfulPercent: feedbackTotal > 0
+        ? Number(((feedbackHelpful / feedbackTotal) * 100).toFixed(1))
+        : null,
+    },
+  });
+});
 const OUTCOME_FILE = "./outcomes.json";
 const UK_VALUATION_CACHE_FILE = String(
   process.env.UK_VALUATION_CACHE_FILE || "./data/uk-valuation-cache.json"
@@ -1090,12 +1473,62 @@ function incrementPaidAccessUsage(type, amount = 1) {
   return getPaidAccessUsageSnapshot();
 }
 
-function checkcarBudgetDecision({ costTier = "primary" } = {}) {
+function checkcarBudgetDecision({ costTier = "primary", endpoint = "" } = {}) {
   const usage = getCheckcarUsageSnapshot();
   const soft = Number(CHECKCAR_DAILY_SOFT_LIMIT || 0);
   const hard = Number(CHECKCAR_DAILY_HARD_LIMIT || 0);
   const overSoft = soft > 0 && usage.total >= soft;
   const overHard = hard > 0 && usage.total >= hard;
+  const currentCost = estimateCheckcarCostGbp(usage);
+  const currentCostGbp = Math.max(0, Number(currentCost.totalGbp || 0));
+  const endpointKey = String(endpoint || "").trim().toLowerCase();
+  const endpointUnitCosts = {
+    vehiclereg: CHECKCAR_COST_PER_VEHICLEREG_GBP,
+    ukvehicledata: CHECKCAR_COST_PER_UKVEHICLEDATA_GBP,
+    carhistory: CHECKCAR_COST_PER_CARHISTORY_GBP,
+    valuation: CHECKCAR_COST_PER_VALUATION_GBP,
+  };
+  const fallbackUnitCost = costTier === "enrichment"
+    ? Math.max(CHECKCAR_COST_PER_UKVEHICLEDATA_GBP, CHECKCAR_COST_PER_CARHISTORY_GBP)
+    : Math.max(CHECKCAR_COST_PER_VEHICLEREG_GBP, CHECKCAR_COST_PER_VALUATION_GBP);
+  const projectedUnitCostGbp = Math.max(
+    0,
+    Number(endpointUnitCosts[endpointKey] ?? fallbackUnitCost)
+  );
+  const projectedCostGbp = roundGbp(currentCostGbp + projectedUnitCostGbp);
+  const softCostGbp = Number(CHECKCAR_DAILY_SOFT_COST_LIMIT_GBP || 0);
+  const hardCostGbp = Number(CHECKCAR_DAILY_HARD_COST_LIMIT_GBP || 0);
+  const overSoftCost = softCostGbp > 0 && projectedCostGbp > softCostGbp;
+  const overHardCost = hardCostGbp > 0 && projectedCostGbp > hardCostGbp;
+
+  if (overHardCost && CHECKCAR_ENFORCE_HARD_LIMIT) {
+    return {
+      allow: false,
+      code: "checkcar_daily_hard_cost_limit_reached",
+      message: `Daily provider cost limit would be exceeded (£${projectedCostGbp.toFixed(2)}/£${hardCostGbp.toFixed(2)}).`,
+      usage,
+      cost: currentCost,
+      projectedCostGbp,
+      overSoft,
+      overHard,
+      overSoftCost,
+      overHardCost,
+    };
+  }
+  if (overSoftCost && CHECKCAR_SKIP_ENRICH_AT_SOFT_LIMIT && costTier === "enrichment") {
+    return {
+      allow: false,
+      code: "checkcar_daily_soft_cost_limit_reached_enrichment_skipped",
+      message: `Daily provider soft cost limit would be exceeded (£${projectedCostGbp.toFixed(2)}/£${softCostGbp.toFixed(2)}); enrichment lookup skipped.`,
+      usage,
+      cost: currentCost,
+      projectedCostGbp,
+      overSoft,
+      overHard,
+      overSoftCost,
+      overHardCost,
+    };
+  }
 
   if (overHard && CHECKCAR_ENFORCE_HARD_LIMIT) {
     return {
@@ -2123,7 +2556,7 @@ async function fetchUkVehicleValuationFromCheckCar({
     }
     return { ok: false, error: "missing valuation setup" };
   }
-  const valuationBudget = checkcarBudgetDecision({ costTier: "primary" });
+  const valuationBudget = checkcarBudgetDecision({ costTier: "primary", endpoint: "valuation" });
   if (!valuationBudget.allow) {
     const staleBudgetCache = allowStaleCache ? getCachedUkValuationSummary(reg, { allowStale: true }) : null;
     if (staleBudgetCache?.summary) {
@@ -5320,7 +5753,7 @@ async function fetchUkVehicleStatusFromCheckCar(
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), CHECKCAR_STATUS_TIMEOUT_MS);
   try {
-    const primaryBudget = checkcarBudgetDecision({ costTier: "primary" });
+      const primaryBudget = checkcarBudgetDecision({ costTier: "primary", endpoint: "vehiclereg" });
     if (!primaryBudget.allow) {
       const staleBudgetCache = allowStaleCache ? getCachedUkStatus(reg, { allowStale: true }) : null;
       if (staleBudgetCache?.status) {
@@ -5377,7 +5810,7 @@ async function fetchUkVehicleStatusFromCheckCar(
     // If the chosen datapoint is minimal, enrich with ukvehicledata details.
     const hasVehicleHistory = Boolean(payload?.VehicleHistory || payload?.vehicleHistory);
     if (!hasVehicleHistory && includeUkVehicleData && CHECKCAR_UKVEHICLEDATA_URL_TEMPLATE) {
-      const enrichBudget = checkcarBudgetDecision({ costTier: "enrichment" });
+        const enrichBudget = checkcarBudgetDecision({ costTier: "enrichment", endpoint: "ukvehicledata" });
       if (enrichBudget.allow) {
         try {
           incrementCheckcarUsage("ukvehicledata", 1);
@@ -5398,7 +5831,7 @@ async function fetchUkVehicleStatusFromCheckCar(
     }
     // Always attempt carhistorycheck enrichment because write-off (Cat N/S) lives there for many records.
     if (includeCarHistory && CHECKCAR_CARHISTORY_URL_TEMPLATE) {
-      const historyBudget = checkcarBudgetDecision({ costTier: "enrichment" });
+        const historyBudget = checkcarBudgetDecision({ costTier: "enrichment", endpoint: "carhistory" });
       if (historyBudget.allow) {
         try {
           incrementCheckcarUsage("carhistory", 1);
@@ -5850,15 +6283,23 @@ app.get("/provider-usage", (req, res) => {
     usage,
     cost,
     monetizationUsage: paidUsage,
-    headroom: {
-      toSoftLimitCalls: soft > 0 ? Math.max(0, soft - total) : null,
-      toHardLimitCalls: hard > 0 ? Math.max(0, hard - total) : null,
-    },
-    policy: {
-      skipEnrichmentAtSoftLimit: CHECKCAR_SKIP_ENRICH_AT_SOFT_LIMIT,
-      enforceHardLimit: CHECKCAR_ENFORCE_HARD_LIMIT,
-      paidAccess: paidAccessPolicySummary(),
-    },
+      headroom: {
+        toSoftLimitCalls: soft > 0 ? Math.max(0, soft - total) : null,
+        toHardLimitCalls: hard > 0 ? Math.max(0, hard - total) : null,
+        toSoftLimitGbp: CHECKCAR_DAILY_SOFT_COST_LIMIT_GBP > 0
+          ? roundGbp(Math.max(0, CHECKCAR_DAILY_SOFT_COST_LIMIT_GBP - Number(cost.totalGbp || 0)))
+          : null,
+        toHardLimitGbp: CHECKCAR_DAILY_HARD_COST_LIMIT_GBP > 0
+          ? roundGbp(Math.max(0, CHECKCAR_DAILY_HARD_COST_LIMIT_GBP - Number(cost.totalGbp || 0)))
+          : null,
+      },
+      policy: {
+        skipEnrichmentAtSoftLimit: CHECKCAR_SKIP_ENRICH_AT_SOFT_LIMIT,
+        enforceHardLimit: CHECKCAR_ENFORCE_HARD_LIMIT,
+        softCostLimitGbp: CHECKCAR_DAILY_SOFT_COST_LIMIT_GBP,
+        hardCostLimitGbp: CHECKCAR_DAILY_HARD_COST_LIMIT_GBP,
+        paidAccess: paidAccessPolicySummary(),
+      },
   });
 });
 
@@ -6393,7 +6834,7 @@ app.post("/voice/live-assistant", express.json({ limit: "1mb" }), async (req, re
  *
  * We’ll price from "labels" if provided, otherwise we price from a generic term.
  */
-app.post("/analyze", upload.single("image"), async (req, res) => {
+app.post("/analyze", itemAnalyzeBudgetGuard, upload.single("image"), async (req, res) => {
   try {
     const startedAt = Date.now();
     const isLiveMode = String(req.body?.liveMode || "0") === "1";

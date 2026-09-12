@@ -6,6 +6,10 @@ services:
     rootDir: backend
     healthCheckPath: /health
     autoDeploy: true
+    disk:
+      name: valuevision-data
+      mountPath: /var/data
+      sizeGB: 1
     envVars:
       - key: NODE_ENV
         value: production
@@ -13,14 +17,118 @@ services:
         value: 5050
       - key: ALLOWED_ORIGINS
         sync: false
+      - key: ALLOW_LOCAL_ORIGINS
+        value: "0"
       - key: SERPAPI_KEY
         sync: false
       - key: OPENAI_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash-lite
+      - key: BRAVE_SEARCH_API_KEY
         sync: false
       - key: DVLA_VEHICLE_API_KEY
         sync: false
       - key: CHECKCAR_API_KEY
         sync: false
+      - key: DEALERPRICING_API_KEY
+        sync: false
+      - key: DEALERPRICING_BASE_URL
+        sync: false
+      - key: CHECKCAR_DAILY_SOFT_LIMIT
+        value: "10"
+      - key: CHECKCAR_DAILY_HARD_LIMIT
+        value: "20"
+      - key: CHECKCAR_DAILY_SOFT_COST_LIMIT_GBP
+        value: "5"
+      - key: CHECKCAR_DAILY_HARD_COST_LIMIT_GBP
+        value: "10"
+      - key: CHECKCAR_SKIP_ENRICH_AT_SOFT_LIMIT
+        value: "1"
+      - key: CHECKCAR_ENFORCE_HARD_LIMIT
+        value: "1"
+      - key: PAID_ACCESS_MODE
+        value: token
+      - key: PAID_ACCESS_TOKEN
+        generateValue: true
+      - key: WEB_PAYMENTS_ENABLED
+        value: "0"
+      - key: APPLE_PAYMENTS_ENABLED
+        value: "1"
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_MONTHLY_PRICE_ID
+        sync: false
+      - key: STRIPE_CAR_CHECK_1_PRICE_ID
+        sync: false
+      - key: STRIPE_CAR_CHECK_3_PRICE_ID
+        sync: false
+      - key: STRIPE_VALUATION_PRICE_ID
+        sync: false
+      - key: PUBLIC_APP_URL
+        sync: false
+      - key: APPLE_ISSUER_ID
+        sync: false
+      - key: APPLE_KEY_ID
+        sync: false
+      - key: APPLE_PRIVATE_KEY
+        sync: false
+      - key: APPLE_BUNDLE_ID
+        value: com.abbiemaytum.valuevision
+      - key: APPLE_MONTHLY_PRODUCT_ID
+        value: ValueVision10
+      - key: APPLE_CAR_CHECK_1_PRODUCT_ID
+        value: valuevision_full_car_check_1
+      - key: APPLE_CAR_CHECK_3_PRODUCT_ID
+        value: valuevision_full_car_check_3
+      - key: MONTHLY_SCAN_LIMIT
+        value: "25"
+      - key: STARTER_SCAN_LIMIT
+        value: "3"
+      - key: PAYMENT_STORE_PATH
+        value: /var/data/payment-entitlements.json
+      - key: BREGO_USAGE_PATH
+        value: /var/data/brego-usage.json
+      - key: BREGO_FULL_CHECK_URL_TEMPLATE
+        value: https://api.brego.io/v1/vehicles/vrm/{vrm}/check
+      - key: PAYMENT_SANDBOX_VERIFIED
+        value: "0"
+      - key: APPLE_SANDBOX_VERIFIED
+        value: "0"
+      - key: CAR_DATA_PROVIDER
+        value: brego
+      - key: BREGO_API_KEY
+        sync: false
+      - key: BREGO_API_BASE_URL
+        sync: false
+      - key: BREGO_VALUATION_URL_TEMPLATE
+        sync: false
+      - key: BREGO_MOT_URL_TEMPLATE
+        value: https://api.brego.io/v1/vehicles/vrm/{registration}/mots?countryCode=gb
+      - key: BREGO_TAX_URL_TEMPLATE
+        value: https://api.brego.io/v1/vehicles/vrm/{registration}/tax?countryCode=gb
+      - key: BREGO_VEHICLE_URL_TEMPLATE
+        sync: false
+      - key: BREGO_FULL_CHECK_URL_TEMPLATE
+        sync: false
+      - key: BREGO_API_KEY_HEADER
+        value: x-api-key
+      - key: BREGO_SANDBOX
+        value: "0"
+      - key: BREGO_DAILY_HARD_CALL_LIMIT
+        value: "50"
+      - key: BREGO_BASIC_CACHE_TTL_MS
+        value: "86400000"
+      - key: ENFORCE_PAID_ACCESS_FOR_VEHICLE_DATA
+        value: "1"
+      - key: ITEM_ANALYZE_DAILY_HARD_LIMIT
+        value: "50"
+      - key: ITEM_ANALYZE_PER_IP_DAILY_HARD_LIMIT
+        value: "5"
       - key: EBAY_CLIENT_ID
         sync: false
       - key: EBAY_CLIENT_SECRET
