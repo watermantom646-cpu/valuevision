@@ -361,7 +361,12 @@ function injectInternalPaidAccess(req) {
 function reservePaidUsage(req, res, next) {
   const requestPath = String(req.path || "");
   const isItemAnalysis = requestPath === "/analyze";
-  const isFullCarCheck = requestPath === "/uk-vehicle-status" && Boolean(req.body?.fullCarCheck);
+  const fullCarCheckValue = req.body?.fullCarCheck;
+  const isFullCarCheck =
+    requestPath === "/uk-vehicle-status" &&
+    (fullCarCheckValue === true ||
+      fullCarCheckValue === 1 ||
+      ["1", "true", "yes"].includes(String(fullCarCheckValue || "").trim().toLowerCase()));
   const isBasicCarValuation = requestPath === "/uk-vehicle-status" && !isFullCarCheck;
   const consumesScan = isItemAnalysis || isBasicCarValuation;
   if (!consumesScan && !isFullCarCheck) return next();

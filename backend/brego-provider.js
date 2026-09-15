@@ -450,7 +450,12 @@ function registerBregoInfrastructure(app, express) {
     }
     const currentMileage = mileage(req.body?.mileage || req.body?.currentMileage || req.body?.current_mileage);
     try {
-      const report = req.body?.fullCarCheck
+      const fullCarCheckValue = req.body?.fullCarCheck;
+      const wantsFullCarCheck =
+        fullCarCheckValue === true ||
+        fullCarCheckValue === 1 ||
+        ["1", "true", "yes"].includes(String(fullCarCheckValue || "").trim().toLowerCase());
+      const report = wantsFullCarCheck
         ? await fullReport(plate, currentMileage)
         : await basicReport(plate, currentMileage);
       return res.json(report);
