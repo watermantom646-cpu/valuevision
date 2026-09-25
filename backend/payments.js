@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 
 const STORE_PATH = clean(process.env.PAYMENT_STORE_PATH) || path.join(__dirname, "data", "payment-entitlements.json");
-const MONTHLY_SCAN_LIMIT = Math.max(1, Number(process.env.MONTHLY_SCAN_LIMIT || 25));
+const MONTHLY_SCAN_LIMIT = Math.max(1, Number(process.env.MONTHLY_SCAN_LIMIT || 100));
 const STARTER_SCAN_LIMIT = Math.max(0, Number(process.env.STARTER_SCAN_LIMIT || 3));
 
 const PRODUCT_CONFIG = {
@@ -13,6 +13,18 @@ const PRODUCT_CONFIG = {
     kind: "subscription",
     stripePriceId: () => clean(process.env.STRIPE_MONTHLY_PRICE_ID),
     appleProductId: () => clean(process.env.APPLE_MONTHLY_PRODUCT_ID || "ValueVision10"),
+  },
+  value_credits_25: {
+    kind: "valuations",
+    quantity: 25,
+    stripePriceId: () => clean(process.env.STRIPE_VALUE_CREDITS_25_PRICE_ID),
+    appleProductId: () => clean(process.env.APPLE_VALUE_CREDITS_25_PRODUCT_ID || "valuevision_value_credits_25"),
+  },
+  value_credits_75: {
+    kind: "valuations",
+    quantity: 75,
+    stripePriceId: () => clean(process.env.STRIPE_VALUE_CREDITS_75_PRICE_ID),
+    appleProductId: () => clean(process.env.APPLE_VALUE_CREDITS_75_PRODUCT_ID || "valuevision_value_credits_75"),
   },
   car_check_1: {
     kind: "carChecks",
@@ -386,29 +398,43 @@ function reservePaidUsage(req, res, next) {
   if (consumesScan) {
     if (customer && activeSubscription(customer)) {
       resetScanPeriodIfNeeded(customer);
-      if (Number(customer.scansUsed || 0) >= MONTHLY_SCAN_LIMIT) {
-        return res.status(402).json({ ok: false, code: "MONTHLY_SCAN_LIMIT_REACHED", error: "Monthly scan allowance used." });
+      if (Number(customer.scansUsed || 0) < MONTHLY_SCAN_LIMIT) {
+        customer.scansUsed = Number(customer.scansUsed || 0) + 1;
+        refund = () => {
+          customer.scansUsed = Math.max(0, Number(customer.scansUsed || 0) - 1);
+          saveStore();
+        };
+      } else if (Number(customer.balances?.valuations || 0) > 0) {
+        customer.balances.valuations -= 1;
+        refund = () => {
+          customer.balances.valuations += 1;
+          saveStore();
+        };
+      } else {
+        return res.status(402).json({ ok: false, code: "VALUE_CREDITS_USED", error: "No Value Credits remain." });
       }
-      customer.scansUsed = Number(customer.scansUsed || 0) + 1;
-      refund = () => {
-        customer.scansUsed = Math.max(0, Number(customer.scansUsed || 0) - 1);
-        saveStore();
-      };
     } else {
       const installationId = clean(req.headers["x-valuevision-installation-id"]);
       const fallbackId = sha256(`${req.ip || "unknown"}:${clean(req.headers["user-agent"])}`).slice(0, 32);
       const usageKey = installationId || fallbackId;
       const usage = store.freeUsage[usageKey] || { count: 0, updatedAt: nowIso() };
-      if (Number(usage.count || 0) >= STARTER_SCAN_LIMIT) {
-        return res.status(402).json({ ok: false, code: "STARTER_SCANS_USED", error: "Starter scans used. Choose a plan to continue." });
+      if (Number(usage.count || 0) < STARTER_SCAN_LIMIT) {
+        usage.count = Number(usage.count || 0) + 1;
+        usage.updatedAt = nowIso();
+        store.freeUsage[usageKey] = usage;
+        refund = () => {
+          usage.count = Math.max(0, Number(usage.count || 0) - 1);
+          saveStore();
+        };
+      } else if (customer && Number(customer.balances?.valuations || 0) > 0) {
+        customer.balances.valuations -= 1;
+        refund = () => {
+          customer.balances.valuations += 1;
+          saveStore();
+        };
+      } else {
+        return res.status(402).json({ ok: false, code: "VALUE_CREDITS_USED", error: "No Value Credits remain. Choose a plan or add a credit pack to continue." });
       }
-      usage.count = Number(usage.count || 0) + 1;
-      usage.updatedAt = nowIso();
-      store.freeUsage[usageKey] = usage;
-      refund = () => {
-        usage.count = Math.max(0, Number(usage.count || 0) - 1);
-        saveStore();
-      };
     }
   }
   saveStore();

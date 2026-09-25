@@ -4763,8 +4763,17 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
         firstTextLine: aiDetected.query,
         logos: [],
         webEntities: [],
-        detectionConfidence: "medium",
+        detectionConfidence:
+          Number(aiDetected.identificationConfidence || 0) >= 85
+            ? "high"
+            : Number(aiDetected.identificationConfidence || 0) >= 65
+              ? "medium"
+              : "low",
         aiFallbackUsed: true,
+        aiIdentification: aiDetected.identification || null,
+        identificationConfidence: Number(aiDetected.identificationConfidence || 0),
+        identificationNeedsDetails: Boolean(aiDetected.identificationNeedsDetails),
+        requestedPhotos: aiDetected.requestedPhotos || [],
         error: null,
       };
     }
@@ -4825,6 +4834,8 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
     const merged = unique([...logos, ...webEntities, ...labels, ...objects]).slice(0, 6);
     let query = vehicleQuery || luxuryBrandQuery || merged.join(" ").trim();
     let aiFallbackUsed = false;
+    let aiCategoryHint = "";
+    let aiIdentification = null;
     const detectionConfidence = vehicleQuery
       ? "high"
       : luxuryBrandQuery
@@ -4847,21 +4858,31 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
       query = barcodeEnrichment.query;
     }
 
-    // AI fallback for non-vehicle items when Vision signals are weak.
+    // Run the valuation identification agent for every refined non-vehicle scan.
+    // The fast scan remains inexpensive; the UI's refine pass performs the
+    // evidence-rich identification before pricing.
     const canUseOpenAiFallback =
       Boolean(OPENAI_API_KEY) &&
       !vehicleQuery &&
-      (!query || detectionConfidence === "low") &&
       !Boolean(opts.fast);
     if (canUseOpenAiFallback) {
-      const aiDetected = await detectItemWithOpenAiFromImageBuffer(buffer);
+      const aiDetected = await detectItemWithOpenAiFromImageBuffer(buffer, {
+        query,
+        labels: merged,
+        firstTextLine,
+        logos,
+        webEntities,
+        detectionConfidence,
+      });
       if (aiDetected?.ok && aiDetected.query) {
         query = aiDetected.query;
         aiFallbackUsed = true;
+        aiCategoryHint = aiDetected.category || "";
+        aiIdentification = aiDetected;
       }
     }
 
-    const categoryHint = barcodeEnrichment?.categoryHint || detectCategory(query, merged);
+    const categoryHint = barcodeEnrichment?.categoryHint || aiCategoryHint || detectCategory(query, merged);
 
     return {
       ok: Boolean(query),
@@ -4873,6 +4894,10 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
       webEntities,
       detectionConfidence,
       aiFallbackUsed,
+      aiIdentification: aiIdentification?.identification || null,
+      identificationConfidence: Number(aiIdentification?.identificationConfidence || 0),
+      identificationNeedsDetails: Boolean(aiIdentification?.identificationNeedsDetails),
+      requestedPhotos: aiIdentification?.requestedPhotos || [],
       error: query ? null : "No reliable object detected from image.",
     };
   } catch (err) {
@@ -4887,8 +4912,17 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
           firstTextLine: aiDetected.query,
           logos: [],
           webEntities: [],
-          detectionConfidence: "medium",
+          detectionConfidence:
+            Number(aiDetected.identificationConfidence || 0) >= 85
+              ? "high"
+              : Number(aiDetected.identificationConfidence || 0) >= 65
+                ? "medium"
+                : "low",
           aiFallbackUsed: true,
+          aiIdentification: aiDetected.identification || null,
+          identificationConfidence: Number(aiDetected.identificationConfidence || 0),
+          identificationNeedsDetails: Boolean(aiDetected.identificationNeedsDetails),
+          requestedPhotos: aiDetected.requestedPhotos || [],
           error: null,
         };
       }
@@ -4897,54 +4931,400 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
   }
 }
 
-async function detectItemWithOpenAiFromImageBuffer(buffer) {
+async function detectItemWithOpenAiFromImageBuffer(buffer, context = {}) {
   if (!OPENAI_API_KEY || !buffer) return { ok: false, error: "openai_unavailable" };
   const mime = "image/jpeg";
   const b64 = buffer.toString("base64");
   const imageUrl = `data:${mime};base64,${b64}`;
 
+  const nullableString = { anyOf: [{ type: "string" }, { type: "null" }] };
+  const schema = {
+    type: "object",
+    additionalProperties: false,
+    properties: {
+      itemTitle: { type: "string" },
+      query: { type: "string" },
+      category: {
+        type: "string",
+        enum: ["vehicle", "electronics", "fashion", "home", "collectible", "tools", "general"],
+      },
+      subcategory: { type: "string" },
+      identificationStatus: {
+        type: "string",
+        enum: ["exact", "likely", "general", "unknown"],
+      },
+      brand: nullableString,
+      model: nullableString,
+      variant: nullableString,
+      condition: {
+        type: "string",
+        enum: ["sealed", "new", "like_new", "good", "fair", "poor", "damaged", "unknown"],
+      },
+      completeness: {
+        type: "string",
+        enum: ["complete", "incomplete", "unknown"],
+      },
+      visibleText: { type: "array", items: { type: "string" }, maxItems: 12 },
+      candidateIdentities: {
+        type: "array",
+        maxItems: 3,
+        items: {
+          type: "object",
+          additionalProperties: false,
+          properties: {
+            title: { type: "string" },
+            confidence: { type: "integer", minimum: 0, maximum: 100 },
+          },
+          required: ["title", "confidence"],
+        },
+      },
+      confidence: { type: "integer", minimum: 0, maximum: 100 },
+      highVarianceCategory: { type: "boolean" },
+      authenticityConcern: { type: "boolean" },
+      pricingAllowed: { type: "boolean" },
+      missingDetails: { type: "array", items: { type: "string" }, maxItems: 8 },
+      requestedPhotos: { type: "array", items: { type: "string" }, maxItems: 6 },
+      soldSearchQueries: { type: "array", items: { type: "string" }, minItems: 1, maxItems: 4 },
+      evidenceSummary: { type: "string" },
+    },
+    required: [
+      "itemTitle",
+      "query",
+      "category",
+      "subcategory",
+      "identificationStatus",
+      "brand",
+      "model",
+      "variant",
+      "condition",
+      "completeness",
+      "visibleText",
+      "candidateIdentities",
+      "confidence",
+      "highVarianceCategory",
+      "authenticityConcern",
+      "pricingAllowed",
+      "missingDetails",
+      "requestedPhotos",
+      "soldSearchQueries",
+      "evidenceSummary",
+    ],
+  };
+
+  const baseSignals = JSON.stringify({
+    query: context?.query || "",
+    labels: context?.labels || [],
+    firstTextLine: context?.firstTextLine || "",
+    logos: context?.logos || [],
+    webEntities: context?.webEntities || [],
+    detectionConfidence: context?.detectionConfidence || "",
+  }).slice(0, 3500);
+
+  const specialistRules = [
+    "You are ValueVision's senior visual item-identification specialist.",
+    "Identify the clearest primary resale item using only evidence visible in the image and the supplied machine-vision signals.",
+    "Do not estimate a monetary value. Build the most precise search identity possible so a separate pricing engine can find genuine comparable sales.",
+    "Never invent a brand, model, edition, age, authenticity, grading or condition detail.",
+    "For tools, capture brand, exact model number, voltage, battery platform and included accessories.",
+    "For Pokemon or other trading cards, capture character/name, set, card number, language, edition, holo treatment, graded/ungraded status and visible condition.",
+    "For LEGO, capture set number/name, sealed or opened state, completeness and important minifigures. Loose bricks without an identifiable set must remain general.",
+    "For antiques, art, ceramics, jewellery and watches, look for maker marks, signatures, hallmarks, materials, dimensions and provenance clues. Request underside, reverse, clasp or hallmark photos when needed.",
+    "For electronics, capture exact model, generation, storage/capacity and included accessories.",
+    "For fashion, capture brand, product line, size, material and authenticity clues.",
+    "If several objects are shown, select the clearest potentially saleable object and request an individual close-up before allowing precise pricing.",
+    "Set pricingAllowed false when the identity is unknown or too broad, an important variant is missing, authenticity materially affects value, or condition cannot be assessed enough for useful comparables.",
+    "The query must be concise and contain only evidence-backed terms useful for finding the same item. soldSearchQueries should contain close-match resale searches, not generic category searches.",
+    `Machine-vision signals: ${baseSignals}`,
+  ];
+
+  const extractOutputText = (payload) => {
+    const direct = String(payload?.output_text || "").trim();
+    if (direct) return direct;
+    for (const output of payload?.output || []) {
+      for (const content of output?.content || []) {
+        if (content?.type === "output_text" && content?.text) return String(content.text).trim();
+      }
+    }
+    return "";
+  };
+
+  const callIdentifier = async ({ model, prior = null }) => {
+    const prompt = [...specialistRules];
+    if (prior) {
+      prompt.push("Review this first-pass identification. Correct it where the image does not support it and be more conservative when exact identity is uncertain.");
+      prompt.push(`First-pass identification: ${JSON.stringify(prior).slice(0, 5000)}`);
+    }
+
+    const body = {
+      model,
+      store: false,
+      max_output_tokens: 1400,
+      input: [
+        {
+          role: "user",
+          content: [
+            { type: "input_text", text: prompt.join("\n") },
+            { type: "input_image", image_url: imageUrl, detail: "high" },
+          ],
+        },
+      ],
+      text: {
+        format: {
+          type: "json_schema",
+          name: "valuevision_item_identification",
+          strict: true,
+          schema,
+        },
+      },
+    };
+    if (/^(gpt-6|gpt-5|o\d)/i.test(model)) body.reasoning = { effort: "low" };
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+    try {
+      const r = await fetch("https://api.openai.com/v1/responses", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
+        },
+        body: JSON.stringify(body),
+        signal: controller.signal,
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) {
+        return { ok: false, error: String(j?.error?.message || `openai_http_${r.status}`), model };
+      }
+      const raw = extractOutputText(j);
+      const parsed = raw ? JSON.parse(raw) : null;
+      if (!parsed || !String(parsed.query || parsed.itemTitle || "").trim()) {
+        return { ok: false, error: "openai_empty_identification", model };
+      }
+      return { ok: true, identification: parsed, model };
+    } catch (err) {
+      return { ok: false, error: String(err?.message || err), model };
+    } finally {
+      clearTimeout(timeout);
+    }
+  };
+
+  const fastModel = String(process.env.OPENAI_FAST_VISION_MODEL || "gpt-4o-mini").trim();
+  const expertModel = String(process.env.OPENAI_VALUATION_MODEL || "gpt-6-astra").trim();
+  const expertEnabled = String(process.env.OPENAI_EXPERT_VISION_ENABLED || "true").toLowerCase() !== "false";
+
+  const firstPass = await callIdentifier({ model: fastModel });
+  let best = firstPass;
+  const first = firstPass?.identification || {};
+  const specialistText = `${first.category || ""} ${first.subcategory || ""} ${first.query || ""}`.toLowerCase();
+  const specialistItem = /\b(pokemon|trading card|card|antique|vintage|art|painting|ceramic|pottery|jewellery|jewelry|watch|coin|stamp|lego|minifigure|collectible|designer|luxury)\b/.test(specialistText);
+  const needsExpert =
+    !firstPass?.ok ||
+    Number(first.confidence || 0) < 86 ||
+    first.identificationStatus !== "exact" ||
+    Boolean(first.highVarianceCategory) ||
+    Boolean(first.authenticityConcern) ||
+    !Boolean(first.pricingAllowed) ||
+    specialistItem;
+
+  if (expertEnabled && expertModel && expertModel !== fastModel && needsExpert) {
+    const expertPass = await callIdentifier({
+      model: expertModel,
+      prior: firstPass?.ok ? first : null,
+    });
+    if (expertPass?.ok) best = expertPass;
+  }
+
+  if (!best?.ok) {
+    return { ok: false, error: best?.error || firstPass?.error || "openai_identification_failed" };
+  }
+
+  const identification = best.identification || {};
+  const query = String(identification.query || identification.itemTitle || "").trim();
+  const category = String(identification.category || "general").trim().toLowerCase();
+  const identificationConfidence = Math.max(0, Math.min(100, Number(identification.confidence || 0)));
+  const identificationNeedsDetails =
+    !Boolean(identification.pricingAllowed) ||
+    identification.identificationStatus === "unknown" ||
+    identification.identificationStatus === "general";
+
+  return {
+    ok: Boolean(query),
+    query,
+    category: category || "general",
+    identification,
+    identificationConfidence,
+    identificationNeedsDetails,
+    requestedPhotos: Array.isArray(identification.requestedPhotos) ? identification.requestedPhotos : [],
+    soldSearchQueries: Array.isArray(identification.soldSearchQueries) ? identification.soldSearchQueries : [],
+    modelUsed: best.model,
+  };
+}
+
+async function reviewItemPricingWithOpenAi({
+  query,
+  category,
+  identification,
+  condition,
+  conditionTier,
+  conditionNotes,
+  currency,
+  comps,
+  statisticalBand,
+  soldBenchmark,
+}) {
+  const enabled = String(process.env.OPENAI_PRICE_REVIEW_ENABLED || "true").toLowerCase() !== "false";
+  const minimumComps = Math.max(3, Number(process.env.OPENAI_PRICE_REVIEW_MIN_COMPS || 3));
+  const candidates = Array.isArray(comps)
+    ? comps
+        .filter((comp) => Number.isFinite(Number(comp?.n)) && Number(comp.n) > 0)
+        .slice(0, 14)
+        .map((comp, index) => ({
+          index,
+          title: String(comp?.title || "").slice(0, 220),
+          price: Number(comp.n),
+          source: String(comp?.source || comp?.engine || "marketplace").slice(0, 80),
+          sold: Boolean(comp?.soldHint || comp?.sold),
+          matchScore: Number.isFinite(Number(comp?.matchScore)) ? Number(comp.matchScore) : null,
+        }))
+    : [];
+
+  if (!enabled || !OPENAI_API_KEY || candidates.length < minimumComps) {
+    return { ok: false, reason: "AI pricing review unavailable or insufficient evidence" };
+  }
+
+  const schema = {
+    type: "object",
+    additionalProperties: false,
+    properties: {
+      acceptedCompIndexes: { type: "array", items: { type: "integer" } },
+      rejectedComps: {
+        type: "array",
+        items: {
+          type: "object",
+          additionalProperties: false,
+          properties: {
+            index: { type: "integer" },
+            reason: { type: "string" },
+          },
+          required: ["index", "reason"],
+        },
+      },
+      matchQuality: { type: "string", enum: ["strong", "mixed", "weak"] },
+      conditionAlignment: { type: "string", enum: ["strong", "mixed", "weak", "unknown"] },
+      low: { anyOf: [{ type: "number" }, { type: "null" }] },
+      median: { anyOf: [{ type: "number" }, { type: "null" }] },
+      high: { anyOf: [{ type: "number" }, { type: "null" }] },
+      confidence: { type: "integer", minimum: 0, maximum: 100 },
+      pricingStatus: { type: "string", enum: ["usable", "needs_details"] },
+      reasoning: { type: "string" },
+      missingDetails: { type: "array", items: { type: "string" } },
+    },
+    required: [
+      "acceptedCompIndexes",
+      "rejectedComps",
+      "matchQuality",
+      "conditionAlignment",
+      "low",
+      "median",
+      "high",
+      "confidence",
+      "pricingStatus",
+      "reasoning",
+      "missingDetails",
+    ],
+  };
+
+  const evidence = {
+    target: {
+      query: String(query || "").slice(0, 300),
+      category: String(category || "general"),
+      identification: identification || null,
+      condition: String(condition || "unknown").slice(0, 120),
+      conditionTier: String(conditionTier || "unknown").slice(0, 80),
+      conditionNotes: String(conditionNotes || "").slice(0, 500),
+      currency: String(currency || "GBP"),
+    },
+    statisticalBand: statisticalBand || null,
+    soldBenchmark: soldBenchmark || null,
+    candidates,
+  };
+
   const prompt = [
-    "Identify the primary resale item in this photo.",
-    "Return strict JSON only with keys: query, category.",
-    'category must be one of: vehicle,electronics,fashion,home,collectible,tools,general.',
-    'query must be short and specific, e.g. "iPhone 14 Pro 256GB", "Makita drill driver", "Nike Air Max 90".',
-  ].join(" ");
+    "You are ValueVision's marketplace evidence auditor.",
+    "Review the supplied comparable listings for the exact photographed item. You must not invent prices or use outside knowledge.",
+    "Reject accessories, spare parts, empty packaging, replicas, unrelated bundles, different models or editions, different card or set variants, and new-retail listings when they do not match the target's condition.",
+    "For collectibles, cards, LEGO, tools, electronics, jewellery, watches and antiques, exact variant, completeness, authenticity signals and condition matter more than title similarity.",
+    "Only accept a usable valuation when at least three genuinely comparable listings remain. Prefer sold evidence over asking prices when available.",
+    "The low, median and high must be supported by accepted evidence in the supplied currency. Never convert currency. A condition adjustment may not move a figure more than 20 percent beyond the accepted evidence range.",
+    "If identity, variant, quantity, completeness, authenticity or condition is too uncertain, return needs_details and list the smallest set of details or photos needed.",
+    "Keep reasoning concise and customer-safe.",
+    JSON.stringify(evidence),
+  ].join("\n\n");
+
+  const controller = new AbortController();
+  const timeout = setTimeout(
+    () => controller.abort(),
+    Math.max(4000, Number(process.env.OPENAI_PRICE_REVIEW_TIMEOUT_MS || 14000))
+  );
 
   try {
-    const r = await fetch("https://api.openai.com/v1/chat/completions", {
+    const model = process.env.OPENAI_PRICE_REVIEW_MODEL || OPENAI_VALUATION_MODEL || OPENAI_FAST_VISION_MODEL;
+    const response = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
         Authorization: `Bearer ${OPENAI_API_KEY}`,
+        "Content-Type": "application/json",
       },
+      signal: controller.signal,
       body: JSON.stringify({
-        model: "gpt-4o-mini",
-        temperature: 0.1,
-        response_format: { type: "json_object" },
-        messages: [
-          {
-            role: "user",
-            content: [
-              { type: "text", text: prompt },
-              { type: "image_url", image_url: { url: imageUrl } },
-            ],
+        model,
+        reasoning: { effort: "low" },
+        max_output_tokens: 1100,
+        input: [{ role: "user", content: [{ type: "input_text", text: prompt }] }],
+        text: {
+          format: {
+            type: "json_schema",
+            name: "marketplace_price_review",
+            strict: true,
+            schema,
           },
-        ],
+        },
       }),
     });
-    const j = await r.json().catch(() => ({}));
-    if (!r.ok) return { ok: false, error: String(j?.error?.message || `openai_http_${r.status}`) };
-    const raw = String(j?.choices?.[0]?.message?.content || "").trim();
-    const parsed = raw ? JSON.parse(raw) : {};
-    const query = String(parsed?.query || "").trim();
-    const category = String(parsed?.category || "").trim().toLowerCase();
+
+    if (!response.ok) {
+      return { ok: false, reason: `AI pricing review returned ${response.status}` };
+    }
+
+    const payload = await response.json();
+    const outputText = typeof payload?.output_text === "string"
+      ? payload.output_text
+      : (Array.isArray(payload?.output) ? payload.output : [])
+          .flatMap((item) => (Array.isArray(item?.content) ? item.content : []))
+          .map((part) => (typeof part?.text === "string" ? part.text : ""))
+          .join("");
+    const parsed = JSON.parse(outputText || "{}");
+    const acceptedCompIndexes = [...new Set(
+      (Array.isArray(parsed.acceptedCompIndexes) ? parsed.acceptedCompIndexes : [])
+        .map((value) => Number(value))
+        .filter((value) => Number.isInteger(value) && value >= 0 && value < candidates.length)
+    )];
+
     return {
-      ok: Boolean(query),
-      query,
-      category: category || "general",
+      ok: true,
+      model,
+      usage: payload?.usage || null,
+      review: { ...parsed, acceptedCompIndexes },
     };
-  } catch (err) {
-    return { ok: false, error: String(err?.message || err) };
+  } catch (error) {
+    return {
+      ok: false,
+      reason: error?.name === "AbortError"
+        ? "AI pricing review timed out"
+        : String(error?.message || error),
+    };
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
@@ -7555,7 +7935,15 @@ app.post("/analyze", itemAnalyzeBudgetGuard, upload.single("image"), async (req,
       .filter(Boolean)
       .join(" ");
     const enriched = `${baseQuery} ${condition} ${vehicleDetails} ${conditionNotes}`.trim();
-    let queryCandidates = buildQueryCandidates(category, enriched, baseQuery, requestedRegion).slice(
+    const aiSearchQueries = !isFastStage && Array.isArray(autoDetection?.aiIdentification?.soldSearchQueries)
+      ? autoDetection.aiIdentification.soldSearchQueries
+          .map((query) => String(query || "").trim())
+          .filter(Boolean)
+      : [];
+    let queryCandidates = unique([
+      ...aiSearchQueries,
+      ...buildQueryCandidates(category, enriched, baseQuery, requestedRegion),
+    ]).slice(
       0,
       isLiveMode
         ? MAX_QUERY_CANDIDATES_LIVE
@@ -8514,12 +8902,117 @@ app.post("/analyze", itemAnalyzeBudgetGuard, upload.single("image"), async (req,
       confidenceReasonList.push(collectibleFloor.reason);
     }
 
-    const withhold = shouldWithholdValuation({
+    let aiPriceReview = null;
+    let aiAcceptedComps = [];
+    if (category !== "vehicle" && !isFastStage && Array.isArray(filteredComps) && filteredComps.length >= 3) {
+      aiPriceReview = await reviewItemPricingWithOpenAi({
+        query: baseQuery,
+        category,
+        identification: autoDetection?.aiIdentification || null,
+        condition,
+        conditionTier,
+        conditionNotes,
+        currency,
+        comps: filteredComps,
+        statisticalBand: { low, median: med, high },
+        soldBenchmark: soldCompsBenchmark || null,
+      });
+
+      if (aiPriceReview?.ok) {
+        const review = aiPriceReview.review;
+        const acceptedIndexes = new Set(review.acceptedCompIndexes || []);
+        aiAcceptedComps = filteredComps
+          .filter((comp) => Number.isFinite(Number(comp?.n)) && Number(comp.n) > 0)
+          .slice(0, 14)
+          .filter((_, index) => acceptedIndexes.has(index));
+        const reviewLow = review.low == null ? NaN : Number(review.low);
+        const reviewMedian = review.median == null ? NaN : Number(review.median);
+        const reviewHigh = review.high == null ? NaN : Number(review.high);
+
+        if (
+          review.pricingStatus === "usable" &&
+          aiAcceptedComps.length >= 3 &&
+          Number.isFinite(reviewLow) &&
+          Number.isFinite(reviewMedian) &&
+          Number.isFinite(reviewHigh)
+        ) {
+          const aiBand = sanitizePriceBand({
+            low: reviewLow,
+            median: reviewMedian,
+            high: reviewHigh,
+            category,
+          });
+          const acceptedPrices = aiAcceptedComps
+            .map((comp) => Number(comp.n))
+            .filter((value) => Number.isFinite(value) && value > 0);
+          const evidenceMin = Math.min(...acceptedPrices);
+          const evidenceMax = Math.max(...acceptedPrices);
+          const evidenceClamp = (value) => Math.min(evidenceMax * 1.2, Math.max(evidenceMin * 0.8, value));
+          const reviewedLow = evidenceClamp(aiBand.low);
+          const reviewedMedian = evidenceClamp(aiBand.median);
+          const reviewedHigh = evidenceClamp(aiBand.high);
+          const aiWeight = Math.max(0.25, Math.min(0.5, Number(review.confidence || 0) / 200));
+
+          low = low * (1 - aiWeight) + reviewedLow * aiWeight;
+          med = med * (1 - aiWeight) + reviewedMedian * aiWeight;
+          high = high * (1 - aiWeight) + reviewedHigh * aiWeight;
+          const reviewedBand = sanitizePriceBand({ low, median: med, high, category });
+          low = reviewedBand.low;
+          med = reviewedBand.median;
+          high = reviewedBand.high;
+
+          const reviewedConfidenceScore = Math.max(
+            0,
+            Math.min(
+              100,
+              Math.round(Number(confidence.score || 0) * 0.65 + Number(review.confidence || 0) * 0.35)
+            )
+          );
+          confidence = {
+            score: reviewedConfidenceScore,
+            label: confidenceLabelFromScore(reviewedConfidenceScore),
+          };
+          const acceptedSourceCount = unique(aiAcceptedComps.map((comp) => comp.source).filter(Boolean)).length;
+          gate = qualityGate({
+            category,
+            filteredComps: aiAcceptedComps,
+            filteredNums: acceptedPrices,
+            sourceCount: acceptedSourceCount,
+            confidence,
+          });
+          gate = {
+            ...gate,
+            reasons: unique([...(gate.reasons || []), "AI evidence audit removed mismatched listings"]),
+          };
+          confidenceReasonList.push(
+            `AI evidence audit retained ${aiAcceptedComps.length} of ${Math.min(14, filteredComps.length)} comparable listings.`
+          );
+        } else {
+          const reviewedConfidenceScore = Math.min(
+            Number(confidence.score || 0),
+            Number(review.confidence || 45)
+          );
+          confidence = {
+            score: reviewedConfidenceScore,
+            label: confidenceLabelFromScore(reviewedConfidenceScore),
+          };
+          confidenceReasonList.push(review.reasoning || "AI evidence audit needs clearer item details.");
+        }
+      }
+    }
+
+    let withhold = shouldWithholdValuation({
       gate,
       confidence,
       soldCompsBenchmark,
       category,
     });
+    if (aiPriceReview?.ok && aiPriceReview.review?.pricingStatus === "needs_details") {
+      withhold = {
+        withhold: true,
+        reason: aiPriceReview.review.reasoning || "A clearer identification is needed before showing a reliable price.",
+      };
+    }
     const normalizedBand = sanitizePriceBand({
       low,
       median: med,
@@ -8589,6 +9082,9 @@ app.post("/analyze", itemAnalyzeBudgetGuard, upload.single("image"), async (req,
     const accuracyBlockers = [];
     if (gate.status !== "pass") accuracyBlockers.push("quality gate not passed");
     if (Number(confidence.score || 0) < 70) accuracyBlockers.push("confidence below target");
+    if (aiPriceReview?.ok && aiPriceReview.review?.pricingStatus === "needs_details") {
+      accuracyBlockers.push("AI evidence audit needs more item detail");
+    }
       const auxSoldSupport =
         Number(soldCompsBenchmark?.count || 0) >= (category === "vehicle" ? 4 : 2);
       if (sourceCount < 2 && !auxSoldSupport) accuracyBlockers.push("not enough independent sources");
@@ -8662,7 +9158,22 @@ app.post("/analyze", itemAnalyzeBudgetGuard, upload.single("image"), async (req,
         condition,
       }),
       fromCache: false,
-      comps: filteredComps
+      aiPricingReview: aiPriceReview?.ok
+        ? {
+            model: aiPriceReview.model,
+            status: aiPriceReview.review.pricingStatus,
+            confidence: aiPriceReview.review.confidence,
+            matchQuality: aiPriceReview.review.matchQuality,
+            conditionAlignment: aiPriceReview.review.conditionAlignment,
+            acceptedCompCount: aiAcceptedComps.length,
+            rejectedCompCount: Array.isArray(aiPriceReview.review.rejectedComps)
+              ? aiPriceReview.review.rejectedComps.length
+              : 0,
+            reasoning: aiPriceReview.review.reasoning,
+            missingDetails: aiPriceReview.review.missingDetails,
+          }
+        : null,
+      comps: [...(aiAcceptedComps.length >= 3 ? aiAcceptedComps : filteredComps)]
         .sort((a, b) => b.matchScore - a.matchScore)
         .map(({ title, price, source, link }) => ({ title, price, source, link })),
     };
