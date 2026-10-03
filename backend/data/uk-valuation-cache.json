@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-15T09:09:16.743Z",
+  "updatedAt": "2026-06-23T15:07:54.757Z",
   "entries": {
     "BG11DVV": {
       "summary": {
@@ -1969,78 +1969,6 @@
       "savedAt": "2026-05-06T15:36:15.330Z",
       "source": "checkcardetails-valuation"
     },
-    "SW15VMZ": {
-      "summary": {
-        "count": 9,
-        "low": 6470,
-        "median": 7649,
-        "high": 9008,
-        "currency": "GBP",
-        "source": "checkcardetails-valuation",
-        "valuationList": {
-          "OTR": "24555",
-          "DealerForecourt": "9714",
-          "TradeRetail": "9008",
-          "PrivateClean": "7989",
-          "PrivateAverage": "7494",
-          "PartExchange": "7649",
-          "Auction": "6858",
-          "TradeAverage": "6470",
-          "TradePoor": "5761"
-        }
-      },
-      "savedAtMs": 1778836152291,
-      "savedAt": "2026-05-15T09:09:12.291Z",
-      "source": "checkcardetails-valuation"
-    },
-    "MV15CYO": {
-      "summary": {
-        "count": 9,
-        "low": 10820,
-        "median": 12792,
-        "high": 15065,
-        "currency": "GBP",
-        "source": "checkcardetails-valuation",
-        "valuationList": {
-          "OTR": "37345",
-          "DealerForecourt": "16246",
-          "TradeRetail": "15065",
-          "PrivateClean": "13361",
-          "PrivateAverage": "12534",
-          "PartExchange": "12792",
-          "Auction": "11470",
-          "TradeAverage": "10820",
-          "TradePoor": "9636"
-        }
-      },
-      "savedAtMs": 1778836155925,
-      "savedAt": "2026-05-15T09:09:15.925Z",
-      "source": "checkcardetails-valuation"
-    },
-    "BG11GWX": {
-      "summary": {
-        "count": 9,
-        "low": 1254,
-        "median": 1764,
-        "high": 2169,
-        "currency": "GBP",
-        "source": "checkcardetails-valuation",
-        "valuationList": {
-          "OTR": "17065",
-          "DealerForecourt": "2390",
-          "TradeRetail": "2169",
-          "PrivateClean": "1848",
-          "PrivateAverage": "1725",
-          "PartExchange": "1764",
-          "Auction": "1367",
-          "TradeAverage": "1254",
-          "TradePoor": "1059"
-        }
-      },
-      "savedAtMs": 1778836156743,
-      "savedAt": "2026-05-15T09:09:16.743Z",
-      "source": "checkcardetails-valuation"
-    },
     "LC69WFN": {
       "summary": {
         "count": 9,
@@ -2113,28 +2041,100 @@
       "savedAt": "2026-05-09T20:45:26.080Z",
       "source": "checkcardetails-valuation"
     },
+    "SW15VMZ": {
+      "summary": {
+        "count": 9,
+        "low": 6430,
+        "median": 7602,
+        "high": 8952,
+        "currency": "GBP",
+        "source": "checkcardetails-valuation",
+        "valuationList": {
+          "OTR": "24555",
+          "DealerForecourt": "9654",
+          "TradeRetail": "8952",
+          "PrivateClean": "7940",
+          "PrivateAverage": "7448",
+          "PartExchange": "7602",
+          "Auction": "6816",
+          "TradeAverage": "6430",
+          "TradePoor": "5726"
+        }
+      },
+      "savedAtMs": 1782227273939,
+      "savedAt": "2026-06-23T15:07:53.939Z",
+      "source": "checkcardetails-valuation"
+    },
     "CE06CHD": {
       "summary": {
         "count": 8,
-        "low": 1133,
-        "median": 1779,
-        "high": 1934,
+        "low": 1125,
+        "median": 1767,
+        "high": 1920,
         "currency": "GBP",
         "source": "checkcardetails-valuation",
         "valuationList": {
           "OTR": null,
-          "DealerForecourt": "2780",
-          "TradeRetail": "2403",
-          "PrivateClean": "1934",
-          "PrivateAverage": "1779",
-          "PartExchange": "1836",
-          "Auction": "1435",
-          "TradeAverage": "1133",
-          "TradePoor": "973"
+          "DealerForecourt": "2761",
+          "TradeRetail": "2386",
+          "PrivateClean": "1920",
+          "PrivateAverage": "1767",
+          "PartExchange": "1824",
+          "Auction": "1425",
+          "TradeAverage": "1125",
+          "TradePoor": "966"
         }
       },
-      "savedAtMs": 1778836155130,
-      "savedAt": "2026-05-15T09:09:15.130Z",
+      "savedAtMs": 1781957432557,
+      "savedAt": "2026-06-20T12:10:32.557Z",
+      "source": "checkcardetails-valuation"
+    },
+    "MV15CYO": {
+      "summary": {
+        "count": 9,
+        "low": 11115,
+        "median": 13141,
+        "high": 15476,
+        "currency": "GBP",
+        "source": "checkcardetails-valuation",
+        "valuationList": {
+          "OTR": "37345",
+          "DealerForecourt": "16690",
+          "TradeRetail": "15476",
+          "PrivateClean": "13726",
+          "PrivateAverage": "12876",
+          "PartExchange": "13141",
+          "Auction": "11783",
+          "TradeAverage": "11115",
+          "TradePoor": "9899"
+        }
+      },
+      "savedAtMs": 1782227274550,
+      "savedAt": "2026-06-23T15:07:54.550Z",
+      "source": "checkcardetails-valuation"
+    },
+    "BG11GWX": {
+      "summary": {
+        "count": 9,
+        "low": 1649,
+        "median": 2320,
+        "high": 2853,
+        "currency": "GBP",
+        "source": "checkcardetails-valuation",
+        "valuationList": {
+          "OTR": "17065",
+          "DealerForecourt": "3142",
+          "TradeRetail": "2853",
+          "PrivateClean": "2430",
+          "PrivateAverage": "2269",
+          "PartExchange": "2320",
+          "Auction": "1798",
+          "TradeAverage": "1649",
+          "TradePoor": "1392"
+        }
+      },
+      "savedAtMs": 1782227274756,
+      "savedAt": "2026-06-23T15:07:54.756Z",
       "source": "checkcardetails-valuation"
     }
   }

@@ -412,11 +412,31 @@ async function fullReport(plate, currentMileage) {
   const result = await callBrego("full", plate, currentMileage);
   const basic = await basicReport(plate, currentMileage);
   const history = normalizeHistory(result);
+  const historyCategories = {
+    hasFinanceRecord: Boolean(history.financeOutstanding || history.financeRecordCount > 0),
+    financeCount: history.financeRecordCount,
+    hasStolenRecord: Boolean(history.stolen || history.stolenRecordCount > 0),
+    stolenCount: history.stolenRecordCount,
+    hasWriteOffRecord: Boolean(history.writtenOff || history.writeOffRecordCount > 0),
+    writeOffCount: history.writeOffRecordCount,
+    hasMileageDiscrepancy: Boolean(history.mileageAnomalyDetected),
+    mileageRecordCount: history.mileageRecordCount,
+  };
   return {
     ...basic,
     fullCarCheck: true,
     registrationDate: basic.registrationDate || history.registrationDate,
     colour: basic.colour || history.colour,
+    crashHistory: {
+      hasWriteOffRecord: historyCategories.hasWriteOffRecord,
+      writeOffCount: historyCategories.writeOffCount,
+      latestWriteOffStatus: history.writeOffCategory || null,
+      source: "Brego Advanced Check",
+    },
+    historyCategories,
+    mileageAnomalyDetected: history.mileageAnomalyDetected,
+    mileageRecordCount: history.mileageRecordCount,
+    mileageRecords: history.mileageRecords,
     history,
     checks: history,
     cached: false,

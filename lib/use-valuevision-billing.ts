@@ -20,12 +20,17 @@ import {
 import { LaunchPricing } from "@/constants/pricing";
 import { addCarCheckCredits } from "@/lib/car-check-credits";
 import { loadBillingState, persistBillingState, type BillingState } from "@/lib/billing-state";
+import { trackAnalyticsEvent } from "@/lib/analytics";
+import { syncApplePurchase } from "@/lib/payment-entitlements";
+import { addValueCredits } from "@/lib/scan-access";
 
-type BillingSku = "monthly" | "single" | "bundle";
+type BillingSku = "monthly" | "credits25" | "credits75" | "single" | "bundle";
 type BillingCatalogProduct = Product | ProductSubscription;
 
 type BillingCatalog = {
   monthly: BillingCatalogProduct | null;
+  credits25: BillingCatalogProduct | null;
+  credits75: BillingCatalogProduct | null;
   single: BillingCatalogProduct | null;
   bundle: BillingCatalogProduct | null;
 };
@@ -42,7 +47,7 @@ type BillingPurchaseState = {
 };
 
 function emptyCatalog(): BillingCatalog {
-  return { monthly: null, single: null, bundle: null };
+  return { monthly: null, credits25: null, credits75: null, single: null, bundle: null };
 }
 
 function isNativeBillingPlatform() {
@@ -82,10 +87,13 @@ async function applyPurchaseToState(purchase: Purchase) {
     if (verified.some((isVerified) => !isVerified)) {
       throw new Error("Apple could not verify this purchase.");
     }
+    await syncApplePurchase(purchase, { required: true });
   }
   const currentBillingState = await loadBillingState();
 
   const includesMonthly = ids.includes(LaunchPricing.monthlySubscriptionProductId);
+  const includesCredits25 = ids.includes(LaunchPricing.valueCreditPack25ProductId);
+  const includesCredits75 = ids.includes(LaunchPricing.valueCreditPack75ProductId);
   const includesSingle = ids.includes(LaunchPricing.fullCarCheckSingleProductId);
   const includesBundle = ids.includes(LaunchPricing.fullCarCheckBundleProductId);
   const transactionId = String(
@@ -104,6 +112,22 @@ async function applyPurchaseToState(purchase: Purchase) {
     });
   }
 
+  if (includesCredits25) {
+    await addValueCredits({
+      productId: LaunchPricing.valueCreditPack25ProductId,
+      credits: LaunchPricing.valueCreditPack25Credits,
+      transactionId,
+    });
+  }
+
+  if (includesCredits75) {
+    await addValueCredits({
+      productId: LaunchPricing.valueCreditPack75ProductId,
+      credits: LaunchPricing.valueCreditPack75Credits,
+      transactionId,
+    });
+  }
+
   if (includesBundle) {
     await addCarCheckCredits({
       productId: LaunchPricing.fullCarCheckBundleProductId,
@@ -114,6 +138,7 @@ async function applyPurchaseToState(purchase: Purchase) {
   }
 
   await persistBillingState({
+    appleMonthlyUnlocked: currentBillingState.appleMonthlyUnlocked || includesMonthly,
     monthlyUnlocked: currentBillingState.monthlyUnlocked || includesMonthly,
     vehicleChecksUnlocked:
       currentBillingState.vehicleChecksUnlocked || includesSingle || includesBundle,
@@ -124,7 +149,7 @@ async function applyPurchaseToState(purchase: Purchase) {
 
   await finishTransaction({
     purchase,
-    isConsumable: includesSingle || includesBundle,
+    isConsumable: includesCredits25 || includesCredits75 || includesSingle || includesBundle,
   });
 }
 
@@ -138,6 +163,7 @@ async function reconcileMonthlyEntitlement() {
       subscription.productId === LaunchPricing.monthlySubscriptionProductId
   );
   return persistBillingState({
+    appleMonthlyUnlocked: monthlyUnlocked,
     monthlyUnlocked,
     billingReady: true,
     lastCheckedAt: new Date().toISOString(),
@@ -177,6 +203,10 @@ export function useValueVisionBilling() {
     let closed = false;
     const purchaseUpdateSub = purchaseUpdatedListener((purchase) => {
       void applyPurchaseToState(purchase)
+        .then(() => trackAnalyticsEvent("purchase_success", {
+          platform: Platform.OS,
+          productIds: purchaseProductIds(purchase),
+        }))
         .then(() => loadBillingState())
         .then((billingState) => {
           if (closed || !mountedRef.current) return;
@@ -188,6 +218,11 @@ export function useValueVisionBilling() {
           }));
         })
         .catch((error: unknown) => {
+          void trackAnalyticsEvent("purchase_failure", {
+            platform: Platform.OS,
+            stage: "purchase_update",
+            message: String((error as { message?: string })?.message || error || "Purchase update failed."),
+          });
           if (closed || !mountedRef.current) return;
           setState((current) => ({
             ...current,
@@ -198,6 +233,11 @@ export function useValueVisionBilling() {
     });
 
     const purchaseErrorSub = purchaseErrorListener((error) => {
+      void trackAnalyticsEvent("purchase_failure", {
+        platform: Platform.OS,
+        stage: "store_listener",
+        message: String(error?.message || "Purchase failed."),
+      });
       if (closed || !mountedRef.current) return;
       setState((current) => ({
         ...current,
@@ -213,6 +253,8 @@ export function useValueVisionBilling() {
         const [inAppProducts, subscriptionProducts, available, billingState] = await Promise.all([
           fetchProducts({
             skus: [
+              LaunchPricing.valueCreditPack25ProductId,
+              LaunchPricing.valueCreditPack75ProductId,
               LaunchPricing.fullCarCheckSingleProductId,
               LaunchPricing.fullCarCheckBundleProductId,
             ],
@@ -239,6 +281,8 @@ export function useValueVisionBilling() {
           loading: false,
           catalog: {
             monthly: allProducts.find((product) => productMatches(product, LaunchPricing.monthlySubscriptionProductId)) || null,
+            credits25: allProducts.find((product) => productMatches(product, LaunchPricing.valueCreditPack25ProductId)) || null,
+            credits75: allProducts.find((product) => productMatches(product, LaunchPricing.valueCreditPack75ProductId)) || null,
             single: allProducts.find((product) => productMatches(product, LaunchPricing.fullCarCheckSingleProductId)) || null,
             bundle: allProducts.find((product) => productMatches(product, LaunchPricing.fullCarCheckBundleProductId)) || null,
           },
@@ -276,6 +320,7 @@ export function useValueVisionBilling() {
   const actions = useMemo(() => ({
     async restore() {
       if (!isNativeBillingPlatform()) return;
+      void trackAnalyticsEvent("restore_start", { platform: Platform.OS });
       setState((current) => ({ ...current, restoring: true, error: null }));
       try {
         await restorePurchases();
@@ -284,6 +329,10 @@ export function useValueVisionBilling() {
           await applyPurchaseToState(purchase);
         }
         const billingState = await reconcileMonthlyEntitlement();
+        void trackAnalyticsEvent("restore_success", {
+          platform: Platform.OS,
+          monthlyUnlocked: billingState.monthlyUnlocked,
+        });
         if (!mountedRef.current) return;
         setState((current) => ({
           ...current,
@@ -292,6 +341,10 @@ export function useValueVisionBilling() {
           error: null,
         }));
       } catch (error: unknown) {
+        void trackAnalyticsEvent("restore_failure", {
+          platform: Platform.OS,
+          message: String((error as { message?: string })?.message || error || "Restore failed."),
+        });
         if (!mountedRef.current) return;
         setState((current) => ({
           ...current,
@@ -313,10 +366,15 @@ export function useValueVisionBilling() {
       const productId =
         sku === "monthly"
           ? LaunchPricing.monthlySubscriptionProductId
+          : sku === "credits25"
+            ? LaunchPricing.valueCreditPack25ProductId
+            : sku === "credits75"
+              ? LaunchPricing.valueCreditPack75ProductId
           : sku === "single"
             ? LaunchPricing.fullCarCheckSingleProductId
             : LaunchPricing.fullCarCheckBundleProductId;
       setState((current) => ({ ...current, purchasingSku: sku, error: null }));
+      void trackAnalyticsEvent("purchase_start", { platform: Platform.OS, sku, productId });
       try {
         await requestPurchase({
           request: {
@@ -326,6 +384,13 @@ export function useValueVisionBilling() {
           type: sku === "monthly" ? "subs" : "in-app",
         });
       } catch (error: unknown) {
+        void trackAnalyticsEvent("purchase_failure", {
+          platform: Platform.OS,
+          stage: "request",
+          sku,
+          productId,
+          message: String((error as { message?: string })?.message || error || "Purchase could not start."),
+        });
         if (!mountedRef.current) return;
         setState((current) => ({
           ...current,

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <svg xmlns="http://www.w3.org/2000/svg" width="1284" height="2778" viewBox="0 0 1284 2778">
+    <rect width="1284" height="2778" fill="#061710"/>
+    <circle cx="1155.6000000000001" cy="222.24" r="539.28" fill="#0d2a20" opacity="0.9"/>
+    <circle cx="102.72" cy="2555.76" r="642" fill="#0b2119" opacity="0.95"/>
+    
+    <g transform="translate(74 90)">
+      <rect x="0" y="8.96" width="87.36" height="87.36" rx="20.16" fill="#d8ff43" transform="rotate(-8 43.68 43.68)"/>
+      <text x="43.68" y="72.8" font-family="Arial, sans-serif" font-size="58.24" font-weight="900" fill="#06100b" text-anchor="middle" letter-spacing="0">V</text>
+      <circle cx="87.36" cy="20.16" r="11.76" fill="#f28e70"/>
+    </g>
+    <text x="206" y="158" font-family="Arial, sans-serif" font-size="30" font-weight="900" fill="#f5f0e4" text-anchor="start" letter-spacing="5">VALUEVISION</text>
+    
+  <rect x="962" y="105" width="248" height="64" rx="32" fill="#173428" stroke="none" stroke-width="0"/>
+  <text x="1086" y="147" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#d8ff43" text-anchor="middle" letter-spacing="0">SEE THE VALUE</text>
+    <text x="74" y="377" font-family="Arial, sans-serif" font-size="25" font-weight="800" fill="#d8ff43" text-anchor="start" letter-spacing="4">CAR MODE</text>
+    <text x="74" y="485" font-family="Georgia, serif" font-size="93" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">SCAN A PLATE.</text>
+<text x="74" y="580.79" font-family="Georgia, serif" font-size="93" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">KNOW THE CAR.</text>
+    <text x="74" y="712.85" font-family="Arial, sans-serif" font-size="31" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">Start with useful vehicle facts and a</text>
+<text x="74" y="756.87" font-family="Arial, sans-serif" font-size="31" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">market valuation. A basic car</text>
+<text x="74" y="800.89" font-family="Arial, sans-serif" font-size="31" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">valuation uses three Value Credits.</text>
+    
+    
+    <rect x="74" y="970" width="1136" height="174" rx="34" fill="#f7e86d" stroke="none" stroke-width="0"/>
+    <text x="642" y="1082" font-family="Arial, sans-serif" font-size="70" font-weight="900" fill="#06100b" text-anchor="middle" letter-spacing="7">AB12 CDE</text>
+    <text x="74" y="1200" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#a9b8b0" text-anchor="start" letter-spacing="2">EXAMPLE BASIC REPORT</text>
+    <rect x="74" y="1230" width="1136" height="260" rx="38" fill="#f5f0e4" stroke="none" stroke-width="0"/>
+    <text x="110" y="1295" font-family="Georgia, serif" font-size="46" font-weight="800" fill="#06100b" text-anchor="start" letter-spacing="0">2018 Ford Fiesta</text>
+    <text x="110" y="1352" font-family="Arial, sans-serif" font-size="27" font-weight="600" fill="#52645a" text-anchor="start" letter-spacing="0">1.0 EcoBoost Titanium</text>
+    
+  <rect x="110" y="1390" width="202" height="64" rx="32" fill="#d8ff43" stroke="none" stroke-width="0"/>
+  <text x="211" y="1432" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#06100b" text-anchor="middle" letter-spacing="0">3 CREDITS</text>
+    <text x="1174" y="1432" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#06100b" text-anchor="end" letter-spacing="0">Market value  &#163;6,900</text>
+    
+  <rect x="74" y="1520" width="557" height="84" rx="24" fill="#173428" stroke="none" stroke-width="0"/>
+  <circle cx="108" cy="1562" r="9" fill="#86e5c0"/>
+  <text x="132" y="1571" font-family="Arial, sans-serif" font-size="27" font-weight="600" fill="#f5f0e4" text-anchor="start" letter-spacing="0">MOT</text>
+  <text x="603" y="1571" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#86e5c0" text-anchor="end" letter-spacing="0">VALID</text>
+    
+  <rect x="653" y="1520" width="557" height="84" rx="24" fill="#173428" stroke="none" stroke-width="0"/>
+  <circle cx="687" cy="1562" r="9" fill="#86e5c0"/>
+  <text x="711" y="1571" font-family="Arial, sans-serif" font-size="27" font-weight="600" fill="#f5f0e4" text-anchor="start" letter-spacing="0">TAX</text>
+  <text x="1182" y="1571" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#86e5c0" text-anchor="end" letter-spacing="0">TAXED</text>
+    
+  <rect x="74" y="1624" width="1136" height="84" rx="24" fill="#173428" stroke="none" stroke-width="0"/>
+  <circle cx="108" cy="1666" r="9" fill="#86e5c0"/>
+  <text x="132" y="1675" font-family="Arial, sans-serif" font-size="27" font-weight="600" fill="#f5f0e4" text-anchor="start" letter-spacing="0">Latest recorded mileage</text>
+  <text x="1182" y="1675" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#86e5c0" text-anchor="end" letter-spacing="0">64,210 mi</text>
+    <rect x="74" y="1742" width="1136" height="250" rx="36" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+    <text x="110" y="1802" font-family="Arial, sans-serif" font-size="23" font-weight="800" fill="#f28e70" text-anchor="start" letter-spacing="2">NEED THE COMPLETE HISTORY?</text>
+    <text x="110" y="1870" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">Unlock a Full Car Check</text>
+    <text x="110" y="1926" font-family="Arial, sans-serif" font-size="25" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">Finance, write-off, stolen and mileage-risk records</text>
+    
+  <rect x="1008" y="1810" width="166" height="64" rx="32" fill="#f28e70" stroke="none" stroke-width="0"/>
+  <text x="1091" y="1852" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#06100b" text-anchor="middle" letter-spacing="0">&#163;4.50</text>
+  
+    <text x="74" y="2706" font-family="Arial, sans-serif" font-size="21" font-weight="500" fill="#73867c" text-anchor="start" letter-spacing="0">Values are estimates. Vehicle results depend on available provider data.</text>
+  </svg>

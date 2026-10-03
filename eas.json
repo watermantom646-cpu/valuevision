@@ -14,7 +14,10 @@
     "production": {
       "env": {
         "APP_ENV": "production",
-        "EXPO_PUBLIC_API_BASE": "https://valuevision-4kj3.onrender.com"
+        "EXPO_PUBLIC_API_BASE": "https://valuevision-4kj3.onrender.com",
+        "EXPO_PUBLIC_PAID_ACCESS_MODE": "token",
+        "EXPO_PUBLIC_CAR_VALUATIONS_AVAILABLE": "1",
+        "EXPO_PUBLIC_FULL_CAR_CHECKS_AVAILABLE": "1"
       },
       "autoIncrement": true
     }

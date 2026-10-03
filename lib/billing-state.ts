@@ -7,6 +7,9 @@ export type BillingState = {
   monthlyProductId: string;
   singleCheckProductId: string;
   bundleProductId: string;
+  appleMonthlyUnlocked: boolean;
+  foundingAccessExpiresAt: string | null;
+  foundingReferralCode: string | null;
   monthlyUnlocked: boolean;
   vehicleChecksUnlocked: boolean;
   billingReady: boolean;
@@ -22,6 +25,9 @@ function defaultBillingState(): BillingState {
     monthlyProductId: LaunchPricing.monthlySubscriptionProductId,
     singleCheckProductId: LaunchPricing.fullCarCheckSingleProductId,
     bundleProductId: LaunchPricing.fullCarCheckBundleProductId,
+    appleMonthlyUnlocked: false,
+    foundingAccessExpiresAt: null,
+    foundingReferralCode: null,
     monthlyUnlocked: false,
     vehicleChecksUnlocked: false,
     billingReady: false,
@@ -32,11 +38,22 @@ function defaultBillingState(): BillingState {
 
 function normalizeBillingState(input: Partial<BillingState> | null | undefined): BillingState {
   const fallback = defaultBillingState();
+  const foundingAccessExpiresAt = input?.foundingAccessExpiresAt
+    ? String(input.foundingAccessExpiresAt)
+    : null;
+  const foundingAccessActive = Number.isFinite(Date.parse(String(foundingAccessExpiresAt || "")))
+    && Date.parse(String(foundingAccessExpiresAt)) > Date.now();
+  const appleMonthlyUnlocked = input?.appleMonthlyUnlocked === undefined
+    ? Boolean(input?.monthlyUnlocked)
+    : Boolean(input.appleMonthlyUnlocked);
   return {
     monthlyProductId: String(input?.monthlyProductId || fallback.monthlyProductId),
     singleCheckProductId: String(input?.singleCheckProductId || fallback.singleCheckProductId),
     bundleProductId: String(input?.bundleProductId || fallback.bundleProductId),
-    monthlyUnlocked: Boolean(input?.monthlyUnlocked),
+    appleMonthlyUnlocked,
+    foundingAccessExpiresAt,
+    foundingReferralCode: input?.foundingReferralCode ? String(input.foundingReferralCode) : null,
+    monthlyUnlocked: appleMonthlyUnlocked || foundingAccessActive,
     vehicleChecksUnlocked: Boolean(input?.vehicleChecksUnlocked),
     billingReady: Boolean(input?.billingReady),
     lastCheckedAt: input?.lastCheckedAt ? String(input.lastCheckedAt) : null,

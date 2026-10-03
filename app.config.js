@@ -1,7 +1,7 @@
 const expo = {
   name: "ValueVision",
   slug: "ValueVision",
-  version: "1.0.2",
+  version: "1.0.4",
   icon: "./assets/images/icon.png",
   scheme: "valuevision",
   orientation: "portrait",
@@ -12,8 +12,8 @@ const expo = {
     bundleIdentifier: "com.abbiemaytum.valuevision",
     supportsTablet: true,
     infoPlist: {
-      NSCameraUsageDescription: "ValueVision uses the camera to scan items like cards, coins, collectibles, tools, and tech for valuation.",
-      NSPhotoLibraryUsageDescription: "ValueVision lets you choose item photos for valuation and resale guidance.",
+      NSCameraUsageDescription: "ValueVision uses the camera to photograph items and vehicles, read number plates, and provide valuations and vehicle information.",
+      NSPhotoLibraryUsageDescription: "ValueVision lets you choose item and vehicle photos for identification, number-plate reading, valuations, and vehicle information.",
       NSMicrophoneUsageDescription: "ValueVision uses the microphone for optional voice notes while scanning.",
       ITSAppUsesNonExemptEncryption: false,
       NSAppTransportSecurity: {

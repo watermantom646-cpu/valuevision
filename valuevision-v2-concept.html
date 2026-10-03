@@ -1,0 +1,2609 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ValueVision V2 Experience Concept</title>
+  <style>
+    :root {
+      --ink: #152126;
+      --ink-soft: #405057;
+      --paper: #f4f0e7;
+      --paper-deep: #e7dfd0;
+      --card: #fffdf7;
+      --line: rgba(21, 33, 38, 0.14);
+      --orange: #f45f35;
+      --orange-soft: #ffe0d5;
+      --teal: #0b8f83;
+      --teal-soft: #d9f0eb;
+      --yellow: #f4c84b;
+      --yellow-soft: #fff2be;
+      --blue: #3567d8;
+      --blue-soft: #dfe8ff;
+      --danger: #b63e31;
+      --success: #18745f;
+      --shadow: 0 28px 70px rgba(37, 44, 43, 0.16);
+      --phone-shadow: 0 24px 55px rgba(24, 35, 38, 0.23);
+      --radius-xl: 42px;
+      --radius-lg: 28px;
+      --radius-md: 19px;
+      --radius-sm: 13px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% 4%, rgba(244, 200, 75, 0.36), transparent 28rem),
+        radial-gradient(circle at 94% 20%, rgba(11, 143, 131, 0.17), transparent 34rem),
+        var(--paper);
+      font-family: "Avenir Next", "Gill Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      z-index: 20;
+      background-image:
+        linear-gradient(rgba(21, 33, 38, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 33, 38, 0.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      min-height: 78px;
+      padding: 12px clamp(20px, 4vw, 64px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(244, 240, 231, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 41px;
+      aspect-ratio: 1;
+      border-radius: 13px;
+      color: white;
+      background: var(--ink);
+      transform: rotate(-3deg);
+      box-shadow: 0 8px 0 var(--yellow);
+      font-family: "Baskerville", serif;
+      font-size: 21px;
+      font-style: italic;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink-soft);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .concept-nav {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 247, 0.78);
+      justify-self: center;
+    }
+
+    .concept-nav button,
+    .ghost-button {
+      border: 0;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .concept-nav button {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 700;
+      transition: 180ms ease;
+    }
+
+    .concept-nav button:hover {
+      color: white;
+      background: var(--ink);
+    }
+
+    .concept-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid rgba(182, 62, 49, 0.24);
+      border-radius: 999px;
+      color: var(--danger);
+      background: rgba(255, 253, 247, 0.78);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .concept-badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 5px rgba(244, 95, 53, 0.12);
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.03fr) minmax(390px, 0.97fr);
+      align-items: center;
+      gap: clamp(38px, 6vw, 104px);
+      min-height: calc(100vh - 78px);
+      padding: clamp(58px, 8vw, 116px) clamp(22px, 6vw, 96px) 90px;
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      animation: rise 700ms ease both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2 {
+      font-family: "Baskerville", "Iowan Old Style", serif;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 23px;
+      font-size: clamp(54px, 7vw, 105px);
+      line-height: 0.91;
+    }
+
+    h1 em {
+      color: var(--orange);
+      font-weight: inherit;
+    }
+
+    .hero-copy > p {
+      max-width: 620px;
+      margin-bottom: 34px;
+      color: var(--ink-soft);
+      font-size: clamp(16px, 1.5vw, 21px);
+      line-height: 1.62;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin-bottom: 38px;
+    }
+
+    .primary-button,
+    .secondary-button,
+    .phone-button {
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .primary-button,
+    .secondary-button {
+      padding: 15px 22px;
+      font-size: 13px;
+    }
+
+    .primary-button {
+      color: white;
+      background: var(--ink);
+      box-shadow: 0 10px 0 var(--yellow);
+    }
+
+    .secondary-button {
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 247, 0.72);
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover,
+    .phone-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .principle-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .principle-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: rgba(255, 253, 247, 0.58);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .principle-row span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .hero-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 720px;
+      animation: rise 700ms 120ms ease both;
+    }
+
+    .hero-stage::before {
+      content: "";
+      position: absolute;
+      width: min(42vw, 630px);
+      aspect-ratio: 1;
+      border-radius: 44% 56% 66% 34% / 45% 42% 58% 55%;
+      background: var(--teal-soft);
+      transform: rotate(7deg);
+    }
+
+    .orbit-note {
+      position: absolute;
+      z-index: 3;
+      width: 190px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--card);
+      box-shadow: 0 15px 35px rgba(24, 35, 38, 0.13);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .orbit-note strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+
+    .orbit-note.one {
+      top: 12%;
+      right: -4%;
+      transform: rotate(4deg);
+    }
+
+    .orbit-note.two {
+      bottom: 12%;
+      left: -5%;
+      transform: rotate(-4deg);
+    }
+
+    .phone {
+      position: relative;
+      width: 340px;
+      min-width: 340px;
+      height: 716px;
+      padding: 9px;
+      border: 2px solid #111b20;
+      border-radius: 47px;
+      background: #10191d;
+      box-shadow: var(--phone-shadow);
+      overflow: hidden;
+    }
+
+    .hero-stage .phone {
+      transform: rotate(-2.5deg);
+      z-index: 2;
+    }
+
+    .phone-screen {
+      position: relative;
+      height: 100%;
+      border-radius: 38px;
+      background: #f8f5ed;
+      overflow: hidden;
+    }
+
+    .phone-screen.dark {
+      color: white;
+      background: #152126;
+    }
+
+    .dynamic-island {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      z-index: 8;
+      width: 88px;
+      height: 24px;
+      border-radius: 99px;
+      background: #090d0f;
+      transform: translateX(-50%);
+    }
+
+    .statusbar {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 46px;
+      padding: 12px 20px 3px;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .status-icons {
+      display: flex;
+      gap: 4px;
+      align-items: end;
+    }
+
+    .status-icons i {
+      display: block;
+      width: 3px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .status-icons i:nth-child(1) { height: 5px; }
+    .status-icons i:nth-child(2) { height: 7px; }
+    .status-icons i:nth-child(3) { height: 9px; }
+
+    .app-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 18px 7px;
+    }
+
+    .mini-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+
+    .mini-mark {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border-radius: 9px;
+      color: white;
+      background: var(--ink);
+      font-family: "Baskerville", serif;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .phone-screen.dark .mini-mark {
+      color: var(--ink);
+      background: var(--yellow);
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--card);
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .screen-scroll {
+      height: calc(100% - 88px);
+      padding: 8px 16px 84px;
+      overflow: hidden;
+    }
+
+    .screen-kicker {
+      margin-bottom: 8px;
+      color: var(--teal);
+      font-size: 8px;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .screen-title {
+      margin-bottom: 8px;
+      font-family: "Baskerville", serif;
+      font-size: 30px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 0.99;
+    }
+
+    .screen-subtitle {
+      margin-bottom: 15px;
+      color: #647176;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .mode-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 9px;
+      padding: 13px;
+      border: 1px solid rgba(21, 33, 38, 0.1);
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 7px 16px rgba(30, 38, 39, 0.055);
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .mode-card:hover {
+      border-color: var(--ink);
+      transform: translateX(3px);
+    }
+
+    .mode-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+    }
+
+    .mode-icon svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .mode-card.orange .mode-icon { color: var(--orange); background: var(--orange-soft); }
+    .mode-card.teal .mode-icon { color: var(--teal); background: var(--teal-soft); }
+    .mode-card.yellow .mode-icon { color: #8b6810; background: var(--yellow-soft); }
+
+    .mode-card strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 12px;
+    }
+
+    .mode-card small {
+      display: block;
+      color: #758086;
+      font-size: 8px;
+      line-height: 1.4;
+    }
+
+    .chevron {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #f0eee8;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .recent-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 17px 2px 8px;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .recent-label span:last-child {
+      color: var(--teal);
+      font-size: 8px;
+    }
+
+    .recent-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+    }
+
+    .recent-item {
+      min-height: 72px;
+      padding: 9px;
+      border-radius: 13px;
+      background: #ece8dd;
+      font-size: 7px;
+      line-height: 1.3;
+    }
+
+    .recent-item b {
+      display: block;
+      margin-top: 22px;
+      font-size: 8px;
+    }
+
+    .bottom-nav {
+      position: absolute;
+      right: 10px;
+      bottom: 9px;
+      left: 10px;
+      z-index: 7;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      padding: 7px;
+      border: 1px solid rgba(21, 33, 38, 0.1);
+      border-radius: 18px;
+      background: rgba(255, 253, 247, 0.92);
+      box-shadow: 0 8px 25px rgba(21, 33, 38, 0.13);
+      backdrop-filter: blur(14px);
+    }
+
+    .bottom-nav div {
+      display: grid;
+      place-items: center;
+      min-height: 34px;
+      border-radius: 12px;
+      color: #7b8588;
+      font-size: 7px;
+      font-weight: 800;
+    }
+
+    .bottom-nav div.active {
+      color: white;
+      background: var(--ink);
+    }
+
+    .section {
+      padding: 110px clamp(22px, 6vw, 96px);
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(260px, 0.42fr);
+      align-items: end;
+      gap: 26px;
+      margin-bottom: 64px;
+    }
+
+    .section-number {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      font-family: "Baskerville", serif;
+      font-size: 22px;
+      font-style: italic;
+    }
+
+    h2 {
+      max-width: 800px;
+      margin-bottom: 0;
+      font-size: clamp(43px, 5.5vw, 80px);
+      line-height: 0.96;
+    }
+
+    .section-head > p {
+      margin-bottom: 4px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.62;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: -35px;
+      padding: 0 clamp(22px, 6vw, 96px) 90px;
+    }
+
+    .principle-card {
+      min-height: 230px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 253, 247, 0.62);
+    }
+
+    .principle-card:nth-child(2) {
+      color: white;
+      background: var(--ink);
+      transform: translateY(24px);
+    }
+
+    .principle-card .card-index {
+      display: block;
+      margin-bottom: 48px;
+      color: var(--orange);
+      font-family: "Baskerville", serif;
+      font-size: 16px;
+      font-style: italic;
+    }
+
+    .principle-card h3 {
+      margin-bottom: 9px;
+      font-size: 19px;
+      letter-spacing: -0.025em;
+    }
+
+    .principle-card p {
+      margin-bottom: 0;
+      color: inherit;
+      opacity: 0.72;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .phone-gallery {
+      display: flex;
+      align-items: start;
+      gap: clamp(26px, 4vw, 58px);
+      overflow-x: auto;
+      padding: 20px 10px 55px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+    }
+
+    .phone-gallery .phone-wrap {
+      scroll-snap-align: start;
+    }
+
+    .phone-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 340px;
+    }
+
+    .phone-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 21px;
+      color: var(--ink-soft);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .phone-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .camera-stage {
+      position: relative;
+      height: 330px;
+      margin: 5px -16px 15px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(11, 143, 131, 0.22), transparent 45%),
+        linear-gradient(30deg, #c9baa4, #eee4d2);
+    }
+
+    .camera-stage::before {
+      content: "";
+      position: absolute;
+      inset: 17px;
+      z-index: 3;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 24px;
+      box-shadow: inset 0 0 0 999px rgba(21, 33, 38, 0.06);
+    }
+
+    .scan-line {
+      position: absolute;
+      right: 22px;
+      left: 22px;
+      top: 50%;
+      z-index: 4;
+      height: 2px;
+      background: var(--orange);
+      box-shadow: 0 0 13px var(--orange);
+      animation: scan 2.4s ease-in-out infinite;
+    }
+
+    .lego-pile {
+      position: absolute;
+      right: 36px;
+      bottom: 32px;
+      left: 36px;
+      height: 200px;
+      transform: rotate(-3deg);
+    }
+
+    .brick {
+      position: absolute;
+      border: 2px solid rgba(20, 28, 31, 0.32);
+      border-radius: 7px;
+      box-shadow: inset 0 -8px rgba(0, 0, 0, 0.08), 0 8px 18px rgba(0, 0, 0, 0.16);
+    }
+
+    .brick::before,
+    .brick::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      width: 15px;
+      height: 8px;
+      border: 2px solid rgba(20, 28, 31, 0.28);
+      border-bottom: 0;
+      border-radius: 5px 5px 0 0;
+      background: inherit;
+    }
+
+    .brick::before { left: 11px; }
+    .brick::after { right: 11px; }
+    .brick.red { width: 100px; height: 46px; left: 15px; top: 62px; background: #e54934; transform: rotate(14deg); }
+    .brick.blue { width: 88px; height: 44px; right: 9px; top: 38px; background: #336aca; transform: rotate(-12deg); }
+    .brick.yellow { width: 124px; height: 48px; left: 67px; bottom: 22px; background: #f1c93f; transform: rotate(4deg); }
+    .brick.green { width: 77px; height: 42px; right: 25px; bottom: 44px; background: #2c9a69; transform: rotate(19deg); }
+    .brick.white { width: 68px; height: 39px; left: 95px; top: 28px; background: #f6f2e8; transform: rotate(-1deg); }
+
+    .camera-copy {
+      position: absolute;
+      right: 34px;
+      bottom: 20px;
+      left: 34px;
+      z-index: 6;
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: white;
+      background: rgba(21, 33, 38, 0.79);
+      text-align: center;
+      font-size: 8px;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+    }
+
+    .capture-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 12px;
+    }
+
+    .round-tool {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: white;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .capture-button {
+      width: 74px;
+      height: 74px;
+      border: 7px solid white;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 2px var(--orange);
+    }
+
+    .accuracy-note {
+      margin-top: 19px;
+      padding: 12px;
+      border-radius: 14px;
+      color: #675720;
+      background: var(--yellow-soft);
+      font-size: 8px;
+      line-height: 1.5;
+    }
+
+    .image-card {
+      position: relative;
+      height: 180px;
+      margin-bottom: 14px;
+      border-radius: 22px;
+      background:
+        linear-gradient(145deg, rgba(11, 143, 131, 0.18), transparent),
+        #ded3c2;
+      overflow: hidden;
+    }
+
+    .image-card .lego-pile {
+      inset: 5px 36px 4px;
+      transform: scale(0.78) rotate(-2deg);
+    }
+
+    .image-card .sample-tag {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      z-index: 4;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: white;
+      background: rgba(21, 33, 38, 0.82);
+      font-size: 7px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .confidence-card {
+      padding: 14px;
+      border: 1px solid rgba(244, 95, 53, 0.24);
+      border-radius: 18px;
+      background: var(--orange-soft);
+    }
+
+    .confidence-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 8px;
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .meter {
+      height: 7px;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      background: rgba(21, 33, 38, 0.12);
+      overflow: hidden;
+    }
+
+    .meter span {
+      display: block;
+      width: 42%;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--orange);
+    }
+
+    .confidence-card p {
+      margin-bottom: 0;
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .choice-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .choice {
+      display: grid;
+      grid-template-columns: 32px 1fr auto;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 150ms ease, background 150ms ease;
+    }
+
+    .choice:hover,
+    .choice.selected {
+      border-color: var(--teal);
+      background: var(--teal-soft);
+    }
+
+    .choice-icon {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      color: var(--teal);
+      background: var(--teal-soft);
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .choice strong {
+      display: block;
+      font-size: 9px;
+    }
+
+    .choice small {
+      display: block;
+      margin-top: 2px;
+      color: #758086;
+      font-size: 7px;
+    }
+
+    .choice > span:last-child {
+      font-size: 14px;
+    }
+
+    .phone-button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 13px;
+      color: white;
+      background: var(--ink);
+      font-size: 10px;
+    }
+
+    .phone-button.teal {
+      background: var(--teal);
+    }
+
+    .phone-button.orange {
+      background: var(--orange);
+    }
+
+    .result-hero {
+      margin: 0 -16px 13px;
+      padding: 20px 17px 18px;
+      color: white;
+      background: var(--ink);
+    }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      padding: 5px 7px;
+      border-radius: 999px;
+      color: #bdece3;
+      background: rgba(11, 143, 131, 0.25);
+      font-size: 7px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .result-hero h4 {
+      margin: 0 0 7px;
+      font-family: "Baskerville", serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.06;
+    }
+
+    .result-hero p {
+      margin-bottom: 0;
+      color: #c4ced1;
+      font-size: 8px;
+      line-height: 1.45;
+    }
+
+    .price-card {
+      padding: 15px;
+      border: 1px solid rgba(11, 143, 131, 0.22);
+      border-radius: 18px;
+      background: var(--teal-soft);
+    }
+
+    .price-card small {
+      display: block;
+      margin-bottom: 5px;
+      color: #32736d;
+      font-size: 7px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .price-card .price {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: "Baskerville", serif;
+      font-size: 29px;
+      letter-spacing: -0.04em;
+    }
+
+    .price-card .price span {
+      font-family: "Avenir Next", sans-serif;
+      color: var(--success);
+      font-size: 8px;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .evidence-grid div {
+      padding: 9px 7px;
+      border-radius: 12px;
+      background: white;
+      text-align: center;
+    }
+
+    .evidence-grid b {
+      display: block;
+      font-size: 10px;
+    }
+
+    .evidence-grid span {
+      display: block;
+      margin-top: 2px;
+      color: #798386;
+      font-size: 6px;
+      line-height: 1.3;
+    }
+
+    .evidence-list {
+      margin-top: 12px;
+    }
+
+    .evidence-list h5,
+    .mini-section-title {
+      margin: 0 0 8px;
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .sold-row {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+      font-size: 8px;
+    }
+
+    .sold-thumb {
+      height: 31px;
+      border-radius: 8px;
+      background: linear-gradient(140deg, var(--blue-soft), var(--yellow-soft));
+    }
+
+    .sold-row small {
+      display: block;
+      color: #7d8789;
+      font-size: 6px;
+    }
+
+    .sold-row b:last-child {
+      font-size: 9px;
+    }
+
+    .method-panel {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .method-intro,
+    .pipeline {
+      padding: clamp(24px, 3vw, 40px);
+      border-radius: var(--radius-lg);
+    }
+
+    .method-intro {
+      color: white;
+      background: var(--ink);
+    }
+
+    .method-intro .eyebrow {
+      color: var(--yellow);
+    }
+
+    .method-intro h3 {
+      margin-bottom: 13px;
+      font-family: "Baskerville", serif;
+      font-size: 35px;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+    }
+
+    .method-intro p {
+      margin-bottom: 0;
+      color: #bcc6c8;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .pipeline {
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 247, 0.72);
+    }
+
+    .pipeline-step {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pipeline-step:last-child {
+      border-bottom: 0;
+    }
+
+    .pipeline-step .step-dot {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      color: white;
+      background: var(--teal);
+      font-family: "Baskerville", serif;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .pipeline-step:nth-child(2) .step-dot { background: var(--orange); }
+    .pipeline-step:nth-child(3) .step-dot { color: var(--ink); background: var(--yellow); }
+    .pipeline-step:nth-child(4) .step-dot { background: var(--blue); }
+
+    .pipeline-step strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 12px;
+    }
+
+    .pipeline-step small {
+      display: block;
+      color: var(--ink-soft);
+      font-size: 9px;
+      line-height: 1.45;
+    }
+
+    .pipeline-step > span:last-child {
+      color: #798486;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .car-photo {
+      position: relative;
+      height: 178px;
+      margin: 4px -16px 14px;
+      background:
+        linear-gradient(to top, rgba(21, 33, 38, 0.72), transparent 70%),
+        linear-gradient(145deg, #778c92, #d2dad6 53%, #9caaad);
+      overflow: hidden;
+    }
+
+    .car-shape {
+      position: absolute;
+      right: 24px;
+      bottom: 28px;
+      left: 24px;
+      height: 70px;
+      border-radius: 48% 44% 18px 18px;
+      background: #e8ece8;
+      box-shadow: inset 0 -17px #bec7c7, 0 10px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .car-shape::before {
+      content: "";
+      position: absolute;
+      top: -32px;
+      left: 52px;
+      width: 160px;
+      height: 50px;
+      border-radius: 70px 70px 0 0;
+      background: #dce5e5;
+      clip-path: polygon(14% 100%, 31% 5%, 72% 5%, 93% 100%);
+    }
+
+    .car-shape::after {
+      content: "VV24 CAR";
+      position: absolute;
+      bottom: 9px;
+      left: 50%;
+      width: 72px;
+      padding: 4px 2px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 3px;
+      color: #111;
+      background: #f1d851;
+      text-align: center;
+      transform: translateX(-50%);
+      font-family: "Courier New", monospace;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: -9px;
+      width: 31px;
+      height: 31px;
+      border: 7px solid #222b2e;
+      border-radius: 50%;
+      background: #788285;
+    }
+
+    .wheel.one { left: 43px; }
+    .wheel.two { right: 43px; }
+
+    .demo-ribbon {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      color: var(--ink);
+      background: var(--yellow);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .plate-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 12px;
+    }
+
+    .plate-summary h4 {
+      margin: 0;
+      font-family: "Baskerville", serif;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .plate-summary span {
+      color: var(--success);
+      font-size: 8px;
+      font-weight: 850;
+    }
+
+    .free-facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+
+    .fact {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: white;
+    }
+
+    .fact small {
+      display: block;
+      margin-bottom: 3px;
+      color: #7b8588;
+      font-size: 6px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 9px;
+    }
+
+    .unlock-card {
+      position: relative;
+      margin-top: 11px;
+      padding: 14px;
+      border-radius: 18px;
+      color: white;
+      background: var(--ink);
+      overflow: hidden;
+    }
+
+    .unlock-card::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -45px;
+      width: 120px;
+      height: 120px;
+      border: 25px solid rgba(244, 200, 75, 0.28);
+      border-radius: 50%;
+    }
+
+    .unlock-card small {
+      color: var(--yellow);
+      font-size: 7px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .unlock-card h4 {
+      margin: 6px 0 6px;
+      font-size: 15px;
+    }
+
+    .unlock-card p {
+      max-width: 210px;
+      margin-bottom: 11px;
+      color: #bdc6c8;
+      font-size: 7px;
+      line-height: 1.45;
+    }
+
+    .unlock-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .unlock-row b {
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: var(--ink);
+      background: var(--yellow);
+      font-size: 9px;
+    }
+
+    .report-head {
+      margin: 0 -16px 13px;
+      padding: 14px 17px 17px;
+      color: white;
+      background: var(--ink);
+    }
+
+    .report-head .demo-line {
+      margin-bottom: 13px;
+      color: var(--yellow);
+      font-size: 7px;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .report-head h4 {
+      margin: 0 0 4px;
+      font-family: "Baskerville", serif;
+      font-size: 23px;
+      font-weight: 500;
+    }
+
+    .report-head p {
+      margin-bottom: 0;
+      color: #c1cbcd;
+      font-size: 8px;
+    }
+
+    .risk-card {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 11px;
+      padding: 12px;
+      border: 1px solid rgba(244, 95, 53, 0.28);
+      border-radius: 16px;
+      background: var(--orange-soft);
+    }
+
+    .risk-score {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      color: white;
+      background: var(--orange);
+      font-family: "Baskerville", serif;
+      font-size: 19px;
+    }
+
+    .risk-card strong {
+      display: block;
+      margin: 3px 0;
+      font-size: 10px;
+    }
+
+    .risk-card p {
+      margin-bottom: 0;
+      font-size: 7px;
+      line-height: 1.4;
+    }
+
+    .report-checks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .report-check {
+      padding: 10px;
+      border-radius: 13px;
+      background: white;
+      box-shadow: 0 5px 12px rgba(21, 33, 38, 0.05);
+    }
+
+    .report-check .check-state {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 5px;
+      color: var(--success);
+      font-size: 7px;
+      font-weight: 850;
+    }
+
+    .report-check.warn .check-state {
+      color: var(--danger);
+    }
+
+    .state-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .report-check b {
+      display: block;
+      font-size: 9px;
+    }
+
+    .report-check small {
+      display: block;
+      margin-top: 2px;
+      color: #7b8588;
+      font-size: 6px;
+      line-height: 1.35;
+    }
+
+    .mileage-card {
+      margin-top: 10px;
+      padding: 11px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: white;
+    }
+
+    .mileage-card header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      font-size: 8px;
+      font-weight: 850;
+    }
+
+    .mileage-card header span {
+      color: var(--danger);
+      font-size: 6px;
+      text-transform: uppercase;
+    }
+
+    .mileage-card svg {
+      width: 100%;
+      height: 72px;
+      overflow: visible;
+    }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .damage-photo {
+      position: relative;
+      height: 61px;
+      border-radius: 11px;
+      background: linear-gradient(140deg, #808f93, #d6d0c6);
+      overflow: hidden;
+    }
+
+    .damage-photo:nth-child(2) { background: linear-gradient(140deg, #c5b094, #6c7b80); }
+    .damage-photo:nth-child(3) { background: linear-gradient(140deg, #93a8a9, #e6d7c7); }
+
+    .damage-photo::after {
+      content: "";
+      position: absolute;
+      right: 16px;
+      bottom: 10px;
+      left: 16px;
+      height: 17px;
+      border-radius: 50% 50% 4px 4px;
+      background: rgba(245, 246, 241, 0.72);
+    }
+
+    .photo-caption {
+      margin-top: 5px;
+      color: #7a8587;
+      font-size: 6px;
+      line-height: 1.35;
+    }
+
+    .car-principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .car-principle {
+      padding: 20px;
+      border-top: 3px solid var(--teal);
+      border-radius: 0 0 17px 17px;
+      background: rgba(255, 253, 247, 0.67);
+    }
+
+    .car-principle:nth-child(2) { border-color: var(--orange); }
+    .car-principle:nth-child(3) { border-color: var(--yellow); }
+    .car-principle:nth-child(4) { border-color: var(--blue); }
+
+    .car-principle strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 12px;
+    }
+
+    .car-principle p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .hunt-hero {
+      position: relative;
+      height: 244px;
+      margin: 0 -16px 14px;
+      background:
+        radial-gradient(circle at 25% 33%, rgba(244, 200, 75, 0.9) 0 15px, transparent 16px),
+        radial-gradient(circle at 70% 50%, rgba(244, 95, 53, 0.82) 0 21px, transparent 22px),
+        linear-gradient(145deg, #23383d, #0a161a);
+      overflow: hidden;
+    }
+
+    .hunt-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.42;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 32px 32px;
+      perspective: 300px;
+      transform: scale(1.4) rotateX(58deg) translateY(46px);
+    }
+
+    .radar-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 152px;
+      height: 152px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .radar-ring::before,
+    .radar-ring::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.23);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .radar-ring::before { width: 96px; height: 96px; }
+    .radar-ring::after { width: 45px; height: 45px; }
+
+    .radar-sweep {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 78px;
+      height: 78px;
+      border-radius: 100% 0 0 0;
+      background: linear-gradient(45deg, rgba(11, 143, 131, 0.65), transparent 70%);
+      transform-origin: 100% 100%;
+      animation: radar 3.4s linear infinite;
+    }
+
+    .hunt-copy {
+      position: absolute;
+      right: 20px;
+      bottom: 16px;
+      left: 20px;
+      z-index: 4;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      color: white;
+    }
+
+    .hunt-copy h4 {
+      margin: 0 0 3px;
+      font-family: "Baskerville", serif;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .hunt-copy span {
+      color: #c1cdcf;
+      font-size: 7px;
+    }
+
+    .hunt-count {
+      padding: 7px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      text-align: center;
+      backdrop-filter: blur(7px);
+    }
+
+    .hunt-count b {
+      display: block;
+      font-size: 15px;
+    }
+
+    .hunt-count small {
+      font-size: 6px;
+    }
+
+    .find-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .find-row {
+      display: grid;
+      grid-template-columns: 30px 43px 1fr auto;
+      align-items: center;
+      gap: 9px;
+      padding: 9px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+    }
+
+    .find-rank {
+      color: var(--orange);
+      font-family: "Baskerville", serif;
+      font-size: 17px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .find-thumb {
+      height: 39px;
+      border-radius: 10px;
+      background: var(--yellow-soft);
+    }
+
+    .find-row:nth-child(2) .find-thumb { background: var(--blue-soft); }
+    .find-row:nth-child(3) .find-thumb { background: var(--teal-soft); }
+
+    .find-row strong {
+      display: block;
+      font-size: 8px;
+    }
+
+    .find-row small {
+      display: block;
+      margin-top: 2px;
+      color: #7a8587;
+      font-size: 6px;
+    }
+
+    .find-price {
+      text-align: right;
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .find-price span {
+      display: block;
+      margin-top: 2px;
+      color: var(--success);
+      font-size: 6px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .category-card {
+      position: relative;
+      min-height: 220px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 253, 247, 0.7);
+      overflow: hidden;
+    }
+
+    .category-card::after {
+      content: attr(data-code);
+      position: absolute;
+      right: -4px;
+      bottom: -15px;
+      color: rgba(21, 33, 38, 0.05);
+      font-family: "Baskerville", serif;
+      font-size: 72px;
+      font-style: italic;
+    }
+
+    .category-card span {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 32px;
+      border-radius: 12px;
+      color: white;
+      background: var(--teal);
+      font-family: "Baskerville", serif;
+      font-style: italic;
+    }
+
+    .category-card:nth-child(2) span { background: var(--orange); }
+    .category-card:nth-child(3) span { color: var(--ink); background: var(--yellow); }
+    .category-card:nth-child(4) span { background: var(--blue); }
+
+    .category-card h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .category-card p {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .feedback {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 35px;
+      margin: 0 clamp(22px, 6vw, 96px) 90px;
+      padding: clamp(28px, 5vw, 65px);
+      border-radius: 38px;
+      color: white;
+      background:
+        radial-gradient(circle at 92% 20%, rgba(244, 200, 75, 0.24), transparent 18rem),
+        var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .feedback h2 {
+      font-size: clamp(42px, 5vw, 68px);
+    }
+
+    .feedback p {
+      max-width: 500px;
+      color: #bec8ca;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .feedback-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .feedback-option {
+      position: relative;
+      min-height: 135px;
+      padding: 19px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      color: white;
+      background: rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+      text-align: left;
+      transition: 170ms ease;
+    }
+
+    .feedback-option:hover,
+    .feedback-option.selected {
+      border-color: var(--yellow);
+      background: rgba(244, 200, 75, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .feedback-option strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+    }
+
+    .feedback-option span {
+      display: block;
+      max-width: 220px;
+      color: #bcc7c9;
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .feedback-option i {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      font-style: normal;
+      font-size: 9px;
+    }
+
+    .feedback-option.selected i {
+      color: var(--ink);
+      border-color: var(--yellow);
+      background: var(--yellow);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 25px clamp(22px, 6vw, 96px) 35px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 10px;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scan {
+      0%, 100% { transform: translateY(-105px); opacity: 0.45; }
+      50% { transform: translateY(108px); opacity: 1; }
+    }
+
+    @keyframes radar {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1120px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        max-width: 850px;
+      }
+
+      .hero-stage {
+        min-height: 700px;
+      }
+
+      .hero-stage::before {
+        width: 600px;
+      }
+
+      .orbit-note.one { right: 8%; }
+      .orbit-note.two { left: 8%; }
+
+      .section-head {
+        grid-template-columns: auto 1fr;
+      }
+
+      .section-head > p {
+        grid-column: 2;
+        max-width: 650px;
+      }
+
+      .car-principles,
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .topbar {
+        grid-template-columns: 1fr auto;
+      }
+
+      .concept-nav {
+        display: none;
+      }
+
+      h1 {
+        font-size: clamp(52px, 15vw, 82px);
+      }
+
+      .principles,
+      .method-panel,
+      .feedback {
+        grid-template-columns: 1fr;
+      }
+
+      .principle-card:nth-child(2) {
+        transform: none;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head > p {
+        grid-column: auto;
+      }
+
+      .section-number {
+        width: 50px;
+        height: 50px;
+      }
+
+      .feedback-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar {
+        min-height: 68px;
+        padding: 10px 15px;
+      }
+
+      .brand-mark {
+        width: 35px;
+      }
+
+      .concept-badge {
+        padding: 8px 10px;
+        font-size: 8px;
+      }
+
+      .hero {
+        padding: 55px 17px 70px;
+      }
+
+      .hero-copy > p {
+        font-size: 16px;
+      }
+
+      .hero-stage {
+        min-height: 675px;
+        transform: scale(0.9);
+        margin: -30px -30px;
+      }
+
+      .orbit-note {
+        display: none;
+      }
+
+      .section {
+        padding: 82px 16px;
+      }
+
+      .principles {
+        padding: 0 16px 70px;
+      }
+
+      .phone-gallery {
+        margin-right: -16px;
+        margin-left: -6px;
+        padding-left: 6px;
+      }
+
+      .phone,
+      .phone-wrap {
+        width: 319px;
+        min-width: 319px;
+      }
+
+      .phone {
+        height: 680px;
+      }
+
+      .car-principles,
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback {
+        margin: 0 13px 65px;
+        padding: 28px 19px;
+        border-radius: 27px;
+      }
+
+      footer {
+        flex-direction: column;
+        padding: 22px 17px 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">V</div>
+      <div>ValueVision<small>Experience concept 01</small></div>
+    </div>
+    <nav class="concept-nav" aria-label="Concept sections">
+      <button type="button" data-jump="#overview">Home</button>
+      <button type="button" data-jump="#item-mode">Item Valuer</button>
+      <button type="button" data-jump="#car-mode">Car Check</button>
+      <button type="button" data-jump="#hunt-mode">Treasure Hunt</button>
+    </nav>
+    <div class="concept-badge">Concept only</div>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <div class="hero-copy">
+        <div class="eyebrow">Proposed ValueVision V2</div>
+        <h1>One app. <em>Three clear reasons</em> to open it.</h1>
+        <p>The home screen explains the promise first, then lets the customer choose a focused mode. No crowded scanner, no mystery buttons, and no made-up prices when the evidence is weak.</p>
+        <div class="hero-actions">
+          <button class="primary-button" type="button" data-jump="#item-mode">See the full journey</button>
+          <button class="secondary-button" type="button" data-jump="#feedback">Review the decisions</button>
+        </div>
+        <div class="principle-row">
+          <span>Evidence before price</span>
+          <span>Low confidence means ask</span>
+          <span>One mode, one clear job</span>
+        </div>
+      </div>
+
+      <div class="hero-stage" aria-label="Proposed ValueVision home screen">
+        <div class="orbit-note one"><strong>Starts with clarity</strong>The first page tells customers what ValueVision can do before asking them to scan.</div>
+        <div class="orbit-note two"><strong>Separate journeys</strong>Cars, single items and room sweeps no longer compete on the same screen.</div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+            <div class="app-head">
+              <div class="mini-brand"><span class="mini-mark">V</span>ValueVision</div>
+              <div class="avatar">TW</div>
+            </div>
+            <div class="screen-scroll">
+              <div class="screen-kicker">See value. See risk.</div>
+              <div class="screen-title">What would you like to uncover?</div>
+              <p class="screen-subtitle">Choose a mode and we will guide you through the right scan.</p>
+
+              <div class="mode-card orange" data-jump="#item-mode">
+                <div class="mode-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5 12 4l8 4.5v8L12 21l-8-4.5z"></path><path d="m4 8.5 8 4.5 8-4.5M12 13v8"></path></svg>
+                </div>
+                <div><strong>Value an item</strong><small>Take one photo. Receive identification, value, selling range and marketplace guidance.</small></div>
+                <div class="chevron">&gt;</div>
+              </div>
+
+              <div class="mode-card teal" data-jump="#car-mode">
+                <div class="mode-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 16-1 2v2h2v-2h12v2h2v-2l-1-2-2-7H7z"></path><path d="M7 9h10M6 15h.01M18 15h.01"></path></svg>
+                </div>
+                <div><strong>Full Car Check</strong><small>Scan or enter a registration. See the essentials, then unlock the complete history.</small></div>
+                <div class="chevron">&gt;</div>
+              </div>
+
+              <div class="mode-card yellow" data-jump="#hunt-mode">
+                <div class="mode-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4M11 8v6M8 11h6"></path></svg>
+                </div>
+                <div><strong>Treasure Hunt</strong><small>Photograph a room or multiple objects. ValueVision spots and ranks what may be worth selling.</small></div>
+                <div class="chevron">&gt;</div>
+              </div>
+
+              <div class="recent-label"><span>Your recent activity</span><span>View all</span></div>
+              <div class="recent-row">
+                <div class="recent-item"><b>Camera lens</b>Strong match</div>
+                <div class="recent-item"><b>Car report</b>Saved report</div>
+                <div class="recent-item"><b>Room sweep</b>8 finds</div>
+              </div>
+            </div>
+            <div class="bottom-nav"><div class="active">Home</div><div>Saved</div><div>Account</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="principles" aria-label="Core experience principles">
+      <article class="principle-card">
+        <span class="card-index">01</span>
+        <h3>Explain before asking</h3>
+        <p>The customer understands the benefit and cost before camera permission, forms or payment appear.</p>
+      </article>
+      <article class="principle-card">
+        <span class="card-index">02</span>
+        <h3>Confidence is visible</h3>
+        <p>ValueVision admits uncertainty, asks the smallest useful follow-up and never disguises a guess as a valuation.</p>
+      </article>
+      <article class="principle-card">
+        <span class="card-index">03</span>
+        <h3>Evidence earns trust</h3>
+        <p>Every price range explains the identification, comparable sales, source freshness and condition assumptions.</p>
+      </article>
+    </div>
+
+    <section class="section" id="item-mode">
+      <header class="section-head">
+        <div class="section-number">01</div>
+        <h2>Item Valuer that knows when not to guess.</h2>
+        <p>A loose pile of LEGO bricks is not one identifiable product. The improved flow pauses, asks for the missing evidence, then prices only the confirmed item.</p>
+      </header>
+
+      <div class="phone-gallery">
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen dark">
+              <div class="dynamic-island"></div>
+              <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+              <div class="app-head">
+                <div class="mini-brand"><span class="mini-mark">V</span>Item Valuer</div>
+                <div class="avatar">X</div>
+              </div>
+              <div class="screen-scroll" style="padding-top:0">
+                <div class="camera-stage">
+                  <div class="lego-pile">
+                    <span class="brick red"></span><span class="brick blue"></span><span class="brick yellow"></span><span class="brick green"></span><span class="brick white"></span>
+                  </div>
+                  <div class="scan-line"></div>
+                  <div class="camera-copy">Keep the whole item in frame</div>
+                </div>
+                <div class="screen-kicker" style="color:#f4c84b">Step 1 of 3</div>
+                <div class="screen-title" style="font-size:27px">Show us exactly what you want valued.</div>
+                <p class="screen-subtitle" style="color:#b9c4c6">Use one item per scan. Add a second angle or label when prompted.</p>
+                <div class="capture-row">
+                  <div class="round-tool">Photo</div>
+                  <button class="capture-button" type="button" aria-label="Capture photo"></button>
+                  <div class="round-tool">Light</div>
+                </div>
+                <div class="accuracy-note">Tip: for toys and collectibles, include the model number, box label or unique markings if available.</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">A. Guided capture</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="dynamic-island"></div>
+              <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+              <div class="app-head">
+                <div class="mini-brand"><span class="mini-mark">V</span>Confirm the item</div>
+                <div class="avatar">X</div>
+              </div>
+              <div class="screen-scroll">
+                <div class="image-card">
+                  <span class="sample-tag">Example scan</span>
+                  <div class="lego-pile"><span class="brick red"></span><span class="brick blue"></span><span class="brick yellow"></span><span class="brick green"></span><span class="brick white"></span></div>
+                </div>
+                <div class="confidence-card">
+                  <div class="confidence-top"><span>Identification confidence</span><span>42%</span></div>
+                  <div class="meter"><span></span></div>
+                  <p><strong>I can see LEGO pieces, but not enough evidence to price them accurately.</strong> One more detail will make this result much stronger.</p>
+                </div>
+                <div class="choice-list">
+                  <button class="choice" type="button"><span class="choice-icon">123</span><span><strong>Scan a set or part number</strong><small>Usually printed on the box, manual or piece</small></span><span>&gt;</span></button>
+                  <button class="choice" type="button"><span class="choice-icon">2x</span><span><strong>Add another photo</strong><small>Show minifigures, packaging or assembled model</small></span><span>&gt;</span></button>
+                  <button class="choice" type="button"><span class="choice-icon">?</span><span><strong>Choose what this is</strong><small>Set, minifigure, mixed lot or individual part</small></span><span>&gt;</span></button>
+                </div>
+                <button class="phone-button" type="button">Continue after confirmation</button>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">B. Accuracy gate</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="dynamic-island"></div>
+              <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+              <div class="app-head">
+                <div class="mini-brand"><span class="mini-mark">V</span>Evidence-backed value</div>
+                <div class="avatar">Save</div>
+              </div>
+              <div class="screen-scroll">
+                <div class="result-hero">
+                  <span class="result-badge">86% identity match</span>
+                  <h4>LEGO Star Wars 75257 Millennium Falcon</h4>
+                  <p>Used, likely incomplete. Box and instructions not confirmed. Example concept data only.</p>
+                </div>
+                <div class="price-card">
+                  <small>Likely private-sale range</small>
+                  <div class="price">GBP 48-72 <span>Good evidence</span></div>
+                  <div class="evidence-grid">
+                    <div><b>8</b><span>relevant sold matches</span></div>
+                    <div><b>GBP 61</b><span>median sold price</span></div>
+                    <div><b>21 days</b><span>evidence age</span></div>
+                  </div>
+                </div>
+                <div class="evidence-list">
+                  <h5>Why we priced it here</h5>
+                  <div class="sold-row"><div class="sold-thumb"></div><div><b>Used, incomplete set</b><small>Sold recently, similar condition</small></div><b>GBP 58</b></div>
+                  <div class="sold-row"><div class="sold-thumb"></div><div><b>Used with figures</b><small>Sold recently, no box</small></div><b>GBP 69</b></div>
+                  <div class="sold-row"><div class="sold-thumb"></div><div><b>Mixed incomplete set</b><small>Sold recently, parts unchecked</small></div><b>GBP 52</b></div>
+                </div>
+                <button class="phone-button teal" type="button">Refine condition and completeness</button>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">C. Explainable result</div>
+        </div>
+      </div>
+
+      <div class="method-panel">
+        <div class="method-intro">
+          <div class="eyebrow">What changes technically</div>
+          <h3>AI identifies. Market evidence prices.</h3>
+          <p>The model should not invent a number from its training memory. It should identify the item, measure confidence, ask for missing details, then let current sold-market evidence create the range.</p>
+        </div>
+        <div class="pipeline" aria-label="Improved valuation pipeline">
+          <div class="pipeline-step"><span class="step-dot">1</span><span><strong>Detect and classify</strong><small>Object type, brand, visible text, barcode, model number and condition clues.</small></span><span>Vision</span></div>
+          <div class="pipeline-step"><span class="step-dot">2</span><span><strong>Measure identity confidence</strong><small>If the exact product is unclear, stop and request the smallest useful follow-up.</small></span><span>Gate</span></div>
+          <div class="pipeline-step"><span class="step-dot">3</span><span><strong>Collect comparable evidence</strong><small>Use fresh sold listings and specialist catalog data permitted for that category.</small></span><span>Market</span></div>
+          <div class="pipeline-step"><span class="step-dot">4</span><span><strong>Calculate and explain</strong><small>Remove outliers, adjust for condition and show a range, confidence and source freshness.</small></span><span>Result</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="car-mode">
+      <header class="section-head">
+        <div class="section-number">02</div>
+        <h2>Car Check becomes its own trusted product.</h2>
+        <p>A plate photo or typed registration opens a focused journey: useful free facts first, then a clearly explained GBP 4.50 full vehicle history report.</p>
+      </header>
+
+      <div class="phone-gallery">
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="dynamic-island"></div>
+              <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+              <div class="app-head">
+                <div class="mini-brand"><span class="mini-mark">V</span>Car Check</div>
+                <div class="avatar">X</div>
+              </div>
+              <div class="screen-scroll" style="padding-top:0">
+                <div class="car-photo">
+                  <span class="demo-ribbon">Illustrative data</span>
+                  <div class="car-shape"><i class="wheel one"></i><i class="wheel two"></i></div>
+                </div>
+                <div class="plate-summary"><div><div class="screen-kicker">Registration found</div><h4>VV24 CAR</h4></div><span>Plate confirmed</span></div>
+                <div class="free-facts">
+                  <div class="fact"><small>Vehicle</small><strong>2018 Ford Fiesta</strong></div>
+                  <div class="fact"><small>Latest mileage</small><strong>62,410 miles</strong></div>
+                  <div class="fact"><small>MOT</small><strong style="color:#18745f">Valid</strong></div>
+                  <div class="fact"><small>Tax</small><strong style="color:#18745f">Taxed</strong></div>
+                </div>
+                <div class="unlock-card">
+                  <small>Before you buy</small>
+                  <h4>Unlock the full vehicle history</h4>
+                  <p>Finance, theft, write-off, mileage analysis, ownership, imports, plate changes and available damage images.</p>
+                  <div class="unlock-row"><b>Unlock for GBP 4.50</b><span>One-off payment</span></div>
+                </div>
+                <button class="phone-button" type="button">This is my car</button>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">A. Free essentials</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="dynamic-island"></div>
+              <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+              <div class="app-head">
+                <div class="mini-brand"><span class="mini-mark">V</span>Full history report</div>
+                <div class="avatar">PDF</div>
+              </div>
+              <div class="screen-scroll">
+                <div class="report-head">
+                  <div class="demo-line">Illustrative report only</div>
+                  <h4>2 things to review</h4>
+                  <p>VV24 CAR / report generated today</p>
+                </div>
+                <div class="risk-card">
+                  <div class="risk-score">2</div>
+                  <div><strong>Review before buying</strong><p>A mileage pattern needs checking. Historical damage imagery may be available.</p></div>
+                </div>
+                <div class="report-checks">
+                  <div class="report-check"><div class="check-state"><i class="state-dot"></i>No record found</div><b>Outstanding finance</b><small>Checked against supplied records</small></div>
+                  <div class="report-check"><div class="check-state"><i class="state-dot"></i>No record found</div><b>Stolen</b><small>Checked against supplied records</small></div>
+                  <div class="report-check warn"><div class="check-state"><i class="state-dot"></i>Review</div><b>Mileage pattern</b><small>One decrease between records</small></div>
+                  <div class="report-check"><div class="check-state"><i class="state-dot"></i>No record found</div><b>Write-off</b><small>Not the same as never damaged</small></div>
+                </div>
+                <div class="mileage-card">
+                  <header><span>Mileage history</span><span>1 discrepancy</span></header>
+                  <svg viewBox="0 0 270 72" role="img" aria-label="Example mileage history graph">
+                    <path d="M7 61H264" stroke="#d8ddda" stroke-width="1"></path>
+                    <path d="M12 58 68 44 123 29 179 38 255 12" fill="none" stroke="#0b8f83" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <circle cx="12" cy="58" r="4" fill="#0b8f83"></circle><circle cx="68" cy="44" r="4" fill="#0b8f83"></circle><circle cx="123" cy="29" r="4" fill="#0b8f83"></circle><circle cx="179" cy="38" r="5" fill="#f45f35"></circle><circle cx="255" cy="12" r="4" fill="#0b8f83"></circle>
+                    <text x="161" y="57" font-size="7" fill="#b63e31" font-family="Avenir Next">mileage fell</text>
+                  </svg>
+                </div>
+                <div class="photo-strip"><div class="damage-photo"></div><div class="damage-photo"></div><div class="damage-photo"></div></div>
+                <p class="photo-caption">Previous imagery appears only when supplied and licensed by the data provider. Absence of photos is not proof of no damage.</p>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">B. Risk-led full report</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="dynamic-island"></div>
+              <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+              <div class="app-head">
+                <div class="mini-brand"><span class="mini-mark">V</span>Vehicle timeline</div>
+                <div class="avatar">Share</div>
+              </div>
+              <div class="screen-scroll">
+                <div class="screen-kicker">Full history / timeline</div>
+                <div class="screen-title">The car's story, in order.</div>
+                <p class="screen-subtitle">Plain English first. Open any event for the underlying record and source date.</p>
+                <div class="choice-list">
+                  <button class="choice selected" type="button"><span class="choice-icon">18</span><span><strong>First registered</strong><small>March 2018 / Great Britain</small></span><span></span></button>
+                  <button class="choice" type="button"><span class="choice-icon">21</span><span><strong>MOT passed</strong><small>41,882 miles / two advisories</small></span><span>&gt;</span></button>
+                  <button class="choice" type="button"><span class="choice-icon">22</span><span><strong>Keeper change recorded</strong><small>Second registered keeper</small></span><span>&gt;</span></button>
+                  <button class="choice" type="button"><span class="choice-icon">23</span><span><strong>Mileage decreased</strong><small>Needs checking against service history</small></span><span>&gt;</span></button>
+                  <button class="choice" type="button"><span class="choice-icon">24</span><span><strong>Latest MOT passed</strong><small>62,410 miles / valid until shown date</small></span><span>&gt;</span></button>
+                </div>
+                <div class="price-card" style="margin-top:12px">
+                  <small>Estimated trade value</small>
+                  <div class="price">GBP 6,600 <span>Range GBP 5,900-7,300</span></div>
+                </div>
+                <button class="phone-button teal" type="button">Download complete PDF report</button>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">C. Timeline and valuation</div>
+        </div>
+      </div>
+
+      <div class="car-principles">
+        <div class="car-principle"><strong>Say exactly what was checked</strong><p>Use "no adverse record found" rather than promising a vehicle has never been damaged.</p></div>
+        <div class="car-principle"><strong>Lead with risks</strong><p>Customers should see the two or three important findings before a wall of technical data.</p></div>
+        <div class="car-principle"><strong>Make mileage visual</strong><p>Plot every dated odometer reading and explain any fall, spike or suspicious gap.</p></div>
+        <div class="car-principle"><strong>Photos are conditional</strong><p>Show historic or salvage imagery when the provider returns it, with source and date.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="hunt-mode">
+      <header class="section-head">
+        <div class="section-number">03</div>
+        <h2>Treasure Hunt turns a room into a ranked shortlist.</h2>
+        <p>Photograph a room or a group of objects. ValueVision spots promising finds and ranks what may be worth selling first. A focused follow-up scan then confirms the exact item and its evidence-backed selling range.</p>
+      </header>
+
+      <div class="phone-gallery">
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen dark">
+              <div class="dynamic-island"></div>
+              <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+              <div class="app-head">
+                <div class="mini-brand"><span class="mini-mark">V</span>Treasure Hunt</div>
+                <div class="avatar">X</div>
+              </div>
+              <div class="screen-scroll" style="padding-top:0">
+                <div class="hunt-hero">
+                  <div class="hunt-grid"></div><div class="radar-ring"><div class="radar-sweep"></div></div>
+                  <div class="hunt-copy"><div><h4>Photograph the room</h4><span>Take one wide photo or add several angles.</span></div><div class="hunt-count"><b>12</b><small>objects seen</small></div></div>
+                </div>
+                <div class="screen-kicker" style="color:#f4c84b">Room analysis</div>
+                <div class="screen-title" style="font-size:28px">3 items deserve a closer look.</div>
+                <p class="screen-subtitle" style="color:#b9c4c6">Tap a marker or finish the sweep to review the ranked shortlist.</p>
+                <button class="phone-button orange" type="button">Finish and rank the finds</button>
+                <div class="accuracy-note" style="color:#b9c4c6;background:rgba(255,255,255,.08)">Room values are early signals. Exact prices appear only after a focused item scan and evidence check.</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">A. Scanner room</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="dynamic-island"></div>
+              <div class="statusbar"><span>9:41</span><span class="status-icons"><i></i><i></i><i></i></span></div>
+              <div class="app-head">
+                <div class="mini-brand"><span class="mini-mark">V</span>Your best finds</div>
+                <div class="avatar">Save</div>
+              </div>
+              <div class="screen-scroll">
+                <div class="screen-kicker">12 objects reviewed</div>
+                <div class="screen-title">Start with these three.</div>
+                <p class="screen-subtitle">Ranked by potential value and how confidently we can identify the item.</p>
+                <div class="find-list">
+                  <div class="find-row"><div class="find-rank">1</div><div class="find-thumb"></div><div><strong>Vintage camera lens</strong><small>High identity confidence</small></div><div class="find-price">GBP 70-110<span>scan next</span></div></div>
+                  <div class="find-row"><div class="find-rank">2</div><div class="find-thumb"></div><div><strong>Handheld console</strong><small>Model label needed</small></div><div class="find-price">GBP 35-90<span>needs detail</span></div></div>
+                  <div class="find-row"><div class="find-rank">3</div><div class="find-thumb"></div><div><strong>Mixed building bricks</strong><small>Set unknown</small></div><div class="find-price">Not priced<span>identify first</span></div></div>
+                </div>
+                <div class="confidence-card" style="margin-top:12px;border-color:rgba(11,143,131,.22);background:var(--teal-soft)">
+                  <div class="confidence-top"><span>Potential room value</span><span>GBP 105-200+</span></div>
+                  <p>This is an opportunity estimate, not a final valuation. Verify each shortlisted item to firm up the total.</p>
+                </div>
+                <button class="phone-button teal" type="button">Start detailed scan on find 1</button>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">B. Ranked opportunities</div>
+        </div>
+      </div>
+
+      <div class="category-grid">
+        <article class="category-card" data-code="L"><span>L</span><h3>LEGO and building sets</h3><p>Ask for set number, part ID, minifigures, completeness, box and instructions before pricing.</p></article>
+        <article class="category-card" data-code="T"><span>T</span><h3>Technology</h3><p>Read the exact model, storage, serial-family clues and condition. Avoid pricing a product family as one device.</p></article>
+        <article class="category-card" data-code="C"><span>C</span><h3>Collectibles</h3><p>Check edition, maker marks, year, authenticity clues and recent specialist-market sales.</p></article>
+        <article class="category-card" data-code="F"><span>F</span><h3>Furniture and home</h3><p>Separate designer pieces from lookalikes using labels, dimensions, materials and regional sold evidence.</p></article>
+      </div>
+    </section>
+
+    <section class="feedback" id="feedback">
+      <div>
+        <div class="eyebrow">Direction check</div>
+        <h2>These are the four decisions to approve.</h2>
+        <p>Tap any card to mark the parts you like. This concept has not touched the live app. Once the direction feels right, the approved journey can be translated into the next update.</p>
+      </div>
+      <div class="feedback-options">
+        <button class="feedback-option" type="button"><i>+</i><strong>Three-mode home</strong><span>Introduction first, then Item Valuer, Car Check and Treasure Hunt.</span></button>
+        <button class="feedback-option" type="button"><i>+</i><strong>Honest accuracy gate</strong><span>No price until the identity is strong enough and market evidence exists.</span></button>
+        <button class="feedback-option" type="button"><i>+</i><strong>GBP 4.50 car journey</strong><span>Free essentials followed by a risk-led full vehicle history report.</span></button>
+        <button class="feedback-option" type="button"><i>+</i><strong>Discovery, then verify</strong><span>Treasure Hunt finds opportunities; focused scans produce final valuations.</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>ValueVision V2 experience concept / September 2026</span>
+    <span>All prices, vehicles and report findings shown here are illustrative only.</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[data-jump]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var target = document.querySelector(button.getAttribute('data-jump'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    document.querySelectorAll('.choice').forEach(function (choice) {
+      choice.addEventListener('click', function () {
+        var list = choice.closest('.choice-list');
+        if (list) list.querySelectorAll('.choice').forEach(function (item) { item.classList.remove('selected'); });
+        choice.classList.add('selected');
+      });
+    });
+
+    document.querySelectorAll('.feedback-option').forEach(function (option) {
+      option.addEventListener('click', function () {
+        option.classList.toggle('selected');
+        option.querySelector('i').textContent = option.classList.contains('selected') ? 'OK' : '+';
+      });
+    });
+  </script>
+</body>
+</html>

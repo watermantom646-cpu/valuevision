@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#132126">
+  <title>ValueVision Treasure Hunt App Prototype</title>
+  <style>
+    :root {
+      --ink: #142126;
+      --ink-2: #22353a;
+      --paper: #f7f3e9;
+      --card: #fffdf8;
+      --muted: #69777b;
+      --line: rgba(20, 33, 38, 0.13);
+      --orange: #f26036;
+      --orange-pale: #ffe2d7;
+      --teal: #0a9184;
+      --teal-pale: #d9f2ec;
+      --yellow: #f5ca4b;
+      --yellow-pale: #fff2bb;
+      --blue: #3969d5;
+      --blue-pale: #e1e9ff;
+      --green: #197660;
+      --red: #b74434;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(245, 202, 75, 0.16), transparent 26rem),
+        radial-gradient(circle at 85% 80%, rgba(10, 145, 132, 0.18), transparent 30rem),
+        #132126;
+      font-family: "Avenir Next", "Gill Sans", sans-serif;
+    }
+
+    button, input { font: inherit; }
+    button { color: inherit; }
+
+    .stage {
+      display: grid;
+      grid-template-columns: minmax(0, 430px) minmax(270px, 430px);
+      justify-content: center;
+      align-items: center;
+      gap: clamp(34px, 7vw, 100px);
+      min-height: 100vh;
+      padding: 40px 24px;
+    }
+
+    .device {
+      position: relative;
+      width: min(100%, 408px);
+      height: min(860px, calc(100vh - 46px));
+      min-height: 690px;
+      padding: 10px;
+      border: 2px solid #020607;
+      border-radius: 54px;
+      background: #071013;
+      box-shadow: 0 42px 100px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .device::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      z-index: 30;
+      width: 96px;
+      height: 27px;
+      border-radius: 99px;
+      background: #030708;
+      transform: translateX(-50%);
+    }
+
+    .app {
+      position: relative;
+      height: 100%;
+      border-radius: 43px;
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .statusbar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 25;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 48px;
+      padding: 12px 22px 3px;
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 850;
+      pointer-events: none;
+    }
+
+    .statusbar.light { color: white; }
+
+    .signal {
+      display: flex;
+      align-items: end;
+      gap: 3px;
+    }
+
+    .signal i {
+      display: block;
+      width: 3px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .signal i:nth-child(1) { height: 5px; }
+    .signal i:nth-child(2) { height: 7px; }
+    .signal i:nth-child(3) { height: 9px; }
+
+    .view {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .view.active {
+      display: flex;
+      animation: enter 300ms ease both;
+    }
+
+    .view.dark {
+      color: white;
+      background: var(--ink);
+    }
+
+    .view-head {
+      position: relative;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: 38px 1fr 38px;
+      align-items: center;
+      gap: 8px;
+      min-height: 82px;
+      padding: 39px 16px 7px;
+    }
+
+    .view-head strong {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .icon-button {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.74);
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .dark .icon-button,
+    .camera-view .icon-button {
+      color: white;
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .view-body {
+      flex: 1;
+      padding: 12px 18px calc(22px + env(safe-area-inset-bottom));
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .view-body::-webkit-scrollbar { display: none; }
+
+    .eyebrow {
+      margin-bottom: 9px;
+      color: var(--teal);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .dark .eyebrow { color: var(--yellow); }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      font-family: "Baskerville", "Iowan Old Style", serif;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+    }
+
+    h1 {
+      max-width: 340px;
+      margin-bottom: 12px;
+      font-size: clamp(42px, 12vw, 56px);
+      line-height: 0.94;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      font-size: 34px;
+      line-height: 0.98;
+    }
+
+    .lead {
+      margin-bottom: 19px;
+      color: #c1ccce;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .room-illustration {
+      position: relative;
+      height: 288px;
+      margin: 4px -18px 21px;
+      background:
+        linear-gradient(to top, rgba(7, 15, 18, 0.92), transparent 60%),
+        linear-gradient(145deg, #476166, #172b30 72%);
+      overflow: hidden;
+    }
+
+    .room-wall {
+      position: absolute;
+      top: 25px;
+      right: 28px;
+      left: 28px;
+      height: 177px;
+      border-radius: 8px 8px 0 0;
+      background: #9c9f91;
+      box-shadow: inset 0 -55px #7f8378;
+    }
+
+    .shelf {
+      position: absolute;
+      left: 47px;
+      top: 72px;
+      width: 118px;
+      height: 11px;
+      border-radius: 2px;
+      background: #4e3324;
+      box-shadow: 0 55px #4e3324;
+    }
+
+    .shelf::before,
+    .shelf::after {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      width: 28px;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .shelf::before {
+      left: 10px;
+      height: 38px;
+      background: var(--yellow);
+      box-shadow: 35px 9px 0 -4px var(--blue), 72px 0 0 -2px var(--orange);
+    }
+
+    .shelf::after {
+      left: 5px;
+      top: 17px;
+      height: 34px;
+      background: #d8cfbb;
+      box-shadow: 40px 5px 0 -5px #2c3b3f, 80px -3px 0 -3px var(--teal);
+    }
+
+    .sideboard {
+      position: absolute;
+      right: 43px;
+      bottom: 64px;
+      width: 132px;
+      height: 76px;
+      border-radius: 5px;
+      background: #8b5e3d;
+      box-shadow: inset 0 7px rgba(255, 255, 255, 0.13), 0 10px 20px rgba(0, 0, 0, 0.26);
+    }
+
+    .sideboard::before {
+      content: "";
+      position: absolute;
+      top: -38px;
+      left: 19px;
+      width: 53px;
+      height: 40px;
+      border-radius: 6px;
+      background: #1e292d;
+      box-shadow: 63px 15px 0 -9px #d1aa42;
+    }
+
+    .scan-ring {
+      position: absolute;
+      top: 54px;
+      right: 44px;
+      width: 78px;
+      height: 78px;
+      border: 1px solid rgba(245, 202, 75, 0.75);
+      border-radius: 50%;
+      box-shadow: 0 0 0 8px rgba(245, 202, 75, 0.09), 0 0 28px rgba(245, 202, 75, 0.24);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    .scan-ring::before,
+    .scan-ring::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 5px rgba(242, 96, 54, 0.15);
+    }
+
+    .scan-ring::before { left: -82px; top: 52px; }
+    .scan-ring::after { left: 4px; top: 112px; background: var(--teal); }
+
+    .promise-list {
+      display: grid;
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .promise {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      align-items: center;
+      gap: 10px;
+      padding: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .promise span {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      color: var(--ink);
+      background: var(--yellow);
+      font-family: "Baskerville", serif;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    .promise strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 10px;
+    }
+
+    .promise small {
+      display: block;
+      color: #aebabc;
+      font-size: 8px;
+      line-height: 1.35;
+    }
+
+    .primary,
+    .secondary {
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 900;
+      transition: transform 160ms ease;
+    }
+
+    .primary:hover,
+    .secondary:hover { transform: translateY(-2px); }
+
+    .primary {
+      border: 0;
+      color: var(--ink);
+      background: var(--yellow);
+      box-shadow: 0 9px 24px rgba(245, 202, 75, 0.2);
+    }
+
+    .primary.dark-button {
+      color: white;
+      background: var(--ink);
+      box-shadow: none;
+    }
+
+    .primary.orange { color: white; background: var(--orange); }
+    .primary.teal { color: white; background: var(--teal); }
+
+    .secondary {
+      border: 1px solid var(--line);
+      background: transparent;
+    }
+
+    .button-stack {
+      display: grid;
+      gap: 9px;
+    }
+
+    .fine-print {
+      margin: 11px auto 0;
+      max-width: 300px;
+      color: #94a2a5;
+      text-align: center;
+      font-size: 7px;
+      line-height: 1.45;
+    }
+
+    .camera-view {
+      color: white;
+      background: #071113;
+    }
+
+    .camera-feed {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(5, 11, 13, 0.88), transparent 42%),
+        linear-gradient(145deg, rgba(10, 145, 132, 0.14), transparent 48%),
+        #64777a;
+      overflow: hidden;
+    }
+
+    .camera-feed .room-wall {
+      top: 120px;
+      right: 22px;
+      left: 22px;
+      height: 420px;
+      background: #b7b1a2;
+      box-shadow: inset 0 -145px #8e8a7f;
+    }
+
+    .camera-feed .shelf { top: 213px; left: 55px; transform: scale(1.25); }
+    .camera-feed .sideboard { right: 44px; bottom: 195px; transform: scale(1.15); }
+
+    .camera-frame {
+      position: absolute;
+      top: 110px;
+      right: 20px;
+      bottom: 150px;
+      left: 20px;
+      z-index: 4;
+      border: 1px solid rgba(255, 255, 255, 0.54);
+      border-radius: 28px;
+      box-shadow: inset 0 0 0 999px rgba(8, 17, 19, 0.09);
+    }
+
+    .corner {
+      position: absolute;
+      width: 31px;
+      height: 31px;
+      border-color: white;
+      border-style: solid;
+    }
+
+    .corner.tl { top: -1px; left: -1px; border-width: 3px 0 0 3px; border-radius: 12px 0 0; }
+    .corner.tr { top: -1px; right: -1px; border-width: 3px 3px 0 0; border-radius: 0 12px 0 0; }
+    .corner.bl { bottom: -1px; left: -1px; border-width: 0 0 3px 3px; border-radius: 0 0 0 12px; }
+    .corner.br { right: -1px; bottom: -1px; border-width: 0 3px 3px 0; border-radius: 0 0 12px; }
+
+    .capture-hint {
+      position: absolute;
+      top: 95px;
+      left: 50%;
+      z-index: 6;
+      width: max-content;
+      max-width: 290px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(8, 17, 19, 0.72);
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 8px;
+      font-weight: 850;
+      backdrop-filter: blur(10px);
+    }
+
+    .capture-controls {
+      position: absolute;
+      right: 22px;
+      bottom: 30px;
+      left: 22px;
+      z-index: 8;
+      display: grid;
+      grid-template-columns: 58px 1fr 58px;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .capture-controls small {
+      text-align: center;
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .capture {
+      justify-self: center;
+      width: 76px;
+      height: 76px;
+      border: 7px solid white;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 2px white, 0 8px 30px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+    }
+
+    .photo-preview {
+      position: relative;
+      height: 350px;
+      margin: 0 -18px 17px;
+      background: linear-gradient(145deg, #718386, #c5bcaa);
+      overflow: hidden;
+    }
+
+    .photo-preview .room-wall {
+      top: 38px;
+      height: 245px;
+    }
+
+    .photo-preview .shelf { top: 113px; left: 60px; }
+    .photo-preview .sideboard { bottom: 58px; }
+
+    .marker {
+      position: absolute;
+      z-index: 7;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border: 2px solid white;
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--yellow);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .marker.one { top: 79px; right: 74px; }
+    .marker.two { top: 147px; left: 74px; background: var(--orange); color: white; }
+    .marker.three { right: 129px; bottom: 66px; background: var(--teal); color: white; }
+
+    .photo-count {
+      position: absolute;
+      right: 13px;
+      bottom: 13px;
+      z-index: 8;
+      padding: 7px 9px;
+      border-radius: 10px;
+      color: white;
+      background: rgba(20, 33, 38, 0.78);
+      font-size: 8px;
+      font-weight: 850;
+    }
+
+    .tip-card {
+      display: grid;
+      grid-template-columns: 35px 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding: 12px;
+      border-radius: 15px;
+      color: #65551a;
+      background: var(--yellow-pale);
+    }
+
+    .tip-card span {
+      display: grid;
+      place-items: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 11px;
+      background: var(--yellow);
+      font-family: "Baskerville", serif;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .tip-card strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 9px;
+    }
+
+    .tip-card small {
+      display: block;
+      font-size: 7px;
+      line-height: 1.45;
+    }
+
+    .analyse-wrap {
+      display: grid;
+      place-items: center;
+      flex: 1;
+      padding: 80px 27px 35px;
+      text-align: center;
+    }
+
+    .radar {
+      position: relative;
+      width: 210px;
+      height: 210px;
+      margin-bottom: 35px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, transparent 0 31%, rgba(255, 255, 255, 0.1) 32% 32.7%, transparent 33% 64%, rgba(255, 255, 255, 0.1) 65% 65.7%, transparent 66%),
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: auto, 34px 34px, 34px 34px;
+      overflow: hidden;
+    }
+
+    .radar::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 105px;
+      height: 105px;
+      border-radius: 100% 0 0 0;
+      background: linear-gradient(45deg, rgba(10, 145, 132, 0.83), transparent 70%);
+      transform-origin: 100% 100%;
+      animation: sweep 2s linear infinite;
+    }
+
+    .radar i {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 0 6px rgba(245, 202, 75, 0.12), 0 0 18px var(--yellow);
+    }
+
+    .radar i:nth-child(1) { top: 50px; left: 61px; }
+    .radar i:nth-child(2) { top: 116px; right: 49px; background: var(--orange); }
+    .radar i:nth-child(3) { bottom: 36px; left: 90px; background: var(--teal); }
+
+    .analyse-wrap h2 { margin-bottom: 10px; }
+    .analyse-wrap p { max-width: 300px; color: #aebabc; font-size: 10px; line-height: 1.55; }
+
+    .analysis-steps {
+      width: 100%;
+      max-width: 290px;
+      margin-top: 18px;
+      text-align: left;
+    }
+
+    .analysis-step {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #bac5c7;
+      font-size: 8px;
+    }
+
+    .analysis-step::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 4px rgba(10, 145, 132, 0.12);
+    }
+
+    .summary-card {
+      position: relative;
+      margin-bottom: 15px;
+      padding: 17px;
+      border-radius: 21px;
+      color: white;
+      background: var(--ink);
+      overflow: hidden;
+    }
+
+    .summary-card::after {
+      content: "";
+      position: absolute;
+      right: -36px;
+      bottom: -52px;
+      width: 120px;
+      height: 120px;
+      border: 22px solid rgba(245, 202, 75, 0.18);
+      border-radius: 50%;
+    }
+
+    .summary-card small {
+      color: var(--yellow);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .summary-card h2 {
+      margin: 7px 0 5px;
+      font-size: 31px;
+    }
+
+    .summary-card p {
+      max-width: 265px;
+      margin-bottom: 0;
+      color: #bdc8ca;
+      font-size: 8px;
+      line-height: 1.45;
+    }
+
+    .finds {
+      display: grid;
+      gap: 9px;
+    }
+
+    .find {
+      display: grid;
+      grid-template-columns: 33px 54px 1fr auto;
+      align-items: center;
+      gap: 9px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--card);
+      cursor: pointer;
+      text-align: left;
+      box-shadow: 0 6px 16px rgba(20, 33, 38, 0.05);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .find:hover { transform: translateX(3px); border-color: var(--teal); }
+
+    .rank {
+      color: var(--orange);
+      font-family: "Baskerville", serif;
+      font-size: 21px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .thumb {
+      position: relative;
+      height: 50px;
+      border-radius: 12px;
+      background: var(--yellow-pale);
+      overflow: hidden;
+    }
+
+    .thumb::after {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border-radius: 50% 50% 5px 5px;
+      background: #5a6264;
+      transform: rotate(-8deg);
+    }
+
+    .find.console .thumb { background: var(--blue-pale); }
+    .find.console .thumb::after { inset: 14px 8px; border-radius: 7px; background: var(--blue); transform: none; }
+    .find.lego .thumb { background: var(--teal-pale); }
+    .find.lego .thumb::after { inset: 15px 9px; border-radius: 5px; background: var(--orange); box-shadow: 9px -7px var(--yellow), 17px 5px var(--blue); transform: rotate(4deg); }
+
+    .find strong { display: block; margin-bottom: 3px; font-size: 9px; }
+    .find small { display: block; color: var(--muted); font-size: 7px; line-height: 1.35; }
+
+    .value {
+      min-width: 69px;
+      text-align: right;
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .value span {
+      display: block;
+      margin-top: 3px;
+      color: var(--green);
+      font-size: 6px;
+      text-transform: uppercase;
+    }
+
+    .value.unknown { color: var(--orange); font-size: 8px; }
+    .value.unknown span { color: var(--orange); }
+
+    .result-note {
+      margin: 11px 0 15px;
+      padding: 11px;
+      border-radius: 14px;
+      color: #66571b;
+      background: var(--yellow-pale);
+      font-size: 7px;
+      line-height: 1.45;
+    }
+
+    .object-photo {
+      position: relative;
+      height: 235px;
+      margin: 0 -18px 16px;
+      background: linear-gradient(145deg, #d5cab7, #899b9d);
+      overflow: hidden;
+    }
+
+    .lens-object {
+      position: absolute;
+      top: 58px;
+      left: 50%;
+      width: 115px;
+      height: 115px;
+      border: 18px solid #252d2f;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 34%, #75a4ae, #1d3540 34%, #071012 62%);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.27), 0 0 0 9px #5a6262;
+      transform: translateX(-50%) rotate(-7deg);
+    }
+
+    .lego-object {
+      position: absolute;
+      inset: 22px;
+    }
+
+    .lego-block {
+      position: absolute;
+      width: 100px;
+      height: 49px;
+      border: 2px solid rgba(0, 0, 0, 0.22);
+      border-radius: 7px;
+      box-shadow: inset 0 -9px rgba(0,0,0,.09), 0 8px 18px rgba(0,0,0,.15);
+    }
+
+    .lego-block.one { left: 31px; top: 79px; background: var(--orange); transform: rotate(12deg); }
+    .lego-block.two { right: 30px; top: 56px; background: var(--yellow); transform: rotate(-13deg); }
+    .lego-block.three { left: 92px; bottom: 30px; background: var(--blue); transform: rotate(2deg); }
+
+    .photo-label {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: white;
+      background: rgba(20, 33, 38, 0.78);
+      font-size: 7px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .confidence {
+      margin-bottom: 12px;
+      padding: 14px;
+      border: 1px solid rgba(242, 96, 54, 0.24);
+      border-radius: 17px;
+      background: var(--orange-pale);
+    }
+
+    .confidence.good {
+      border-color: rgba(10, 145, 132, 0.24);
+      background: var(--teal-pale);
+    }
+
+    .confidence-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    .meter {
+      height: 7px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: rgba(20, 33, 38, 0.12);
+      overflow: hidden;
+    }
+
+    .meter span { display: block; width: 38%; height: 100%; border-radius: inherit; background: var(--orange); }
+    .confidence.good .meter span { width: 91%; background: var(--teal); }
+
+    .confidence p { margin: 0; font-size: 8px; line-height: 1.45; }
+
+    .question-list {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 13px;
+    }
+
+    .question {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      align-items: center;
+      gap: 9px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--card);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .question > span:first-child {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      color: var(--teal);
+      background: var(--teal-pale);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .question strong { display: block; font-size: 9px; }
+    .question small { display: block; margin-top: 2px; color: var(--muted); font-size: 7px; }
+    .question > span:last-child { font-size: 14px; }
+
+    .price-card {
+      margin-bottom: 12px;
+      padding: 15px;
+      border: 1px solid rgba(10, 145, 132, 0.22);
+      border-radius: 18px;
+      background: var(--teal-pale);
+    }
+
+    .price-card small {
+      display: block;
+      margin-bottom: 5px;
+      color: #31766e;
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .price {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      font-family: "Baskerville", serif;
+      font-size: 29px;
+      letter-spacing: -0.04em;
+    }
+
+    .price span {
+      color: var(--green);
+      font-family: "Avenir Next", sans-serif;
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .evidence {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .evidence div {
+      padding: 9px 4px;
+      border-radius: 11px;
+      background: white;
+      text-align: center;
+    }
+
+    .evidence b { display: block; font-size: 10px; }
+    .evidence span { display: block; margin-top: 2px; color: var(--muted); font-size: 6px; line-height: 1.25; }
+
+    .side-copy {
+      color: white;
+    }
+
+    .side-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--yellow);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .side-kicker::before { content: ""; width: 31px; height: 2px; background: currentColor; }
+
+    .side-copy h2 {
+      max-width: 420px;
+      margin-bottom: 17px;
+      font-size: clamp(45px, 5.5vw, 72px);
+      line-height: 0.94;
+    }
+
+    .side-copy > p {
+      max-width: 390px;
+      margin-bottom: 26px;
+      color: #b8c4c6;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .step-map {
+      display: grid;
+      gap: 8px;
+      max-width: 390px;
+    }
+
+    .step-map div {
+      display: grid;
+      grid-template-columns: 27px 1fr;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      color: #9dabad;
+      font-size: 10px;
+    }
+
+    .step-map span {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      color: var(--yellow);
+      font-family: "Baskerville", serif;
+      font-style: italic;
+    }
+
+    .prototype-note {
+      max-width: 390px;
+      margin-top: 24px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 14px;
+      color: #9eabad;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 8px;
+      line-height: 1.5;
+    }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateX(12px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.93); opacity: 0.65; }
+      50% { transform: scale(1.07); opacity: 1; }
+    }
+
+    @keyframes sweep { to { transform: rotate(360deg); } }
+
+    @media (max-width: 760px) {
+      body { background: var(--paper); }
+
+      .stage {
+        display: block;
+        min-height: 100vh;
+        padding: 0;
+      }
+
+      .device {
+        width: 100%;
+        height: 100vh;
+        min-height: 640px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .device::before { top: 9px; }
+      .app { border-radius: 0; }
+      .side-copy { display: none; }
+    }
+
+    @media (max-height: 750px) and (min-width: 761px) {
+      .stage { align-items: start; }
+      .device { height: 700px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <section class="device" aria-label="Interactive ValueVision Treasure Hunt mobile prototype">
+      <div class="app" id="app">
+        <div class="statusbar" id="statusbar"><span>9:41</span><span class="signal"><i></i><i></i><i></i></span></div>
+
+        <section class="view dark active" data-view="intro">
+          <header class="view-head"><button class="icon-button" type="button" aria-label="Close">X</button><strong>Treasure Hunt</strong><span></span></header>
+          <div class="view-body">
+            <div class="eyebrow">Discover hidden value</div>
+            <h1>Turn any room into a shortlist.</h1>
+            <p class="lead">Photograph a room or multiple objects. ValueVision spots and ranks what may be worth selling.</p>
+            <div class="room-illustration"><div class="room-wall"></div><div class="shelf"></div><div class="sideboard"></div><div class="scan-ring"></div></div>
+            <div class="promise-list">
+              <div class="promise"><span>1</span><div><strong>Photograph the space</strong><small>Use one wide photo or add more angles.</small></div></div>
+              <div class="promise"><span>2</span><div><strong>Review the ranked finds</strong><small>See which objects deserve attention first.</small></div></div>
+              <div class="promise"><span>3</span><div><strong>Confirm individual values</strong><small>Take a close-up for a reliable selling range.</small></div></div>
+            </div>
+            <button class="primary" type="button" data-go="camera">Start a room scan</button>
+            <p class="fine-print">Treasure Hunt provides early opportunity estimates. Final values require a focused item check.</p>
+          </div>
+        </section>
+
+        <section class="view camera-view" data-view="camera">
+          <div class="camera-feed"><div class="room-wall"></div><div class="shelf"></div><div class="sideboard"></div></div>
+          <header class="view-head"><button class="icon-button back" type="button" aria-label="Back">&lt;</button><strong>Photograph the room</strong><button class="icon-button" type="button" aria-label="Flash">*</button></header>
+          <div class="capture-hint">Keep the room steady and include the surfaces</div>
+          <div class="camera-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+          <div class="capture-controls"><small>Gallery</small><button class="capture" type="button" data-go="captured" aria-label="Take room photo"></button><small>Light</small></div>
+        </section>
+
+        <section class="view" data-view="captured">
+          <header class="view-head"><button class="icon-button back" type="button" aria-label="Back">&lt;</button><strong>Room photos</strong><button class="icon-button" type="button" aria-label="Help">?</button></header>
+          <div class="view-body">
+            <div class="photo-preview"><div class="room-wall"></div><div class="shelf"></div><div class="sideboard"></div><i class="marker one">1</i><i class="marker two">2</i><i class="marker three">3</i><span class="photo-count">1 photo</span></div>
+            <div class="eyebrow">Ready to analyse</div>
+            <h2>That photo gives us a good overview.</h2>
+            <p style="color:var(--muted);font-size:10px;line-height:1.55;margin-bottom:14px">Add another angle if objects overlap, or let ValueVision identify and rank what it can see now.</p>
+            <div class="tip-card"><span>i</span><div><strong>Better photos improve the shortlist</strong><small>Small labels and model numbers can wait for the focused follow-up scan.</small></div></div>
+            <div class="button-stack">
+              <button class="primary dark-button" type="button" data-analyse>Analyse this room</button>
+              <button class="secondary" type="button" data-go="camera">Add another angle</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="view dark" data-view="analysing">
+          <div class="analyse-wrap">
+            <div>
+              <div class="radar"><i></i><i></i><i></i></div>
+              <div class="eyebrow">ValueVision is looking</div>
+              <h2>Finding the promising objects.</h2>
+              <p>We are separating objects, checking likely identities and deciding which ones need a closer look.</p>
+              <div class="analysis-steps"><div class="analysis-step">Locating individual objects</div><div class="analysis-step">Grouping duplicate views</div><div class="analysis-step">Ranking potential resale value</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" data-view="results">
+          <header class="view-head"><button class="icon-button" type="button" data-go="intro" aria-label="Close">X</button><strong>Treasure Hunt results</strong><button class="icon-button" type="button" aria-label="Save">+</button></header>
+          <div class="view-body">
+            <div class="summary-card"><small>Room scan complete</small><h2>3 finds deserve a closer look.</h2><p>We reviewed 12 visible objects and ranked these by potential value and identification confidence.</p></div>
+            <div class="finds">
+              <button class="find lens" type="button" data-go="lens"><span class="rank">1</span><span class="thumb"></span><span><strong>Vintage camera lens</strong><small>Strong visual match</small></span><span class="value">GBP 70-110<span>confirm value</span></span></button>
+              <button class="find console" type="button"><span class="rank">2</span><span class="thumb"></span><span><strong>Handheld console</strong><small>Exact model needed</small></span><span class="value">GBP 35-90<span>needs detail</span></span></button>
+              <button class="find lego" type="button" data-go="lego"><span class="rank">3</span><span class="thumb"></span><span><strong>Mixed LEGO pieces</strong><small>Set or parts unknown</small></span><span class="value unknown">Worth checking<span>identify first</span></span></button>
+            </div>
+            <div class="result-note"><strong>Why no exact room total?</strong> A wide photo can shortlist opportunities, but hidden labels, condition and completeness affect the real selling price.</div>
+            <button class="primary dark-button" type="button" data-go="camera">Scan another area</button>
+          </div>
+        </section>
+
+        <section class="view" data-view="lego">
+          <header class="view-head"><button class="icon-button back" type="button" aria-label="Back">&lt;</button><strong>Confirm this find</strong><span></span></header>
+          <div class="view-body">
+            <div class="object-photo"><span class="photo-label">Cropped from room photo</span><div class="lego-object"><i class="lego-block one"></i><i class="lego-block two"></i><i class="lego-block three"></i></div></div>
+            <div class="eyebrow">Potential find 3</div>
+            <h2>LEGO pieces detected. Exact product unknown.</h2>
+            <div class="confidence"><div class="confidence-row"><span>Identification confidence</span><span>38%</span></div><div class="meter"><span></span></div><p><strong>No price yet.</strong> A mixed pile could be loose bricks, a valuable set or sought-after minifigures. We need one more detail.</p></div>
+            <div class="question-list">
+              <button class="question" type="button"><span>123</span><span><strong>Scan a set or part number</strong><small>Best route to an exact match</small></span><span>&gt;</span></button>
+              <button class="question" type="button"><span>2x</span><span><strong>Take a focused photo</strong><small>Show figures, packaging or assembled pieces</small></span><span>&gt;</span></button>
+              <button class="question" type="button"><span>KG</span><span><strong>Value it as a loose mixed lot</strong><small>Use weight and visible condition</small></span><span>&gt;</span></button>
+            </div>
+            <button class="primary dark-button" type="button" data-go="camera">Take the close-up</button>
+          </div>
+        </section>
+
+        <section class="view" data-view="lens">
+          <header class="view-head"><button class="icon-button back" type="button" aria-label="Back">&lt;</button><strong>Confirm this find</strong><span></span></header>
+          <div class="view-body">
+            <div class="object-photo"><span class="photo-label">Cropped from room photo</span><div class="lens-object"></div></div>
+            <div class="eyebrow">Potential find 1</div>
+            <h2>Likely a vintage 50mm camera lens.</h2>
+            <p style="color:var(--muted);font-size:10px;line-height:1.55;margin-bottom:13px">The shape is promising, but the mount and exact model affect value. Photograph the front lettering and rear mount.</p>
+            <div class="confidence"><div class="confidence-row"><span>Current identity confidence</span><span>64%</span></div><div class="meter"><span style="width:64%"></span></div><p>A close-up should allow a reliable marketplace comparison.</p></div>
+            <button class="primary orange" type="button" data-go="lens-result">Use close-up demo</button>
+          </div>
+        </section>
+
+        <section class="view" data-view="lens-result">
+          <header class="view-head"><button class="icon-button back" type="button" aria-label="Back">&lt;</button><strong>Evidence-backed value</strong><button class="icon-button" type="button" aria-label="Save">+</button></header>
+          <div class="view-body">
+            <div class="object-photo"><span class="photo-label">Focused photo confirmed</span><div class="lens-object"></div></div>
+            <div class="eyebrow">Item confirmed</div>
+            <h2>Canon FD 50mm f/1.4 lens</h2>
+            <div class="confidence good"><div class="confidence-row"><span>Identification confidence</span><span>91%</span></div><div class="meter"><span></span></div><p>Front markings and mount shape support this identification. Condition remains visually estimated.</p></div>
+            <div class="price-card"><small>Likely private-sale range</small><div class="price">GBP 72-105 <span>Good evidence</span></div><div class="evidence"><div><b>11</b><span>relevant sold matches</span></div><div><b>GBP 86</b><span>median sold price</span></div><div><b>18 days</b><span>evidence age</span></div></div></div>
+            <div class="button-stack"><button class="primary teal" type="button">View marketplace guidance</button><button class="secondary" type="button" data-go="results">Return to room results</button></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <aside class="side-copy">
+      <div class="side-kicker">Tap-through app example</div>
+      <h2>This is how Treasure Hunt would feel on a phone.</h2>
+      <p>Inside the real app, the device outline disappears and this experience fills the screen. Tap through the prototype from the introduction to the ranked results.</p>
+      <div class="step-map"><div><span>1</span>Open Treasure Hunt</div><div><span>2</span>Photograph the room</div><div><span>3</span>Let ValueVision rank the finds</div><div><span>4</span>Take a close-up to confirm value</div></div>
+      <div class="prototype-note">Concept data only. The example values demonstrate the intended user experience and are not live valuations.</div>
+    </aside>
+  </main>
+
+  <script>
+    (function () {
+      var current = "intro";
+      var history = [];
+      var statusbar = document.getElementById("statusbar");
+
+      function show(name, remember) {
+        var next = document.querySelector('[data-view="' + name + '"]');
+        if (!next) return;
+        if (remember !== false && current !== name) history.push(current);
+        document.querySelectorAll(".view").forEach(function (view) { view.classList.remove("active"); });
+        next.classList.add("active");
+        current = name;
+        statusbar.classList.toggle("light", next.classList.contains("dark") || next.classList.contains("camera-view"));
+      }
+
+      document.querySelectorAll("[data-go]").forEach(function (button) {
+        button.addEventListener("click", function () { show(button.getAttribute("data-go")); });
+      });
+
+      document.querySelectorAll(".back").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var previous = history.pop() || "intro";
+          show(previous, false);
+        });
+      });
+
+      document.querySelectorAll("[data-analyse]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          show("analysing");
+          window.setTimeout(function () { show("results"); }, 1900);
+        });
+      });
+    }());
+  </script>
+</body>
+</html>

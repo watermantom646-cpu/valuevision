@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2732" viewBox="0 0 2048 2732">
+    <rect width="2048" height="2732" fill="#061710"/>
+    <circle cx="1843.2" cy="218.56" r="860.16" fill="#0d2a20" opacity="0.9"/>
+    <circle cx="163.84" cy="2513.44" r="1024" fill="#0b2119" opacity="0.95"/>
+    
+    <g transform="translate(150 95)">
+      <rect x="0" y="10.24" width="99.84" height="99.84" rx="23.04" fill="#d8ff43" transform="rotate(-8 49.92 49.92)"/>
+      <text x="49.92" y="83.2" font-family="Arial, sans-serif" font-size="66.56" font-weight="900" fill="#06100b" text-anchor="middle" letter-spacing="0">V</text>
+      <circle cx="99.84" cy="23.04" r="13.44" fill="#f28e70"/>
+    </g>
+    <text x="300" y="170" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#f5f0e4" text-anchor="start" letter-spacing="5">VALUEVISION</text>
+    
+  <rect x="1622" y="108" width="276" height="64" rx="32" fill="#173428" stroke="none" stroke-width="0"/>
+  <text x="1760" y="150" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#d8ff43" text-anchor="middle" letter-spacing="0">SEE THE VALUE</text>
+    <text x="150" y="362" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#d8ff43" text-anchor="start" letter-spacing="4">TREASURE HUNT</text>
+    <text x="150" y="470" font-family="Georgia, serif" font-size="106" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">SCAN A ROOM.</text>
+<text x="150" y="579.1800000000001" font-family="Georgia, serif" font-size="106" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">FIND WHAT MATTERS.</text>
+    <text x="150" y="729.7" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">Photograph a room, shelf or collection.</text>
+<text x="150" y="779.4000000000001" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">ValueVision ranks visible finds worth a</text>
+<text x="150" y="829.1" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">closer look.</text>
+    <rect x="644" y="796" width="1298" height="1170" rx="54" fill="#0a2118" stroke="#294a3b" stroke-width="2"/>
+    
+    <rect x="688" y="840" width="1210" height="445" rx="42" fill="#d4c5a5" stroke="none" stroke-width="0"/>
+    <rect x="736" y="902" width="1114" height="300" rx="24" fill="#bea985"/>
+    <rect x="776" y="1006" width="210" height="148" rx="20" fill="#6f4d33"/>
+    <circle cx="870" cy="985" r="62" fill="#e6d37a"/>
+    <rect x="1088" y="952" width="180" height="204" rx="18" fill="#28443a"/>
+    <rect x="1313" y="1038" width="180" height="118" rx="18" fill="#e7eee8"/>
+    <rect x="753" y="935" width="245" height="240" rx="24" fill="none" stroke="#d8ff43" stroke-width="7"/>
+    <rect x="1065" y="927" width="225" height="250" rx="24" fill="none" stroke="#f28e70" stroke-width="7"/>
+    <rect x="1292" y="1014" width="222" height="169" rx="24" fill="none" stroke="#86e5c0" stroke-width="7"/>
+    
+  <rect x="760" y="912" width="70" height="64" rx="32" fill="#d8ff43" stroke="none" stroke-width="0"/>
+  <text x="795" y="954" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#06100b" text-anchor="middle" letter-spacing="0">1</text>
+    
+  <rect x="1073" y="905" width="70" height="64" rx="32" fill="#f28e70" stroke="none" stroke-width="0"/>
+  <text x="1108" y="947" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#06100b" text-anchor="middle" letter-spacing="0">2</text>
+    
+  <rect x="1300" y="992" width="70" height="64" rx="32" fill="#86e5c0" stroke="none" stroke-width="0"/>
+  <text x="1335" y="1034" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#06100b" text-anchor="middle" letter-spacing="0">3</text>
+    <text x="720" y="1248" font-family="Arial, sans-serif" font-size="27" font-weight="800" fill="#06100b" text-anchor="start" letter-spacing="0">3 promising finds ranked</text>
+    
+  <rect x="688" y="1318" width="1210" height="84" rx="24" fill="#173428" stroke="none" stroke-width="0"/>
+  <circle cx="722" cy="1360" r="9" fill="#d8ff43"/>
+  <text x="746" y="1369" font-family="Arial, sans-serif" font-size="27" font-weight="600" fill="#f5f0e4" text-anchor="start" letter-spacing="0">1  Vintage table lamp</text>
+  <text x="1870" y="1369" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#d8ff43" text-anchor="end" letter-spacing="0">&#163;45 - &#163;70</text>
+    
+  <rect x="688" y="1422" width="1210" height="84" rx="24" fill="#173428" stroke="none" stroke-width="0"/>
+  <circle cx="722" cy="1464" r="9" fill="#f28e70"/>
+  <text x="746" y="1473" font-family="Arial, sans-serif" font-size="27" font-weight="600" fill="#f5f0e4" text-anchor="start" letter-spacing="0">2  Belt-drive turntable</text>
+  <text x="1870" y="1473" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#f28e70" text-anchor="end" letter-spacing="0">&#163;80 - &#163;130</text>
+    
+  <rect x="688" y="1526" width="1210" height="84" rx="24" fill="#173428" stroke="none" stroke-width="0"/>
+  <circle cx="722" cy="1568" r="9" fill="#86e5c0"/>
+  <text x="746" y="1577" font-family="Arial, sans-serif" font-size="27" font-weight="600" fill="#f5f0e4" text-anchor="start" letter-spacing="0">3  Ceramic vase</text>
+  <text x="1870" y="1577" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#86e5c0" text-anchor="end" letter-spacing="0">ADD CLOSE-UP</text>
+    <rect x="688" y="1656" width="1210" height="180" rx="34" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+    <text x="722" y="1712" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#d8ff43" text-anchor="start" letter-spacing="2">HONEST BY DESIGN</text>
+    <text x="722" y="1766" font-family="Arial, sans-serif" font-size="26" font-weight="500" fill="#f5f0e4" text-anchor="start" letter-spacing="0">A room scan creates a shortlist. Add close-ups for</text>
+<text x="722" y="1804" font-family="Arial, sans-serif" font-size="26" font-weight="500" fill="#f5f0e4" text-anchor="start" letter-spacing="0">stronger identification before relying on a price.</text>
+  
+    <text x="150" y="2660" font-family="Arial, sans-serif" font-size="24" font-weight="500" fill="#73867c" text-anchor="start" letter-spacing="0">Values are estimates. Vehicle results depend on available provider data.</text>
+  </svg>

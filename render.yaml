@@ -81,12 +81,16 @@ services:
         value: com.abbiemaytum.valuevision
       - key: APPLE_MONTHLY_PRODUCT_ID
         value: ValueVision10
+      - key: APPLE_VALUE_CREDITS_25_PRODUCT_ID
+        value: valuevision_value_credits_25
+      - key: APPLE_VALUE_CREDITS_75_PRODUCT_ID
+        value: valuevision_value_credits_75
       - key: APPLE_CAR_CHECK_1_PRODUCT_ID
         value: valuevision_full_car_check_1
       - key: APPLE_CAR_CHECK_3_PRODUCT_ID
         value: valuevision_full_car_check_3
       - key: MONTHLY_SCAN_LIMIT
-        value: "25"
+        value: "100"
       - key: STARTER_SCAN_LIMIT
         value: "3"
       - key: PAYMENT_STORE_PATH

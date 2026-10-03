@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-15T09:09:16.744Z",
+  "updatedAt": "2026-06-23T15:07:54.758Z",
   "entries": {
     "volkswagen|touran|2006": {
       "makeNorm": "volkswagen",
@@ -25,11 +25,11 @@
       "makeNorm": "ford",
       "modelNorm": "focus",
       "year": 2011,
-      "median": 1765.7024905425576,
-      "low": 1254.8887944208698,
-      "high": 2170.8307933242254,
-      "samples": 38,
-      "updatedAt": "2026-05-15T09:09:16.744Z"
+      "median": 2163.4358251259127,
+      "low": 1537.8050330321034,
+      "high": 2660.2803762671692,
+      "samples": 54,
+      "updatedAt": "2026-06-23T15:07:54.758Z"
     },
     "audi|a3|2015": {
       "makeNorm": "audi",
@@ -175,11 +175,11 @@
       "makeNorm": "mercedes benz",
       "modelNorm": "a class",
       "year": 2015,
-      "median": 12796.325155896724,
-      "low": 10823.415404201787,
-      "high": 15069.74375648858,
-      "samples": 40,
-      "updatedAt": "2026-05-15T09:09:15.926Z"
+      "median": 13045.04844831603,
+      "low": 11033.634464475701,
+      "high": 15362.690018659277,
+      "samples": 56,
+      "updatedAt": "2026-06-23T15:07:54.552Z"
     },
     "volkswagen|golf|2006": {
       "makeNorm": "volkswagen",
@@ -285,21 +285,21 @@
       "makeNorm": "audi",
       "modelNorm": "a1",
       "year": 2015,
-      "median": 7653.095234994815,
-      "low": 6473.561078984068,
-      "high": 9013.016818715018,
-      "samples": 49,
-      "updatedAt": "2026-05-15T09:09:12.296Z"
+      "median": 7616.480256624625,
+      "low": 6442.480808086456,
+      "high": 8969.766032165817,
+      "samples": 65,
+      "updatedAt": "2026-06-23T15:07:53.941Z"
     },
     "ford|focus|2006": {
       "makeNorm": "ford",
       "modelNorm": "focus",
       "year": 2006,
-      "median": 1776.2138090546416,
-      "low": 1166.8502636182695,
-      "high": 1999.558171705518,
-      "samples": 35,
-      "updatedAt": "2026-05-15T09:09:15.131Z"
+      "median": 1769.6503696417583,
+      "low": 1133.3582925581272,
+      "high": 1935.7824495757527,
+      "samples": 51,
+      "updatedAt": "2026-06-23T15:07:54.346Z"
     },
     "kia|ceed|2019": {
       "makeNorm": "kia",

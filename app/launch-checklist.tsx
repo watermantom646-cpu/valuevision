@@ -166,13 +166,13 @@ export default function LaunchChecklistScreen() {
           <Text style={styles.btnText}>Run Technology Scan</Text>
         </Pressable>
         <Pressable
-          style={[styles.btn, styles.btnAccent, !FeatureFlags.carChecksAvailable && styles.btnDisabled, isWide && styles.btnWide]}
-          disabled={!FeatureFlags.carChecksAvailable}
+          style={[styles.btn, styles.btnAccent, !FeatureFlags.fullCarChecksAvailable && styles.btnDisabled, isWide && styles.btnWide]}
+          disabled={!FeatureFlags.fullCarChecksAvailable}
           onPress={() => pushPublicRoute(router, "/scan?mode=fullcar")}>
           <Text style={styles.btnText}>
-            {FeatureFlags.carChecksAvailable
+            {FeatureFlags.fullCarChecksAvailable
               ? `Run Full Car Check (${formatGbp(LaunchPricing.fullCarCheckSingleGbp)})`
-              : "Car checks paused"}
+              : "Full car checks awaiting verification"}
           </Text>
         </Pressable>
       </View>

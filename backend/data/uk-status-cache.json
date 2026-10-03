@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-15T09:09:16.625Z",
+  "updatedAt": "2026-06-22T19:53:38.977Z",
   "entries": {
     "BG11DVV": {
       "status": {
@@ -976,282 +976,6 @@
       "savedAtMs": 1778082199527,
       "savedAt": "2026-05-06T15:43:19.527Z"
     },
-    "SW15VMZ": {
-      "status": {
-        "ok": true,
-        "registrationNumber": "SW15VMZ",
-        "make": "AUDI",
-        "model": "A1",
-        "colour": "BLUE",
-        "fuelType": "PETROL",
-        "yearOfManufacture": 2015,
-        "motStatus": "Valid",
-        "motExpiryDate": "2027-02-19",
-        "taxStatus": "Untaxed",
-        "taxDueDate": "2026-01-31",
-        "crashHistory": {
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0,
-          "latestWriteOffStatus": null,
-          "source": "CheckCarDetails VehicleHistory"
-        },
-        "historyCategories": {
-          "hasFinanceRecord": false,
-          "financeCount": 0,
-          "hasStolenRecord": false,
-          "stolenCount": 0,
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0
-        },
-        "motHistory": [],
-        "mileage": {
-          "valueMiles": null,
-          "source": null
-        },
-        "valuation": null,
-        "source": "CheckCarDetails API",
-        "checkedAt": "2026-05-15T09:09:12.128Z",
-        "providerUsage": {
-          "provider": "checkcardetails",
-          "date": "2026-05-15",
-          "totalToday": 1,
-          "softLimit": 240,
-          "hardLimit": 320
-        }
-      },
-      "savedAtMs": 1778836152128,
-      "savedAt": "2026-05-15T09:09:12.128Z"
-    },
-    "SF53GUD": {
-      "status": {
-        "ok": true,
-        "registrationNumber": "SF53GUD",
-        "make": "PROTON",
-        "model": "JUMBUCK",
-        "colour": "YELLOW",
-        "fuelType": "PETROL",
-        "yearOfManufacture": 2004,
-        "motStatus": "Valid",
-        "motExpiryDate": "2026-07-13",
-        "taxStatus": "Taxed",
-        "taxDueDate": "2027-03-01",
-        "crashHistory": {
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0,
-          "latestWriteOffStatus": null,
-          "source": "CheckCarDetails VehicleHistory"
-        },
-        "historyCategories": {
-          "hasFinanceRecord": false,
-          "financeCount": 0,
-          "hasStolenRecord": false,
-          "stolenCount": 0,
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0
-        },
-        "motHistory": [],
-        "mileage": {
-          "valueMiles": null,
-          "source": null
-        },
-        "valuation": null,
-        "source": "CheckCarDetails API",
-        "checkedAt": "2026-05-15T09:09:13.039Z",
-        "providerUsage": {
-          "provider": "checkcardetails",
-          "date": "2026-05-15",
-          "totalToday": 3,
-          "softLimit": 240,
-          "hardLimit": 320
-        }
-      },
-      "savedAtMs": 1778836153039,
-      "savedAt": "2026-05-15T09:09:13.039Z"
-    },
-    "OE05FSJ": {
-      "status": {
-        "ok": true,
-        "registrationNumber": "OE05FSJ",
-        "make": "MINI",
-        "model": "MINI",
-        "colour": "SILVER",
-        "fuelType": "PETROL",
-        "yearOfManufacture": 2005,
-        "motStatus": "Not valid",
-        "motExpiryDate": "2025-11-07",
-        "taxStatus": "SORN",
-        "taxDueDate": null,
-        "crashHistory": {
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0,
-          "latestWriteOffStatus": null,
-          "source": "CheckCarDetails VehicleHistory"
-        },
-        "historyCategories": {
-          "hasFinanceRecord": false,
-          "financeCount": 0,
-          "hasStolenRecord": false,
-          "stolenCount": 0,
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0
-        },
-        "motHistory": [],
-        "mileage": {
-          "valueMiles": null,
-          "source": null
-        },
-        "valuation": null,
-        "source": "CheckCarDetails API",
-        "checkedAt": "2026-05-15T09:09:13.859Z",
-        "providerUsage": {
-          "provider": "checkcardetails",
-          "date": "2026-05-15",
-          "totalToday": 5,
-          "softLimit": 240,
-          "hardLimit": 320
-        }
-      },
-      "savedAtMs": 1778836153859,
-      "savedAt": "2026-05-15T09:09:13.859Z"
-    },
-    "CE06CHD": {
-      "status": {
-        "ok": true,
-        "registrationNumber": "CE06CHD",
-        "make": "FORD",
-        "model": "FOCUS",
-        "colour": "ORANGE",
-        "fuelType": "PETROL",
-        "yearOfManufacture": 2006,
-        "motStatus": "Not valid",
-        "motExpiryDate": "2023-06-20",
-        "taxStatus": "Untaxed",
-        "taxDueDate": "2023-05-31",
-        "crashHistory": {
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0,
-          "latestWriteOffStatus": null,
-          "source": "CheckCarDetails VehicleHistory"
-        },
-        "historyCategories": {
-          "hasFinanceRecord": false,
-          "financeCount": 0,
-          "hasStolenRecord": false,
-          "stolenCount": 0,
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0
-        },
-        "motHistory": [],
-        "mileage": {
-          "valueMiles": null,
-          "source": null
-        },
-        "valuation": null,
-        "source": "CheckCarDetails API",
-        "checkedAt": "2026-05-15T09:09:15.010Z",
-        "providerUsage": {
-          "provider": "checkcardetails",
-          "date": "2026-05-15",
-          "totalToday": 7,
-          "softLimit": 240,
-          "hardLimit": 320
-        }
-      },
-      "savedAtMs": 1778836155011,
-      "savedAt": "2026-05-15T09:09:15.011Z"
-    },
-    "MV15CYO": {
-      "status": {
-        "ok": true,
-        "registrationNumber": "MV15CYO",
-        "make": "MERCEDES-BENZ",
-        "model": "A-CLASS",
-        "colour": "GREY",
-        "fuelType": "PETROL",
-        "yearOfManufacture": 2015,
-        "motStatus": "Valid",
-        "motExpiryDate": "2026-06-02",
-        "taxStatus": "Taxed",
-        "taxDueDate": "2027-02-01",
-        "crashHistory": {
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0,
-          "latestWriteOffStatus": null,
-          "source": "CheckCarDetails VehicleHistory"
-        },
-        "historyCategories": {
-          "hasFinanceRecord": false,
-          "financeCount": 0,
-          "hasStolenRecord": false,
-          "stolenCount": 0,
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0
-        },
-        "motHistory": [],
-        "mileage": {
-          "valueMiles": null,
-          "source": null
-        },
-        "valuation": null,
-        "source": "CheckCarDetails API",
-        "checkedAt": "2026-05-15T09:09:15.806Z",
-        "providerUsage": {
-          "provider": "checkcardetails",
-          "date": "2026-05-15",
-          "totalToday": 9,
-          "softLimit": 240,
-          "hardLimit": 320
-        }
-      },
-      "savedAtMs": 1778836155806,
-      "savedAt": "2026-05-15T09:09:15.806Z"
-    },
-    "BG11GWX": {
-      "status": {
-        "ok": true,
-        "registrationNumber": "BG11GWX",
-        "make": "FORD",
-        "model": "FOCUS",
-        "colour": "GREY",
-        "fuelType": "PETROL",
-        "yearOfManufacture": 2011,
-        "motStatus": "Not valid",
-        "motExpiryDate": "2026-05-07",
-        "taxStatus": "Taxed",
-        "taxDueDate": "2027-02-01",
-        "crashHistory": {
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0,
-          "latestWriteOffStatus": null,
-          "source": "CheckCarDetails VehicleHistory"
-        },
-        "historyCategories": {
-          "hasFinanceRecord": false,
-          "financeCount": 0,
-          "hasStolenRecord": false,
-          "stolenCount": 0,
-          "hasWriteOffRecord": false,
-          "writeOffCount": 0
-        },
-        "motHistory": [],
-        "mileage": {
-          "valueMiles": null,
-          "source": null
-        },
-        "valuation": null,
-        "source": "CheckCarDetails API",
-        "checkedAt": "2026-05-15T09:09:16.625Z",
-        "providerUsage": {
-          "provider": "checkcardetails",
-          "date": "2026-05-15",
-          "totalToday": 11,
-          "softLimit": 240,
-          "hardLimit": 320
-        }
-      },
-      "savedAtMs": 1778836156625,
-      "savedAt": "2026-05-15T09:09:16.625Z"
-    },
     "LC69WFN": {
       "status": {
         "ok": true,
@@ -1619,6 +1343,282 @@
       },
       "savedAtMs": 1778359525938,
       "savedAt": "2026-05-09T20:45:25.938Z"
+    },
+    "SF53GUD": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SF53GUD",
+        "make": "PROTON",
+        "model": "JUMBUCK",
+        "colour": "YELLOW",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2004,
+        "motStatus": "Valid",
+        "motExpiryDate": "2026-07-13",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-03-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-06-22T19:53:34.874Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-06-22",
+          "totalToday": 3,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1782158014874,
+      "savedAt": "2026-06-22T19:53:34.874Z"
+    },
+    "OE05FSJ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "OE05FSJ",
+        "make": "MINI",
+        "model": "MINI",
+        "colour": "SILVER",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2005,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2025-11-07",
+        "taxStatus": "SORN",
+        "taxDueDate": null,
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-06-22T19:53:35.739Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-06-22",
+          "totalToday": 5,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1782158015739,
+      "savedAt": "2026-06-22T19:53:35.739Z"
+    },
+    "CE06CHD": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "CE06CHD",
+        "make": "FORD",
+        "model": "FOCUS",
+        "colour": "ORANGE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2006,
+        "motStatus": "Not valid",
+        "motExpiryDate": "2023-06-20",
+        "taxStatus": "Untaxed",
+        "taxDueDate": "2023-05-31",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-06-22T19:53:36.860Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-06-22",
+          "totalToday": 7,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1782158016860,
+      "savedAt": "2026-06-22T19:53:36.860Z"
+    },
+    "MV15CYO": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "MV15CYO",
+        "make": "MERCEDES-BENZ",
+        "model": "A-CLASS",
+        "colour": "GREY",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2027-06-06",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-02-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-06-22T19:53:37.556Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-06-22",
+          "totalToday": 9,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1782158017556,
+      "savedAt": "2026-06-22T19:53:37.556Z"
+    },
+    "BG11GWX": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "BG11GWX",
+        "make": "FORD",
+        "model": "FOCUS",
+        "colour": "GREY",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2011,
+        "motStatus": "Valid",
+        "motExpiryDate": "2027-06-09",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-02-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-06-22T19:53:38.977Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-06-22",
+          "totalToday": 11,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1782158018977,
+      "savedAt": "2026-06-22T19:53:38.977Z"
+    },
+    "SW15VMZ": {
+      "status": {
+        "ok": true,
+        "registrationNumber": "SW15VMZ",
+        "make": "AUDI",
+        "model": "A1",
+        "colour": "BLUE",
+        "fuelType": "PETROL",
+        "yearOfManufacture": 2015,
+        "motStatus": "Valid",
+        "motExpiryDate": "2027-02-19",
+        "taxStatus": "Taxed",
+        "taxDueDate": "2027-06-01",
+        "crashHistory": {
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0,
+          "latestWriteOffStatus": null,
+          "source": "CheckCarDetails VehicleHistory"
+        },
+        "historyCategories": {
+          "hasFinanceRecord": false,
+          "financeCount": 0,
+          "hasStolenRecord": false,
+          "stolenCount": 0,
+          "hasWriteOffRecord": false,
+          "writeOffCount": 0
+        },
+        "motHistory": [],
+        "mileage": {
+          "valueMiles": null,
+          "source": null
+        },
+        "valuation": null,
+        "source": "CheckCarDetails API",
+        "checkedAt": "2026-06-22T19:53:33.771Z",
+        "providerUsage": {
+          "provider": "checkcardetails",
+          "date": "2026-06-22",
+          "totalToday": 1,
+          "softLimit": 240,
+          "hardLimit": 320
+        }
+      },
+      "savedAtMs": 1782158013771,
+      "savedAt": "2026-06-22T19:53:33.771Z"
     }
   }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2732" viewBox="0 0 2048 2732">
+    <rect width="2048" height="2732" fill="#061710"/>
+    <circle cx="1843.2" cy="218.56" r="860.16" fill="#0d2a20" opacity="0.9"/>
+    <circle cx="163.84" cy="2513.44" r="1024" fill="#0b2119" opacity="0.95"/>
+    
+    <g transform="translate(150 95)">
+      <rect x="0" y="10.24" width="99.84" height="99.84" rx="23.04" fill="#d8ff43" transform="rotate(-8 49.92 49.92)"/>
+      <text x="49.92" y="83.2" font-family="Arial, sans-serif" font-size="66.56" font-weight="900" fill="#06100b" text-anchor="middle" letter-spacing="0">V</text>
+      <circle cx="99.84" cy="23.04" r="13.44" fill="#f28e70"/>
+    </g>
+    <text x="300" y="170" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#f5f0e4" text-anchor="start" letter-spacing="5">VALUEVISION</text>
+    
+  <rect x="1622" y="108" width="276" height="64" rx="32" fill="#173428" stroke="none" stroke-width="0"/>
+  <text x="1760" y="150" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#d8ff43" text-anchor="middle" letter-spacing="0">SEE THE VALUE</text>
+    <text x="150" y="362" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#d8ff43" text-anchor="start" letter-spacing="4">VALUEVISION</text>
+    <text x="150" y="470" font-family="Georgia, serif" font-size="106" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">VALUE WHAT</text>
+<text x="150" y="579.1800000000001" font-family="Georgia, serif" font-size="106" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">YOU OWN.</text>
+    <text x="150" y="729.7" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">Three focused ways to identify value, check</text>
+<text x="150" y="779.4000000000001" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">a vehicle and find promising resale</text>
+<text x="150" y="829.1" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">opportunities.</text>
+    <rect x="644" y="796" width="1298" height="1170" rx="54" fill="#0a2118" stroke="#294a3b" stroke-width="2"/>
+    
+    <rect x="688" y="840" width="1210" height="188" rx="38" fill="#f5f0e4" stroke="none" stroke-width="0"/>
+    <text x="732" y="902" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#06100b" text-anchor="start" letter-spacing="2">YOUR STARTER BALANCE</text>
+    <text x="732" y="970" font-family="Georgia, serif" font-size="51" font-weight="800" fill="#06100b" text-anchor="start" letter-spacing="0">3 Value Credits</text>
+    
+  <rect x="1658" y="915" width="196" height="64" rx="32" fill="#d8ff43" stroke="none" stroke-width="0"/>
+  <text x="1756" y="957" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#06100b" text-anchor="middle" letter-spacing="0">READY TO SCAN</text>
+    
+        <rect x="688" y="1060" width="1210" height="220" rx="38" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+        <rect x="718" y="1094" width="114" height="114" rx="30" fill="#d8ff43" stroke="none" stroke-width="0"/>
+        <text x="775" y="1168" font-family="Arial, sans-serif" font-size="32" font-weight="900" fill="#06100b" text-anchor="middle" letter-spacing="0">01</text>
+        <text x="862" y="1142" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#a9b8b0" text-anchor="start" letter-spacing="2">VALUE AN ITEM</text>
+        <text x="862" y="1197" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">One clear photo</text>
+        <text x="1846" y="1187" font-family="Arial, sans-serif" font-size="60" font-weight="400" fill="#d8ff43" text-anchor="middle" letter-spacing="0">›</text>
+
+        <rect x="688" y="1302" width="1210" height="220" rx="38" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+        <rect x="718" y="1336" width="114" height="114" rx="30" fill="#f28e70" stroke="none" stroke-width="0"/>
+        <text x="775" y="1410" font-family="Arial, sans-serif" font-size="32" font-weight="900" fill="#06100b" text-anchor="middle" letter-spacing="0">02</text>
+        <text x="862" y="1384" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#a9b8b0" text-anchor="start" letter-spacing="2">FULL CAR CHECK</text>
+        <text x="862" y="1439" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">From plate to history</text>
+        <text x="1846" y="1429" font-family="Arial, sans-serif" font-size="60" font-weight="400" fill="#f28e70" text-anchor="middle" letter-spacing="0">›</text>
+
+        <rect x="688" y="1544" width="1210" height="220" rx="38" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+        <rect x="718" y="1578" width="114" height="114" rx="30" fill="#86e5c0" stroke="none" stroke-width="0"/>
+        <text x="775" y="1652" font-family="Arial, sans-serif" font-size="32" font-weight="900" fill="#06100b" text-anchor="middle" letter-spacing="0">03</text>
+        <text x="862" y="1626" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#a9b8b0" text-anchor="start" letter-spacing="2">TREASURE HUNT</text>
+        <text x="862" y="1681" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">Rank promising finds</text>
+        <text x="1846" y="1671" font-family="Arial, sans-serif" font-size="60" font-weight="400" fill="#86e5c0" text-anchor="middle" letter-spacing="0">›</text>
+  
+    <text x="150" y="2660" font-family="Arial, sans-serif" font-size="24" font-weight="500" fill="#73867c" text-anchor="start" letter-spacing="0">Values are estimates. Vehicle results depend on available provider data.</text>
+  </svg>

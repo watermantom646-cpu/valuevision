@@ -7,7 +7,14 @@ export type AnalyticsEventName =
   | "scan_failure"
   | "scan_confidence_high"
   | "scan_confidence_medium"
-  | "scan_confidence_low";
+  | "scan_confidence_low"
+  | "paywall_open"
+  | "purchase_start"
+  | "purchase_success"
+  | "purchase_failure"
+  | "restore_start"
+  | "restore_success"
+  | "restore_failure";
 
 export type AnalyticsEvent = {
   id: string;
@@ -33,6 +40,13 @@ const EMPTY_STORE: AnalyticsStore = {
     scan_confidence_high: 0,
     scan_confidence_medium: 0,
     scan_confidence_low: 0,
+    paywall_open: 0,
+    purchase_start: 0,
+    purchase_success: 0,
+    purchase_failure: 0,
+    restore_start: 0,
+    restore_success: 0,
+    restore_failure: 0,
   },
   events: [],
   updatedAt: new Date(0).toISOString(),

@@ -48,3 +48,20 @@ Important endpoints used by the app:
 ## Current Launch Goal
 
 Ship a clean item-first App Store build with working scan flows, working navigation, honest messaging about paused car checks, and a strong demo story around broad resale categories.
+
+## Founding Seller Web Checkout
+
+The web paywall can hand customers to a hosted checkout without embedding payment secrets in the app. Configure the public checkout URL at build time:
+
+```bash
+EXPO_PUBLIC_FOUNDING_SELLER_CHECKOUT_URL=https://buy.stripe.com/your-link npm run web
+```
+
+Generate private 30-day access codes for manual founding-beta fulfilment:
+
+```bash
+cd backend
+npm run founding:codes -- 20
+```
+
+Store the generated comma-separated value as the backend secret `FOUNDING_SELLER_CODES`. Never commit real codes. See `docs/founding-seller-checkout-runbook-2026-07-10.md` for the launch workflow.

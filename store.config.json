@@ -1,41 +1,48 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "1.0.2",
+      "version": "1.0.3",
     "copyright": "2026 Thomas Waterman. All rights reserved.",
     "release": {
       "automaticRelease": true
     },
     "info": {
       "en-US": {
-        "description": "ValueVision helps you identify and value almost anything from a photo.\n\nUse Anything Mode to scan:\n\n• Pokémon cards and other collectibles\n• Coins, banknotes, medals and vintage keepsakes\n• Antiques, books and homeware\n• Phones, consoles and other technology\n• Tools, fashion and everyday resale finds\n\nValueVision returns an estimated resale range and a clear confidence level. When the evidence is not strong enough for a reliable price, Improve This Valuation asks for useful details such as the maker, model, year, set, grade or condition before revaluing the item.\n\nEvery completed scan is saved to My Collection so you can review valuations later.\n\nHow it works:\n\n1. Take or upload one clear photo.\n2. ValueVision identifies the item and searches current market evidence.\n3. Get a resale estimate, confidence level and next best step.\n4. Add details when needed, then save or scan the next item.\n\nThe free download includes three starter item scans. A monthly subscription unlocks unlimited Anything Mode scans and Live Mode. Car Mode is included as a separate area, but paid car checks are temporarily paused and cannot be purchased in this version.\n\nValues are estimates based on available market data, not guaranteed sale prices, insurance valuations or formal appraisals.",
+        "description": "ValueVision helps you identify, value and decide what is worth selling from a photo.\n\nVALUE AN ITEM\nPhotograph collectibles, antiques, technology, tools, fashion, homeware and everyday resale finds. ValueVision identifies the item, searches current market evidence and returns an estimated selling range, confidence level and marketplace guidance. Our AI evidence audit filters out mismatched models, accessories, bundles and unsuitable comparisons before a price is shown.\n\nTREASURE HUNT\nPhotograph a room, shelf or collection. ValueVision builds a shortlist of promising finds, then lets you add close-ups for stronger identification and pricing. We ask for more detail when the evidence is not reliable enough instead of inventing a price.\n\nCAR MODE\nPhotograph a vehicle or enter its registration. Get basic vehicle details, MOT, tax, latest recorded mileage and a market valuation. Optional full vehicle-history checks can reveal provider records for outstanding finance, stolen status, insurance write-offs, previous owners, mileage anomalies and other risk markers.\n\nEvery completed valuation is saved to My Collection.\n\nThe free download includes three starter Value Credits. ValueVision Plus costs £9.99 per month and includes 100 Value Credits every 30 days. One completed item valuation or Treasure Hunt item uses one credit. A basic car valuation uses three credits. Optional top-ups provide 25 credits for £3.99 or 75 credits for £8.99. Full vehicle-history checks are separate purchases at £4.50 each or three for £11.99.\n\nValues and checks depend on the available market and provider data. They are guidance, not guaranteed sale prices, insurance valuations or formal appraisals.",
         "keywords": [
           "valuation",
           "resale",
-          "price checker",
-          "scanner",
-          "pokemon cards",
-          "coins",
+          "car check",
+          "MOT",
+          "tax",
+          "antiques",
           "collectibles",
+          "price scanner",
           "reseller",
           "flipping"
         ],
-        "releaseNotes": "A smoother ValueVision experience with a simplified three-tab layout, dedicated Anything Mode, clearer confidence guidance, improved item-pricing safeguards, a guided Improve This Valuation flow, and a cleaner My Collection.",
-        "marketingUrl": "https://valuevisionapp.com",
-        "supportUrl": "https://valuevisionapp.com",
+        "releaseNotes": "A complete ValueVision redesign with clearer item valuations, dedicated Car Mode, mileage-discrepancy reporting, Treasure Hunt room scanning, stronger market-evidence filtering and Value Credits.",
+        "marketingUrl": "https://valuevision-4kj3.onrender.com",
+        "supportUrl": "https://valuevision-4kj3.onrender.com",
         "title": "ValueVision",
         "subtitle": "Scan Anything. Know Its Value",
         "privacyPolicyUrl": "https://valuevision-4kj3.onrender.com/privacy-policy",
         "screenshots": {
           "APP_IPHONE_65": [
             "store/apple/current/en-US/APP_IPHONE_65/01_home.png",
-            "store/apple/current/en-US/APP_IPHONE_65/02_scan.png",
-            "store/apple/current/en-US/APP_IPHONE_65/03_car_mode.png"
+            "store/apple/current/en-US/APP_IPHONE_65/02_item_value.png",
+            "store/apple/current/en-US/APP_IPHONE_65/03_car_mode.png",
+            "store/apple/current/en-US/APP_IPHONE_65/04_full_check.png",
+            "store/apple/current/en-US/APP_IPHONE_65/05_treasure_hunt.png",
+            "store/apple/current/en-US/APP_IPHONE_65/06_credits.png"
           ],
           "APP_IPAD_PRO_3GEN_129": [
             "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/01_home.png",
-            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/02_scan.png",
-            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/03_car_mode.png"
+            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/02_item_value.png",
+            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/03_car_mode.png",
+            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/04_full_check.png",
+            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/05_treasure_hunt.png",
+            "store/apple/current/en-US/APP_IPAD_PRO_3GEN_129/06_credits.png"
           ]
         }
       }
@@ -74,11 +81,11 @@
     },
     "review": {
       "firstName": "Thomas",
-      "lastName": "waterman",
+      "lastName": "Waterman",
       "email": "watermantom646@gmail.com",
       "phone": "+447539533639",
       "demoRequired": false,
-      "notes": "No sign-in is required.\n\nReview steps:\n1. Open ValueVision and tap Anything Mode or the Scan tab.\n2. Take or upload a clear photo of a non-car item.\n3. Review the resale range and confidence guidance.\n4. If the result needs more evidence, tap Improve This Valuation, add any known details, and tap Revalue Item.\n5. Open My Collection to review saved scans.\n6. Open ValueVision Monthly to view the subscription product and Restore Purchases control.\n\nThe free download includes three starter item scans. Product ID ValueVision10 unlocks unlimited Anything Mode scans and Live Mode for £9.99 per month.\n\nCar Mode is visible as a separate hub, but car checks are temporarily paused. All car-check purchase controls are disabled and no car-check payment can be taken in this version.\n\nSupport URL: https://valuevision-4kj3.onrender.com\n"
+      "notes": "No sign-in is required.\n\nReview steps:\n1. Open ValueVision and choose Value an Item, Full Car Check or Treasure Hunt.\n2. Take or upload a clear photo. Manual vehicle-registration entry is also available.\n3. Review the identification, estimated resale range, confidence guidance and market evidence.\n4. If more evidence is needed, use Improve This Valuation and add the requested details.\n5. Open My Collection to review saved results.\n6. Open ValueVision Plus to view purchases, Restore Purchases and Manage Subscription.\n\nThe free download includes three starter Value Credits. Auto-renewable subscription Product ID ValueVision10 costs £9.99 per month and provides 100 Value Credits every 30 days. One completed item valuation or Treasure Hunt item uses one credit. A basic car valuation uses three credits. Consumable Product IDs valuevision_value_credits_25 and valuevision_value_credits_75 add 25 credits for £3.99 and 75 credits for £8.99.\n\nFull vehicle-history checks are separate consumable purchases. Product ID valuevision_full_car_check_1 provides one check for £4.50. Product ID valuevision_full_car_check_3 provides three checks for £11.99. A provider request is made only after the user confirms the registration and has a valid StoreKit entitlement.\n\nSupport URL: https://valuevision-4kj3.onrender.com\n"
     }
   }
 }

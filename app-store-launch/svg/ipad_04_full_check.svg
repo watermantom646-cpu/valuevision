@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2732" viewBox="0 0 2048 2732">
+    <rect width="2048" height="2732" fill="#061710"/>
+    <circle cx="1843.2" cy="218.56" r="860.16" fill="#0d2a20" opacity="0.9"/>
+    <circle cx="163.84" cy="2513.44" r="1024" fill="#0b2119" opacity="0.95"/>
+    
+    <g transform="translate(150 95)">
+      <rect x="0" y="10.24" width="99.84" height="99.84" rx="23.04" fill="#d8ff43" transform="rotate(-8 49.92 49.92)"/>
+      <text x="49.92" y="83.2" font-family="Arial, sans-serif" font-size="66.56" font-weight="900" fill="#06100b" text-anchor="middle" letter-spacing="0">V</text>
+      <circle cx="99.84" cy="23.04" r="13.44" fill="#f28e70"/>
+    </g>
+    <text x="300" y="170" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#f5f0e4" text-anchor="start" letter-spacing="5">VALUEVISION</text>
+    
+  <rect x="1622" y="108" width="276" height="64" rx="32" fill="#173428" stroke="none" stroke-width="0"/>
+  <text x="1760" y="150" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#d8ff43" text-anchor="middle" letter-spacing="0">SEE THE VALUE</text>
+    <text x="150" y="362" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#d8ff43" text-anchor="start" letter-spacing="4">FULL CAR CHECK</text>
+    <text x="150" y="470" font-family="Georgia, serif" font-size="106" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">FULL HISTORY.</text>
+<text x="150" y="579.1800000000001" font-family="Georgia, serif" font-size="106" font-weight="700" fill="#f5f0e4" text-anchor="start" letter-spacing="0">CLEARER DECISIONS.</text>
+    <text x="150" y="729.7" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">Unlock finance, write-off, stolen, ownership</text>
+<text x="150" y="779.4000000000001" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">and mileage-risk records from the</text>
+<text x="150" y="829.1" font-family="Arial, sans-serif" font-size="35" font-weight="500" fill="#a9b8b0" text-anchor="start" letter-spacing="0">vehicle-data provider.</text>
+    <rect x="644" y="796" width="1298" height="1170" rx="54" fill="#0a2118" stroke="#294a3b" stroke-width="2"/>
+    
+    <rect x="688" y="840" width="1210" height="150" rx="36" fill="#f28e70" stroke="none" stroke-width="0"/>
+    <text x="726" y="902" font-family="Arial, sans-serif" font-size="24" font-weight="900" fill="#06100b" text-anchor="start" letter-spacing="2">FULL CAR CHECK</text>
+    <text x="726" y="957" font-family="Georgia, serif" font-size="54" font-weight="900" fill="#06100b" text-anchor="start" letter-spacing="0">&#163;4.50</text>
+    <text x="1862" y="933" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#06100b" text-anchor="end" letter-spacing="0">or 3 checks for &#163;11.99</text>
+    
+        <rect x="688" y="1024" width="595" height="132" rx="30" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+        <circle cx="722" cy="1062" r="9" fill="#86e5c0"/>
+        <text x="744" y="1071" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#a9b8b0" text-anchor="start" letter-spacing="1">FINANCE</text>
+        <text x="718" y="1122" font-family="Arial, sans-serif" font-size="31" font-weight="800" fill="#f5f0e4" text-anchor="start" letter-spacing="0">CLEAR</text>
+
+        <rect x="1303" y="1024" width="595" height="132" rx="30" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+        <circle cx="1337" cy="1062" r="9" fill="#86e5c0"/>
+        <text x="1359" y="1071" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#a9b8b0" text-anchor="start" letter-spacing="1">STOLEN</text>
+        <text x="1333" y="1122" font-family="Arial, sans-serif" font-size="31" font-weight="800" fill="#f5f0e4" text-anchor="start" letter-spacing="0">CLEAR</text>
+
+        <rect x="688" y="1178" width="595" height="132" rx="30" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+        <circle cx="722" cy="1216" r="9" fill="#86e5c0"/>
+        <text x="744" y="1225" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#a9b8b0" text-anchor="start" letter-spacing="1">WRITE-OFF</text>
+        <text x="718" y="1276" font-family="Arial, sans-serif" font-size="31" font-weight="800" fill="#f5f0e4" text-anchor="start" letter-spacing="0">CLEAR</text>
+
+        <rect x="1303" y="1178" width="595" height="132" rx="30" fill="#10271e" stroke="#294a3b" stroke-width="2"/>
+        <circle cx="1337" cy="1216" r="9" fill="#d8ff43"/>
+        <text x="1359" y="1225" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#a9b8b0" text-anchor="start" letter-spacing="1">MILEAGE</text>
+        <text x="1333" y="1276" font-family="Arial, sans-serif" font-size="31" font-weight="800" fill="#f5f0e4" text-anchor="start" letter-spacing="0">CHECKED</text>
+    <rect x="688" y="1350" width="1210" height="288" rx="38" fill="#f5f0e4" stroke="none" stroke-width="0"/>
+    <text x="724" y="1408" font-family="Arial, sans-serif" font-size="23" font-weight="800" fill="#06100b" text-anchor="start" letter-spacing="2">MILEAGE HISTORY</text>
+    <polyline points="734,1568 898,1518 1068,1487 1238,1446 1854,1416" fill="none" stroke="#06100b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="734" y1="1582" x2="1854" y2="1582" stroke="#c6d0c9" stroke-width="3"/>
+    <text x="724" y="1618" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#405149" text-anchor="start" letter-spacing="0">No mileage discrepancy detected in available records</text>
+    <rect x="688" y="1672" width="1210" height="174" rx="32" fill="#173428" stroke="none" stroke-width="0"/>
+    <text x="722" y="1726" font-family="Arial, sans-serif" font-size="21" font-weight="800" fill="#d8ff43" text-anchor="start" letter-spacing="2">PROVIDER DATA</text>
+    <text x="722" y="1778" font-family="Arial, sans-serif" font-size="25" font-weight="500" fill="#f5f0e4" text-anchor="start" letter-spacing="0">Results reflect available provider records.</text>
+<text x="722" y="1815" font-family="Arial, sans-serif" font-size="25" font-weight="500" fill="#f5f0e4" text-anchor="start" letter-spacing="0">Some fields or damage images may not exist for every car.</text>
+  
+    <text x="150" y="2660" font-family="Arial, sans-serif" font-size="24" font-weight="500" fill="#73867c" text-anchor="start" letter-spacing="0">Values are estimates. Vehicle results depend on available provider data.</text>
+  </svg>

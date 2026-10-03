@@ -4861,10 +4861,12 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
     // Run the valuation identification agent for every refined non-vehicle scan.
     // The fast scan remains inexpensive; the UI's refine pass performs the
     // evidence-rich identification before pricing.
+    const openAiFastScanEnabled =
+      String(process.env.OPENAI_FAST_SCAN_ENABLED || "true").toLowerCase() !== "false";
     const canUseOpenAiFallback =
       Boolean(OPENAI_API_KEY) &&
       !vehicleQuery &&
-      !Boolean(opts.fast);
+      (!Boolean(opts.fast) || openAiFastScanEnabled);
     if (canUseOpenAiFallback) {
       const aiDetected = await detectItemWithOpenAiFromImageBuffer(buffer, {
         query,
@@ -4873,6 +4875,7 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
         logos,
         webEntities,
         detectionConfidence,
+        fast: Boolean(opts.fast),
       });
       if (aiDetected?.ok && aiDetected.query) {
         query = aiDetected.query;
@@ -4902,7 +4905,9 @@ async function detectItemFromImageBuffer(buffer, opts = {}) {
     };
   } catch (err) {
     if (OPENAI_API_KEY) {
-      const aiDetected = await detectItemWithOpenAiFromImageBuffer(buffer);
+      const aiDetected = await detectItemWithOpenAiFromImageBuffer(buffer, {
+        fast: Boolean(opts.fast),
+      });
       if (aiDetected?.ok && aiDetected.query) {
         return {
           ok: true,
@@ -5018,6 +5023,7 @@ async function detectItemWithOpenAiFromImageBuffer(buffer, context = {}) {
     logos: context?.logos || [],
     webEntities: context?.webEntities || [],
     detectionConfidence: context?.detectionConfidence || "",
+    scanStage: context?.fast ? "fast" : "refined",
   }).slice(0, 3500);
 
   const specialistRules = [
@@ -5031,9 +5037,16 @@ async function detectItemWithOpenAiFromImageBuffer(buffer, context = {}) {
     "For antiques, art, ceramics, jewellery and watches, look for maker marks, signatures, hallmarks, materials, dimensions and provenance clues. Request underside, reverse, clasp or hallmark photos when needed.",
     "For electronics, capture exact model, generation, storage/capacity and included accessories.",
     "For fashion, capture brand, product line, size, material and authenticity clues.",
+    "For books, records, games and boxed media, capture the title, creator, publisher or label, edition, year, ISBN/catalogue number, format and completeness.",
+    "For cameras, lenses and musical instruments, capture maker, model, mount or specification, serial-era clues, included case/accessories and visible working-condition evidence.",
+    "For toys, figures, board games and sports items, capture maker, product line, character/team, year or release, size, packaging and whether all important pieces are present.",
+    "For furniture, appliances, automotive parts and ordinary household goods, identify the most useful comparable class, material, approximate size/capacity, style, compatibility and condition even when no brand is visible.",
+    "An ordinary unbranded item may still be priced when its item class, material, approximate size, quantity and condition are clear enough to find genuinely comparable resale listings. Do not require a model number that the product would not normally have.",
+    "For lots or bundles, state the visible quantity and never compare a single item with a multi-item lot. If a room or mixed group is shown, select one clearly identifiable saleable object and request a closer photo for the rest.",
     "If several objects are shown, select the clearest potentially saleable object and request an individual close-up before allowing precise pricing.",
     "Set pricingAllowed false when the identity is unknown or too broad, an important variant is missing, authenticity materially affects value, or condition cannot be assessed enough for useful comparables.",
-    "The query must be concise and contain only evidence-backed terms useful for finding the same item. soldSearchQueries should contain close-match resale searches, not generic category searches.",
+    "The query must be concise and contain only evidence-backed terms useful for finding the same item. soldSearchQueries should progress from the closest exact search to one carefully broadened fallback, while preserving quantity, material, variant and condition-critical terms.",
+    "Do not block a useful class-level valuation merely because the item is common or unbranded, but do block exact-value claims for items where authenticity, hallmark, edition, model, weight or provenance can change value materially.",
     `Machine-vision signals: ${baseSignals}`,
   ];
 
@@ -5126,7 +5139,13 @@ async function detectItemWithOpenAiFromImageBuffer(buffer, context = {}) {
     !Boolean(first.pricingAllowed) ||
     specialistItem;
 
-  if (expertEnabled && expertModel && expertModel !== fastModel && needsExpert) {
+  if (
+    expertEnabled &&
+    !Boolean(context?.fast) &&
+    expertModel &&
+    expertModel !== fastModel &&
+    needsExpert
+  ) {
     const expertPass = await callIdentifier({
       model: expertModel,
       prior: firstPass?.ok ? first : null,
@@ -5253,7 +5272,9 @@ async function reviewItemPricingWithOpenAi({
     "You are ValueVision's marketplace evidence auditor.",
     "Review the supplied comparable listings for the exact photographed item. You must not invent prices or use outside knowledge.",
     "Reject accessories, spare parts, empty packaging, replicas, unrelated bundles, different models or editions, different card or set variants, and new-retail listings when they do not match the target's condition.",
+    "Reject quantity mismatches, materially different sizes/capacities, incompatible parts and listings whose price is primarily driven by accessories not present in the photographed item.",
     "For collectibles, cards, LEGO, tools, electronics, jewellery, watches and antiques, exact variant, completeness, authenticity signals and condition matter more than title similarity.",
+    "For ordinary unbranded goods, class-level comparables are acceptable only when item type, material, approximate size, quantity and condition align. Mark the match mixed rather than inventing brand-level precision.",
     "Only accept a usable valuation when at least three genuinely comparable listings remain. Prefer sold evidence over asking prices when available.",
     "The low, median and high must be supported by accepted evidence in the supplied currency. Never convert currency. A condition adjustment may not move a figure more than 20 percent beyond the accepted evidence range.",
     "If identity, variant, quantity, completeness, authenticity or condition is too uncertain, return needs_details and list the smallest set of details or photos needed.",
